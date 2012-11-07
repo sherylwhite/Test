@@ -1,0 +1,22 @@
+11	Lec	CPE184,CSC184		HR Management & Entrepreneurship
+12	Lec	CPE411,CSC204		Computer Graphics and Applications
+13	Lec	CPE303,CSC206		Database Systems
+14	Lec	CPE425,CSC301		Programming Languages
+15	Lec	CSC304,CPE406		AI and Intelligent Systems
+16	Lec	CPE102,CSC102		Introduction to Programming
+18	Lec	CPE409,CSC406		Computer Architecture
+19	Lec	CPE423,CSC423		Parallel Processing
+20	Lec	CPE422,CSC422		Neural Networks
+21	Lec	CPE401,CSC401		Advanced Algorithms
+22	Lec,Tut	CPE402,CSC402		Advanced Computer Networks
+23	Lec,Tut	CSC409,CPE413		Cryptography and Network Security
+24	Lec,Tut	CPE419,CSC417		Introductory Bioinformatics
+32	Lec	CE1001,CZ1001,CPE106,CSC106		Discrete Mathematics
+33	Lec	CE8001,CZ8001,CPE183,CSC183		Engineers and Society
+34	Lec	CE1005,CZ1005,CPE104,CSC104		Digital Logic
+35	Lec	CE1002,CZ1002,CSC101		Introduction to Computing Systems
+36	Lec	CE1003,CZ1003		Introduction to Computational Thinking
+37	Lec	CE1004,CZ1004		Great Ideas in Computing
+38	Lec	CE1008,CZ1008,CPE103,CSC103		Engineering Mathematics
+39	Lec	CPE203,CSC203		Software Systems and Models
+40	Lec	CPE105,CSC105		Data Structures and Object-Oriented Prog

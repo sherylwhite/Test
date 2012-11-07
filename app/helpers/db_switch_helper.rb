@@ -1,0 +1,2 @@
+module DbSwitchHelper
+end

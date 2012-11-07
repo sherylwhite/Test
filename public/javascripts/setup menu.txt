@@ -1,0 +1,68 @@
+Installation Instructions 
+--------------------------------------------------------------------------------
+Code for an absolute menu position.
+
+Paste into <HEAD> tag: 
+
+<!-- Apycom DHTML Menu -->
+<noscript><a href=http://dhtml-menu.com/>DHTML Menu, (c) 2004 Apycom Software</a></noscript>
+<script type="text/javascript" language="JavaScript1.2" src="your_dir/engine.js"></script>
+<script type="text/javascript" language="JavaScript1.2" src="your_dir/data.js"></script>
+<!-- Apycom DHTML Menu, dhtml-menu.com --> 
+
+--------------------------------------------------------------------------------
+Code for a relative menu position.
+
+Paste into <HEAD> tag: 
+
+<!-- Apycom DHTML Menu -->
+<noscript><a href=http://dhtml-menu.com/>DHTML Menu, (c) 2004 Apycom Software</a></noscript>
+<script type="text/javascript" language="JavaScript1.2" src="your_dir/engine.js"></script>
+<!-- Apycom DHTML Menu, dhtml-menu.com --> 
+
+Paste the following code into the place where your menu will be shown:
+
+<script type="text/javascript" language="JavaScript1.2" src="your_dir/data.js"></script> 
+
+--------------------------------------------------------------------------------
+
+Where:
+    engine.js - menu engine file;
+    data.js - menu data file you want to save now. 
+
+DHTML Menus have following engine file names:
+    The DHTML Menu - apymenu.js;
+    The DHTML Tree Menu - apytmenu.js;
+    The DHTML Tabs - apytabs.js;
+    The DHTML Tab Menu - apytabmenu.js; 
+
+
+Cross-frame Installation (for the DHTML Menu only) 
+--------------------------------------------------------------------------------
+Paste into <HEAD> tag of a page with a top menu:
+
+<!-- Apycom DHTML Menu -->
+<noscript><a href=http://dhtml-menu.com/>DHTML Menu, (c) 2004 Apycom Software</a></noscript>
+<script type="text/javascript" language="JavaScript1.2" src="your_dir/apymenu.js"></script>
+<script type="text/javascript" language="JavaScript1.2" src="your_dir/data.js"></script>
+<!-- Apycom DHTML Menu, dhtml-menu.com --> 
+
+Be sure you have frameset id property in your frameset. Example:
+
+<frameset id="fset" rows="130,*">
+    <frame name="frame1" src="topmenu.html">
+    <frame name="frame2" src="content.html">
+</frameset> 
+
+Then replace the standard apy_init() function at the end of data .js file by the apy_initFrame() function:
+
+    apy_initFrame(framesetID, mainFrameInd, subFrameInd, orientation); 
+
+Where:
+    framesetID - id of <frameset> tag;
+    mainFrameInd - number of a top menu frame (frame where the top menu will be placed), >=0;
+    subFrameInd - number of frame with submenus, >=0;
+    orientation - 0 - horizontal frame orientation; 1 - vertical frame orientation.
+
+Example, based on the previous frameset example:
+    apy_initFrame("fset", 0, 1, 0); 

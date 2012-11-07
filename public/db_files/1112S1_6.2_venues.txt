@@ -1,0 +1,63 @@
+C&I	Lab	80	Control and Instrumentation
+CE	Lab	46	46 or 92(twin-shared)
+CI	Lab	40	Control & Instrumentation Lab
+CL1	Lab	80	Linux Machine
+CL2	Lab	80	
+COMM	Lab	42	30 for CPE301
+CSKL3	Lab	35	
+DB	Lab	48	
+DIG	Lab	54	
+DSP	Lab	0	Phased out
+ELE	Lab	80	40 each half
+LKCLT	Lec	991	South Spine
+LT10	Lec	120	
+LT11	Lec	120	
+LT12	Lec	120	
+LT13	Lec	120	
+LT16	Lec	120	
+LT17	Lec	120	
+LT19	Lec	120	
+LT19A	Lec	120	
+LT1A	Lec	120	
+LT2	Lec	120	
+LT2A	Lec	120	
+LT3	Lec	120	
+LT4	Lec	120	
+LT5	Lec	120	
+LT6	Lec	120	
+LT7	Lec	120	
+LT8	Lec	120	
+LT9	Lec	120	
+MM2	Lab	35	
+MM3	Lab	35	
+MS	Lab	45	
+NA	Lab	35	
+SWE	Lab	100	
+TCT	Lec	331	TCT-LT
+TCT-LT	Lec	351	
+TR+37	Tut	35	Nre tutorial room
+TR10	Tut	35	
+TR11	Tut	35	
+TR12	Tut	35	
+TR13	Tut	35	
+TR14	Tut	35	
+TR15	Tut	35	
+TR16	Tut	35	
+TR17	Tut	35	
+TR18	Tut	35	
+TR19	Tut	35	
+TR20	Tut	35	
+TR21	Tut	35	
+TR22	Tut	35	
+TR23	Tut	35	
+TR24	Tut	35	
+TR26	Tut	35	
+TR39	Tut	35	
+TR41	Tut	35	
+TR47	Tut	35	
+TR48	Tut	35	
+TR49	Tut	35	
+TR50	Tut	35	
+TR7	Tut	35	
+TR8	Tut	35	
+TR9	Tut	35	

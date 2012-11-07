@@ -1,0 +1,60 @@
+	Lab	35	
+C&I	Lab	38	Lab - Control & Instrumentation
+CE	Lab	42	Lab - Computer Engineering
+CL1	Lab	102	Lab - Computing 1
+CL2	Lab	64	Lab - Computing 2
+COMM	Lab	36	Lab - Computer Communications
+CSKL3	Lab	30	Lab - Communication Skill Lab 3
+CSKL6	Lab	30	Lab - Communication Skill Lab 6
+DB	Lab	80	Lab - Database Technology
+DIG	Lab	46	Lab - Digital Systems
+DSP	Lab	30	Lab - Digital Signal Processing
+ELE	Lab	42	Lab - Electronics
+L11	Lab	35	
+LT1	Lec	350	Lecture Theater
+LT10	Lec	120	Lecture Theater
+LT11	Lec	120	Lecture Theater
+LT12	Lec	120	Lecture Theater
+LT13	Lec	120	
+LT14	Lec	120	
+LT19	Lec	365	Lecture Theater
+LT19A	Lec	400	Lecture Theater
+LT20	Lec	365	Lecture Theater
+LT22	Lec	360	Lecture Theater
+LT2A	Lec	650	Lecture Theater
+LT3	Lec	250	Lecture Theater
+LT4	Lec	120	
+LT5	Lec	120	
+LT7	Lec	120	
+LT8	Lec	250	Lecture Theater
+LT9	Lec	250	Lecture Theater
+MM1	Lab	30	SCE Multimedia Lab 1
+MM2	Lab	30	SCE Multimedia Lab 2
+MM3	Lab	30	SCE Multimedia Lab 3
+MS	Lab	60	Lab - Microcomputer Systems
+NIL	Lab	35	
+SWE	Lab	100	Lab - Software Engineering
+TR10	Tut	40	Tutorial Room 10
+TR11	Tut	40	Tutorial Room 11
+TR12	Tut	40	Tutorial Room 12
+TR13	Tut	40	Tutorial Room 13
+TR14	Tut	40	Tutorial Room 14
+TR15	Tut	40	Tutorial Room 15
+TR16	Tut	40	Tutorial Room 16
+TR17	Tut	40	Tutorial Room 17
+TR18	Tut	40	Tutorial Room 18
+TR19	Tut	40	Tutorial Room 19
+TR20	Tut	40	Tutorial Room 22
+TR21	Tut	40	Tutorial Room 21
+TR22	Tut	40	Tutorial Room 22
+TR23	Tut	40	Tutorial Room 23
+TR24	Tut	40	Tutorial Room 24
+TR26	Tut	40	Tutorial Room 26
+TR39	Tut	40	Tutorial Room 39
+TR4	Tut	35	
+TR41	Tut	40	Tutorial Room 41
+TR49	Tut	40	Tutorial Room 49
+TR50	Tut	40	Tutorial Room 50
+TR7	Tut	40	Tutorial Room 7
+TR8	Tut	40	Tutorial Room 8
+TR9	Tut	40	Tutorial Room 9

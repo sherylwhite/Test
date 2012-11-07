@@ -1,0 +1,25 @@
+2011120165CE1001CE1  GTEP1GTEP1               
+2011120156CE1001CE1  FE1  FE1                 
+2011120157CE1001CE1  FE2  FE2                 
+2011120158CE1001CE1  FE3  FE3                 
+2011120159CE1001CE1  FE4  FE4                 
+2011120160CE1001CE1  FEP1 FEP1                
+2011120161CE1001CE1  FEP2 FEP2                
+2011120162CE1001CE1  FEP3 FEP3                
+2011120163CE1001CE1  BCE1 BCE1                
+2011120164CE1001CE1  GTE1 GTE1                
+2011110985HW0110SCE1 SCE7                     
+2011110991HW0110SCE1 SCE3                     
+2011110986HW0110SCE1 SCE4                     
+2011110987HW0110SCE1 SCE1                     
+2011110988HW0110SCE1 SCE5                     
+2011110989HW0110SCE1 SCE2                     
+2011110990HW0110SCE1 SCE6                     
+2011112349HW0210     SCE6                     
+2011112345HW0210     SCE2                     
+2011112346HW0210     SCE3                     
+2011112347HW0210     SCE5                     
+2011112352HW0210     SCE1                     
+2011112351HW0210     SCE8                     
+2011112348HW0210     SCE4                     
+2011112350HW0210     SCE7                     

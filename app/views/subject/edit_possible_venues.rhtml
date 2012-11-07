@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.0 Transitional//EN">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Edit Possible Venues</title>
+<link href="/stylesheets/style.css?1200832189" media="screen" rel="Stylesheet" type="text/css" />
+<script src="/javascripts/JS_Function.js?1198430113" type="text/javascript"></script>
+<script src="/javascripts/prototype.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1198673475" type="text/javascript"></script>
+<SCRIPT language="javascript" type="text/javascript">
+
+function checkChosenNoVenue(){
+var dom = document.getElementById("PossibleVenueForm");
+
+	if(dom.chosenVenueDDM.length!=0){
+		dom.confirmBtn.disabled=false;
+	}else{
+		dom.confirmBtn.disabled=true;
+	}
+} //end-checkChosenNoVenue()
+
+function add(){
+	moveItem('availVenueDDM','chosenVenueDDM');
+	checkChosenNoVenue();
+}  //end-add()
+		
+function remove(){		
+	moveItem('chosenVenueDDM','availVenueDDM');
+	checkChosenNoVenue();
+} //end-remove()
+
+function processConfirm(){
+var dom = document.getElementById("PossibleVenueForm");
+var chosenVens="";
+	for(var k=0; k<dom.chosenVenueDDM.length;k++){
+		chosenVens+=dom.chosenVenueDDM.options[k].value+",";	
+	}
+	
+	chosenVens=chosenVens.substr(0,chosenVens.length-1);
+	<% if session[:lesType]=="Lec" %>
+		opener.document.getElementById("lecVenue").value=chosenVens;
+	<% elsif session[:lesType]=="Tut" %>
+		opener.document.getElementById("tutVenue").value=chosenVens;
+	<% else %>
+		opener.document.getElementById("labVenue").value=chosenVens;
+	<% end %>
+	alert("Please click Submit button to take effect of your changes of possible venues.")
+	showOpener();
+}
+
+function reloadVenue(){
+var dom = document.getElementById("PossibleVenueForm");
+	removeAllDDMItem('availVenueDDM');
+	<% @ven_list=Venue.find(:all,:order=>"venueName")%>
+	count=0;
+	<% 0.upto(@ven_list.length-1) do |v|%>
+		checkOk=true;
+		for(var k=0; k<dom.chosenVenueDDM.length;k++){
+			if (dom.chosenVenueDDM.options[k].value=="<%=@ven_list[v].venueName%>"){
+				checkOk=false;
+				break;
+			}	
+		}
+		if (checkOk){
+			var newOption = new Option();
+			newOption.text = "<%=@ven_list[v].venueName%>";
+			newOption.value ="<%=@ven_list[v].venueName%>";
+			dom.availVenueDDM.options[count] = newOption;
+			count++;
+		}
+		
+	<% end %>
+}
+
+</SCRIPT>
+</head>
+<body>
+<form id="PossibleVenueForm" method="post" action="process_possible_venues">
+<table class="Table1" align=center>
+	<tr align=center>
+		<th colspan=3>Add / Update / Delete Possible Venue(s)</th>
+	</tr>
+	<tr align=center>
+		<td>Available Venues: <br><br>
+			<input type="button" name="reloadVenueBtn" id="reloadVenueBtn" onclick="reloadVenue();" value="Reload Venue" /><br>
+		
+			<Select  style="width: 100px" size=8 id="availVenueDDM" name="availVenueDDM" multiple>
+				<% 0.upto(@avail_vens_list.length-1) do |av| %>
+					<option value="<%=@avail_vens_list[av]%>"><%=@avail_vens_list[av]%></option>
+				<% end %>
+			</Select>
+		</td>
+		<td>
+			<input type="button" name="Button" value="  >>  " onclick="add();"><br><br>
+        		<input type="button" name="Button" value="  <<  " onclick="remove();">    
+        	</td>
+		<td>Possible Venues:<br><br><br>
+			<Select  style="width: 100px" size=8 id="chosenVenueDDM" name="chosenVenueDDM" multiple>
+				<% 0.upto(@pos_vens_list.length-1) do |pv| %>
+					<option value="<%=@pos_vens_list[pv]%>"><%=@pos_vens_list[pv]%></option>
+				<% end %>
+			</Select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=3 align=center>
+		<% if @pos_vens_list.length==0 %>
+			<input type="button" name="confirmBtn" onclick="processConfirm();" disabled=true value="Confirm" />
+		<% else %>
+			<input type="button" name="confirmBtn" onclick="processConfirm();" value="Confirm" />
+		<% end %>
+		<input type="button" value="Cancel" name="cancelBtn" tabIndex="9" onclick="showOpener()">
+		</td>
+	</tr>	
+	<tr>
+		<td colspan=3 align=center>
+		<font color=blue><b>Chosen Subject: <%=session[:scode]%> , Lesson Type: <%=session[:lesType]%></b></font>
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

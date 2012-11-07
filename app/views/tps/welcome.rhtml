@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+	<head><link href="/stylesheets/style.css?1200832189" media="screen" rel="Stylesheet" type="text/css" /></head>
+
+	<body>
+		<br>
+		<div class="CurrSem">
+		<%    year=BackupEntry.find(:first,:conditions=>"currentflag=1").year
+		      sem=BackupEntry.find(:first,:conditions=>"currentflag=1").semester
+		      ver=BackupEntry.find(:first,:conditions=>"currentflag=1").version
+		      %>
+		<%="AY "+ year + " Semester " + sem + " Ver " + ver %>
+		</div>
+		<br>
+		<div class="HomeTitle">Hi <%=session[:user].userName%>, Welcome to SCE-TPS System</div><br>
+		
+		<div class="HomeContent">TPS system is a Timetble Planning and Scheduling System<br>
+		which allows user to enter fundamental information for Venue, Tutor, and Subject <br>
+		and perform scheduling of lesson manually. <br>
+		You can also generate Report on various clashes as well as Printout for other system use.</div>
+	</body>
+</html>
+

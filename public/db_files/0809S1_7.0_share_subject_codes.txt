@@ -1,0 +1,15 @@
+10	Lec,Tut	CSC183,CPE183		Engineers & Society
+11	Lec	CPE184,CSC184		HR Management & Entrepreneurship
+12	Lec	CPE411,CSC204		Computer Graphics and Applications
+13	Lec	CPE303,CSC206		Database Systems
+14	Lec	CPE425,CSC301		Programming Languages
+15	Lec	CSC304,CPE406		AI and Intelligent Systems
+16	Lec	CPE102,CSC102		Introduction to Programming
+17	Lec	CSC103,CPE103		Mathematics I
+18	Lec	CPE409,CSC406		Computer Architecture
+19	Lec	CPE423,CSC423		Parallel Processing
+20	Lec	CPE422,CSC422		Neural Networks
+21	Lec	CPE401,CSC401		Advanced Algorithms
+22	Lec,Tut	CPE402,CSC402		Advanced Computer Networks
+23	Lec,Tut	CSC409,CPE413		Cryptography and Network Security
+24	Lec,Tut	CPE419,CSC417		Introductory Bioinformatics

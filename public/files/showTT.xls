@@ -1,0 +1,51 @@
+DAY	TIME	CPE101	CPE102	CPE103	CPE104	CPE105	CPE106	TIME
+Monday	830							830
+	930							930
+	1030	FER1-TR11(Weekly) 					FEPB2-TR16(Weekly) 	1030
+	1130							1130
+	1230	CE1-LT10(Weekly) 		CE1-LT8(Weekly) 		FE1-CL1(Weekly) ,CE1-LT19(Weekly) 		1230
+	1330					FE1-CL1(Weekly) 	FE6-TR14(Weekly) 	1330
+	1430				FEA1-DIG(Odd) ,CE1-LT2A(Weekly) 	FE2-CL1(Weekly) ,FE6-TR14(Weekly) 	FE5-TR13(Weekly) 	1430
+	1530				FEA1-DIG(Odd) ,FE1-TR11(Weekly) ,FE6-TR14(Weekly) 	FE2-CL1(Weekly) ,FE5-TR13(Weekly) 	FE1-TR18(Weekly) 	1530
+	1630							1630
+	1730							1730
+Tuesday	830	FER1-ELE(Even) 			FE5-TR13(Weekly) 	FE3-CL1(Weekly) ,FE2-TR12(Weekly) 		830
+	930	FER1-ELE(Even) 			FE2-TR12(Weekly) 	FE3-CL1(Weekly) ,FE1-TR11(Weekly) 	FE4-TR13(Weekly) 	930
+	1030							1030
+	1130						CE1-LT2A(Weekly) 	1130
+	1230				CE1-LT19(Weekly) 			1230
+	1330							1330
+	1430	CE1-LT10(Weekly) 			FEA1-TR15(Weekly) 	FE4-CL1(Weekly) ,FE6-CL1(Weekly) 	FEPA1-TR18(Weekly) 	1430
+	1530					FE4-CL1(Weekly) ,FE6-CL1(Weekly) ,FEA1-TR15(Weekly) 		1530
+	1630		CE1-LT12(Weekly) 					1630
+	1730							1730
+Wednesday	830						CE1-LT2A(Weekly) 	830
+	930					CE1-LT2A(Weekly) 	FEPB1-TR19(Weekly) 	930
+	1030			CE1-LT10(Weekly) 	FE1-DIG(Odd) ,FE2-DIG(Even) ,FE3-TR11(Weekly) 	FE5-CL1(Weekly) ,FE4-TR12(Weekly) 		1030
+	1130			FER1-TR14(Weekly) 	FE1-DIG(Odd) ,FE2-DIG(Even) ,FE4-TR12(Weekly) 	FE5-CL1(Weekly) ,FE3-TR11(Weekly) 		1130
+	1230							1230
+	1330							1330
+	1430							1430
+	1530							1530
+	1630							1630
+	1730							1730
+Thursday	830		FER1-TR11(Weekly) 					830
+	930		CE1-LT10(Weekly) 				FEA1-TR12(Weekly) 	930
+	1030				FE4-DIG(Even) ,FE3-DIG(Odd) 			1030
+	1130				FE4-DIG(Even) ,FE3-DIG(Odd) 			1130
+	1230						FE2-TR15(Weekly) 	1230
+	1330							1330
+	1430							1430
+	1530							1530
+	1630					CE1-LT2A(Weekly) 		1630
+	1730							1730
+Friday	830							830
+	930		CE1-LT10(Weekly) 					930
+	1030	CE1-LT10(Weekly) 			FE5-DIG(Odd) ,FE6-DIG(Even) 	FEA1-CL1(Weekly) 		1030
+	1130			CE1-LT8(Weekly) 	FE5-DIG(Odd) ,FE6-DIG(Even) 	FEA1-CL1(Weekly) 	FE3-TR13(Weekly) 	1130
+	1230				CE1-LT2A(Weekly) 			1230
+	1330		FER1-CL1(Weekly) 					1330
+	1430		FER1-CL1(Weekly) 					1430
+	1530						CE1-LT2A(Weekly) 	1530
+	1630							1630
+	1730							1730

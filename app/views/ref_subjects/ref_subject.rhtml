@@ -1,0 +1,292 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+function onChangeAction(){
+var dom = document.getElementById("SubjectForm");
+
+
+	if(dom.actionDDM.value == "Add"){
+		dom.existSubjectDDM.disabled = true;
+		clearField();
+		
+		if(dom.existSubjectDDM.options.length > 0){
+				dom.existSubjectDDM.selectedIndex = -1;
+		} 
+		EnDisable()
+	}
+	else if(dom.actionDDM.value == "Pls select an action"){
+			dom.existSubjectDDM.disabled=true;
+			clearField();
+			dom.yearOfStudy.disabled = true;
+			dom.discipline.disabled = true;
+			if(dom.existSubjectDDM.options.length > 0){
+				dom.existSubjectDDM.selectedIndex = -1;
+			} 
+			EnDisable()
+	}
+	else{
+		dom.existSubjectDDM.disabled = false;
+		clearField();
+		dom.yearOfStudy.disabled = false;
+		dom.discipline.disabled = false;
+		if(dom.existSubjectDDM.options.length > 0){
+				dom.existSubjectDDM.selectedIndex = -1;
+		
+		EnDisable2();
+		
+	} 		
+		
+		
+}	
+}
+
+function onChangeList(){
+clearField();
+var dom = document.getElementById("SubjectForm");
+var subSel=dom.existSubjectDDM.value;
+	<% 0.upto(@sub_list.length-1) do |s| %>
+		if (subSel=="<%=@sub_list[s].id%>"){
+			dom.yearOfStudy.value="<%=@sub_list[s].yearOfStudy%>";
+			dom.discipline.value="<%=@sub_list[s].discipline%>";
+			dom.subjectCode.value=subSel;
+			dom.subjectName.value="<%=@sub_list[s].subjectName%>";
+			dom.acadUnit.value="<%=@sub_list[s].acad_unit%>";
+			dom.sizeOfCohort.value="<%=@sub_list[s].cohort_size%>";
+			
+			dom.remarks.value="";
+		}
+	<% end %>
+		
+	EnDisable();
+}
+
+
+function EnDisable(){
+var dom = document.getElementById("SubjectForm");
+
+if (dom.actionDDM.value == "Update"){
+	
+	dom.subjectName.disabled=false;
+	dom.acadUnit.disabled=false;
+	dom.sizeOfCohort.disabled=false;
+	dom.remarks.disabled=false;
+	dom.submitSubjectBtn.disabled=false;
+	dom.resetBtn.disabled=false;
+
+}
+else if (dom.actionDDM.value == "Add"){
+	dom.subjectCode.disabled=false;
+	dom.subjectName.disabled=false;
+	dom.yearOfStudy.disabled=false;
+	dom.discipline.disabled=false;
+	dom.acadUnit.disabled=false;
+	dom.sizeOfCohort.disabled=false;
+	dom.remarks.disabled=false;
+	dom.submitSubjectBtn.disabled=false;
+	dom.resetBtn.disabled=false;
+
+}
+else{
+	dom.subjectCode.disabled=true;
+	dom.subjectName.disabled=true;
+	dom.acadUnit.disabled=true;
+	dom.sizeOfCohort.disabled=true;
+	dom.remarks.disabled=true;
+	dom.submitSubjectBtn.disabled=true;
+	dom.resetBtn.disabled=true;			
+	
+	if(dom.actionDDM.value == "Delete"){
+	dom.submitSubjectBtn.disabled=false;
+	dom.resetBtn.disabled=false;
+	}
+}
+
+
+}
+
+function EnDisable2(){
+var dom = document.getElementById("SubjectForm");
+	dom.subjectCode.disabled=true;
+	dom.subjectName.disabled=true;
+	dom.acadUnit.disabled=true;
+	dom.sizeOfCohort.disabled=true;
+	dom.remarks.disabled=true;
+	dom.submitSubjectBtn.disabled=true;
+	dom.resetBtn.disabled=true;			
+
+}
+
+
+function clearField(){
+var dom = document.getElementById("SubjectForm");
+
+		dom.yearOfStudy.value = "";
+		dom.discipline.value = "";
+		dom.subjectCode.value = "";
+		dom.subjectName.value = "";
+		dom.acadUnit.value = "";
+		dom.sizeOfCohort.value = "";
+				
+		dom.submitSubjectBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+} //end-clearField()
+
+function resetForm(){
+var dom = document.getElementById("SubjectForm");
+	clearField();
+	dom.actionDDM.selectedIndex=0;
+	onChangeAction();
+	EnDisable();
+	
+}
+
+function formValidator(){
+var dom = document.getElementById("SubjectForm");
+	
+	stripSpaces(dom.yearOfStudy);
+	stripSpaces(dom.discipline);
+	stripSpaces(dom.subjectCode);
+	stripSpaces(dom.subjectName);
+	stripSpaces(dom.acadUnit);
+	stripSpaces(dom.sizeOfCohort);				
+	stripSpaces(dom.remarks);
+				
+	dom.remarks.value =dom.remarks.value.replace(/\r\n/g, " " );
+	
+	if(dom.yearOfStudy.value.length == 0){
+		alert("Pls enter an appropriate Year Of Study.");
+			dom.yearOfStudy.focus();		
+		return false;
+	} //end-if
+				
+	if(dom.discipline.value.length == 0){
+		alert("Pls enter an appropriate Discipline.");
+			dom.discipline.focus();
+			return false;
+	} //end-if
+	
+	if(dom.subjectCode.value.length == 0){
+		alert("Pls enter an appropriate Subject Code.");
+			dom.subjectCode.focus();
+		return false;
+	} //end-if
+				
+	if(dom.subjectName.value.length == 0){
+		alert("Pls enter an appropriate Subject Name.");
+			dom.subjectName.focus();
+			return false;
+	} //end-if
+				
+	if(dom.acadUnit.value.length == 0){
+		alert("Pls enter an appropriate Academic Unit for the subject.");
+			dom.acadUnit.focus();
+		return false;
+	} //end-if
+				
+	if(dom.sizeOfCohort.value.length == 0){
+		alert("Pls enter an appropriate Size Of Cohort.");
+			dom.sizeOfCohort.focus();
+			return false;
+	} //end-if
+	
+	dom.subjectCode.disabled=false;
+	
+} //end-formValidator()
+function checkUserType(){
+var dom = document.getElementById("SubjectForm");
+<% if Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Normal"%>
+	removeAllDDMItem('actionDDM')
+	var newOption = new Option();
+	newOption.text = "View existing subject";
+	newOption.value = "View";
+	dom.actionDDM.options[0]=newOption;
+	onChangeAction();	
+<% end %>
+}
+
+
+
+</script>
+</head>
+<body onload="checkUserType();">
+<form id="SubjectForm" method="post" action="/ref_subjects/process_subject" onsubmit="return formValidator();">
+<Table class="Table1" allign=center>
+	<tr>
+		<th colspan=7>View / Add / Update / Delete Reference Subjects</th>
+	</tr>
+	<tr>
+		<td >Choose an action:</td>
+		<td colspan=5>
+			<Select size="1" id="actionDDM" name="actionDDM" style="WIDTH: 203px" onchange="onChangeAction()" tabIndex="1">
+  				<option value="Pls select an action">Pls select an action</option>
+				<option value="View">View existing subject</option>
+				<option value="Add">Add new subject</option>
+				<option value="Update">Update existing subject</option>
+				<option value="Delete">Delete existing subject</option>
+  	    		</Select>
+		</td>
+		<td rowspan=18 align=center> Existing Subject (s): <br><br>
+			<Select size="29" id="existSubjectDDM" name="existSubjectDDM" style="WIDTH: 250px" onchange="onChangeList()" tabIndex="24" disabled=true>
+				<% 0.upto(@sub_list.length-1) do |s| %>
+					<option value="<%=@sub_list[s].id%>"><%=@sub_list[s].id%>&nbsp;&nbsp;&nbsp;<%=@sub_list[s].subjectName%> </option>
+				<% end %>
+			<Select>
+			<br>
+		</td>
+	</tr>
+	
+	<tr>
+    		<td>Subject Code:</td>
+    		<td><input type="text" id="subjectCode" name="subjectCode" size="13" MaxLength="6" tabIndex="3" onkeypress="return allowAlphaNumericSpace('Subject Code')" disabled=true></td>
+    		<td>Subject Name:</td>
+    		<td colspan=3><input type="text" id="subjectName" name="subjectName" size="43" MaxLength="50" tabIndex="4" onkeypress="return allowAlphaNumericSpace('Subject Name')" disabled=true></td>
+	</tr>
+	<tr>
+    		<td>Year of Study:</td>
+    		<td><input type="Text" id="yearOfStudy" name="yearOfStudy" size="13" MaxLength="10" tabIndex="3" onkeypress="return allowAlphaNumericSpace('Year of Study')" disabled=true></td>
+    		<td>Discipline:</td>
+    		<td><input type="Text" id="discipline" name="discipline" size="13" MaxLength="50" tabIndex="4" onkeypress="return allowAlphaNumericSpace('Discipline')" disabled=true></td>
+	</tr>		
+	<tr>
+    		<td>Academic Unit:</td>
+    		<td><input type="text" id="acadUnit" name="acadUnit" size="13" MaxLength="2" tabIndex="3" onkeypress="return allowNum('Academic Unit')" disabled=true></td>
+    		<td>Size of Cohort:</td>
+    		<td colspan=3><input type="text" id="sizeOfCohort" name="sizeOfCohort" size="43" MaxLength="4" tabIndex="4" onkeypress="return allowNum('Size of Cohort')" disabled=true></td>
+	</tr>
+					
+  	 <tr>
+    		<td>Remarks:</td>
+    		<td colspan=5><textarea rows="3" id="remarks" name="remarks" cols="60" TextMode="MultiLine" tabIndex="23" onkeypress="return imposeMaxLength(this, 149);" disabled=true></textarea></td>
+      	</tr>
+  
+  	<tr>
+      		<td colspan=6 align=center>
+			<input type="submit" value="Submit" id="submitSubjectBtn" name="submitSubjectBtn" tabIndex="25" disabled=true>
+			<input type="reset" value="Reset" id="resetBtn" name="resetBtn" onclick="resetForm()" disabled=true>
+			<input type="button" value="Main" id="mainBtn" name="mainBtn" tabIndex="27" onclick="showOpener()">
+		</td>
+    	</tr>
+</table>
+</form>
+</body>
+</html>
+<script>
+var dom = document.getElementById("SubjectForm");
+		var msgDisplay=""
+		var noMsg=false;
+		<% if @msg=="1" %>
+			msgDisplay="ERROR: Subject cannot be added. Subject already exists in the database.";
+		<% elsif @msg=="2" %>
+			msgDisplay="Subject is added successfully.";
+		<% elsif @msg=="3" %>
+			msgDisplay="Subject is updated successfully.";
+		<% elsif @msg=="4" %>
+			msgDisplay="Subject is deleted successfully.";
+		<% else %>
+			noMsg=true;
+		<% end %>
+		if (noMsg==false){
+		alert(msgDisplay);
+		}
+	
+</script>

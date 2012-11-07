@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>SCE Timetable Planning & Scheduling System --- Login</title>
+
+	</head>
+	<script type="text/javascript">
+		function setFocus(){
+			var dom= document.getElementById("LoginForm");
+			dom.userName.focus();
+			checkMsg();
+		}
+		
+		function checkMsg(){
+			<% if @msg=="Failed" %>
+				alert("Login Error: Please Check your login details and login again.");
+			<% elsif @msg=="Logout" %>
+				alert("Logout successfully. Thanks for using SCE-TPS System.");
+			<% elsif @msg=="PleaseLogin" %>
+				alert("Please Login Prior to use SCE-TPS System, Thanks.");
+			<% end %>
+		}
+	</script>
+	<body onload="setFocus();">
+		
+		<form id="LoginForm" method="post" action="process_login">
+			<table align=center>
+			<tr><td><img src="/images/tps-logo.gif" width="650"/>
+			</td></tr>
+			</table>
+			<table align=center>
+			<tr align=center>
+				<td align=right>User Name: 	</td>
+				<td align=left><input type=text name="userName" id="userName"/></td>
+			</tr>
+			<tr align=center>
+				<td align=right>Password: </td>
+				<td align=left><input type=password name="password" id="password"/> 
+			</td></tr>
+			<tr align=center>
+				<td colspan=2><input style="width:100px" type=submit value=Login name="loginBtn" id="loginBtn"/> 
+			</td></tr>
+			<tr align=center>
+				<td colspan=2 align=right><font color=red><b>Note: Username and Password are case-sensitive</b></font></td>
+			</td></tr>
+			</table>
+		</form>
+	</body>
+</html>
+
+

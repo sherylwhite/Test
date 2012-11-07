@@ -1,0 +1,240 @@
+<SCRIPT language="javascript" type="text/javascript">
+function onChangeAction(){
+var dom = document.getElementById("UserForm");
+				
+	if(dom.actionDDM.value == "Register"){		
+		dom.userListDDM.disabled = true;
+		clearField();
+		dom.userTypeDDM.disabled = false;
+		dom.userName.disabled = false;
+		dom.dbpwd.disabled = false;
+		dom.pwd.disabled = false;
+		dom.email.disabled = false;
+	}
+	else{
+		
+		dom.userListDDM.disabled = false;
+		if(dom.actionDDM.value == "Pls select an action"){
+			dom.userListDDM.selectedIndex=-1;
+			dom.userListDDM.disabled=true;
+		}
+		clearField();
+		dom.userTypeDDM.disabled = true;
+		dom.userName.disabled = true;
+		dom.pwd.disabled = true;
+		dom.dbpwd.disabled = true;
+		dom.email.disabled = true;
+	}
+		
+		
+}
+
+function onChangeList(){
+var dom = document.getElementById("UserForm");
+var userSel=dom.userListDDM.value;
+	<% 0.upto(@user_list.length-1) do |u| %>
+		if (userSel=="<%=@user_list[u].userId%>"){
+			dom.userTypeDDM.value="<%=@user_list[u].accType%>";
+			dom.userName.value="<%=@user_list[u].userName%>"
+			dom.pwd.value="<%=@user_list[u].password%>"
+			dom.dbpwd.value="<%=@user_list[u].password%>"
+			dom.email.value="<%=@user_list[u].email%>";
+		}
+	<% end %>
+	EnDisable();
+}
+
+function clearField(){
+var dom = document.getElementById("UserForm");
+	if(dom.userListDDM.options.length > 0){
+		dom.userListDDM.selectedIndex = -1;
+	} //end-if
+	
+		dom.userTypeDDM.selectedIndex = 0; 
+		dom.userName.value = "";
+		dom.pwd.value = "";
+		dom.dbpwd.value = "";
+		dom.email.value="";
+		dom.submitUserBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+} //end-clearField()
+
+function EnDisable(){
+var dom = document.getElementById("UserForm");
+if (dom.actionDDM.value=="Update" ){
+		dom.userTypeDDM.disabled=false;
+		dom.userName.disabled=false;
+		dom.pwd.disabled=true;
+		dom.dbpwd.disabled=true
+		dom.email.disabled=false;
+		dom.submitUserBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+		
+	}
+	else if (dom.actionDDM.value=="Delete"){
+		dom.userTypeDDM.disabled=true;
+		dom.userName.disabled=true;
+		dom.pwd.disabled=true;
+		dom.dbpwd.disabled=true;
+		dom.email.disabled=true;
+		dom.submitUserBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else if (dom.actionDDM.value=="Register"){
+		dom.userTypeDDM.disabled=false;
+		dom.userName.disabled=false;
+		dom.pwd.disabled=false;
+		dom.dbpwd.disabled=false;
+		dom.email.disabled=false;
+		dom.submitUserBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else{
+		dom.userTypeDDM.disabled=true;
+		dom.userName.disabled=true;
+		dom.pwd.disabled=true;
+		dom.dbpwd.disabled=true;
+		dom.email.disabled=true;
+		dom.submitUserBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+	}
+}
+
+
+function onChangeType(){
+var dom = document.getElementById("UserForm");
+if (dom.userTypeDDM.value=="Pls select user type"){
+		dom.submitUserBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+
+}
+else{
+		dom.submitUserBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+
+}
+
+}
+
+
+function checkingAndEnabling(){
+var dom = document.getElementById("UserForm");
+	if (dom.userName.value.length==0){
+		alert("Pls enter an appropriate User Name.");
+		dom.userName.focus();
+		return false;
+	}
+	if (dom.pwd.value==""){
+		alert("Pls enter an appropriate password");
+		dom.pwd.focus();
+		return false;
+	}
+	if(dom.pwd.value!=dom.dbpwd.value){
+		alert("Incorrect double password entered");
+		dom.dbpwd.focus();
+		return false;
+	}
+	dom.userName.disabled=false;
+	dom.pwd.disabled=false;
+	dom.email.disabled=false;
+}
+
+function checkPwd(){
+var dom = document.getElementById("UserForm");
+if(dom.pwd.value!="" && dom.dbpwd.value!=""){
+if(dom.pwd.value!=dom.dbpwd.value)
+	dom.pwdstatus.value="confirmed password not match"
+else{
+	dom.pwdstatus.value="confirmed password ok!"
+}
+}
+}
+
+function resetForm(){
+var dom = document.getElementById("UserForm");
+	clearField();
+	dom.actionDDM.selectedIndex=0;
+	onChangeAction();
+	
+}
+</script>
+<form id="UserForm" method="post" action="/user/process_user" onsubmit="return checkingAndEnabling();">
+<Table class="Table1" align=center>
+	<tr>
+		<th colspan=3>View / Register / Update / Delete User</th>
+	</tr>
+	<tr>
+		<td >Choose an action:</td>
+		<td>
+			<Select size="1" id="actionDDM" name="actionDDM" style="WIDTH: 203px" onchange="onChangeAction()" tabIndex="1">
+  				<option value="Pls select an action">Pls select an action</option>
+				<option value="View">View existing user</option>
+				<option value="Register">Register new user</option>
+				<option value="Update">Update existing user</option>
+				<option value="Delete">Delete existing user</option>
+  	    		</Select>
+		</td>
+		<td rowspan=5 align=center> User List: <br><br>
+			<Select size="10" id="userListDDM" name="userListDDM" style="WIDTH: 165px" onchange="onChangeList()" tabIndex="2" disabled=true>
+				<% 0.upto(@user_list.length-1) do |u| %>
+					<option value="<%=@user_list[u].userId%>"><%=@user_list[u].userName%></option>
+				<% end %>
+			<Select>
+			<br><br>
+		</td>
+	</tr>
+	<tr>	<td>User Type:</td>
+      		<td>
+      			<Select size="1" id="userTypeDDM" name="userTypeDDM" style="WIDTH: 203px" tabIndex="3" onchange="onChangeType();" disabled=true>
+  				<option value="Pls select user type">Pls select user type</option>
+				<option value="Normal">Normal</option>
+				<option value="Privileged">Privileged</option>
+				<option value="Admin">Administrator</option>
+  	   	 		</Select>
+  	  	</td>
+	</tr>
+	<tr>
+		<td>User Name: </td>
+		<td><input type="text" id="userName" name="userName" size="30" MaxLength="30" onkeypress="return allowAlphaNumeric('User Name')" tabIndex="4" disabled=true></td>
+	</tr>
+	<tr>
+		<td>Password (Max Length=12)</td>
+		<td><input type=password id="pwd" name="pwd" size="30" MaxLength="12" tabIndex="5" onkeyup="checkPwd();" disabled=true></td>  
+	</tr>
+	<tr>
+		<td>Double Confirm Password</td>
+		<td><input type=password id="dbpwd" name="dbpwd" size="30" MaxLength="12" tabIndex="5" onkeyup="checkPwd();" disabled=true> &nbsp; <input style="width:200px;border:0px" type="text" name="pwdstatus" id="pwdstatus" /></td>  
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><input type=text id="email" name="email" size="30" MaxLength="50" tabIndex="5" disabled=true></td>  
+	</tr>
+	<tr class="TF">
+		<td colspan=2>
+		<input type="submit" value="Submit" name="submitUserBtn" tabIndex="7"disabled=true>
+		<input type="reset" value="Reset" name="resetBtn" tabIndex="8" onclick="resetForm()" disabled=true>
+		<input type="button" value="Main" name="mainBtn" tabIndex="9" onclick="showOpener()"></td>
+	</tr>
+	<tr>
+	</tr>
+	
+</Table>
+</form>
+<script>
+	var msgDisplay=""
+	var noMsg=false;
+	<% if @msg=="1" %>
+		msgDisplay="ERROR: User cannot be registered. Username already exists in the database.";
+	<% elsif @msg=="2" %>
+		msgDisplay="User is being registered successfully.";
+	<% elsif @msg=="3" %>
+		msgDisplay="User is updated successfully.";
+	<% elsif @msg=="4" %>
+		msgDisplay="User is deleted successfully.";
+	<% else %>
+		noMsg=true;
+	<% end %>
+	if (noMsg==false){
+	alert(msgDisplay);
+	}
+</script>

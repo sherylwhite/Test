@@ -1,0 +1,89 @@
+CM101	Java and Internet	GE	SCE	4	80	
+CM102	How Computers Work	GE	SCE	4	80	
+CPE101	Electronics Principles	1	CE	4	250	
+CPE102	Introduction to Programming	1	CE	4	250	
+CPE103	Mathematics I	1	CE	4	250	
+CPE104	Logic Design	1	CE	4	250	
+CPE105	Data Structures and Object-Oriented Prog	1	CE	4	250	
+CPE106	Mathematics II	1	CE	4	250	
+CPE183	Engineers & Society	4	CE	3	350	
+CPE184	HR Management & Entrepreneurship	3	CE	3	350	
+CPE201	Digital Circuits & Systems	2	CE	4	300	
+CPE202	Computer Organisation	2	CE	4	300	
+CPE203	Software Systems and Models	2	CE	4	300	
+CPE204	Discrete Mathematicss and Algorithms	2	CE	4	300	
+CPE205	Operating Systems	2	CE	4	300	
+CPE206	Microprocessor Systems Design	2	CE	4	300	
+CPE207	Software Engineering	2	CE	4	300	
+CPE208	Instrumentation and Data Acquisition	2	CE	4	300	
+CPE301	Digital Communication	3	CE	4	350	
+CPE302	Computer Networks	3	CE	4	350	
+CPE303	Database Systems	3	CE	4	350	
+CPE403	Advanced Data Management Techniques	4	CE	4	350	
+CPE406	Artificial Intelligence	4	CE	4	350	
+CPE408	Compiler Techniques	4	CE	4	350	
+CPE410	Computer Game Programming	4	CE	4	250	
+CPE411	Computer Graphics	4	CE	4	200	
+CPE412	Computer Vision & Image Processing	4	CE	4	350	
+CPE414	Digital Signal Processing	4	CE	4	350	
+CPE415	Digital Video Coding and Compression	4	CE	4	350	
+CPE416	Distributed Systems/Distributed Computing	4	CE	4	350	
+CPE421	Mobile and Personal Communications	4	CE	4	350	
+CPE425	Programming Languages	4	CE	4	350	
+CPE427	Robotics	4	CE	4	350	
+CPE428	Simulation and Modelling	4	CE	4	350	
+CPE432	Visualization	4	CE	4	350	
+CPE810	Managing and Resolving Conflict	GE	SCE	4	80	
+CSC101	Introduction to Computer Systems	1	CS	4	150	
+CSC102	Introduction to Programming	1	CS	4	150	
+CSC103	Mathematics I	1	CS	4	150	
+CSC104	Logic Design	1	CS	4	150	
+CSC105	Data Structures and Object-Oriented Prog	1	CS	4	150	
+CSC106	Discrete Mathematics	1	CS	4	150	
+CSC183	Engineers & Society	4	CS	3	100	
+CSC184	HR Management & Entrepreneurship	3	CS	3	120	
+CSC201	Computer Organisation	2	CS	4	130	
+CSC202	Algorithms	2	CS	4	130	
+CSC203	Software Systems and Models	2	CS	4	130	
+CSC204	Comp Graphics and Application	2	CS	4	130	
+CSC205	Operating Systems	2	CS	4	130	
+CSC206	Database Systems	2	CS	4	130	
+CSC207	Software Engineering I	2	CS	4	130	
+CSC301	Programming Languages	3	CS	4	120	
+CSC302	Net Centric Computing	3	CS	4	120	
+CSC303	Software Engineering II	3	CS	4	120	
+CSC304	AI and Intelligent Systems	3	CS	4	120	
+CSC403	Advanced Data Management Techniques	4	CS	4	120	
+CSC404	Compiler Techniques	4	CS	4	120	
+CSC407	Computer Game Programming	4	CS	4	250	
+CSC408	Computer Vision & Image Processing	4	CS	4	120	
+CSC411	Distributed Systems/Distributed Computing	4	CS	4	200	
+CSC415	Information Retrieval	4	CS	4	120	
+CSC419	Machine Learning	4	CS	4	100	
+CSC420	Wireless Networks and Mobile Computing	4	CS	4	100	
+CSC424	Robotics	4	CS	4	120	
+CSC425	Simulation and Modelling	4	CS	4	120	
+CSC427	Visualization	4	CS	4	350	
+HW210	Technical Communications	2	SCE	2	500	
+HW310	Professional Communication	3	SCE	2	500	
+SC131	Engineers & Society	3	SC	2	30	
+SC134	Principles of Economics	4	SC	4	30	
+SC206	Microprocessor Systems Design	2	SC	4	300	
+SC208	Computer Graphics in Design	2	SC	4	30	
+SC301	Control & Instrumentation	3	SC	4	30	
+SC302	Computer Networks	3	SC	4	30	
+SC303	Operating Systems	3	SC	4	30	
+SC304	Database Systems	3	SC	4	30	
+SC404	Digital Signal Processing	4	SC	4	30	
+SC405	Compiler Techniques	4	SC	4	30	
+SC430	Artificial Intelligence	4	SC	4	30	
+SC432	Distributed Systems/Distributed Computing	4	SC	4	30	
+SC433	Programming Languages	4	SC	4	30	
+SC435	Visualization	4	SC	4	30	
+SC437	Computer Vision & Image Processing	4	SC	4	30	
+SC438	Robotics	4	SC	4	30	
+SC442	Advanced Data Management Techniques	4	SC	4	30	
+SC443	Computer Game Programming	4	SC	4	250	
+SC445	Digital Video Coding and Compression	4	SC	4	30	
+SC450	Mobile and Personal Communications	4	SC	4	30	
+SC452	Simulation and Modelling	4	SC	4	30	

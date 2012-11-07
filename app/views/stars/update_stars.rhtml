@@ -1,0 +1,9 @@
+<div style="text-align:center">
+<font size=4 color="#804000"><b>Update STARS timetable</b></font><br><br>
+<%= start_form_tag ({:controller=>"stars",:action => "process_update"}, {:multipart => true}) %>
+    Browse Your STARS Timetable here (in txt Format): 
+    <br><%= file_field_tag "starsFile" %>
+    <br>
+    <br><%= submit_tag  "Upload STARS File" %>
+<%= end_form_tag %>
+</div>

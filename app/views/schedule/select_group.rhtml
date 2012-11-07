@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.0 Transitional//EN">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Select Group(s)</title>
+<link href="/stylesheets/style.css?1200832189" media="screen" rel="Stylesheet" type="text/css" />
+<script src="/javascripts/JS_Function.js?1198430113" type="text/javascript"></script>
+<script src="/javascripts/prototype.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1198673475" type="text/javascript"></script>
+<SCRIPT language="javascript" type="text/javascript">
+
+function clearField(){
+var dom = document.getElementById("SelectGroupForm");
+
+	removeAllDDMItem('availGroupDDM');		
+	removeAllDDMItem('scheduleGroupDDM[]');
+	<% 0.upto(@grp_list.length-1) do |gl|%>
+		var newOption = new Option();
+		newOption.text ="<%=@grp_list[gl].groupIndex%>";
+		newOption.value = "<%=@grp_list[gl].groupId-%>";
+		dom.availGroupDDM.options[<%=gl%>] = newOption;
+	<% end %>
+	dom.highlightBtn.disabled=true;	
+} //end-clearField()
+
+
+function add(){
+	moveItem('availGroupDDM','scheduleGroupDDM[]');
+	checkChosenNoGroup();
+} //end-add()
+	
+function remove(){
+	moveItem('scheduleGroupDDM[]','availGroupDDM');
+	checkChosenNoGroup();
+} //end-remove()
+
+
+function checkChosenNoGroup(){
+var dom = document.getElementById("SelectGroupForm");
+	
+	if(document.getElementById("scheduleGroupDDM[]").length!=0){
+		dom.highlightBtn.disabled=false;
+	}else{
+		dom.highlightBtn.disabled=true;
+	}
+}
+
+
+function highlight(){
+var dom = document.getElementById("SelectGroupForm");
+var scheduleGrp=document.getElementById("scheduleGroupDDM[]");
+	var grpIdList="";
+	for (var k=0;k<scheduleGrp.length;k++){
+		grpIdList+=scheduleGrp.options[k].value+"-";
+	}
+	grpIdList=grpIdList.substr(0,grpIdList.length-1);
+	new Ajax.Request('/schedule/check_lec_grp_id', {asynchronous:true, evalScripts:true, onComplete:function(request){lecIdChecked(request)}, parameters:'grpIdList='+grpIdList});
+	
+}
+function lecIdChecked(request){
+
+	grpIdList=request.responseText;
+	opener.highlightGrp(grpIdList);
+	showOpener();
+}
+
+function setCellInfo(){
+	cellInfoArr=new Array();
+	
+	<% 0.upto(@cell_list_arr.length-1) do |cl|%>
+		cellInfoArr[<%=cl%>]="<%=@cell_list_arr[cl]%>";
+	<% end %>
+	opener.setGroupIds(cellInfoArr);
+}
+
+</SCRIPT>
+</head>
+<body onload="setCellInfo();">
+<form id="SelectGroupForm" method="post" action="process_possible_venues">
+<table class="Table1" align=center>
+	<tr>
+		<th colspan=3>Highlight Group(s)</th>
+	</tr>
+	<tr align=center>
+		<td>List of Available Group(s):<br> <br> 
+			<Select size="10" id="availGroupDDM" name="availGroupDDM" style="WIDTH: 100px" multiple>
+				<% 0.upto(@grp_list.length-1) do |gl|%>
+					<option value="<%=@grp_list[gl].groupId%>"><%=@grp_list[gl].groupIndex%></option>
+				<% end %>
+			</Select> <br><br> 
+		</td>
+		<td width="10%"> 
+			<input type="button" value="   >>   " name="addBtn" onclick="add();"><br><br> 
+			<input type="button" value="   <<   " name="removeBtn" onclick="remove();"> 
+		</td>
+		<td>Group(s) to be highlighted:<br> <br> 
+			<Select size="10" id="scheduleGroupDDM[]" name="scheduleGroupDDM[]" style="WIDTH: 100px">
+			</Select> <br><br> 
+		</td>
+		
+	</tr>
+	<tr>
+		<td colspan=3></td>
+	</tr>
+    
+	<tr> 
+		<td colspan=3 align=center> 
+			<input type="button" value="Highlight Now" name="highlightBtn" onclick="highlight();" disabled=true> 
+			<input type="button" value="Reset" name="resetBtn" onclick="clearField();" tabIndex="8"> 
+			<input type="button" value="Close" name="closeBtn" tabIndex="9" onclick="window.close()"> 
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>
+

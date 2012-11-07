@@ -1,0 +1,66 @@
+SubjectCode	SubjectName	YearOfStudy	discipline	acad_unit	cohort size	Remark
+CM101	Java and Internet	1	SCE	4	90	
+CM102	How Computers Work	1	SCE	4	90	
+CM103	Applying IT	1	SCE	4	90	
+CPE101	Electronics Principles	1	CE	4	90	
+CPE102	Introduction to Programming	1	CE	4	90	
+CPE103	Mathematics I	1	CE	4	90	
+CPE104	Logic Design	1	CE	4	90	
+CPE105	Data Structures and Object-Oriented Prog	1	CE	4	90	
+CPE106	Mathematics II	1	CE	4	90	
+CPE183	Engineers & Society	1	CE	4	90	
+CPE184	HR Management & Entrepreneurship	1	CE	4	90	
+CPE201	Digital Circuits & Systems	2	CE	4	90	
+CPE202	Computer Organisation	2	CE	4	90	
+CPE203	Software Systems and Models	2	CE	4	90	
+CPE204	Discrete Mathematicss and Algorithms	2	CE	4	90	
+CPE205	Operating Systems	2	CE	4	90	
+CPE206	Microprocessor Systems Design	2	CE	4	90	
+CPE207	Software Engineering	2	CE	4	90	
+CPE208	Instrumentation and Data Acquisition	2	CE	4	90	
+CPE301	Digital Communication	3	CE	4	90	
+CPE302	Computer Networks	3	CE	4	90	
+CPE303	Database Systems	3	CE	4	90	
+CPE401	Advanced Algorithms	4	CE	4	90	
+CPE402	Advanced Computer Networks	4	CE	4	90	
+CPE404	Advanced Microprocessor Systems	4	CE	4	90	
+CPE406	Artificial Intelligence	4	CE	4	90	
+CPE409	Computer Architecture	4	CE	4	90	
+CPE410	Computer Game Programming	4	CE	4	90	
+CPE411	Computer Graphics and Applications	4	CE	4	90	
+CPE413	Cryptography and Network Security	4	CE	4	90	
+CPE419	Introductory Bioinformatics	4	CE	4	90	
+CPE422	Neural Networks	4	CE	4	90	
+CPE423	Parallel Processing	4	CE	4	90	
+CPE424	Principles of Information Theory and Coding	4	CE	4	90	
+CPE425	Programming Languages	4	CE	4	90	
+CPE426	Real-Time Systems	4	CE	4	90	
+CPE805	Other1	8	CE	4	90	
+CSC101	Other2	1	CS	4	90	
+CSC102	Introduction to Computer Systems	1	CS	4	90	
+CSC103	Introduction to Programming	1	CS	4	90	
+CSC104	Mathematics I	1	CS	4	90	
+CSC105	Logic Design	1	CS	4	90	
+CSC106	Data Structures and Object-Oriented Prog	1	CS	4	90	
+CSC183	Discrete Mathematics	1	CS	4	90	
+CSC184	Engineers & Society	1	CS	4	90	
+CSC201	HR Management & Entrepreneurship	2	CS	4	90	
+CSC202	Computer Organisation	2	CS	4	90	
+CSC203	Algorithms	2	CS	4	90	
+CSC204	Software Systems and Models	2	CS	4	90	
+CSC205	Computer Graphics in Design	2	CS	4	90	
+CSC206	Operating Systems	2	CS	4	90	
+CSC207	Database Systems	2	CS	4	90	
+CSC301	Software Engineering I	3	CS	4	90	
+CSC302	Programming Languages	3	CS	4	90	
+CSC303	Net Centric Computing	3	CS	4	90	
+CSC304	Software Engineering II	3	CS	4	90	
+CSC401	AI and Intelligent Systems	4	CS	4	90	
+CSC402	Advanced Algorithms	4	CS	4	90	
+CSC406	Advanced Computer Networks	4	CS	4	90	
+CSC407	Computer Architecture	4	CS	4	90	
+CSC409	Computer Game Programming	4	CS	4	90	
+CSC417	Cryptography and Network Security	4	CS	4	90	
+CSC421	Introductory Bioinformatics	4	CS	4	90	
+CSC422	Neural Networks	4	CS	4	90	
+CSC423	Parallel Processing	4	CS	4	90	

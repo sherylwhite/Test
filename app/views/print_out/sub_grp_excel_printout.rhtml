@@ -1,0 +1,44 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+
+function submitForm(){
+var dom = document.getElementById("SubGrpExcelForm");
+	if (dom.fileFormat[0].checked)
+		fileFormat=dom.fileFormat[0].value;
+	else
+		fileFormat=dom.fileFormat[1].value;
+	new Ajax.Request('/print_out/process_sub_grp_excel_printout', {asynchronous:true, evalScripts:true, onComplete:function(request){PrintoutDone(request)}, parameters:'fileFormat='+fileFormat});
+
+}
+
+function PrintoutDone(request){
+var dom = document.getElementById("SubGrpExcelForm");
+	if (dom.fileFormat[1].checked)
+		window.open("/print_out/printout_done?print=subGrpExcel",'Printout','menubar=0,resizable=1,height=250,width=300');
+	else
+		window.open("/print_out/printout_done?print=subGrpExcelByTutor",'Printout','menubar=0,resizable=1,height=250,width=300');
+}
+</script>
+</head>
+<body>
+<form id="SubGrpExcelForm" method="post" action="">
+<Table align=center>
+	<tr>
+		<th>Select File Format</th>
+	</tr>
+	<tr align="center">
+		<td><input type=radio name="fileFormat" id="fileFormat" value="byStaff" checked/>By Staff <input type=radio name="fileFormat" id="fileFormat" value="byGroup"/>By Group</td>
+	</tr>
+		
+	<tr align="center">
+      		<td><br><input type="button" value="Generate" name="generateBtn" onclick="submitForm();" >
+		<input type="button" value="Main" name="mainBtn" onclick="showOpener()"></td>
+    	</tr>
+	<tr>
+		<td><br><font color=red>Note: Please wait for the Pop up window for the generated printout.</font></td>
+	</tr>
+</Table>
+</form>
+</body>
+</html>

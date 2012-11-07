@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;.
+charset=iso-8859-1" />
+<meta http-equiv="Content-Language" content="en-us" />
+<title>Time Table Planning System</title>
+<%= stylesheet_link_tag "style" %>
+<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag 'JS_Function.js' %>
+<%= javascript_include_tag 'TPS_JS.js' %>
+</head>
+<body id="tps">
+<br>
+<div class="CurrSem">
+<%    year=BackupEntry.find(:first,:conditions=>"currentflag=1").year
+      sem=BackupEntry.find(:first,:conditions=>"currentflag=1").semester
+      ver=BackupEntry.find(:first,:conditions=>"currentflag=1").version
+      %>
+<%="AY "+ year + " Semester " + sem + " Ver " + ver %>
+</div>
+<br>
+<%= yield -%>
+
+
+</body>
+</html>

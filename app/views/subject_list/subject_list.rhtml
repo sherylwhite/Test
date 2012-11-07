@@ -1,0 +1,246 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+
+function onChangeAction(){
+var dom = document.getElementById("SubjectListForm");
+				
+	if(dom.actionDDM.value == "Add"){		
+		dom.subjectListDDM.disabled = true;
+		clearField();
+		dom.subjectListName.disabled = false;
+		document.getElementById("inListSubjectDDM[]").disabled = false;
+		dom.availSubjectDDM.disabled = false;
+		dom.addBtn.disabled=false;
+		dom.removeBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else{
+		
+		dom.subjectListDDM.disabled = false;
+		if(dom.actionDDM.value == "Pls select an action"){
+			dom.subjectListDDM.selectedIndex=-1;
+			dom.subjectListDDM.disabled=true;
+		}
+		clearField();
+		document.getElementById("inListSubjectDDM[]").disabled = true;
+		dom.subjectListName.disabled = true;
+		dom.availSubjectDDM.disabled = true;
+		dom.addBtn.disabled=true;
+		dom.removeBtn.disabled=true;
+	}	
+}
+
+function onChangeList(){
+	var dom = document.getElementById("SubjectListForm");
+	var inListSubjectDDMControl = document.getElementById("inListSubjectDDM[]");
+	removeAllDDMItem('inListSubjectDDM[]');
+	<% 0.upto(@sublist_list.length-1) do |s| %>
+		if (dom.subjectListDDM.value=="<%=@sublist_list[s].subjectListName%>"){
+		
+			<% @selectedSL=Subject.find_by_sql("SELECT s.subjectCode, s.subjectName FROM subjects s, subject_lists sl WHERE s.subjectCode=sl.subjectCode AND sl.subjectListName='#{@sublist_list[s].subjectListName}' ORDER BY sl.subjectCode")%>
+				<% 0.upto(@selectedSL.length-1) do |sl| %>
+					var newOption = new Option();
+					newOption.text = "<%=@selectedSL[sl].subjectCode + "   " + @selectedSL[sl].subjectName-%>";
+					newOption.value ="<%=@selectedSL[sl].subjectCode-%>";
+					inListSubjectDDMControl.options[<%=sl%>] = newOption;
+				<% end %>
+			populateAvailSubjectDDM();
+			for(var y=0; y<inListSubjectDDMControl.options.length; y++){
+				for(var z=0; z<dom.availSubjectDDM.options.length; z++){
+					/* Remove the option from availSubjectDDM if duplicate in scheduleSubjectDDM */
+					if(inListSubjectDDMControl.options[y].value == dom.availSubjectDDM.options[z].value){
+						dom.availSubjectDDM.remove(z);
+						break;
+					} //end-if
+				} //end-for-z
+			} //end-for-y
+		}			
+	<% end %>
+	dom.subjectListName.value=dom.subjectListDDM.value;
+	
+	EnDisable();
+}
+
+function EnDisable(){
+	var dom = document.getElementById("SubjectListForm");
+	if(dom.actionDDM.value=="Delete"){
+		dom.submitSubjectListBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else if (dom.actionDDM.value=="Update"){
+		document.getElementById("inListSubjectDDM[]").disabled = false;
+		dom.availSubjectDDM.disabled = false;
+		dom.addBtn.disabled=false;
+		dom.removeBtn.disabled=false;
+		dom.submitSubjectListBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+}
+
+function add(){
+	moveItem('availSubjectDDM','inListSubjectDDM[]');
+	checkChosenNoSubject();
+} //end-add()
+	
+function remove(){
+	moveItem('inListSubjectDDM[]','availSubjectDDM');
+	checkChosenNoSubject();
+} //end-remove()
+
+function checkChosenNoSubject(){
+var dom = document.getElementById("SubjectListForm");
+
+	if(document.getElementById("inListSubjectDDM[]").length!=0){
+		dom.submitSubjectListBtn.disabled=false;
+	}else{
+		dom.submitSubjectListBtn.disabled=true;
+	}
+} 
+
+function populateAvailSubjectDDM(){
+var dom = document.getElementById("SubjectListForm");
+	removeAllDDMItem('availSubjectDDM');
+	<% 0.upto(@sub_list.length-1) do |s| %>
+		var newOption = new Option()
+		newOption.text="<%=@sub_list[s].id + "   " +@sub_list[s].subjectName%>";
+		newOption.value="<%=@sub_list[s].id%>";
+		dom.availSubjectDDM.options[<%=s%>]=newOption;
+	<% end %>
+}
+
+function clearField(){
+var dom = document.getElementById("SubjectListForm");
+	if(dom.subjectListDDM.options.length > 0){
+		dom.subjectListDDM.selectedIndex = -1;
+	} //end-if
+	removeAllDDMItem('inListSubjectDDM[]');
+	populateAvailSubjectDDM();
+	if(dom.availSubjectDDM.options.length > 0){
+		dom.availSubjectDDM.selectedIndex = -1;
+	} //end-if
+	
+	dom.subjectListName.value = "";
+	dom.submitSubjectListBtn.disabled=true;
+	dom.resetBtn.disabled=true;
+} //end-clearField()
+
+function resetForm(){
+var dom = document.getElementById("SubjectListForm");
+	dom.actionDDM.selectedIndex=0;
+	onChangeAction();
+	
+}
+
+function checkingAndEnabling(){
+var dom = document.getElementById("SubjectListForm");
+var inListSubjectDDMControl = document.getElementById("inListSubjectDDM[]");
+	if (dom.subjectListName.value.length==0){
+		alert("Pls enter an appropriate Subject List Name.");
+		dom.subjectListName.focus();
+		return false;
+	}
+	
+	dom.subjectListName.disabled=false;
+	if(inListSubjectDDMControl.options.length > 0){				
+		for(var x=(inListSubjectDDMControl.options.length-1); x>=0; x--){
+			inListSubjectDDMControl.options[x].selected = true; 
+		} //end-for
+	} //end-if
+}
+function checkUserType(){
+var dom = document.getElementById("SubjectListForm");
+<% if Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Normal"%>
+	removeAllDDMItem('actionDDM')
+	var newOption = new Option();
+	newOption.text = "View existing subject list";
+	newOption.value = "View";
+	dom.actionDDM.options[0]=newOption;
+	onChangeAction();	
+<% end %>
+}
+
+</script>
+</head>
+<body onload="checkUserType();">
+<form id="SubjectListForm" method="post" action="/subject_list/process_subject_list" onsubmit="return checkingAndEnabling();">
+<Table class="Table1" allign=center>
+	<tr>
+		<th colspan=3>View / Add / Update / Delete Subject List</th>
+	</tr>
+	<tr align=center>
+		<td >Choose an action:</td>
+		<td>
+			<Select size="1" id="actionDDM" name="actionDDM" style="WIDTH: 203px" onchange="onChangeAction()" tabIndex="1">
+  				<option value="Pls select an action">Pls select an action</option>
+				<option value="View">View existing subject list</option>
+				<option value="Add">Add new subject list</option>
+				<option value="Update">Update existing subject list</option>
+				<option value="Delete">Delete existing subject list</option>
+  	    		</Select>
+		</td>
+		<td rowspan=2 align=center> Existing Subject List: <br><br>
+			<Select size="6" id="subjectListDDM" name="subjectListDDM" style="WIDTH: 180px" onchange="onChangeList()" disabled=true>
+				<% 0.upto(@sublist_list.length-1) do |s| %>
+					<option value="<%=@sublist_list[s].subjectListName%>"><%=@sublist_list[s].subjectListName%> </option>
+				<% end %>
+			<Select>
+			<br><br>
+		</td>
+	</tr>
+	<tr align="center">
+       		<td>Subject List Name:</td>
+       		<td align="center"><input type="Text" id="subjectListName" name="subjectListName" style="WIDTH: 203px" size="25" MaxLength="30" onkeypress="return allowAlphaNumericSpace('Subject List Text')" disabled></td>
+     	</tr>
+  
+       	<tr><td colspan=3></td></tr>
+     
+     	<tr align="center">
+       		<td>List of Available Subject(s):<br><br>
+       			<Select size="10" id="availSubjectDDM" name="availSubjectDDM" style="WIDTH: 180px" multiple disabled>
+				<% 0.upto(@sub_list.length-1) do |s| %>
+					<option value="<%=@sub_list[s].id%>"><%=@sub_list[s].id%>&nbsp;&nbsp;&nbsp;<%=@sub_list[s].subjectName%> </option>
+				<% end %>
+			</Select>
+			<br><br>
+  	    	</td>
+       		<td width="15%">
+       			<input type="button" value="   >>   " name="addBtn" onclick="add();" disabled><br><br>
+			<input type="button" value="   <<   " name="removeBtn" onclick="remove();" disabled>
+		</td>
+       		<td>Subject(s) in Subject List:<br><br>
+       			<Select size="10" id="inListSubjectDDM[]" name="inListSubjectDDM[]" style="WIDTH: 180px" multiple disabled>
+  	   		</Select>
+  	    		<br><br>
+  	    	</td>
+     	</tr>
+    
+     	<tr align="center">
+       		<td colspan=3>
+       			<input type="submit" value="Submit" name="submitSubjectListBtn" disabled>
+			<input type="button" value="Reset" name="resetBtn" tabIndex="8" onclick="resetForm();" disabled>
+			<input type="button" value="Main" name="mainBtn" tabIndex="9" onclick="showOpener()">
+       		</td>
+     	</tr>
+</Table>
+</form>
+</body>
+</html>
+<script>
+	var msgDisplay=""
+	var noMsg=false;
+	<% if @msg=="1" %>
+		msgDisplay="ERROR: Subject List cannot be added. Subject List already exists in the database.";
+	<% elsif @msg=="2" %>
+		msgDisplay="Subject List is added successfully.";
+	<% elsif @msg=="3" %>
+		msgDisplay="Subject List is updated successfully.";
+	<% elsif @msg=="4" %>
+		msgDisplay="Subject is deleted successfully.";
+	<% else %>
+		noMsg=true;
+	<% end %>
+	if (noMsg==false){
+	alert(msgDisplay);
+	}
+</script>

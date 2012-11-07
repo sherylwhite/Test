@@ -1,0 +1,121 @@
+<html>
+<head>
+
+<STYLE type="text/css">
+		UL{
+			width:180px;  
+			position: relative; 
+			display: outline;
+		}
+		
+		
+		TABLE{
+			font-family: "Arial", Arial, serif;
+			font-size: 10px;
+		}
+		
+		TH{
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 11px;
+		}
+	
+	</STYLE>
+</head>
+<body>
+<form name="MainForm" method="post">
+<input type=button value="Export To Excel" onclick="exportExcel();"/><br>
+<table border="1" cellspacing="1" cellpadding="0">
+	<tr>
+		<th>DAYS</th><th>TIME</th>
+		<% 0.upto(@ssd.length-1) do |s_index| -%>
+		<th><%=Staff.find(@ssd[s_index]).staffName-%></th>
+		<% end -%>
+		<th>TIME</th>
+	</tr>
+	<% tsid=1 -%>
+	<% 1.upto(@maxday.to_i) do |day_index| -%>
+	<tr><th rowspan=<%=@rowspanNo-%>><%=@dday[day_index]-%></th>
+			<th>830</th>
+			<% 0.upto(@ssd.length-1) do |s_index| -%>
+				<td>
+				<UL id="cellList_<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+					<%
+					count=0
+					0.upto(@slotAlloc[s_index].length-1) do |sa| -%>
+						<% if @slotAlloc[s_index][sa].timeid.to_i==tsid.to_i -%>
+							<% case @slotAlloc[s_index][sa].lessonType
+								 when "Lec"
+								 	liColor='Red'
+								 when "Tut"
+								 	liColor='Blue'
+								 when "Lab"
+								 	liColor='Green'
+								 end -%>
+							
+							<li id="cellListItem_<%=@ssd[s_index]+"_"+tsid.to_s+"_"+count.to_s-%>" style="color:<%=liColor-%>"><%=@slotAlloc[s_index][sa].details-%></li>													
+							<%
+							count+=1
+							end-%>
+					<%end-%>
+				</UL>
+				</td>				
+			<% end -%>
+			<th>830</th>
+			<% tsid +=1 -%>
+			<% 930.step(@maxtimeslot.to_i,100) do |time_index| -%>
+				<tr>
+					<th><%=time_index-%></th>
+					<% 0.upto(@ssd.length-1) do |s_index| -%>
+					<td>
+					<UL id="cellList_<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+					<%
+					count=0
+					0.upto(@slotAlloc[s_index].length-1) do |sa| -%>
+						<% if @slotAlloc[s_index][sa].timeid.to_i==tsid.to_i -%>
+							<% case @slotAlloc[s_index][sa].lessonType
+								 when "Lec"
+								 	liColor='Red'
+								 when "Tut"
+								 	liColor='Blue'
+								 when "Lab"
+								 	liColor='Green'
+								 end -%>
+							
+							<li id="cellListItem_<%=@ssd[s_index]+"_"+tsid.to_s+"_"+count.to_s-%>" style="color:<%=liColor-%>"><%=@slotAlloc[s_index][sa].details-%></li>	
+							<% 
+							count+=1
+							end-%>
+					<%end-%>
+					</UL>
+					</td>
+					<% end -%>
+					<th><%=time_index-%></th>
+				</tr>
+				<% tsid +=1 -%>
+			<% end -%>
+			<% tsid+=@tInc-%>
+	</tr>
+	<% end -%>
+
+</table>
+</form>
+
+ </body>
+</html>
+<SCRIPT type="text/javascript">
+
+function exportExcel(){
+	var subList="";
+	<% 0.upto(@ssd.length-1) do |s| %>
+		subList+="<%=@ssd[s]%>"+"-";
+	<% end %>
+	subList=subList.substr(0,subList.length-1);
+	new Ajax.Request('/show_schedule/export_excel', {asynchronous:true, evalScripts:true, onComplete:function(request){exportDone(request)}, parameters:'subList='+subList+'&stype=by_staff'});
+	
+}
+
+function exportDone(request){
+	window.open("/show_schedule/export_done",'ExportToExcel','menubar=0,resizable=1,height=250,width=300');
+}
+</script>

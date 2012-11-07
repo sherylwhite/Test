@@ -1,0 +1,2 @@
+class IndexSubject < ActiveRecord::Base
+end

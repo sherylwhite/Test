@@ -1,0 +1,875 @@
+20111CE0001LECCE2  W 12:3013:30LT1A                             
+20111CE0001LECCE2  TH17:3018:30LT1A                             
+20111CE0001LECCE2  W 11:3012:30LT1A                             
+20111CE1001LABFE1  W 09:3010:30C&I                 N N N N N N N
+20111CE1001LABFEP3 TH08:3009:30C&I                 N N N N N N N
+20111CE1001LABBCE1 T 17:3018:30C&I                  N N N N N N 
+20111CE1001TUTFE3  W 10:3011:30TR+37                            
+20111CE1001LABBCE1 T 16:3017:30C&I                  N N N N N N 
+20111CE1001LABGTEP1TH17:3018:30C&I                  N N N N N N 
+20111CE1001LABFEP2 F 08:3009:30C&I                 N N N N N N N
+20111CE1001LABFEP2 F 09:3010:30C&I                 N N N N N N N
+20111CE1001TUTFE4  W 11:3012:30TR+37                            
+20111CE1001LABGTE1 W 16:3017:30C&I                 N N N N N N N
+20111CE1001LABFEP1 F 08:3009:30C&I                  N N N N N N 
+20111CE1001LABFEP1 F 09:3010:30C&I                  N N N N N N 
+20111CE1001LABFE4  F 15:3016:30C&I                 N N N N N N N
+20111CE1001LECCE1  M 11:3012:30LT2A                             
+20111CE1001TUTFE2  M 14:3015:30TR12                             
+20111CE1001TUTFEP2 M 09:3010:30TR11                             
+20111CE1001LABGTE1 W 17:3018:30C&I                 N N N N N N N
+20111CE1001TUTFEP1 TH09:3010:30TR12                             
+20111CE1001TUTFEP3 T 14:3015:30TR10                             
+20111CE1001LABFE3  F 15:3016:30C&I                  N N N N N N 
+20111CE1001LABFEP3 TH09:3010:30C&I                 N N N N N N N
+20111CE1001LABFE4  F 14:3015:30C&I                 N N N N N N N
+20111CE1001LABFE2  W 08:3009:30C&I                  N N N N N N 
+20111CE1001LABGTEP1TH16:3017:30C&I                  N N N N N N 
+20111CE1001LABFE3  F 14:3015:30C&I                  N N N N N N 
+20111CE1001LECCE1  TH10:3011:30LT2A                             
+20111CE1001TUTFE1  M 15:3016:30TR+37                            
+20111CE1001LABFE1  W 08:3009:30C&I                 N N N N N N N
+20111CE1001LABFE2  W 09:3010:30C&I                  N N N N N N 
+20111CE1002LABBCE1 T 17:3018:30ELE                 N N N N N N N
+20111CE1002LABFE2  F 08:3009:30ELE                 N N N N N N N
+20111CE1002LABFE2  F 09:3010:30ELE                 N N N N N N N
+20111CE1002LABBCE1 T 16:3017:30ELE                 N N N N N N N
+20111CE1002LABFE1  F 08:3009:30ELE                  N N N N N N 
+20111CE1002LABFE1  F 09:3010:30ELE                  N N N N N N 
+20111CE1002LABFE3  F 15:3016:30ELE                 N N N N N N N
+20111CE1002LABGTE1 W 16:3017:30ELE                  N N N N N N 
+20111CE1002LABFE4  F 15:3016:30ELE                  N N N N N N 
+20111CE1002TUTFE1  M 14:3015:30TR16                             
+20111CE1002LABGTE1 W 17:3018:30ELE                  N N N N N N 
+20111CE1002LECCE1  TH09:3010:30LT2A                             
+20111CE1002LABFE3  F 14:3015:30ELE                 N N N N N N N
+20111CE1002TUTFE2  M 13:3014:30TR+37                            
+20111CE1002TUTGTE1 T 09:3010:30TR+37                            
+20111CE1002LABFE4  F 14:3015:30ELE                  N N N N N N 
+20111CE1002TUTFE3  F 11:3012:30TR+37                            
+20111CE1002LECCE1  T 15:3016:30LT2A                             
+20111CE1002TUTFE4  F 10:3011:30TR+37                            
+20111CE1003LABBCE1 T 16:3017:30CL2                  N N N N N N 
+20111CE1003TUTFE1  F 12:3013:30TR+37                            
+20111CE1003TUTFEP1 M 08:3009:30TR+37                            
+20111CE1003LECCS1  M 10:3011:30LT2A                             
+20111CE1003LABGTE1 W 16:3017:30CL2                 N N N N N N N
+20111CE1003LABGTEP1TH17:3018:30CE                  N N N N N N N
+20111CE1003TUTFE2  F 13:3014:30TR+37                            
+20111CE1003LECCE1  TH14:3015:30LT2A                             
+20111CE1003TUTFE4  M 14:3015:30TR14                             
+20111CE1003LABGTE1 W 17:3018:30CL2                 N N N N N N N
+20111CE1003TUTFEP2 TH09:3010:30TR+37                            
+20111CE1003TUTFE3  M 13:3014:30TR15                             
+20111CE1003TUTGTE1 T 09:3010:30TR12                             
+20111CE1003LABFE2  W 08:3009:30CL2                 N N N N N N N
+20111CE1003TUTFEP3 F 11:3012:30TR14                             
+20111CE1003LABFE3  T 12:3013:30CL2                  N N N N N N 
+20111CE1003LABFE1  W 08:3009:30CL2                  N N N N N N 
+20111CE1003LABFE2  W 09:3010:30CL2                 N N N N N N N
+20111CE1003LABGTEP1TH16:3017:30CE                  N N N N N N N
+20111CE1003LABFE4  T 12:3013:30CL2                 N N N N N N N
+20111CE1003LABFE3  T 13:3014:30CL2                  N N N N N N 
+20111CE1003LABFE1  W 09:3010:30CL2                  N N N N N N 
+20111CE1003LABFEP1 F 08:3009:30CL2                 N N N N N N N
+20111CE1003LABFEP1 F 09:3010:30CL2                 N N N N N N N
+20111CE1003LABFE4  T 13:3014:30CL2                 N N N N N N N
+20111CE1003LABBCE1 T 17:3018:30CL2                  N N N N N N 
+20111CE1003LABFEP2 F 08:3009:30CL2                  N N N N N N 
+20111CE1003LABFEP2 F 09:3010:30CL2                  N N N N N N 
+20111CE1004LABFEP3 M 14:3015:30CL1                  N N N N N N 
+20111CE1004TUTGTEP1T 10:3011:30TR13                             
+20111CE1004TUTFEP2 M 08:3009:30TR11                             
+20111CE1004LABGTE1 W 16:3017:30CL1                  N N N N N N 
+20111CE1004LABGTEP1TH17:3018:30CL1                  N N N N N N 
+20111CE1004TUTFEP3 TH15:3016:30TR+37                            
+20111CE1004LABFEP3 M 13:3014:30CL1                  N N N N N N 
+20111CE1004TUTFE3  M 14:3015:30TR15                             
+20111CE1004LABFE3  M 09:3010:30CL1                 N N N N N N N
+20111CE1004LABGTE1 W 17:3018:30CL1                  N N N N N N 
+20111CE1004TUTFE4  M 13:3014:30TR14                             
+20111CE1004TUTGTE1 T 09:3010:30TR13                             
+20111CE1004LABFE4  M 09:3010:30CL1                  N N N N N N 
+20111CE1004LABFEP2 W 08:3009:30CL1                  N N N N N N 
+20111CE1004TUTFE1  F 14:3015:30TR15                             
+20111CE1004TUTFEP1 M 09:3010:30TR12                             
+20111CE1004LABFEP1 W 08:3009:30CL1                 N N N N N N N
+20111CE1004LABFEP2 W 09:3010:30CL1                  N N N N N N 
+20111CE1004LABBCE1 T 14:3015:30CL1                 N N N N N N N
+20111CE1004LABFEP1 W 09:3010:30CL1                 N N N N N N N
+20111CE1004LABGTEP1TH16:3017:30CL1                  N N N N N N 
+20111CE1004LABFE2  F 08:3009:30CL1                  N N N N N N 
+20111CE1004LABFE2  F 09:3010:30CL1                  N N N N N N 
+20111CE1004LABBCE1 T 15:3016:30CL1                 N N N N N N N
+20111CE1004LABFE1  F 08:3009:30CL1                 N N N N N N N
+20111CE1004LABFE1  F 09:3010:30CL1                 N N N N N N N
+20111CE1004LABFE3  M 08:3009:30CL1                 N N N N N N N
+20111CE1004LABFE4  M 08:3009:30CL1                  N N N N N N 
+20111CE1004LECCE1  T 16:3017:30LT2A                             
+20111CE1004TUTFE2  F 12:3013:30TR14                             
+20111CE1005LABFE3  M 09:3010:30DIG                  N N N N N N 
+20111CE1005LABFEP1 W 08:3009:30DIG                  N N N N N N 
+20111CE1005LABGTE1 W 17:3018:30DIG                  N N N N N N 
+20111CE1005LABFEP3 F 15:3016:30DIG                 N N N N N N N
+20111CE1005LECCE1  T 09:3010:30LT2A                             
+20111CE1005LABFEP2 W 08:3009:30DIG                 N N N N N N N
+20111CE1005LABFEP1 W 09:3010:30DIG                  N N N N N N 
+20111CE1005TUTFE1  W 10:3011:30TR11                             
+20111CE1005LABFEP3 F 14:3015:30DIG                 N N N N N N N
+20111CE1005LABFEP2 W 09:3010:30DIG                 N N N N N N N
+20111CE1005TUTFE2  W 11:3012:30TR13                             
+20111CE1005TUTFEP1 T 14:3015:30TR13                             
+20111CE1005LABFE2  T 12:3013:30DIG                 N N N N N N N
+20111CE1005LABFE2  T 13:3014:30DIG                 N N N N N N N
+20111CE1005LABGTEP1TH16:3017:30DIG                 N N N N N N N
+20111CE1005TUTFE4  F 11:3012:30TR15                             
+20111CE1005LABFE1  T 12:3013:30DIG                  N N N N N N 
+20111CE1005LABFE3  M 08:3009:30DIG                  N N N N N N 
+20111CE1005LABFE1  T 13:3014:30DIG                  N N N N N N 
+20111CE1005LABFE4  M 08:3009:30DIG                 N N N N N N N
+20111CE1005TUTFEP2 T 13:3014:30TR+37                            
+20111CE1005TUTFE3  F 10:3011:30TR14                             
+20111CE1005TUTFEP3 F 12:3013:30TR11                             
+20111CE1005LABFE4  M 09:3010:30DIG                 N N N N N N N
+20111CE1005LABGTE1 W 16:3017:30DIG                  N N N N N N 
+20111CE1005LABGTEP1TH17:3018:30DIG                 N N N N N N N
+20111CE1005LECCE1  TH15:3016:30LT2A                             
+20111CE1008LABFER1 M 13:3014:30ELE                  N N N N N N 
+20111CE1008LECCE1  T 11:3012:30LT10                             
+20111CE1008LECCE1  TH16:3017:30LT10                             
+20111CE1008LABFER1 M 12:3013:30ELE                  N N N N N N 
+20111CE1008TUTFER1 M 15:3016:30TR11                             
+20111CE9002LABM1   W 12:3013:30CL2                              
+20111CE9002LECM1   W 15:3016:30LT10                             
+20111CE9002LABM1   W 13:3014:30CL2                              
+20111CE9002LECM1   W 16:3017:30LT10                             
+20111CE9002LECM1   W 17:3018:30LT10                             
+20111CE9003LECM1   W 15:3016:30LT14                             
+20111CE9003LECM1   W 16:3017:30LT14                             
+20111CE9003LECM1   W 17:3018:30LT14                             
+20111CE9003LECM1   W 18:3019:30LT14                             
+20111CPE101LABFER1 TH12:3013:30ELE                  N N N N N N 
+20111CPE101LECCE1  T 16:3017:30TR11                             
+20111CPE101LABFER1 TH11:3012:30ELE                  N N N N N N 
+20111CPE101LECCE1  F 16:3017:30TR11                             
+20111CPE102LECCE1  TH16:3017:30TR12                             
+20111CPE102LABFER1 F 11:3012:30CL1                              
+20111CPE102LABFER1 F 10:3011:30CL1                              
+20111CPE102LECCE1  M 15:3016:30TR12                             
+20111CPE102LECCE1  T 17:3018:30TR12                             
+20111CPE103LECCE1  T 11:3012:30LT10                             
+20111CPE103LECCE1  TH16:3017:30LT10                             
+20111CPE103TUTFER1 TH09:3010:30TR13                             
+20111CPE104LECCE1  T 09:3010:30LT2A                             
+20111CPE104LABFER1 F 08:3009:30DIG                 N N N N N N N
+20111CPE104LABFER1 F 09:3010:30DIG                 N N N N N N N
+20111CPE104TUTFER1 T 08:3009:30TR13                             
+20111CPE104LECCE1  TH15:3016:30LT2A                             
+20111CPE105LABFER1 M 10:3011:30CL1                              
+20111CPE105TUTFER1 W 09:3010:30TR16                             
+20111CPE105LABFER1 M 11:3012:30CL1                              
+20111CPE105LECCE1  T 10:3011:30LT8                              
+20111CPE105LECCE1  TH16:3017:30LT8                              
+20111CPE106LECCE1  F 13:3014:30LT10                             
+20111CPE106LECCE1  T 17:3018:30LT10                             
+20111CPE106TUTFER1 F 12:3013:30LT10                             
+20111CPE106LECCE1  TH16:3017:30LT14                             
+20111CPE183LECCE2  W 11:3012:30LT1A                             
+20111CPE183LECCE2  TH17:3018:30LT1A                             
+20111CPE183LECCE2  W 12:3013:30LT1A                             
+20111CPE184TUTTE3  TH12:3013:30TR17                             
+20111CPE184TUTTE1  F 10:3011:30TR16                             
+20111CPE184LECCE2  W 13:3014:30LT2A                             
+20111CPE184LECCE2  TH10:3011:30LT19                             
+20111CPE184TUTTE2  M 13:3014:30TR18                             
+20111CPE184TUTTE4  F 13:3014:30TR18                             
+20111CPE201TUTSE2  F 14:3015:30TR14                             
+20111CPE201LABSE4  TH14:3015:30DIG                 N N N N N N N
+20111CPE201LABSE2  M 11:3012:30DIG                 N N N N N N N
+20111CPE201LABSE2  M 12:3013:30DIG                 N N N N N N N
+20111CPE201LABSE1  M 11:3012:30DIG                  N N N N N N 
+20111CPE201LABSE1  M 12:3013:30DIG                  N N N N N N 
+20111CPE201LECCE2  T 12:3013:30LT19                             
+20111CPE201TUTSE5  TH15:3016:30TR11                             
+20111CPE201LABSE5  T 10:3011:30DIG                 N N N N N N N
+20111CPE201LABSE3  TH15:3016:30DIG                  N N N N N N 
+20111CPE201LABSE6  T 10:3011:30DIG                  N N N N N N 
+20111CPE201LABSE4  TH15:3016:30DIG                 N N N N N N N
+20111CPE201TUTSE3  T 10:3011:30TR18                             
+20111CPE201LABSE5  T 11:3012:30DIG                 N N N N N N N
+20111CPE201LECCE2  TH11:3012:30LT10                             
+20111CPE201TUTSE6  TH14:3015:30TR13                             
+20111CPE201TUTSE4  T 09:3010:30TR11                             
+20111CPE201LABSE6  T 11:3012:30DIG                  N N N N N N 
+20111CPE201LECCE2  M 10:3011:30LT19                             
+20111CPE201TUTSE1  F 15:3016:30TR18                             
+20111CPE201LABSE3  TH14:3015:30DIG                  N N N N N N 
+20111CPE202LABSE3  M 11:3012:30CE                  N N N N N N N
+20111CPE202TUTSE6  M 12:3013:30TR15                             
+20111CPE202LABSE2  W 10:3011:30CE                  N N N N N N N
+20111CPE202LECCE2  T 14:3015:30LT2A                             
+20111CPE202LECCE2  TH12:3013:30LT2A                             
+20111CPE202LECCE2  F 10:3011:30LT2A                             
+20111CPE202TUTSE1  T 08:3009:30TR14                             
+20111CPE202LABSE5  T 10:3011:30CE                   N N N N N N 
+20111CPE202LABSE6  T 11:3012:30CE                  N N N N N N N
+20111CPE202LABSE5  T 11:3012:30CE                   N N N N N N 
+20111CPE202TUTSE5  M 11:3012:30TR14                             
+20111CPE202LABSE4  M 12:3013:30CE                   N N N N N N 
+20111CPE202TUTSE2  T 09:3010:30TR15                             
+20111CPE202LABSE1  W 09:3010:30CE                   N N N N N N 
+20111CPE202LABSE1  W 10:3011:30CE                   N N N N N N 
+20111CPE202TUTSE3  F 13:3014:30TR11                             
+20111CPE202LABSE4  M 11:3012:30CE                   N N N N N N 
+20111CPE202LABSE3  M 12:3013:30CE                  N N N N N N N
+20111CPE202LABSE2  W 09:3010:30CE                  N N N N N N N
+20111CPE202TUTSE4  W 10:3011:30TR15                             
+20111CPE203LABSE2  W 11:3012:30MS                   N N N N N N 
+20111CPE203TUTSEP2 TH09:3010:30TR15                             
+20111CPE203LECCE2  F 11:3012:30LT2A                             
+20111CPE203TUTSE2  T 08:3009:30TR15                             
+20111CPE203LABSEP2 T 10:3011:30MS                   N N N N N N 
+20111CPE203LABSE3  TH15:3016:30MS                  N N N N N N N
+20111CPE203LABSEP2 T 11:3012:30MS                   N N N N N N 
+20111CPE203LECCE2  M 08:3009:30LT2A                             
+20111CPE203TUTSE3  W 10:3011:30TR14                             
+20111CPE203TUTSE5  M 12:3013:30TR14                             
+20111CPE203TUTSE6  M 15:3016:30TR10                             
+20111CPE203LABSE1  W 10:3011:30MS                  N N N N N N N
+20111CPE203LECCE2  T 15:3016:30LT19                             
+20111CPE203LABSE4  M 11:3012:30MS                  N N N N N N N
+20111CPE203LABSE4  M 12:3013:30MS                  N N N N N N N
+20111CPE203TUTSE1  T 09:3010:30TR14                             
+20111CPE203TUTSE4  W 09:3010:30TR15                             
+20111CPE203LABSE2  W 10:3011:30MS                   N N N N N N 
+20111CPE203TUTSEP1 TH11:3012:30TR15                             
+20111CPE203LABSE3  TH14:3015:30MS                  N N N N N N N
+20111CPE203LABSE6  F 15:3016:30MS                   N N N N N N 
+20111CPE203LABSEP1 M 09:3010:30MS                   N N N N N N 
+20111CPE203LABSEP1 M 10:3011:30MS                   N N N N N N 
+20111CPE203LABSE6  F 14:3015:30MS                   N N N N N N 
+20111CPE203LABSE5  F 15:3016:30MS                  N N N N N N N
+20111CPE203LABSE1  W 11:3012:30MS                  N N N N N N N
+20111CPE203LABSE5  F 14:3015:30MS                  N N N N N N N
+20111CPE204TUTSE4  T 10:3011:30TR11                             
+20111CPE204TUTSE6  TH15:3016:30TR16                             
+20111CPE204TUTSEP1 W 10:3011:30TR16                             
+20111CPE204LECCE2  F 09:3010:30LT2A                             
+20111CPE204TUTSE3  T 09:3010:30TR16                             
+20111CPE204TUTSEP2 TH10:3011:30TR11                             
+20111CPE204TUTSE5  TH14:3015:30TR16                             
+20111CPE204TUTSE2  F 15:3016:30TR16                             
+20111CPE204TUTSE1  F 14:3015:30TR16                             
+20111CPE204LECCE2  M 14:3015:30LT19                             
+20111CPE204LECCE2  W 08:3009:30LT19                             
+20111CPE205LABSER1 TH15:3016:30CL2                  N N N N N N 
+20111CPE205LECCE2  T 13:3014:30LT19                             
+20111CPE205TUTSER1 TH10:3011:30TR18                             
+20111CPE205LECCE2  M 09:3010:30LT19                             
+20111CPE205LABSER1 TH16:3017:30CL2                  N N N N N N 
+20111CPE205LECCE2  TH09:3010:30LT19                             
+20111CPE206TUTSEP2 T 14:3015:30TR14                             
+20111CPE206LECCE2  T 08:3009:30LT19                             
+20111CPE206LABSEP2 T 12:3013:30CE                  N N N N N N N
+20111CPE206LABSEP2 T 13:3014:30CE                  N N N N N N N
+20111CPE206LECCE2  F 08:3009:30LT19                             
+20111CPE206TUTSEP1 F 15:3016:30TR12                             
+20111CPE206LECCE2  TH13:3014:30LT19                             
+20111CPE206LABSER1 F 15:3016:30CE                  N N N N N N N
+20111CPE206LABSEP1 M 09:3010:30CE                  N N N N N N N
+20111CPE206LABSER1 F 14:3015:30CE                  N N N N N N N
+20111CPE206LABSEP1 M 10:3011:30CE                  N N N N N N N
+20111CPE206TUTSER1 T 16:3017:30TR14                             
+20111CPE207LABSEP1 T 10:3011:30SWE                              
+20111CPE207LABSEA1 W 10:3011:30SWE                              
+20111CPE207LABSEP2 F 15:3016:30SWE                              
+20111CPE207LABSEP1 T 11:3012:30SWE                              
+20111CPE207TUTSER1 M 12:3013:30TR58                             
+20111CPE207TUTSEP2 M 15:3016:30TR58                             
+20111CPE207TUTSEA1 M 09:3010:30TR58                             
+20111CPE207LABSEP2 F 14:3015:30SWE                              
+20111CPE207LECCE2  M 11:3012:30LT10                             
+20111CPE207LABSER1 W 16:3017:30SWE                              
+20111CPE207TUTSEP1 M 13:3014:30TR58                             
+20111CPE207LABSEA1 W 11:3012:30SWE                              
+20111CPE207LABSER1 W 15:3016:30SWE                              
+20111CPE207LECCE2  TH08:3009:30LT10                             
+20111CPE208TUTSER1 M 16:3017:30TR11                             
+20111CPE208LECCE2  TH14:3015:30LT19                             
+20111CPE208LABSER1 W 13:3014:30ELE                              
+20111CPE208LABSEP1 TH16:3017:30ELE                              
+20111CPE208LECCE2  M 13:3014:30LT19                             
+20111CPE208LABSER1 W 12:3013:30ELE                              
+20111CPE208LECCE2  T 10:3011:30LT19                             
+20111CPE208TUTSEP1 T 14:3015:30TR15                             
+20111CPE208LABSEP1 TH15:3016:30ELE                              
+20111CPE301LABTE3  T 12:3013:30COMM                 N N N N N N 
+20111CPE301LABTE3  T 13:3014:30COMM                 N N N N N N 
+20111CPE301LABSEP2 M 15:3016:30COMM                N N N N N N N
+20111CPE301LABTE2  T 11:3012:30COMM                N N N N N N N
+20111CPE301TUTTE4  M 12:3013:30TR13                             
+20111CPE301LABSEP1 M 15:3016:30COMM                 N N N N N N 
+20111CPE301LABTE1  M 09:3010:30COMM                 N N N N N N 
+20111CPE301TUTSEP2 F 14:3015:30TR11                             
+20111CPE301LABTE4  TH13:3014:30COMM                N N N N N N N
+20111CPE301LABTE4  TH14:3015:30COMM                N N N N N N N
+20111CPE301LECCE3  T 09:3010:30LT19                             
+20111CPE301LABTE1  M 10:3011:30COMM                 N N N N N N 
+20111CPE301TUTTE1  T 15:3016:30TR18                             
+20111CPE301LECCE3  TH16:3017:30LT19                             
+20111CPE301TUTTE3  M 10:3011:30TR16                             
+20111CPE301LECCE3  F 12:3013:30LT19                             
+20111CPE301LABSEP2 M 14:3015:30COMM                N N N N N N N
+20111CPE301LABSEP1 M 14:3015:30COMM                 N N N N N N 
+20111CPE301LABTE2  T 10:3011:30COMM                N N N N N N N
+20111CPE301TUTTE2  TH09:3010:30TR17                             
+20111CPE301TUTSEP1 F 16:3017:30TR16                             
+20111CPE302LABTE2  T 11:3012:30COMM                 N N N N N N 
+20111CPE302LECCE3  M 16:3017:30LT8                              
+20111CPE302LABTE1  M 09:3010:30COMM                N N N N N N N
+20111CPE302TUTTE2  F 09:3010:30TR17                             
+20111CPE302LABTE4  TH13:3014:30COMM                 N N N N N N 
+20111CPE302LABTE4  TH14:3015:30COMM                 N N N N N N 
+20111CPE302LABTE1  M 10:3011:30COMM                N N N N N N N
+20111CPE302TUTTE3  T 15:3016:30TR16                             
+20111CPE302TUTTE4  M 13:3014:30TR13                             
+20111CPE302TUTTE1  M 14:3015:30TR11                             
+20111CPE302LECCE3  TH11:3012:30LT2A                             
+20111CPE302LABTE2  T 10:3011:30COMM                 N N N N N N 
+20111CPE302LECCE3  W 11:3012:30LT8                              
+20111CPE302LABTE3  T 12:3013:30COMM                N N N N N N N
+20111CPE302LABTE3  T 13:3014:30COMM                N N N N N N N
+20111CPE303LECCE3  M 15:3016:30LT8                              
+20111CPE303LABTE2  M 09:3010:30DB                  N N N N N N N
+20111CPE303LECCE3  W 10:3011:30LT8                              
+20111CPE303LABTE1  F 14:3015:30DB                   N N N N N N 
+20111CPE303LABTE1  F 15:3016:30DB                   N N N N N N 
+20111CPE303LABTE3  M 12:3013:30DB                   N N N N N N 
+20111CPE303LABTE2  M 10:3011:30DB                  N N N N N N N
+20111CPE303TUTTE2  F 10:3011:30TR17                             
+20111CPE303TUTTE4  F 14:3015:30TR18                             
+20111CPE303LABTE3  M 13:3014:30DB                   N N N N N N 
+20111CPE303TUTTE3  M 14:3015:30TR13                             
+20111CPE303TUTTE1  T 13:3014:30TR18                             
+20111CPE303LABTE4  T 12:3013:30DB                  N N N N N N N
+20111CPE303LABTE4  T 13:3014:30DB                  N N N N N N N
+20111CPE303LECCE3  TH15:3016:30LT8                              
+20111CPE401TUTCE4  TH12:3013:30LT19                             
+20111CPE401LECCE4  M 14:3015:30LT4                              
+20111CPE401LECCE4  TH11:3012:30LT19                             
+20111CPE401LECCE4  W 08:3009:30LT4                              
+20111CPE402TUTCE4  F 18:3019:30LT19                             
+20111CPE402LECCE4  F 17:3018:30LT19                             
+20111CPE402LECCE4  T 16:3017:30LT8                              
+20111CPE402LECCE4  T 17:3018:30LT8                              
+20111CPE404LECCE4  T 08:3009:30LT10                             
+20111CPE404TUTCE4  T 09:3010:30LT10                             
+20111CPE404LECCE4  TH10:3011:30LT10                             
+20111CPE404LECCE4  F 14:3015:30LT10                             
+20111CPE406LECCE4  M 13:3014:30LT8                              
+20111CPE406TUTCE4  T 10:3011:30LT11                             
+20111CPE406LECCE4  F 13:3014:30LT8                              
+20111CPE406LECCE4  T 11:3012:30LT11                             
+20111CPE409LECCE4  F 09:3010:30LT19                             
+20111CPE409LECCE4  T 15:3016:30LT8                              
+20111CPE409LECCE4  M 08:3009:30LT19                             
+20111CPE409TUTCE4  TH20:3021:30LT19                             
+20111CPE409LECCE4  TH19:3020:30LT19                             
+20111CPE411LECCE4  M 14:3015:30LT8                              
+20111CPE411TUTCE4  W 09:3010:30LT8                              
+20111CPE411LECCE4  W 08:3009:30LT8                              
+20111CPE411LECCE4  TH08:3009:30LT8                              
+20111CPE413LECCE4  M 17:3018:30LT8                              
+20111CPE413TUTCE4  TH18:3019:30LT8                              
+20111CPE413LECCE4  TH17:3018:30LT8                              
+20111CPE413LECCE4  M 18:3019:30LT8                              
+20111CPE419LECCE4  W 20:3021:30LT19                             
+20111CPE419LECCE4  W 19:3020:30LT19                             
+20111CPE419TUTCE4  W 15:3016:30LT8                              
+20111CPE419LECCE4  W 18:3019:30LT19                             
+20111CPE422LECCE4  F 11:3012:30LT8                              
+20111CPE422LECCE4  M 11:3012:30LT8                              
+20111CPE422TUTCE4  F 12:3013:30LT8                              
+20111CPE422LECCE4  W 14:3015:30LT8                              
+20111CPE423TUTCE4  M 10:3011:30LT8                              
+20111CPE423LECCE4  T 13:3014:30LT8                              
+20111CPE423LECCE4  TH09:3010:30LT8                              
+20111CPE423LECCE4  M 09:3010:30LT8                              
+20111CPE424TUTCE4  T 19:3020:30LT10                             
+20111CPE424LECCE4  T 18:3019:30LT10                             
+20111CPE424LECCE4  W 16:3017:30LT8                              
+20111CPE424LECCE4  W 17:3018:30LT8                              
+20111CPE425LECCE4  M 12:3013:30LT2A                             
+20111CPE425LECCE4  T 12:3013:30LT2A                             
+20111CPE425TUTCE4  F 16:3017:30LT2A                             
+20111CPE425LECCE4  F 15:3016:30LT2A                             
+20111CPE426TUTCE4  M 16:3017:30LT4                              
+20111CPE426LECCE4  W 13:3014:30LT8                              
+20111CPE426LECCE4  W 12:3013:30LT8                              
+20111CPE426LECCE4  M 15:3016:30LT4                              
+20111CPE432LECCE4  TH13:3014:30LT10                             
+20111CPE432TUTCE4  TH14:3015:30LT10                             
+20111CPE432LECCE4  F 08:3009:30LT8                              
+20111CPE432TUTCE4  W 10:3011:30LT4                              
+20111CSC101LECCS1  T 15:3016:30LT2A                             
+20111CSC101LECCS1  TH09:3010:30LT2A                             
+20111CSC101TUTFSR1 F 13:3014:30TR12                             
+20111CSC101LECCS1  F 15:3016:30TCT-LT                           
+20111CSC102LECCE1  TH16:3017:30TR12                             
+20111CSC102TUTFSR1 T 10:3011:30TR15                             
+20111CSC102LECCE1  T 17:3018:30TR12                             
+20111CSC102LABFSR1 TH15:3016:30CL1                              
+20111CSC102LECCE1  M 15:3016:30TR12                             
+20111CSC102LABFSR1 TH14:3015:30CL1                              
+20111CSC103LECCS1  TH16:3017:30LT10                             
+20111CSC103TUTFSR1 T 10:3011:30TR19                             
+20111CSC103LECCS1  T 11:3012:30LT10                             
+20111CSC104LECCS1  T 09:3010:30LT2A                             
+20111CSC104LABFSR1 M 08:3009:30DIG                 N N N N N N N
+20111CSC104LECCS1  TH15:3016:30LT2A                             
+20111CSC104TUTFSR1 TH08:3009:30TR14                             
+20111CSC104LABFSR1 M 09:3010:30DIG                 N N N N N N N
+20111CSC105TUTFSR1 T 09:3010:30TR17                             
+20111CSC105LECCS1  TH16:3017:30LT8                              
+20111CSC105LECCS1  T 10:3011:30LT8                              
+20111CSC105LABFSR1 W 14:3015:30CL1                              
+20111CSC105LABFSR1 W 15:3016:30CL1                              
+20111CSC106LECCS1  TH10:3011:30LT2A                             
+20111CSC106LECCS1  M 11:3012:30LT2A                             
+20111CSC106TUTFSR1 T 14:3015:30TR12                             
+20111CSC183LECCS2  W 11:3012:30LT1A                             
+20111CSC183LECCS2  W 12:3013:30LT1A                             
+20111CSC183LECCS2  TH17:3018:30LT1A                             
+20111CSC184LECCS2  TH10:3011:30LT19                             
+20111CSC184TUTSS3  M 11:3012:30TR19                             
+20111CSC184LECCS   W 13:3014:30LT2A                             
+20111CSC184TUTTS2  M 09:3010:30TR19                             
+20111CSC184TUTSS2  M 10:3011:30TR18                             
+20111CSC184TUTSS1  F 09:3010:30TR18                             
+20111CSC184TUTTS1  F 11:3012:30TR12                             
+20111CSC201LABSS2  F 08:3009:30CE                  N N N N N N N
+20111CSC201LECCS2  F 10:3011:30LT2A                             
+20111CSC201TUTSS1  TH09:3010:30TR14                             
+20111CSC201LABSS3  TH11:3012:30CE                   N N N N N N 
+20111CSC201TUTSS3  W 09:3010:30TR14                             
+20111CSC201LABBCG2 TH09:3010:30CE                   N N N N N N 
+20111CSC201LABBCG2 TH08:3009:30CE                   N N N N N N 
+20111CSC201LECCS2  T 14:3015:30LT2A                             
+20111CSC201LABSS1  F 09:3010:30CE                   N N N N N N 
+20111CSC201LABSS2  F 09:3010:30CE                  N N N N N N N
+20111CSC201TUTSS2  TH10:3011:30TR16                             
+20111CSC201TUTBCG2 TH16:3017:30TR14                             
+20111CSC201LABSS1  F 08:3009:30CE                   N N N N N N 
+20111CSC201LABSS3  TH10:3011:30CE                   N N N N N N 
+20111CSC201LECCS2  TH12:3013:30LT2A                             
+20111CSC202LECCS2  M 13:3014:30LT4                              
+20111CSC202TUTSS2  TH09:3010:30TR16                             
+20111CSC202TUTSSP1 W 09:3010:30TR10                             
+20111CSC202TUTSS3  M 09:3010:30TR14                             
+20111CSC202TUTSSP3 F 09:3010:30TR15                             
+20111CSC202TUTSS1  M 15:3016:30TR15                             
+20111CSC202TUTSSP2 TH10:3011:30TR10                             
+20111CSC202TUTBCG2 F 08:3009:30TR16                             
+20111CSC202LECCS2  F 14:3015:30LT8                              
+20111CSC202LECCS2  TH13:3014:30LT8                              
+20111CSC203LABBCG2 M 11:3012:30MS                   N N N N N N 
+20111CSC203TUTSSP3 M 14:3015:30TR10                             
+20111CSC203LECCS2  M 08:3009:30LT2A                             
+20111CSC203LABSSP2 TH09:3010:30MS                   N N N N N N 
+20111CSC203TUTSSP1 F 09:3010:30TR16                             
+20111CSC203LABSSP1 TH08:3009:30MS                  N N N N N N N
+20111CSC203LABSS1  F 09:3010:30MS                  N N N N N N N
+20111CSC203LABSSP3 M 09:3010:30MS                  N N N N N N N
+20111CSC203LABSSP2 TH08:3009:30MS                   N N N N N N 
+20111CSC203TUTSS2  T 13:3014:30TR19                             
+20111CSC203LABSS2  F 09:3010:30MS                   N N N N N N 
+20111CSC203TUTSS1  F 13:3014:30TR19                             
+20111CSC203LABSS3  M 15:3016:30MS                  N N N N N N N
+20111CSC203LABSS1  F 08:3009:30MS                  N N N N N N N
+20111CSC203TUTBCG2 F 16:3017:30TR14                             
+20111CSC203LABSS2  F 08:3009:30MS                   N N N N N N 
+20111CSC203LABSSP3 M 10:3011:30MS                  N N N N N N N
+20111CSC203LECCS2  F 11:3012:30LT2A                             
+20111CSC203TUTSSP2 TH14:3015:30TR17                             
+20111CSC203LABBCG2 M 12:3013:30MS                   N N N N N N 
+20111CSC203LABSS3  M 16:3017:30MS                  N N N N N N N
+20111CSC203LECCS2  T 15:3016:30LT19                             
+20111CSC203LABSSP1 TH09:3010:30MS                  N N N N N N N
+20111CSC204LABSS4  TH11:3012:30CL2                  N N N N N N 
+20111CSC204TUTSS2  W 09:3010:30TR20                             
+20111CSC204LECCS2  TH08:3009:30LT8                              
+20111CSC204LABSS3  TH11:3012:30CL2                 N N N N N N N
+20111CSC204TUTSS1  M 09:3010:30TR18                             
+20111CSC204LABSS4  TH10:3011:30CL2                  N N N N N N 
+20111CSC204LABSS1  M 10:3011:30CL2                  N N N N N N 
+20111CSC204LECCS2  W 08:3009:30LT8                              
+20111CSC204LABSS3  TH10:3011:30CL2                 N N N N N N N
+20111CSC204LABSS2  M 10:3011:30CL2                 N N N N N N N
+20111CSC204TUTSS4  T 11:3012:30TR10                             
+20111CSC204LABSS1  M 11:3012:30CL2                  N N N N N N 
+20111CSC204TUTSS3  W 10:3011:30TR10                             
+20111CSC204LABSS2  M 11:3012:30CL2                 N N N N N N N
+20111CSC204LECCS2  M 14:3015:30LT8                              
+20111CSC205LECCS2  M 09:3010:30LT19                             
+20111CSC205LABSSR1 W 14:3015:30CL2                  N N N N N N 
+20111CSC205TUTSSR1 W 16:3017:30TR18                             
+20111CSC205LECCS2  T 13:3014:30LT19                             
+20111CSC205LABSSR1 W 15:3016:30CL2                  N N N N N N 
+20111CSC205LECCS2  TH09:3010:30LT19                             
+20111CSC206TUTSSP3 T 10:3011:30TR10                             
+20111CSC206LABSSP3 M 09:3010:30DB                   N N N N N N 
+20111CSC206LABSSP1 TH08:3009:30DB                   N N N N N N 
+20111CSC206TUTSSP2 F 13:3014:30TR13                             
+20111CSC206LABSSP3 M 10:3011:30DB                   N N N N N N 
+20111CSC206LECCS2  M 15:3016:30LT8                              
+20111CSC206TUTSSR1 W 11:3012:30TR12                             
+20111CSC206TUTSSP1 T 14:3015:30TR19                             
+20111CSC206LECCS2  TH15:3016:30LT8                              
+20111CSC206LABSSR1 T 14:3015:30DB                   N N N N N N 
+20111CSC206LABSSP2 TH09:3010:30DB                  N N N N N N N
+20111CSC206LECCS2  W 10:3011:30LT8                              
+20111CSC206LABSSP1 TH09:3010:30DB                   N N N N N N 
+20111CSC206LABSSR1 T 15:3016:30DB                   N N N N N N 
+20111CSC206LABSSP2 TH08:3009:30DB                  N N N N N N N
+20111CSC207LABSSR1 F 09:3010:30SWE                  N N N N N N 
+20111CSC207LECCS2  M 10:3011:30LT10                             
+20111CSC207TUTSSR1 T 11:3012:30TR58                             
+20111CSC207LECCS2  TH16:3017:30LT11                             
+20111CSC207LABSSA1 T 08:3009:30SWE                 N N N N N N N
+20111CSC207LABSSA1 T 09:3010:30SWE                 N N N N N N N
+20111CSC207LECCS2  T 10:3011:30LT10                             
+20111CSC207LABSSR1 F 10:3011:30SWE                  N N N N N N 
+20111CSC301TUTTS1  M 10:3011:30TR10                             
+20111CSC301TUTSSP1 F 13:3014:30TR17                             
+20111CSC301TUTSSP3 TH10:3011:30TR19                             
+20111CSC301LECCS3  T 12:3013:30LT2A                             
+20111CSC301TUTBCG3 F 14:3015:30TR10                             
+20111CSC301LECCS3  F 15:3016:30LT2A                             
+20111CSC301LECCS3  M 12:3013:30LT2A                             
+20111CSC301TUTTS3  T 10:3011:30TR17                             
+20111CSC301TUTSSP2 F 10:3011:30TR12                             
+20111CSC301TUTTS2  M 08:3009:30TR19                             
+20111CSC302LABTS2  W 11:3012:30CL1                              
+20111CSC302LABTS3  M 15:3016:30CL1                              
+20111CSC302LABBCG3 W 11:3012:30CL1                              
+20111CSC302TUTTS3  TH15:3016:30TR13                             
+20111CSC302LABTS2  W 10:3011:30CL1                              
+20111CSC302LABTS1  TH09:3010:30CL1                              
+20111CSC302LABBCG3 W 10:3011:30CL1                              
+20111CSC302TUTTS1  T 15:3016:30TR12                             
+20111CSC302LECCS3  TH16:3017:30LT4                              
+20111CSC302LECCS3  F 10:3011:30LT8                              
+20111CSC302LABTS3  M 16:3017:30CL1                              
+20111CSC302LECCS3  T 09:3010:30LT8                              
+20111CSC302LABTS1  TH08:3009:30CL1                              
+20111CSC302TUTTS2  TH13:3014:30TR12                             
+20111CSC302TUTBCG3 F 09:3010:30TR14                             
+20111CSC303LABSSP1 M 10:3011:30SWE                 N N N N N N N
+20111CSC303LABTS1  W 14:3015:30SWE                 N N N N N N N
+20111CSC303TUTTS2  TH15:3016:30TR45                             
+20111CSC303LABTS2  TH09:3010:30SWE                  N N N N N N 
+20111CSC303LABSSP3 TH09:3010:30SWE                 N N N N N N N
+20111CSC303LABTS1  W 15:3016:30SWE                 N N N N N N N
+20111CSC303LECCS3  F 08:3009:30TCT-LT                           
+20111CSC303LABTS2  TH08:3009:30SWE                  N N N N N N 
+20111CSC303TUTSSP3 F 10:3011:30TR45                             
+20111CSC303TUTSSP2 M 16:3017:30TR45                             
+20111CSC303LABSSP3 TH08:3009:30SWE                 N N N N N N N
+20111CSC303TUTSSP1 TH14:3015:30TR45                             
+20111CSC303LECCS3  T 08:3009:30LT8                              
+20111CSC303LABSSP2 M 09:3010:30SWE                  N N N N N N 
+20111CSC303TUTTS1  TH12:3013:30TR45                             
+20111CSC303LABSSP2 M 10:3011:30SWE                  N N N N N N 
+20111CSC303LABSSP1 M 09:3010:30SWE                 N N N N N N N
+20111CSC303LECCS3  TH11:3012:30LT4                              
+20111CSC304LECCS3  M 13:3014:30LT8                              
+20111CSC304TUTTS1  TH15:3016:30TR19                             
+20111CSC304LECCS3  F 13:3014:30LT8                              
+20111CSC304LECCS3  T 11:3012:30LT11                             
+20111CSC304TUTSSP3 M 16:3017:30TR15                             
+20111CSC304TUTSSP1 F 14:3015:30TR19                             
+20111CSC304TUTBCG3 F 11:3012:30TR13                             
+20111CSC304TUTTS2  F 09:3010:30TR22                             
+20111CSC401LECCS4  W 08:3009:30LT4                              
+20111CSC401TUTCS4  TH12:3013:30LT19                             
+20111CSC401LECCS4  M 14:3015:30LT4                              
+20111CSC401LECCS4  TH11:3012:30LT19                             
+20111CSC402LECCS4  F 17:3018:30LT19                             
+20111CSC402LECCS4  T 17:3018:30LT8                              
+20111CSC402LECCS4  T 16:3017:30LT8                              
+20111CSC402TUTCS4  F 18:3019:30LT19                             
+20111CSC406LECCS4  T 15:3016:30LT8                              
+20111CSC406TUTCS4  TH20:3021:30LT19                             
+20111CSC406LECCS4  M 08:3009:30LT19                             
+20111CSC406LECCS4  TH19:3020:30LT19                             
+20111CSC409TUTCS4  TH18:3019:30LT8                              
+20111CSC409LECCS4  TH17:3018:30LT8                              
+20111CSC409LECCS4  M 18:3019:30LT8                              
+20111CSC409LECCS4  M 17:3018:30LT8                              
+20111CSC417LECCS4  W 20:3021:30LT19                             
+20111CSC417TUTCS4  W 15:3016:30LT8                              
+20111CSC417LECCS4  W 19:3020:30LT19                             
+20111CSC417LECCS4  W 18:3019:30LT19                             
+20111CSC421LECCS4  W 09:3010:30LT10                             
+20111CSC421LECCS4  TH10:3011:30LT11                             
+20111CSC421LECCS4  W 10:3011:30LT10                             
+20111CSC421TUTCS4  F 14:3015:30LT18                             
+20111CSC422LECCS4  W 14:3015:30LT8                              
+20111CSC422TUTCS4  F 12:3013:30LT8                              
+20111CSC422LECCS4  F 11:3012:30LT8                              
+20111CSC422LECCS4  M 11:3012:30LT8                              
+20111CSC423LECCS4  TH09:3010:30LT8                              
+20111CSC423LECCS4  T 13:3014:30LT8                              
+20111CSC423LECCS4  M 09:3010:30LT8                              
+20111CSC423TUTCS4  M 10:3011:30LT8                              
+20111CSC427TUTCS4  W 10:3011:30LT4                              
+20111CSC427LECCS4  F 08:3009:30LT8                              
+20111CSC427TUTCS4  TH14:3015:30LT10                             
+20111CSC427LECCS4  TH13:3014:30LT10                             
+20111CZ0001LECCS2  W 11:3012:30LT1A                             
+20111CZ0001LECCS2  TH17:3018:30LT1A                             
+20111CZ0001LECCS2  W 12:3013:30LT1A                             
+20111CZ1001LABFSP4 M 15:3016:30C&I                  N N N N N N 
+20111CZ1001TUTFS2  W 10:3011:30TR12                             
+20111CZ1001TUTFS4  T 13:3014:30TR12                             
+20111CZ1001LECCS1  TH10:3011:30LT2A                             
+20111CZ1001TUTFSP2 M 15:3016:30TR14                             
+20111CZ1001LABFS4  W 08:3009:30C&I                  N N N N N N 
+20111CZ1001LABBCG1 W 13:3014:30C&I                  N N N N N N 
+20111CZ1001LABCGZP1W 15:3016:30C&I                 N N N N N N N
+20111CZ1001LABCTZ1 W 16:3017:30C&I                  N N N N N N 
+20111CZ1001LABFSP1 T 14:3015:30C&I                  N N N N N N 
+20111CZ1001LABFSP5 F 08:3009:30C&I                 N N N N N N N
+20111CZ1001LABFS1  M 09:3010:30C&I                  N N N N N N 
+20111CZ1001LABFS3  W 08:3009:30C&I                 N N N N N N N
+20111CZ1001LABBCG1 W 12:3013:30C&I                  N N N N N N 
+20111CZ1001LABFSP2 T 14:3015:30C&I                 N N N N N N N
+20111CZ1001LABFSP1 T 15:3016:30C&I                  N N N N N N 
+20111CZ1001TUTFSP6 F 14:3015:30TR13                             
+20111CZ1001LABFS5  T 12:3013:30C&I                  N N N N N N 
+20111CZ1001LABFS1  M 08:3009:30C&I                  N N N N N N 
+20111CZ1001LABFS2  M 09:3010:30C&I                 N N N N N N N
+20111CZ1001LABFSP6 TH08:3009:30C&I                  N N N N N N 
+20111CZ1001LABFSP2 T 15:3016:30C&I                 N N N N N N N
+20111CZ1001TUTFSP4 F 10:3011:30TR18                             
+20111CZ1001TUTFS5  F 11:3012:30TR11                             
+20111CZ1001LECCS1  M 11:3012:30LT2A                             
+20111CZ1001LABFSP3 M 14:3015:30C&I                 N N N N N N N
+20111CZ1001LABFS2  M 08:3009:30C&I                 N N N N N N N
+20111CZ1001TUTFSP5 M 09:3010:30TR17                             
+20111CZ1001LABCTZ1 W 17:3018:30C&I                  N N N N N N 
+20111CZ1001TUTFS3  F 09:3010:30TR13                             
+20111CZ1001LABFSP4 M 14:3015:30C&I                  N N N N N N 
+20111CZ1001TUTCGZP1T 09:3010:30TR20                             
+20111CZ1001TUTCTZ1 T 10:3011:30TR+37                            
+20111CZ1001TUTFSP1 M 08:3009:30TR15                             
+20111CZ1001LABFSP5 F 09:3010:30C&I                 N N N N N N N
+20111CZ1001LABFS4  W 09:3010:30C&I                  N N N N N N 
+20111CZ1001TUTFSP3 TH09:3010:30TR18                             
+20111CZ1001LABFS3  W 09:3010:30C&I                 N N N N N N N
+20111CZ1001TUTFS1  W 11:3012:30TR17                             
+20111CZ1001LABCGZP1W 14:3015:30C&I                 N N N N N N N
+20111CZ1001LABFS5  T 13:3014:30C&I                  N N N N N N 
+20111CZ1001LABFSP6 TH09:3010:30C&I                  N N N N N N 
+20111CZ1002LABFS1  M 09:3010:30ELE                 N N N N N N N
+20111CZ1002LABFS4  W 08:3009:30ELE                 N N N N N N N
+20111CZ1002LABBCG1 W 13:3014:30ELE                 N N N N N N N
+20111CZ1002LABCTZ1 W 16:3017:30ELE                  N N N N N N 
+20111CZ1002LABFS1  M 08:3009:30ELE                 N N N N N N N
+20111CZ1002LABFS2  M 09:3010:30ELE                  N N N N N N 
+20111CZ1002LABBCG1 W 12:3013:30ELE                 N N N N N N N
+20111CZ1002LECCS1  T 15:3016:30LT2A                             
+20111CZ1002TUTFS3  T 12:3013:30TR+37                            
+20111CZ1002LABFS2  M 08:3009:30ELE                  N N N N N N 
+20111CZ1002TUTFS5  F 10:3011:30TR11                             
+20111CZ1002LABFS5  M 14:3015:30ELE                  N N N N N N 
+20111CZ1002LABCTZ1 W 17:3018:30ELE                  N N N N N N 
+20111CZ1002TUTFS4  F 09:3010:30TR+37                            
+20111CZ1002TUTCTZ1 T 09:3010:30TR+37                            
+20111CZ1002LABFS3  W 09:3010:30ELE                  N N N N N N 
+20111CZ1002LABFS4  W 09:3010:30ELE                 N N N N N N N
+20111CZ1002LECCS1  TH09:3010:30LT2A                             
+20111CZ1002LABFS5  M 15:3016:30ELE                  N N N N N N 
+20111CZ1002LABFS3  W 08:3009:30ELE                  N N N N N N 
+20111CZ1002TUTFS1  W 10:3011:30TR17                             
+20111CZ1003LABFS3  M 14:3015:30CL2                  N N N N N N 
+20111CZ1003TUTFSP6 M 08:3009:30TR12                             
+20111CZ1003LABBCG1 W 12:3013:30CL2                  N N N N N N 
+20111CZ1003LABCGZP1W 15:3016:30CL2                 N N N N N N N
+20111CZ1003LABFSP6 T 14:3015:30CL2                 N N N N N N N
+20111CZ1003LABFSP6 T 15:3016:30CL2                 N N N N N N N
+20111CZ1003TUTFS1  F 08:3009:30TR+37                            
+20111CZ1003LABFS1  F 10:3011:30CL2                 N N N N N N N
+20111CZ1003LABFEP3 F 14:3015:30CL2                  N N N N N N 
+20111CZ1003LABFS4  M 14:3015:30CL2                 N N N N N N N
+20111CZ1003LABFSP2 TH08:3009:30CL2                 N N N N N N N
+20111CZ1003TUTFSP5 F 10:3011:30TR19                             
+20111CZ1003LABFS2  F 11:3012:30CL2                  N N N N N N 
+20111CZ1003LABFS5  F 14:3015:30CL2                 N N N N N N N
+20111CZ1003TUTFS2  M 14:3015:30TR18                             
+20111CZ1003LABCTZ1 W 17:3018:30CL2                  N N N N N N 
+20111CZ1003LABFSP1 TH08:3009:30CL2                  N N N N N N 
+20111CZ1003LABFS1  F 11:3012:30CL2                 N N N N N N N
+20111CZ1003TUTCGZP1T 09:3010:30TR19                             
+20111CZ1003TUTFSP2 W 09:3010:30TR+37                            
+20111CZ1003LABFSP2 TH09:3010:30CL2                 N N N N N N N
+20111CZ1003LECCS1  TH14:3015:30LT2A                             
+20111CZ1003LABFEP3 F 15:3016:30CL2                  N N N N N N 
+20111CZ1003LABFSP1 TH09:3010:30CL2                  N N N N N N 
+20111CZ1003LABFS5  F 15:3016:30CL2                 N N N N N N N
+20111CZ1003LECCS1  M 10:3011:30LT2A                             
+20111CZ1003LABFS3  M 15:3016:30CL2                  N N N N N N 
+20111CZ1003LABFSP4 M 09:3010:30CL2                  N N N N N N 
+20111CZ1003LABFS4  M 15:3016:30CL2                 N N N N N N N
+20111CZ1003LABFSP4 M 08:3009:30CL2                  N N N N N N 
+20111CZ1003LABFSP3 M 09:3010:30CL2                 N N N N N N N
+20111CZ1003TUTFS3  W 10:3011:30TR18                             
+20111CZ1003TUTFS4  W 11:3012:30TR19                             
+20111CZ1003LABCGZP1W 14:3015:30CL2                 N N N N N N N
+20111CZ1003TUTFSP4 T 14:3015:30TR+37                            
+20111CZ1003TUTFS5  M 13:3014:30TR19                             
+20111CZ1003LABFSP3 M 08:3009:30CL2                 N N N N N N N
+20111CZ1003TUTFSP1 M 09:3010:30TR+37                            
+20111CZ1003LABBCG1 W 13:3014:30CL2                  N N N N N N 
+20111CZ1003LABCTZ1 W 16:3017:30CL2                  N N N N N N 
+20111CZ1003LABFSP5 T 14:3015:30CL2                   N N N N N N
+20111CZ1003LABFSP5 T 15:3016:30CL2                   N N N N N N
+20111CZ1003LABFS2  F 10:3011:30CL2                  N N N N N N 
+20111CZ1004LABFS5  T 12:3013:30C&I                 N N N N N N N
+20111CZ1004TUTFSP4 W 09:3010:30TR17                             
+20111CZ1004LABFSP6 TH08:3009:30C&I                 N N N N N N N
+20111CZ1004LABFS3  F 11:3012:30C&I                  N N N N N N 
+20111CZ1004TUTFS4  T 12:3013:30TR12                             
+20111CZ1004LABFS1  W 09:3010:30COMM                 N N N N N N 
+20111CZ1004LABCTZ1 W 17:3018:30C&I                 N N N N N N N
+20111CZ1004LABFSP5 F 09:3010:30COMM                 N N N N N N 
+20111CZ1004TUTFS1  M 15:3016:30TR17                             
+20111CZ1004TUTCGZP1T 09:3010:30TR18                             
+20111CZ1004LABFS2  W 09:3010:30COMM                N N N N N N N
+20111CZ1004LECCS1  T 16:3017:30LT2A                             
+20111CZ1004TUTFS5  F 09:3010:30TR19                             
+20111CZ1004LABFSP6 TH09:3010:30C&I                 N N N N N N N
+20111CZ1004LABFSP3 M 15:3016:30CE                   N N N N N N 
+20111CZ1004TUTFSP2 M 16:3017:30TR14                             
+20111CZ1004LABFSP4 M 15:3016:30CE                  N N N N N N N
+20111CZ1004TUTFSP6 M 09:3010:30TR13                             
+20111CZ1004LABFS1  W 08:3009:30COMM                 N N N N N N 
+20111CZ1004LABFSP1 T 14:3015:30C&I                  N N N N N N 
+20111CZ1004LABFS4  F 10:3011:30C&I                 N N N N N N N
+20111CZ1004TUTBCG1 T 08:3009:30TR+37                            
+20111CZ1004TUTFSP5 M 08:3009:30TR17                             
+20111CZ1004LABFS2  W 08:3009:30COMM                N N N N N N N
+20111CZ1004LABCGZP1W 14:3015:30CE                   N N N N N N 
+20111CZ1004LABFS5  T 13:3014:30C&I                 N N N N N N N
+20111CZ1004LABFSP2 T 14:3015:30C&I                 N N N N N N N
+20111CZ1004LABFSP1 T 15:3016:30C&I                  N N N N N N 
+20111CZ1004LABFS3  F 10:3011:30C&I                  N N N N N N 
+20111CZ1004LABFSP3 M 14:3015:30CE                   N N N N N N 
+20111CZ1004TUTFSP1 W 08:3009:30TR11                             
+20111CZ1004LABBCG1 W 13:3014:30C&I                 N N N N N N N
+20111CZ1004LABCTZ1 W 16:3017:30C&I                 N N N N N N N
+20111CZ1004TUTFS3  T 13:3014:30TR13                             
+20111CZ1004LABFSP2 T 15:3016:30C&I                 N N N N N N N
+20111CZ1004TUTFS2  F 08:3009:30TR11                             
+20111CZ1004TUTFSP3 F 10:3011:30TR13                             
+20111CZ1004LABFSP4 M 14:3015:30CE                  N N N N N N N
+20111CZ1004LABBCG1 W 12:3013:30C&I                 N N N N N N N
+20111CZ1004LABCGZP1W 15:3016:30CE                   N N N N N N 
+20111CZ1004LABFSP5 F 08:3009:30COMM                 N N N N N N 
+20111CZ1004LABFS4  F 11:3012:30C&I                 N N N N N N N
+20111CZ1005TUTFS2  M 15:3016:30TR16                             
+20111CZ1005LABCTZ1 W 17:3018:30DIG                  N N N N N N 
+20111CZ1005LABFSP4 F 09:3010:30DIG                 N N N N N N N
+20111CZ1005LABFSP2 TH09:3010:30DIG                  N N N N N N 
+20111CZ1005LABFS3  M 15:3016:30DIG                 N N N N N N N
+20111CZ1005LECCS1  T 09:3010:30LT2A                             
+20111CZ1005TUTFSP4 TH09:3010:30TR11                             
+20111CZ1005TUTFSP6 F 15:3016:30TR+37                            
+20111CZ1005LABFSP5 T 14:3015:30DIG                 N N N N N N N
+20111CZ1005LABFS1  F 10:3011:30DIG                  N N N N N N 
+20111CZ1005LABFS5  F 15:3016:30DIG                  N N N N N N 
+20111CZ1005LABFS4  M 14:3015:30DIG                  N N N N N N 
+20111CZ1005TUTFS5  M 09:3010:30TR16                             
+20111CZ1005TUTFSP2 W 08:3009:30TR+37                            
+20111CZ1005LABFSP6 T 14:3015:30DIG                  N N N N N N 
+20111CZ1005LABFSP5 T 15:3016:30DIG                 N N N N N N N
+20111CZ1005LABFS2  F 10:3011:30DIG                 N N N N N N N
+20111CZ1005TUTFS1  M 14:3015:30TR17                             
+20111CZ1005LABCGZP1W 14:3015:30DIG                 N N N N N N N
+20111CZ1005LABFSP6 T 15:3016:30DIG                  N N N N N N 
+20111CZ1005LABFSP3 F 08:3009:30DIG                   N N N N N N
+20111CZ1005LABFS1  F 11:3012:30DIG                  N N N N N N 
+20111CZ1005LABFS3  M 14:3015:30DIG                 N N N N N N N
+20111CZ1005TUTFS4  W 10:3011:30TR19                             
+20111CZ1005TUTFS3  W 11:3012:30TR18                             
+20111CZ1005LABCTZ1 W 16:3017:30DIG                  N N N N N N 
+20111CZ1005LABFSP4 F 08:3009:30DIG                 N N N N N N N
+20111CZ1005LABFS2  F 11:3012:30DIG                 N N N N N N N
+20111CZ1005TUTFSP1 W 09:3010:30TR11                             
+20111CZ1005LABCGZP1W 15:3016:30DIG                 N N N N N N N
+20111CZ1005LABFSP1 TH08:3009:30DIG                 N N N N N N N
+20111CZ1005TUTFSP5 F 11:3012:30TR19                             
+20111CZ1005LABFS4  M 15:3016:30DIG                  N N N N N N 
+20111CZ1005TUTFSP3 W 09:3010:30TR13                             
+20111CZ1005LABFSP2 TH08:3009:30DIG                  N N N N N N 
+20111CZ1005LECCS1  TH15:3016:30LT2A                             
+20111CZ1005LABFSP3 F 09:3010:30DIG                   N N N N N N
+20111CZ1005LABFS5  F 14:3015:30DIG                  N N N N N N 
+20111CZ1005LABFSP1 TH09:3010:30DIG                 N N N N N N N
+20111CZ1008TUTFSR1 M 14:3015:30TR+37                            
+20111CZ1008LECCS1  T 11:3012:30LT10                             
+20111CZ1008LECCS1  TH16:3017:30LT10                             
+20111CZ1008LABFSR1 M 12:3013:30ELE                 N N N N N N N
+20111CZ1008LABFSR1 M 13:3014:30ELE                 N N N N N N N
+20111HE9091TUTSCE6 T 14:3015:30TR18                N            
+20111HE9091LECHSS  F 15:3016:30LT25                             
+20111HE9091TUTSCE5 T 14:3015:30TR16                N            
+20111HE9091TUTSCE1 F 10:3011:30TR15                N            
+20111HE9091TUTSCE4 W 11:3012:30TR14                N            
+20111HE9091TUTSCE3 W 11:3012:30TR11                N            
+20111HE9091LECHSS  F 16:3017:30LT25                             
+20111HE9091TUTSCE9 W 11:3012:30TR15                N            
+20111HE9091TUTSCE2 W 13:3014:30TR18                N            
+20111HE9091TUTSCE7 F 14:3015:30TR12                N            
+20111HE9091TUTSCE8 F 14:3015:30TR+37               N            
+20111HW0110TUTSCE3 T 11:3012:30TR+37                            
+20111HW0110TUTSCE1 M 09:3010:30MM2                              
+20111HW0110LECSCE  T 10:3011:30LT19A                            
+20111HW0110TUTSCE6 TH13:3014:30MM2                              
+20111HW0110TUTSCE2 M 13:3014:30MM2                              
+20111HW0110TUTSCE4 W 09:3010:30MM2                              
+20111HW0110TUTSCE5 TH11:3012:30TR+37                            
+20111HW0110TUTSCE7 F 13:3014:30MM2                              
+20111HW0210TUTSCE4 M 14:3015:30CSKL1               N            
+20111HW0210TUTSCE2 T 11:3012:30MM2                 N            
+20111HW0210TUTSCE3 F 10:3011:30MM2                 N            
+20111HW0210TUTSCE5 M 14:3015:30MM2                 N            
+20111HW0210TUTSCE1 T 10:3011:30CSKL1               N            
+20111HW0210TUTSCE7 W 14:3015:30MM2                 N            
+20111HW0210TUTSCE2 T 10:3011:30MM2                 N            
+20111HW0210TUTSCE6 W 14:3015:30CSKL1               N            
+20111HW0210TUTSCE3 F 11:3012:30MM2                 N            
+20111HW0210TUTSCE7 W 15:3016:30MM2                 N            
+20111HW0210TUTSCE8 TH11:3012:30MM2                 N            
+20111HW0210TUTSCE8 TH12:3013:30MM2                 N            
+20111HW0210TUTSCE4 M 15:3016:30CSKL1               N            
+20111HW0210TUTSCE6 W 15:3016:30CSKL1               N            
+20111HW0210TUTSCE5 M 15:3016:30MM2                 N            
+20111HW0210TUTSCE1 T 11:3012:30CSKL1               N            
+20111HW0310TUTSCE1 M 16:3017:30CSKL3                N N N N N N 
+20111HW0310TUTSCE3 W 08:3009:30CSKL3                N N N N N N 
+20111HW0310TUTSCE7 F 11:3012:30CSKL3                N N N N N N 
+20111HW0310TUTSCE5 TH14:3015:30CSKL3                N N N N N N 
+20111HW0310TUTSCE2 M 16:3017:30CSKL3               N N N N N N N
+20111HW0310TUTSCE4 W 08:3009:30CSKL3               N N N N N N N
+20111HW0310TUTSCE8 F 11:3012:30CSKL3               N N N N N N N
+20111HW0310TUTSCE5 TH13:3014:30CSKL3                N N N N N N 
+20111HW0310TUTSCE6 TH14:3015:30CSKL3               N N N N N N N
+20111HW0310TUTSCE1 M 15:3016:30CSKL3                N N N N N N 
+20111HW0310TUTSCE3 W 09:3010:30CSKL3                N N N N N N 
+20111HW0310TUTSCE6 TH13:3014:30CSKL3               N N N N N N N
+20111HW0310TUTSCE2 M 15:3016:30CSKL3               N N N N N N N
+20111HW0310TUTSCE4 W 09:3010:30CSKL3               N N N N N N N
+20111HW0310TUTSCE7 F 10:3011:30CSKL3                N N N N N N 
+20111HW0310LECSCE  T 14:3015:30LT3                              
+20111HW0310TUTSCE8 F 10:3011:30CSKL3               N N N N N N N

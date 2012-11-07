@@ -1,0 +1,2271 @@
+Venue Clash Printout
+
+VenueName=CL1 Tuesday 10:30:00-11:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE802				Lab				SCE		
+CSC102				Lab				FSR1		
+
+VenueName=CL1 Tuesday 11:30:00-12:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE802				Lab				SCE		
+CSC102				Lab				FSR1		
+
+VenueName=CL1 Thursday 14:30:00-15:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CSC302				Lab				TS2		
+CSC302				Lab				TS1		
+
+VenueName=CL1 Thursday 15:30:00-16:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CSC302				Lab				TS2		
+CSC302				Lab				TS1		
+
+VenueName=CL1 Friday 13:30:00-14:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE102				Lab				FER1		
+CSC302				Lab				TS3		
+
+VenueName=CL1 Friday 14:30:00-15:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE102				Lab				FER1		
+CSC302				Lab				TS3		
+
+VenueName=CL2 Monday 08:30:00-09:30:00	Freq=Odd
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE205				Lab				SS1		
+CSC205				Lab				SS1		
+
+VenueName=CL2 Monday 09:30:00-10:30:00	Freq=Odd
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE205				Lab				SS1		
+CSC205				Lab				SS1		
+
+VenueName=CL2 Wednesday 10:30:00-11:30:00	Freq=Odd
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE205				Lab				SS2		
+CSC204				Lab				FSP1		
+CSC204				Lab				FSP3		
+CSC205				Lab				SS2		
+
+VenueName=CL2 Wednesday 11:30:00-12:30:00	Freq=Odd
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE205				Lab				SS2		
+CSC204				Lab				FSP1		
+CSC204				Lab				FSP3		
+CSC205				Lab				SS2		
+
+VenueName=DIG Tuesday 08:30:00-09:30:00	Freq=Even
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CSC104				Lab				FSA1		
+CSC104				Lab				FS2		
+CSC104				Lab				BCG1		
+
+VenueName=DIG Tuesday 09:30:00-10:30:00	Freq=Even
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CSC104				Lab				FSA1		
+CSC104				Lab				FS2		
+CSC104				Lab				BCG1		
+
+VenueName=LT10 Monday 18:30:00-19:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE410				Lec				CE4		
+CSC407				Lec				CS4		
+SC443				Lec				SC4		
+
+VenueName=LT10 Monday 19:30:00-20:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE410				Lec				CE4		
+CSC407				Lec				CS4		
+SC443				Lec				SC4		
+
+VenueName=LT10 Monday 20:30:00-21:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE410				Lec				CE4		
+CSC407				Lec				CS4		
+SC443				Lec				SC4		
+
+VenueName=LT10 Tuesday 09:30:00-10:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE406				Lec				CE4		
+CSC304				Lec				CS3		
+SC430				Lec				SC4		
+
+VenueName=LT10 Thursday 08:30:00-09:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE406				Lec				CE4		
+CSC304				Lec				CS3		
+SC430				Lec				SC4		
+
+VenueName=LT10 Thursday 09:30:00-10:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CSC102				Lec				CS1		
+CPE102				Lec				CE1		
+
+VenueName=LT10 Friday 09:30:00-10:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE102				Lec				CE1		
+CSC102				Lec				CS1		
+
+VenueName=LT10 Friday 10:30:00-11:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE433				Lec				CE4		
+CSC419				Lec				CS4		
+CPE101				Lec				CE1		
+
+VenueName=LT10 Friday 12:30:00-13:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE406				Lec				CE4		
+CSC304				Lec				CS3		
+SC430				Lec				SC4		
+
+VenueName=LT11 Monday 13:30:00-14:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE432				Lec				CE4		
+CSC427				Lec				CS4		
+SC435				Lec				SC4		
+
+VenueName=LT11 Wednesday 12:30:00-13:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE410				Tut				CE4		
+CSC407				Tut				CS4		
+SC443				Tut				SC4		
+
+VenueName=LT11 Thursday 18:30:00-19:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE432				Lec				CE4		
+CSC427				Lec				CS4		
+SC435				Lec				SC4		
+
+VenueName=LT11 Thursday 19:30:00-20:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE432				Lec				CE4		
+CSC427				Lec				CS4		
+SC435				Lec				SC4		
+
+VenueName=LT11 Thursday 20:30:00-21:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE432				Tut				CE4		
+CSC427				Tut				CS4		
+SC435				Tut				SC4		
+
+VenueName=LT19 Monday 09:30:00-10:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE105				Lec				CE1		
+CSC105				Lec				CS1		
+
+VenueName=LT19 Monday 11:30:00-12:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE416				Lec				CE4		
+CSC411				Lec				CS4		
+SC432				Lec				SC4		
+
+VenueName=LT19 Monday 15:30:00-16:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE202				Lec				CE2		
+CSC201				Lec				CS2		
+
+VenueName=LT19 Monday 17:30:00-18:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE412				Lec				CE4		
+CSC408				Lec				CS4		
+SC437				Lec				SC4		
+
+VenueName=LT19 Tuesday 08:30:00-09:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE416				Lec				CE4		
+CSC411				Lec				CS4		
+SC432				Lec				SC4		
+
+VenueName=LT19 Tuesday 10:30:00-11:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE416				Tut				CE4		
+CSC411				Tut				CS4		
+SC432				Tut				SC4		
+
+VenueName=LT19 Tuesday 11:30:00-12:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE412				Lec				CE4		
+CSC408				Lec				CS4		
+SC437				Lec				SC4		
+
+VenueName=LT19 Tuesday 14:30:00-15:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE202				Lec				CE2		
+CSC201				Lec				CS2		
+
+VenueName=LT19 Wednesday 16:30:00-17:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE412				Lec				CE4		
+CSC408				Lec				CS4		
+SC437				Lec				SC4		
+
+VenueName=LT19 Wednesday 17:30:00-18:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE412				Tut				CE4		
+CSC408				Tut				CS4		
+SC437				Tut				SC4		
+
+VenueName=LT19 Thursday 13:30:00-14:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE202				Lec				CE2		
+CSC201				Lec				CS2		
+
+VenueName=LT19 Friday 14:30:00-15:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE416				Lec				CE4		
+CSC411				Lec				CS4		
+SC432				Lec				SC4		
+
+VenueName=LT20 Tuesday 14:30:00-15:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE428				Lec				CE4		
+CSC425				Lec				CS4		
+SC452				Lec				SC4		
+
+VenueName=LT20 Wednesday 14:30:00-15:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE428				Lec				CE4		
+CSC425				Lec				CS4		
+SC452				Lec				SC4		
+
+VenueName=LT20 Friday 18:30:00-19:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE428				Lec				CE4		
+CSC425				Lec				CS4		
+SC452				Lec				SC4		
+
+VenueName=LT20 Friday 19:30:00-20:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE428				Tut				CE4		
+CSC425				Tut				CS4		
+SC452				Tut				SC4		
+
+VenueName=LT2A Wednesday 09:30:00-10:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE105				Lec				CE1		
+CSC105				Lec				CS1		
+
+VenueName=LT4 Monday 12:30:00-13:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE427				Lec				CE4		
+CSC424				Lec				CS4		
+SC438				Lec				SC4		
+
+VenueName=LT4 Monday 16:30:00-17:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE203				Lec				CE2		
+CSC203				Lec				CS2		
+
+VenueName=LT4 Tuesday 15:30:00-16:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE425				Lec				CE4		
+CSC301				Lec				CS3		
+SC433				Lec				SC4		
+
+VenueName=LT4 Wednesday 10:30:00-11:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE425				Lec				CE4		
+CSC301				Lec				CS3		
+SC433				Lec				SC4		
+
+VenueName=LT4 Thursday 08:30:00-09:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE203				Lec				CE2		
+CSC203				Lec				CS2		
+
+VenueName=LT4 Thursday 09:30:00-10:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE425				Tut				CE4		
+SC433				Tut				SC4		
+
+VenueName=LT4 Thursday 10:30:00-11:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE425				Lec				CE4		
+CSC301				Lec				CS3		
+SC433				Lec				SC4		
+
+VenueName=LT4 Thursday 14:30:00-15:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE427				Lec				CE4		
+CSC424				Lec				CS4		
+SC438				Lec				SC4		
+
+VenueName=LT4 Friday 08:30:00-09:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE427				Lec				CE4		
+CSC424				Lec				CS4		
+SC438				Lec				SC4		
+
+VenueName=LT4 Friday 09:30:00-10:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE427				Tut				CE4		
+CSC424				Tut				CS4		
+SC438				Tut				SC4		
+
+VenueName=LT4 Friday 16:30:00-17:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE203				Lec				CE2		
+CSC203				Lec				CS2		
+
+VenueName=LT7 Monday 09:30:00-10:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE403				Lec				CE4		
+CSC403				Lec				CS4		
+SC442				Lec				SC4		
+
+VenueName=LT7 Monday 10:30:00-11:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE403				Lec				CE4		
+CSC403				Lec				CS4		
+SC442				Lec				SC4		
+
+VenueName=LT8 Monday 12:30:00-13:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE201				Lec				CE2		
+CPE103				Lec				CE1		
+
+VenueName=LT8 Tuesday 14:30:00-15:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE184				Lec				CE4		
+CSC184				Lec				CS2		
+
+VenueName=LT8 Tuesday 16:30:00-17:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE411				Lec				CE4		
+CSC204				Lec				CS2		
+
+VenueName=LT8 Thursday 11:30:00-12:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE411				Lec				CE4		
+CSC204				Lec				CS2		
+
+VenueName=LT8 Thursday 12:30:00-13:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE184				Lec				CE4		
+CSC184				Lec				CS2		
+
+VenueName=LT8 Thursday 16:30:00-17:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE403				Lec				CE4		
+CSC403				Lec				CS4		
+SC442				Lec				SC4		
+
+VenueName=LT8 Thursday 17:30:00-18:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE403				Tut				CE4		
+CSC403				Tut				CS4		
+SC442				Tut				SC4		
+
+VenueName=LT8 Friday 17:30:00-18:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE411				Lec				CE4		
+CSC204				Lec				CS2		
+
+VenueName=MM2 Monday 10:30:00-11:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+HW210				Tut				SCE4		
+HW210				Tut				SCE9		
+
+VenueName=MM2 Monday 11:30:00-12:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+HW210				Tut				SCE4		
+HW210				Tut				SCE9		
+
+VenueName=TR12 Friday 08:30:00-09:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CSC104				Tut				FS2		
+CSC104				Tut				FSA1		
+
+VenueName=TR15 Tuesday 15:30:00-16:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CSC207				Tut				SS1		
+CPE105				Tut				FEA1		
+
+VenueName=TR19 Tuesday 16:30:00-17:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CPE425				Tut				TS1		
+CSC301				Tut				TS1		
+
+VenueName=TR24 Tuesday 10:30:00-11:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CSC106				Tut				FSA1		
+CSC106				Tut				FS1		
+
+VenueName=UNKNOWN Monday 08:30:00-09:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+
+VenueName=UNKNOWN Monday 08:30:00-09:30:00	Freq=Odd
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+
+VenueName=UNKNOWN Monday 21:30:00-22:30:00	Freq=Weekly
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE101				Lec				CE1		
+CPE101				Tut				FER1		
+CPE101				Lab				FER1		
+CPE102				Lec				CE1		
+CPE102				Tut				FER1		
+CPE102				Lab				FER1		
+CPE103				Lec				CE1		
+CPE103				Tut				FER1		
+CPE104				Lec				CE1		
+CPE104				Tut				BCG1		
+CPE104				Lab				FE1		
+CPE105				Lec				CE1		
+CPE105				Tut				FE1		
+CPE105				Lab				FE1		
+CPE106				Lec				CE1		
+CPE106				Tut				FE1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE101				Lec				CE1		
+CPE101				Tut				FER1		
+CPE101				Lab				FER1		
+CPE102				Lec				CE1		
+CPE102				Tut				FER1		
+CPE102				Lab				FER1		
+CPE103				Lec				CE1		
+CPE103				Tut				FER1		
+CPE104				Lec				CE1		
+CPE104				Tut				BCG1		
+CPE104				Lab				FE1		
+CPE105				Lec				CE1		
+CPE105				Tut				FE1		
+CPE105				Lab				FE1		
+CPE106				Lec				CE1		
+CPE106				Tut				FE1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE101				Lec				CE1		
+CPE101				Tut				FER1		
+CPE101				Lab				FER1		
+CPE102				Lec				CE1		
+CPE102				Tut				FER1		
+CPE102				Lab				FER1		
+CPE103				Lec				CE1		
+CPE103				Tut				FER1		
+CPE104				Lec				CE1		
+CPE104				Tut				BCG1		
+CPE104				Lab				FE1		
+CPE105				Lec				CE1		
+CPE105				Tut				FE1		
+CPE105				Lab				FE1		
+CPE106				Lec				CE1		
+CPE106				Tut				FE1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE101				Lec				CE1		
+CPE101				Tut				FER1		
+CPE101				Lab				FER1		
+CPE102				Lec				CE1		
+CPE102				Tut				FER1		
+CPE102				Lab				FER1		
+CPE103				Lec				CE1		
+CPE103				Tut				FER1		
+CPE104				Lec				CE1		
+CPE104				Tut				BCG1		
+CPE104				Lab				FE1		
+CPE105				Lec				CE1		
+CPE105				Tut				FE1		
+CPE105				Lab				FE1		
+CPE106				Lec				CE1		
+CPE106				Tut				FE1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+
+VenueName=UNKNOWN Monday 21:30:00-22:30:00	Freq=Odd
+========================================================
+SubjectCode	LessonType LessonGroup
+========================================================
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE101				Lec				CE1		
+CPE101				Tut				FER1		
+CPE101				Lab				FER1		
+CPE102				Lec				CE1		
+CPE102				Tut				FER1		
+CPE102				Lab				FER1		
+CPE103				Lec				CE1		
+CPE103				Tut				FER1		
+CPE104				Lec				CE1		
+CPE104				Tut				BCG1		
+CPE104				Lab				FE1		
+CPE105				Lec				CE1		
+CPE105				Tut				FE1		
+CPE105				Lab				FE1		
+CPE106				Lec				CE1		
+CPE106				Tut				FE1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE101				Lec				CE1		
+CPE101				Tut				FER1		
+CPE101				Lab				FER1		
+CPE102				Lec				CE1		
+CPE102				Tut				FER1		
+CPE102				Lab				FER1		
+CPE103				Lec				CE1		
+CPE103				Tut				FER1		
+CPE104				Lec				CE1		
+CPE104				Tut				BCG1		
+CPE104				Lab				FE1		
+CPE105				Lec				CE1		
+CPE105				Tut				FE1		
+CPE105				Lab				FE1		
+CPE106				Lec				CE1		
+CPE106				Tut				FE1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE101				Lec				CE1		
+CPE101				Tut				FER1		
+CPE101				Lab				FER1		
+CPE102				Lec				CE1		
+CPE102				Tut				FER1		
+CPE102				Lab				FER1		
+CPE103				Lec				CE1		
+CPE103				Tut				FER1		
+CPE104				Lec				CE1		
+CPE104				Tut				BCG1		
+CPE104				Lab				FE1		
+CPE105				Lec				CE1		
+CPE105				Tut				FE1		
+CPE105				Lab				FE1		
+CPE106				Lec				CE1		
+CPE106				Tut				FE1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+CM101				Lec				M1		
+CM101				Lab				M1		
+CPE101				Lec				CE1		
+CPE101				Tut				FER1		
+CPE101				Lab				FER1		
+CPE102				Lec				CE1		
+CPE102				Tut				FER1		
+CPE102				Lab				FER1		
+CPE103				Lec				CE1		
+CPE103				Tut				FER1		
+CPE104				Lec				CE1		
+CPE104				Tut				BCG1		
+CPE104				Lab				FE1		
+CPE105				Lec				CE1		
+CPE105				Tut				FE1		
+CPE105				Lab				FE1		
+CPE106				Lec				CE1		
+CPE106				Tut				FE1		
+CPE183				Lec				CE4		
+CPE184				Lec				CE4		
+CPE184				Tut				TE1		
+CPE201				Lec				CE2		
+CPE201				Tut				FEP1		
+CPE201				Lab				FEP1		
+CPE202				Lec				CE2		
+CPE202				Tut				FEP1		
+CPE202				Lab				FEP1		
+CPE203				Lec				CE2		
+CPE203				Tut				FEP1		
+CPE203				Lab				FEP1		
+CPE204				Lec				CE2		
+CPE204				Tut				FEP1		
+CPE205				Lec				CE2		
+CPE205				Tut				SE1		
+CPE205				Lab				SE1		
+CPE206				Lec				CE2		
+CPE206				Tut				FEP1		
+CPE206				Lab				FEP1		
+CPE207				Lec				CE2		
+CPE207				Tut				FEP1		
+CPE207				Lab				FEP1		
+CPE208				Lec				CE2		
+CPE208				Tut				FEA1		
+CPE208				Lab				FEA1		
+CPE301				Lec				CE3		
+CPE301				Tut				TE1		
+CPE301				Lab				TE1		
+CPE302				Lec				CE3		
+CPE302				Tut				TE1		
+CPE302				Lab				TE1		
+CPE303				Lec				CE3		
+CPE303				Tut				TE1		
+CPE303				Lab				TE1		
+CPE403				Lec				CE4		
+CPE403				Tut				CE4		
+CPE406				Lec				CE4		
+CPE406				Tut				CE4		
+CPE410				Lec				CE4		
+CPE410				Tut				CE4		
+CPE411				Lec				CE4		
+CPE411				Tut				CE4		
+CPE412				Lec				CE4		
+CPE412				Tut				CE4		
+CPE414				Lec				CE4		
+CPE414				Tut				CE4		
+CPE415				Lec				CE4		
+CPE415				Tut				CE4		
+CPE416				Lec				CE4		
+CPE416				Tut				CE4		
+CPE421				Lec				CE4		
+CPE421				Tut				CE4		
+CPE425				Lec				CE4		
+CPE425				Tut				CE4		
+CPE427				Lec				CE4		
+CPE427				Tut				CE4		
+CPE428				Lec				CE4		
+CPE428				Tut				CE4		
+CPE432				Lec				CE4		
+CPE432				Tut				CE4		
+CPE433				Lec				CE4		
+CPE433				Tut				CE4		
+CPE802				Lab				SCE		
+CSC101				Lec				CS1		
+CSC101				Tut				FSR1		
+CSC102				Lec				CS1		
+CSC102				Tut				FSR1		
+CSC102				Lab				FSR1		
+CSC103				Lec				CS1		
+CSC103				Tut				FSR1		
+CSC104				Lec				CS1		
+CSC104				Tut				BCG1		
+CSC104				Lab				BCG1		
+CSC105				Lec				CS1		
+CSC105				Tut				BCG1		
+CSC105				Lab				BCG1		
+CSC106				Lec				CS1		
+CSC106				Tut				BCG1		
+CSC183				Lec				CS4		
+CSC184				Lec				CS2		
+CSC184				Tut				BCG4		
+CSC201				Lec				CS2		
+CSC201				Tut				FSA1		
+CSC201				Lab				FSA1		
+CSC202				Lec				CS2		
+CSC202				Tut				SSR1		
+CSC203				Lec				CS2		
+CSC203				Tut				FSP1		
+CSC203				Lab				FSP1		
+CSC204				Lec				CS2		
+CSC204				Tut				BCG2		
+CSC204				Lab				BCG2		
+CSC205				Lec				CS2		
+CSC205				Tut				BCG2		
+CSC205				Lab				BCG2		
+CSC206				Lec				CS2		
+CSC206				Tut				SS1		
+CSC206				Lab				SS1		
+CSC207				Lec				CS2		
+CSC207				Tut				BCG2		
+CSC207				Lab				BCG2		
+CSC301				Lec				CS3		
+CSC301				Tut				TS1		
+CSC302				Lec				CS3		
+CSC302				Tut				TS1		
+CSC302				Lab				TS1		
+CSC303				Lec				CS3		
+CSC303				Tut				TS1		
+CSC303				Lab				TS1		
+CSC304				Lec				CS3		
+CSC304				Tut				TS1		
+CSC403				Lec				CS4		
+CSC403				Tut				CS4		
+CSC407				Lec				CS4		
+CSC407				Tut				CS4		
+CSC408				Lec				CS4		
+CSC408				Tut				CS4		
+CSC411				Lec				CS4		
+CSC411				Tut				CS4		
+CSC415				Lec				CS4		
+CSC415				Tut				CS4		
+CSC419				Lec				CS4		
+CSC419				Tut				CS4		
+CSC420				Lec				CS4		
+CSC420				Tut				CS4		
+CSC424				Lec				CS4		
+CSC424				Tut				CS4		
+CSC425				Lec				CS4		
+CSC425				Tut				CS4		
+CSC427				Lec				CS4		
+CSC427				Tut				CS4		
+HW210				Tut				SCE1		
+HW310				Lec				SCE		
+HW310				Tut				SCE1		
+SC404				Lec				SC4		
+SC404				Tut				SC4		
+SC430				Lec				SC4		
+SC430				Tut				SC4		
+SC432				Lec				SC4		
+SC432				Tut				SC4		
+SC433				Lec				SC4		
+SC433				Tut				SC4		
+SC435				Lec				SC4		
+SC435				Tut				SC4		
+SC437				Lec				SC4		
+SC437				Tut				SC4		
+SC438				Lec				SC4		
+SC438				Tut				SC4		
+SC442				Lec				SC4		
+SC442				Tut				SC4		
+SC443				Lec				SC4		
+SC443				Tut				SC4		
+SC445				Lec				SC4		
+SC445				Tut				SC4		
+SC450				Lec				SC4		
+SC450				Tut				SC4		
+

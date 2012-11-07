@@ -1,0 +1,146 @@
+<html>
+<head>
+
+<STYLE type="text/css">
+		UL{
+			width:220px;  
+			position: relative; 
+			display: outline;
+		}
+		
+		LI{
+		  cursor:move;
+		}
+		
+		TABLE{
+			font-family: "Arial", Arial, serif;
+			font-size: 10px;
+		}
+		
+		TH{
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 11px;
+		}
+	
+	</STYLE>
+</head>
+<body>
+<form id="MainForm" name="MainForm" method="post">
+<input type=button value="Export To Excel" onclick="exportExcel();"/><br>
+<table border="1" cellspacing="1" cellpadding="0">
+	<tr>
+		<th>DAYS</th><th>TIME</th>
+		<% 0.upto(@ssd.length-1) do |s_index| -%>
+		<th><%=@ssd[s_index]-%></th>
+		<% end -%>
+		<th>TIME</th>
+	</tr>
+	<% tsid=1 -%>
+	<% 1.upto(@maxday.to_i) do |day_index| -%>
+	<tr><th rowspan=<%=@rowspanNo-%>><%=@dday[day_index]-%></th>
+			<th>830</th>
+			<% 0.upto(@ssd.length-1) do |s_index| -%>
+				<td onDblClick="chosenSlot('<%=@ssd[s_index]-%>','<%=tsid-%>');" id="cell_<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+				<UL id="cellList_<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+					<%
+					0.upto(@slotAlloc[s_index].length-1) do |sa| -%>
+						<% if @slotAlloc[s_index][sa].timeid.to_i==tsid.to_i -%>
+							<% case @slotAlloc[s_index][sa].lessonType
+								 when "Lec"
+								 	liColor='Red'
+								 when "Tut"
+								 	liColor='Blue'
+								 when "Lab"
+								 	liColor='Green'
+								 end -%>
+							<% if @slotAlloc[s_index][sa].staffId=="0" 
+								liColor='Black'%>
+							<% end %>
+							<li id="cellListItem_<%=@ssd[s_index]+"_"+tsid.to_s+"_"+@slotAlloc[s_index][sa].staffId.to_s-%>" style="color:<%=liColor-%>"><%=@slotAlloc[s_index][sa].details-%></li>													
+							<% end-%>
+					<%end-%>
+				</UL>
+				</td>				
+			<% end -%>
+			<th>830</th>
+			<% tsid +=1 -%>
+			<% 930.step(@maxtimeslot.to_i,100) do |time_index| -%>
+				<tr>
+					<th><%=time_index-%></th>
+					<% 0.upto(@ssd.length-1) do |s_index| -%>
+					<td onDblClick="chosenSlot('<%=@ssd[s_index]-%>','<%=tsid-%>');" id="cell_<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+					<UL id="cellList_<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+					<%
+					0.upto(@slotAlloc[s_index].length-1) do |sa| -%>
+						<% if @slotAlloc[s_index][sa].timeid.to_i==tsid.to_i -%>
+							<% case @slotAlloc[s_index][sa].lessonType
+								 when "Lec"
+								 	liColor='Red'
+								 when "Tut"
+								 	liColor='Blue'
+								 when "Lab"
+								 	liColor='Green'
+								 end -%>
+							<% if @slotAlloc[s_index][sa].staffId=="0" 
+								liColor='Black'%>
+							<% end %>
+							<li id="cellListItem_<%=@ssd[s_index]+"_"+tsid.to_s+"_"+@slotAlloc[s_index][sa].staffId.to_s-%>" style="color:<%=liColor-%>"><%=@slotAlloc[s_index][sa].details-%></li>	
+							<% end-%>
+					<%end-%>
+					</UL>
+					</td>
+					<% end -%>
+					<th><%=time_index-%></th>
+				</tr>
+				<% tsid +=1 -%>
+			<% end -%>
+			<% tsid+=@tInc-%>
+	</tr>
+	<% end -%>
+
+</table>
+</form>
+ </body>
+</html>
+<SCRIPT type="text/javascript">
+var newwindow = '';
+
+function popWindow(url) {
+	if (!newwindow.closed && newwindow.location) {
+		newwindow.location.href = url;
+	}
+	else {
+		newwindow=window.open(url,'scheduless','menubar=0,resizable=1,height=530,width=580');
+		if (!newwindow.opener) newwindow.opener = self;
+	}
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
+function chosenSlot(scode,tsid){
+	cellName="cellList_"+scode+"_"+tsid;
+if (document.getElementById(cellName).innerHTML=="")
+	alert("No class in the slot.");
+else
+popWindow("schedule_staff_slot?scode="+scode+"&tsid="+tsid);
+}
+
+function selfReload(){
+	window.location.reload();
+}
+
+function exportExcel(){
+	var subList="";
+	<% 0.upto(@ssd.length-1) do |s| %>
+		subList+="<%=@ssd[s]%>"+"-";
+	<% end %>
+	subList=subList.substr(0,subList.length-1);
+	new Ajax.Request('/show_schedule/export_excel', {asynchronous:true, evalScripts:true, onComplete:function(request){exportDone(request)}, parameters:'subList='+subList+'&stype=staff'});
+	
+}
+
+function exportDone(request){
+	window.open("/show_schedule/export_done",'ExportToExcel','menubar=0,resizable=1,height=250,width=300');
+}
+</script>

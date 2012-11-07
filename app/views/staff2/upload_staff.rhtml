@@ -1,0 +1,15 @@
+<div style="text-align:center">
+	<font size=4 color="#804000"><b>Import staff assignment into DB</b></font>
+	<p>Step 1: update staff record</p>
+	<table style="margin: 0pt auto;">
+		<tr>
+			<td><%=link_to "Reset staff list", :action => "import_staff_step1" %></td>
+			<td style="color:red">Important: all the record of staff will be deleted</td>
+		</tr>
+		<tr>
+			<td><%=link_to "Update staff list", :action => "import_staff_step1", :skip=>true %></td>
+			<td style="color:red">Staff list will be merged with the new one</td>
+		</tr>
+	</table>
+	<br/>
+</div>

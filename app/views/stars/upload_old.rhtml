@@ -1,0 +1,30 @@
+<div style="text-align:center">
+<font color="#804000" size=3><b>3 Files were generated.</b></font><br> 
+<br>
+Please download the files and fill in / modify the necessary entry inside the files: 
+<br>
+<%=link_to "1)SubjectDetails",{:action =>"download", :fname=>"subjectDetails.xls"}%> &nbsp;
+<%=link_to "2)VenueDetails",{:action =>"download", :fname=>"venueDetails.xls"}%> &nbsp;
+<%=link_to "3)LessonGroupDetails",{:action =>"download", :fname=>"lessonGroupDetails.xls"}%>
+
+<br><br>
+
+<b>Once You finished filling up these files ==></b> <%=link_to_function("click here","Element.show('uploadFiles')")%>
+<br><br>
+<div id="uploadFiles" style="display:none;">
+<font color="#FF00FF" size=3><b>Import your Modified Excel Files here:</b></font><br> 
+<%= start_form_tag ({:action => "import"}, {:multipart => true}) %>
+<p>Browse Your <font color="#FF8040"><b>SubjectDetails.xls</b></font> here: <br />
+  <%= file_field_tag "subup" %></p>
+<p>Browse Your <font color="#FF8040"><b>VenueDetails.xls</b></font> here: </b></font><br />
+  <%= file_field_tag "venup" %></p>
+<p>
+<p>Browse Your <font color="#FF8040"><b>LessonGroupDetails.xls</b></font> here: </b></font><br />
+  <%= file_field_tag "grpup" %></p>
+<p>
+<br />
+  <%= submit_tag  "Import To DB" %>
+</p>
+<%= end_form_tag %>
+</div>
+</div>

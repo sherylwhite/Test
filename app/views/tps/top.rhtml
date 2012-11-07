@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 Transitional//EN">
+<html>
+	<head>
+		<%= javascript_include_tag 'Apymenu.js' %>
+		<script type="text/javascript">
+			function setOption(val){
+				if (val=="1")
+					location.replace("top?winOption=1")
+				else
+					location.replace("top?winOption=2")
+			}
+		</script>
+
+	</head>
+
+	<body>
+		<table align=center>
+		<tr>
+		<td>
+		<img src="/images/tps-logo.gif" width="550"/>
+		<a href="logout" target="_parent" ><img border=0 src="/images/quit.png" width="70"/></a>
+		<% if @win_option=="1" || @win_option==nil%>
+			<input type=radio name="winOption" value="1" style="position:absolute; top:40px" checked onclick="setOption(this.value)"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/new-window.png"  width="160"/>
+			<input type=radio name="winOption" value="2" style="position:absolute; top:40px" onclick="setOption(this.value)"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/same-window.png" width="160"/>
+			
+		</td>
+		</tr>
+		<tr align=center>
+		<td>
+		<% if Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Privileged"%>
+			<%= javascript_include_tag 'MenuTPS_OpenNewWindow_2.js' %>
+		<% elsif Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Normal"%>
+			<%= javascript_include_tag 'MenuTPS_OpenNewWindow_3.js' %>
+		<% else%>
+			<%= javascript_include_tag 'MenuTPS_OpenNewWindow.js' %>
+		<% end %>
+		</td>
+		</tr>
+		<tr align=center>
+		<td>
+		<% else %>
+			<input type=radio name="winOption" value="1" style="position:absolute; top:40px" onclick="setOption(this.value)"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/new-window.png"  width="160"/>
+			<input type=radio name="winOption" value="2" style="position:absolute; top:40px" checked onclick="setOption(this.value)"/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/images/same-window.png" width="160"/>
+		</td>
+		</tr>
+		<tr align=center>
+		<td>	
+		<% if Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Privileged"%>
+			<%= javascript_include_tag 'MenuTPS_LoadSameWindow_2.js' %>
+		<% elsif Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Normal"%>
+			<%= javascript_include_tag 'MenuTPS_LoadSameWindow_3.js' %>
+		<% else%>
+			<%= javascript_include_tag 'MenuTPS_LoadSameWindow.js' %>
+		<% end %>
+			
+		</td>
+		</tr>
+		<tr align=center>
+		<td>
+		<% end %>
+		</td>
+		</tr>
+		</table>
+	</body>
+</html>
+
+

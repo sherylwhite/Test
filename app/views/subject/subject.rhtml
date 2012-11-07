@@ -1,0 +1,690 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+
+var newwindow = '';
+
+function popWindow(url) {
+	if (!newwindow.closed && newwindow.location) {
+		newwindow.location.href = url;
+	}
+	else {
+		newwindow=window.open(url,'EditPossibleVenues','menubar=0,resizable=1,height=350,width=500');
+		if (!newwindow.opener) newwindow.opener = self;
+	}
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
+function EditPossibleVenue(classType){
+	var dom = document.getElementById("SubjectForm");
+							
+	if((dom.actionDDM.value != "Pls select an action")&&(dom.actionDDM.value != "View")&&(dom.actionDDM.value != "Delete")){
+			var posVens="";
+			checkOk=true;
+			switch(classType){		
+					case "Lec":
+						if (dom.lecVenue.disabled==true) checkOk=false;
+						posVens=dom.lecVenue.value;
+						break;
+					case "Tut":
+						if (dom.tutVenue.disabled==true) checkOk=false;
+						posVens=dom.tutVenue.value;
+						break;
+					case "Lab":
+						if (dom.labVenue.disabled==true) checkOk=false;
+						posVens=dom.labVenue.value;
+						break;
+				}
+			
+			posVens=posVens.replace("&","specialNcharacter");
+			if (checkOk)
+				 popWindow("/subject/edit_possible_venues?scode="+dom.subjectCode.value+"&lessonType="+classType+"&posVens="+posVens);
+			else
+				alert("Please Select at least 1 lesson a week to enable this function."); 
+
+	} //end-if
+	else{
+		alert("Please Select Update/Add Function to enable this function.");    
+	}
+	return false;
+} 
+
+function EditLGAssigned(classType){
+	var dom = document.getElementById("SubjectForm");
+							
+	if((dom.actionDDM.value != "Pls select an action")&&(dom.actionDDM.value != "View")&&(dom.actionDDM.value != "Delete")){
+			var LGassigned="";
+			checkOk=true;
+			switch(classType){		
+					case "Lec":
+						if (dom.lecLGassigned.disabled==true) checkOk=false;
+						LGassigned=dom.lecLGassigned.value;
+						break;
+					case "Tut":
+						if (dom.tutLGassigned.disabled==true) checkOk=false;
+						LGassigned=dom.tutLGassigned.value;
+						break;
+					case "Lab":
+						if (dom.labLGassigned.disabled==true) checkOk=false;
+						LGassigned=dom.labLGassigned.value;
+						break;
+				}
+			
+			if (checkOk)
+				 popWindow("/subject/edit_lesson_groups_assigned?scode="+dom.subjectCode.value+"&lessonType="+classType+"&lessonGroupsAssigned="+LGassigned);
+			else
+				alert("Please Select at least 1 lesson a week to enable this function."); 
+
+	} //end-if
+	else{
+		alert("Please Select Update/Add Function to enable this function.");    
+	}
+	return false;
+} 
+
+function maintainLessonIndexGrp(classType){
+var dom = document.getElementById("SubjectForm");
+
+popWindow("/subject/edit_lesson_index?scode="+dom.subjectCode.value);
+
+}
+
+function maintainLessonGrp(classType){
+var dom = document.getElementById("SubjectForm");
+
+popWindow("/subject/maintain_lesson_groups?scode="+dom.subjectCode.value+"&lessonType="+classType);
+
+}
+
+function onChangeAction(){
+var dom = document.getElementById("SubjectForm");
+
+
+	if(dom.actionDDM.value == "Add"){
+		dom.existSubjectDDM.disabled = true;
+		clearField();
+		dom.searchSubjectBtn.disabled = true;
+		
+		if(dom.existSubjectDDM.options.length > 0){
+				dom.existSubjectDDM.selectedIndex = -1;
+		} 
+		EnDisable()
+	}
+	else if(dom.actionDDM.value == "Pls select an action"){
+			dom.existSubjectDDM.disabled=true;
+			clearField();
+			dom.yearOfStudy.disabled = true;
+			dom.discipline.disabled = true;
+			dom.searchSubjectBtn.disabled = true;	
+			if(dom.existSubjectDDM.options.length > 0){
+				dom.existSubjectDDM.selectedIndex = -1;
+			} 
+			EnDisable()
+	}
+	else{
+		dom.existSubjectDDM.disabled = false;
+		dom.maintainLGBtn.disabled=true;
+		dom.maintainLIGBtn.disabled=true;
+		clearField();
+		dom.yearOfStudy.disabled = false;
+		dom.discipline.disabled = false;
+		dom.searchSubjectBtn.disabled = false;
+		if(dom.existSubjectDDM.options.length > 0){
+				dom.existSubjectDDM.selectedIndex = -1;
+		
+		EnDisable2();
+		
+	} 		
+		
+		
+}	
+}
+
+function onChangeList(){
+clearField();
+var dom = document.getElementById("SubjectForm");
+var subSel=dom.existSubjectDDM.value;
+	<% 0.upto(@sub_list.length-1) do |s| %>
+		if (subSel=="<%=@sub_list[s].id%>"){
+			dom.yearOfStudy.value="<%=@sub_list[s].yearOfStudy%>";
+			dom.discipline.value="<%=@sub_list[s].discipline%>";
+			dom.subjectCode.value=subSel;
+			dom.subjectName.value="<%=@sub_list[s].subjectName%>";
+			dom.acadUnit.value="<%=@sub_list[s].acad_unit%>";
+			dom.sizeOfCohort.value="<%=@sub_list[s].cohort_size%>";
+			dom.remarks.value="<%=@sub_list[s].remarks%>";
+		}
+	<% end %>
+	
+	<% 0.upto(@sub_lessons.length-1) do |sl| %>
+		if (subSel=="<%=@sub_lessons[sl].subjectCode%>"){
+			<% if @sub_lessons[sl].lessonType=="Lec"%>
+				dom.noOfLecDDM.value="<%=@sub_lessons[sl].noOfLesson%>";
+				dom.lecFreqDDM.value="<%=@sub_lessons[sl].frequency%>";
+				dom.lecVenue.value="<%=@sub_lessons[sl].possibleVenues%>";
+				dom.lecLGassigned.value="<%=@sub_lessons[sl].lessonGroupsAssigned%>"; 
+			<% elsif @sub_lessons[sl].lessonType=="Tut"%>
+				dom.noOfTutDDM.value="<%=@sub_lessons[sl].noOfLesson%>";
+				dom.tutFreqDDM.value="<%=@sub_lessons[sl].frequency%>";
+				dom.tutVenue.value="<%=@sub_lessons[sl].possibleVenues%>";
+				dom.tutLGassigned.value="<%=@sub_lessons[sl].lessonGroupsAssigned%>"; 
+			<% elsif @sub_lessons[sl].lessonType=="Lab" %>
+				dom.noOfLabDDM.value="<%=@sub_lessons[sl].noOfLesson%>";
+				dom.labFreqDDM.value="<%=@sub_lessons[sl].frequency%>";
+				dom.labVenue.value="<%=@sub_lessons[sl].possibleVenues%>";
+				dom.labLGassigned.value="<%=@sub_lessons[sl].lessonGroupsAssigned%>"; 
+			<% end %>
+		}
+	<% end %>
+		
+	EnDisable();
+	if(dom.actionDDM.value!="View" && dom.actionDDM.value!="Delete"){
+	EnDisPosVenLesGrp('Lec');
+	EnDisPosVenLesGrp('Tut');
+	EnDisPosVenLesGrp('Lab');
+	}
+}
+
+function EnDisPosVenLesGrp(classType){
+var dom = document.getElementById("SubjectForm");
+	switch(classType){		
+		case "Lec":
+			if (dom.noOfLecDDM.value==0){
+				dom.lecVenue.disabled=true;
+				dom.lecLGassigned.disabled=true;
+			}
+			else {
+				dom.lecVenue.disabled=false;
+				dom.lecLGassigned.disabled=false;
+			}
+			break;
+		case "Tut":
+			if (dom.noOfTutDDM.value==0){
+				dom.tutVenue.disabled=true;
+				dom.tutLGassigned.disabled=true;
+			}
+			else {
+				dom.tutVenue.disabled=false;
+				dom.tutLGassigned.disabled=false;
+			}
+			break;
+		case "Lab":
+			if (dom.noOfLabDDM.value==0){
+				dom.labVenue.disabled=true;
+				dom.labLGassigned.disabled=true;
+			}
+			else {
+				dom.labVenue.disabled=false;
+				dom.labLGassigned.disabled=false;
+			}
+			break;
+	}
+}
+
+function EnDisable(){
+var dom = document.getElementById("SubjectForm");
+
+if(dom.actionDDM.value != "Add"){
+	
+	dom.maintainLGBtn.disabled=true;
+	if (dom.lecVenue.value!="")
+		dom.lecVenue.disabled=false;
+	else	dom.lecVenue.disabled=true;
+	if (dom.tutVenue.value!="")
+		dom.tutVenue.disabled=false;
+	else	dom.tutVenue.disabled=true;
+	if (dom.labVenue.value!="")
+		dom.labVenue.disabled=false;
+	else	dom.labVenue.disabled=true;
+	
+	if (dom.lecLGassigned.value!="")
+		dom.lecLGassigned.disabled=false;
+	else	dom.lecLGassigned.disabled=true;
+	if (dom.tutLGassigned.value!="")
+		dom.tutLGassigned.disabled=false;
+	else	dom.tutLGassigned.disabled=true;
+	if (dom.labLGassigned.value!="")
+		dom.labLGassigned.disabled=false;
+	else	dom.labLGassigned.disabled=true;
+	
+	
+}
+
+if (dom.actionDDM.value == "Update"){
+	
+	dom.subjectName.disabled=false;
+	dom.acadUnit.disabled=false;
+	dom.sizeOfCohort.disabled=false;
+	dom.noOfLecDDM.disabled=false;
+	dom.noOfTutDDM.disabled=false;
+	dom.noOfLabDDM.disabled=false;
+	dom.lecFreqDDM.disabled=false;
+	dom.tutFreqDDM.disabled=false;
+	dom.labFreqDDM.disabled=false;
+	dom.maintainLGBtn.disabled=false;
+	dom.maintainLIGBtn.disabled=false;
+	dom.remarks.disabled=false;
+	dom.submitSubjectBtn.disabled=false;
+	dom.resetBtn.disabled=false;
+
+}
+else if (dom.actionDDM.value == "Add"){
+	dom.subjectCode.disabled=false;
+	dom.subjectName.disabled=false;
+	dom.yearOfStudy.disabled=false;
+	dom.discipline.disabled=false;
+	dom.acadUnit.disabled=false;
+	dom.sizeOfCohort.disabled=false;
+	dom.noOfLecDDM.disabled=false;
+	dom.noOfTutDDM.disabled=false;
+	dom.noOfLabDDM.disabled=false;
+	dom.lecFreqDDM.disabled=false;
+	dom.tutFreqDDM.disabled=false;
+	dom.labFreqDDM.disabled=false;
+	dom.lecLGassigned.disabled=true;
+	dom.tutLGassigned.disabled=true;
+	dom.labLGassigned.disabled=true;
+	dom.lecVenue.disabled=true;
+	dom.tutVenue.disabled=true;
+	dom.labVenue.disabled=true;
+	dom.maintainLGBtn.disabled=false;
+	dom.maintainLIGBtn.disabled=true;
+	dom.remarks.disabled=false;
+	dom.submitSubjectBtn.disabled=false;
+	dom.resetBtn.disabled=false;
+
+}
+else{
+	dom.subjectCode.disabled=true;
+	dom.subjectName.disabled=true;
+	dom.acadUnit.disabled=true;
+	dom.sizeOfCohort.disabled=true;
+	dom.noOfLecDDM.disabled=true;
+	dom.noOfTutDDM.disabled=true;
+	dom.noOfLabDDM.disabled=true;
+	dom.lecFreqDDM.disabled=true;
+	dom.tutFreqDDM.disabled=true;
+	dom.labFreqDDM.disabled=true;
+	dom.maintainLGBtn.disabled=true;
+	dom.maintainLIGBtn.disabled=true;
+	dom.remarks.disabled=true;
+	dom.submitSubjectBtn.disabled=true;
+	dom.resetBtn.disabled=true;			
+	if (dom.actionDDM.value == "View"){
+	dom.maintainLIGBtn.disabled=false;
+	}
+	if(dom.actionDDM.value == "Delete"){
+	dom.submitSubjectBtn.disabled=false;
+	dom.resetBtn.disabled=false;
+	}
+}
+
+
+}
+
+function EnDisable2(){
+var dom = document.getElementById("SubjectForm");
+	dom.subjectCode.disabled=true;
+	dom.subjectName.disabled=true;
+	dom.acadUnit.disabled=true;
+	dom.sizeOfCohort.disabled=true;
+	dom.noOfLecDDM.disabled=true;
+	dom.noOfTutDDM.disabled=true;
+	dom.noOfLabDDM.disabled=true;
+	dom.lecFreqDDM.disabled=true;
+	dom.tutFreqDDM.disabled=true;
+	dom.labFreqDDM.disabled=true;
+	dom.remarks.disabled=true;
+	dom.submitSubjectBtn.disabled=true;
+	dom.resetBtn.disabled=true;			
+
+}
+
+function searchSubject(){
+var dom = document.getElementById("SubjectForm");
+
+location.replace("subject?actionDDM="+dom.actionDDM.value+"&yearOfStudy="+dom.yearOfStudy.value+"&discipline="+dom.discipline.value+"&search=yes");
+
+}
+
+function clearField(){
+var dom = document.getElementById("SubjectForm");
+
+		dom.yearOfStudy.value = "";
+		dom.discipline.value = "";
+		dom.subjectCode.value = "";
+		dom.subjectName.value = "";
+		dom.acadUnit.value = "";
+		dom.sizeOfCohort.value = "";
+		dom.lecVenue.value="";
+		dom.labVenue.value="";
+		dom.tutVenue.value="";
+		dom.lecLGassigned.value="";
+		dom.labLGassigned.value="";
+		dom.tutLGassigned.value="";
+		dom.noOfLecDDM.selectedIndex = 0;
+		dom.lecFreqDDM.selectedIndex = 0;				
+		dom.noOfTutDDM.selectedIndex = 0;
+		dom.tutFreqDDM.selectedIndex = 0;
+		dom.noOfLabDDM.selectedIndex = 0;
+		dom.labFreqDDM.selectedIndex = 0;
+				
+		dom.submitSubjectBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+} //end-clearField()
+
+function resetForm(){
+var dom = document.getElementById("SubjectForm");
+	clearField();
+	dom.actionDDM.selectedIndex=0;
+	onChangeAction();
+	EnDisable();
+	
+}
+
+function formValidator(){
+var dom = document.getElementById("SubjectForm");
+	
+	stripSpaces(dom.yearOfStudy);
+	stripSpaces(dom.discipline);
+	stripSpaces(dom.subjectCode);
+	stripSpaces(dom.subjectName);
+	stripSpaces(dom.acadUnit);
+	stripSpaces(dom.sizeOfCohort);				
+	stripSpaces(dom.remarks);
+				
+	dom.remarks.value =dom.remarks.value.replace(/\r\n/g, " " );
+	
+	if(dom.yearOfStudy.value.length == 0){
+		alert("Pls enter an appropriate Year Of Study.");
+			dom.yearOfStudy.focus();		
+		return false;
+	} //end-if
+				
+	if(dom.discipline.value.length == 0){
+		alert("Pls enter an appropriate Discipline.");
+			dom.discipline.focus();
+			return false;
+	} //end-if
+	
+	if(dom.subjectCode.value.length == 0){
+		alert("Pls enter an appropriate Subject Code.");
+			dom.subjectCode.focus();
+		return false;
+	} //end-if
+				
+	if(dom.subjectName.value.length == 0){
+		alert("Pls enter an appropriate Subject Name.");
+			dom.subjectName.focus();
+			return false;
+	} //end-if
+				
+	if(dom.acadUnit.value.length == 0){
+		alert("Pls enter an appropriate Academic Unit for the subject.");
+			dom.acadUnit.focus();
+		return false;
+	} //end-if
+				
+	if(dom.sizeOfCohort.value.length == 0){
+		alert("Pls enter an appropriate Size Of Cohort.");
+			dom.sizeOfCohort.focus();
+			return false;
+	} //end-if
+	
+	dom.subjectCode.disabled=false;
+	
+} //end-formValidator()
+function checkUserType(){
+var dom = document.getElementById("SubjectForm");
+<% if Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Normal"%>
+	removeAllDDMItem('actionDDM')
+	var newOption = new Option();
+	newOption.text = "View existing subject";
+	newOption.value = "View";
+	dom.actionDDM.options[0]=newOption;
+	onChangeAction();	
+<% end %>
+}
+
+</script>
+</head>
+<body onload="checkUserType();">
+<form id="SubjectForm" method="post" action="/subject/process_subject" onsubmit="return formValidator();">
+<Table class="Table1" allign=center>
+	<tr>
+		<th colspan=7>View / Add / Update / Delete Subject, Lesson, Lesson Group</th>
+	</tr>
+	<tr>
+		<td >Choose an action:</td>
+		<td colspan=5>
+			<Select size="1" id="actionDDM" name="actionDDM" style="WIDTH: 203px" onchange="onChangeAction()" tabIndex="1">
+  				<option value="Pls select an action">Pls select an action</option>
+				<option value="View">View existing subject</option>
+				<option value="Add">Add new subject</option>
+				<option value="Update">Update existing subject</option>
+				<option value="Delete">Delete existing subject</option>
+  	    		</Select>
+		</td>
+		<td rowspan=18 align=center> Existing Subject (s): <br><br>
+			<Select size="29" id="existSubjectDDM" name="existSubjectDDM" style="WIDTH: 250px" onchange="onChangeList()" tabIndex="24" disabled=true>
+				<% 0.upto(@sub_list.length-1) do |s| %>
+					<option value="<%=@sub_list[s].id%>"><%=@sub_list[s].id%>&nbsp;&nbsp;&nbsp;<%=@sub_list[s].subjectName%> </option>
+				<% end %>
+			<Select>
+			<br>
+		</td>
+	</tr>
+	<tr>
+    		<td>Year of Study:</td>
+    		<td><input type="Text" id="yearOfStudy" name="yearOfStudy" size="13" MaxLength="10" tabIndex="3" onkeypress="return allowAlphaNumericSpace('Year of Study')" disabled=true></td>
+    		<td>Discipline:</td>
+    		<td><input type="Text" id="discipline" name="discipline" size="13" MaxLength="50" tabIndex="4" onkeypress="return allowAlphaNumericSpace('Discipline')" disabled=true></td>
+		<td colspan=2 align="center"><input type="button" value="Search Subject" id="searchSubjectBtn" name="searchSubjectBtn" tabIndex="25" onClick="searchSubject()" disabled=true></td>
+	</tr>
+	<tr>	<td colspan=6>
+			<font color="red">To facilitate the selection of subject, pls enter either 'Year of Study' OR 'Discipline' OR BOTH to do searching. <BR>
+			NOTE: Search option is only available for "View/Update/Delete" action. The 2 fields is compulsory field for "Add" action.</font>
+		</td>
+	</tr>
+	<tr><td colspan=6></td></tr>
+						
+  	<tr>
+    		<td>Subject Code:</td>
+    		<td><input type="text" id="subjectCode" name="subjectCode" size="13" MaxLength="6" tabIndex="3" onkeypress="return allowAlphaNumericSpace('Subject Code')" disabled=true></td>
+    		<td>Subject Name:</td>
+    		<td colspan=3><input type="text" id="subjectName" name="subjectName" size="43" MaxLength="50" tabIndex="4" onkeypress="return allowAlphaNumericSpace('Subject Name')" disabled=true></td>
+	</tr>
+			
+	<tr>
+    		<td>Academic Unit:</td>
+    		<td><input type="text" id="acadUnit" name="acadUnit" size="13" MaxLength="2" tabIndex="3" onkeypress="return allowNum('Academic Unit')" disabled=true></td>
+    		<td>Size of Cohort:</td>
+    		<td colspan=3><input type="text" id="sizeOfCohort" name="sizeOfCohort" size="43" MaxLength="4" tabIndex="4" onkeypress="return allowNum('Size of Cohort')" disabled=true></td>
+	</tr>
+  			
+  	<tr><td colspan=6></td></tr>
+	
+	<tr>
+    		<td>No of Lectures <br> per week:</td>
+    		<td>
+    			<Select size="1" id="noOfLecDDM" name="noOfLecDDM" style="WIDTH: 100px;" tabIndex="5"  onchange="EnDisPosVenLesGrp('Lec')" disabled=true>
+				<% 0.upto(@max_lesson) do |m| %>
+				<option value="<%=m%>"><%=m%></option>
+				<% end%>	
+  	    		</Select>
+    		</td>
+    		<td>No of Tutorials <br> per week:</td>
+    		<td>
+    			<Select size="1" id="noOfTutDDM" name="noOfTutDDM" style="WIDTH: 100px;" tabIndex="7" onchange="EnDisPosVenLesGrp('Tut')" disabled=true>
+				<% 0.upto(@max_lesson) do |m| %>
+				<option value="<%=m%>"><%=m%></option>
+				<% end%>
+  	    		</Select>
+    		</td>
+		<td>No of Labs <br> per week:</td>
+    		<td>
+    			<Select size="1" id="noOfLabDDM" name="noOfLabDDM" style="WIDTH: 100px;" tabIndex="9" onchange="EnDisPosVenLesGrp('Lab')" disabled=true>
+				<% 0.upto(@max_lesson) do |m| %>
+				<option value="<%=m%>"><%=m%></option>
+				<% end%>
+			</Select>
+    		</td>
+    	</tr>
+    		
+  	<tr>
+    		<td>Lecture <br> Frequency:</td>
+    		<td>
+    			<Select size="1" id="lecFreqDDM" name="lecFreqDDM" style="WIDTH: 100px;" tabIndex="6" disabled=true>
+				<option value="Weekly">Weekly</option>
+				<option value="Altern">Alternate</option>
+  	    		</Select>
+    		</td>
+    		<td>Tutorial <br> Frequency:</td>
+    		<td>
+    			<Select size="1" id="tutFreqDDM" name="tutFreqDDM" style="WIDTH: 100px;" tabIndex="8" disabled=true>
+				<option value="Weekly">Weekly</option>
+				<option value="Altern">Alternate</option>
+  	    		</Select>
+  	    	</td>
+		<td>Lab <br> Frequency:</td>
+    		<td>
+    			<Select size="1" id="labFreqDDM" name="labFreqDDM" style="WIDTH: 100px;" tabIndex="10" disabled=true>
+				<option value="Weekly">Weekly</option>
+				<option value="Altern">Alternate</option>
+  	    		</Select>
+    		</td>
+  	</tr>
+  			
+  	<tr>
+    		<td>Possible <br> Venues:</td>
+    		<td>
+			<textarea rows="2" id="lecVenue" name="lecVenue" cols="15" style="WIDTH: 100px;" TextMode="MultiLine" disabled=true readonly></textarea>
+			<A href="javascript:void(null);" onclick="EditPossibleVenue('Lec');"><IMG src="/Images/write.gif" width="25" height="25" border=0 ></A>
+		</td>
+		<td>Possible <br> Venues:</td>
+    		<td>
+			<textarea rows="2" id="tutVenue" name="tutVenue" cols="15" style="WIDTH: 100px;" TextMode="MultiLine" disabled=true readonly></textarea>
+			 <A href="javascript:void(null);" onclick="EditPossibleVenue('Tut');"><IMG src="/Images/write.gif" width="25" height="25" border=0 ></A>
+		</td>
+		<td>Possible <br> Venues:</td>
+    		<td>
+			<textarea rows="2" id="labVenue" name="labVenue" cols="15" style="WIDTH: 100px;" TextMode="MultiLine" disabled=true readonly></textarea>
+			 <A href="javascript:void(null);" onclick="EditPossibleVenue('Lab');"><IMG src="/Images/write.gif" width="25" height="25" border=0 ></A>
+		</td>
+    		
+   	</tr>
+	
+	<tr>
+    		<td>Lesson Groups <br> Assigned:</td>
+    		<td>
+			<textarea rows="2" id="lecLGassigned" name="lecLGassigned" cols="15" style="WIDTH: 100px;" TextMode="MultiLine" disabled=true readonly></textarea> 
+			<A href="javascript:void(null);" onclick="EditLGAssigned('Lec');"><IMG src="/Images/write.gif" width="25" height="25" border=0 ></A>
+			</td>
+		<td>Lesson Groups <br> Assigned:</td>
+    		<td>
+			<textarea rows="2" id="tutLGassigned" name="tutLGassigned" cols="15" style="WIDTH: 100px;" TextMode="MultiLine" disabled=true readonly></textarea> 
+			<A href="javascript:void(null);" onclick="EditLGAssigned('Tut');"><IMG src="/Images/write.gif" width="25" height="25" border=0 ></A>
+			</td>
+		<td>Lesson Groups <br> Assigned:</td>
+    		<td>
+			<textarea rows="2" id="labLGassigned" name="labLGassigned" cols="15" style="WIDTH: 100px;" TextMode="MultiLine" disabled=true readonly></textarea> 
+			<A href="javascript:void(null);" onclick="EditLGAssigned('Lab');"><IMG src="/Images/write.gif" width="25" height="25" border=0 ></A>
+			</td>
+    		
+   	</tr>
+	<tr>
+		
+	</tr>
+  			
+  	<tr><td colspan=6></td></tr>
+						
+	<!-- Lesson Group Details -->
+	<tr>
+		<td colspan=6>
+			<font color="red">To maintain Lesson Group, pls select "Add / Update Subject" action above and 
+			click Maintain Lesson Grp button below AFTER creating subject.</font>
+		</td>
+	</tr>
+
+  	
+			
+	<tr align="center">				
+      		<td colspan=6><input type="button" value="Maintain Lesson Groups " id="maintainLGBtn" name="maintainLGBtn" tabIndex="25" onClick="maintainLessonGrp()" disabled=true></td>
+      	</tr>
+	
+	<tr>
+		<td colspan=6>
+			<font color="red">To maintain Index Group, pls select "View / Update Subject" action above and 
+			click Maintain Lesson Index Grp button below AFTER creating subject.</font>
+		</td>
+	</tr>
+
+  	
+			
+	<tr align="center">				
+      		<td colspan=6><input type="button" value="Maintain Lesson Index Groups " id="maintainLIGBtn" name="maintainLIGBtn" tabIndex="25" onClick="maintainLessonIndexGrp()" disabled=true></td>
+      	</tr>	
+
+	<tr><td colspan=6></td></tr>
+					
+  	 <tr>
+    		<td>Remarks:</td>
+    		<td colspan=5><textarea rows="3" id="remarks" name="remarks" cols="60" TextMode="MultiLine" tabIndex="23" onkeypress="return imposeMaxLength(this, 149);" disabled=true></textarea></td>
+      	</tr>
+  
+  	<tr>
+      		<td colspan=6 align=center>
+			<input type="submit" value="Submit" id="submitSubjectBtn" name="submitSubjectBtn" tabIndex="25" disabled=true>
+			<input type="reset" value="Reset" id="resetBtn" name="resetBtn" onclick="resetForm()" disabled=true>
+			<input type="button" value="Main" id="mainBtn" name="mainBtn" tabIndex="27" onclick="showOpener()">
+		</td>
+    	</tr>
+</table>
+</form>
+</body>
+</html>
+<script>
+var dom = document.getElementById("SubjectForm");
+	<% if @search_button_clicked %>
+	 	<% if @sub_list.length==0 %>
+			alert("No Match Found!");
+			location.replace("subject");
+		<% else %>
+			var paramsArr=new Array();
+			paramsArr="<%=@parameters%>".split(":");
+			dom.actionDDM.value=paramsArr[0];
+			if (paramsArr[1]=="null")
+				dom.yearOfStudy.value=""
+			else
+				dom.yearOfStudy.value=paramsArr[1];
+			if (paramsArr[2]=="null")
+				dom.discipline.value=""
+			else
+				dom.discipline.value=paramsArr[2];
+			
+			dom.yearOfStudy.disabled=false;
+			dom.discipline.disabled=false;
+			dom.searchSubjectBtn.disabled=false;
+			dom.existSubjectDDM.disabled=false;
+		<% end %>		
+	<% else %>
+		var msgDisplay=""
+		var noMsg=false;
+		<% if @msg=="1" %>
+			msgDisplay="ERROR: Subject cannot be added. Subject already exists in the database.";
+		<% elsif @msg=="2" %>
+			msgDisplay="Subject is added successfully.";
+		<% elsif @msg=="3" %>
+			msgDisplay="Subject is updated successfully.";
+		<% elsif @msg=="4" %>
+			msgDisplay="Subject is deleted successfully.";
+		<% else %>
+			noMsg=true;
+		<% end %>
+		if (noMsg==false){
+		alert(msgDisplay);
+		}
+	<% end %>
+	
+</script>

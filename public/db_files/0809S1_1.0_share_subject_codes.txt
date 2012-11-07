@@ -1,0 +1,2 @@
+8	Lec	CPE104,CSC104		Logic Design
+9	Lec	CPE183,CSC183		Engineers & Society

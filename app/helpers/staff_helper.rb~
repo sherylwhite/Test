@@ -1,0 +1,336 @@
+require 'spreadsheet'
+module StaffHelper
+  # import the data from excel file to database
+  def import()
+    semester_regions = recognize_semesters()
+    # go through each region iteratively.
+    return_text = ''
+    0.upto(semester_regions.size - 2) do |current_region|
+      process_region(semester_regions[current_region], semester_regions[current_region+1])
+    end
+    return return_text
+  end
+
+  # startup procedures, recognize some special information  
+  def excel_init(path_to_excel_file)
+    Spreadsheet.client_encoding = 'UTF-8'
+    # open the excel file for reading
+    timetable = Spreadsheet.open path_to_excel_file
+    # open the target excel tab 'course assignment'
+    @assignment = timetable.worksheet 0
+    # identify the sheet information
+    dim = @assignment.dimensions
+    @first_row = dim[0]
+    @last_row = dim[1]
+    @first_col = dim[2]
+    @last_col = dim[3]
+    
+    # index of the columns that have specific information
+    # and column sign which can help us to recognize them  
+    @subject_col = 0; subject_text = 'SUBJECT'
+    @lec_col = 0;     lec_text = 'LECTURES'
+    @tut_col = 0;     tut_text = 'TUTORIAL'
+    @lab_col = 0;     lab_text = 'LABORATORY'
+    @subject_row = 0;
+    @indexes = 4
+    
+    catch "FoundRealFirstRow" do
+      @first_row.upto(@last_row) do |rid|
+        @first_col.upto(@last_col) do |cid|
+          if !(@assignment.cell(rid, cid).nil?)
+            @first_row = rid
+            throw "FoundRealFirstRow"
+          end
+        end
+      end
+    end
+    catch "FoundRealLastRow" do
+      @last_row.downto(@first_row) do |rid|
+        @first_col.upto(@last_col) do |cid|
+          if !(@assignment.cell(rid, cid).nil?)
+            @last_row = rid
+            throw "FoundRealLastRow"
+          end
+        end
+      end
+    end
+    # need to identify the indexes first
+    count_col = 0
+    catch "FoundAllHeaders" do
+      @first_row.upto(@last_row) do |rid|
+        @first_col.upto(@last_col) do |cid|
+          # is_found: the content of the cell is match with the header
+          is_found = true
+          case @assignment.cell(rid, cid)
+            when subject_text then
+               @subject_col = cid
+               @subject_row = rid
+            when lec_text then @lec_col = cid
+            when tut_text then @tut_col = cid
+            when lab_text then @lab_col = cid
+            else is_found = false
+          end
+          if (is_found) 
+            count_col = count_col + 1
+          end
+          # break the loop if we found all the indexes
+          throw "FoundAllHeaders" if (count_col == @indexes)
+        end
+      end
+    end
+  end
+
+  # an excel file is divided into many courses, each course is often offered for 2 semesters this
+  #  function will count the number of semesters (which are the regions to be investigated later on)
+  def recognize_semesters
+    # recognize the subject code first
+    @current_subject_code = ''
+    @current_subject_name = ''
+    semester_col = @subject_col + 1
+    current_semester_row = @subject_row
+    semester_regions = []
+    current_cell_value = ''
+    # dividing the region for the subjects by using semester columns
+    while (current_semester_row < @last_row) do
+      current_semester_row += 1
+      current_cell_value = @assignment.cell(current_semester_row, semester_col)
+      # ignore nil cell
+      if (current_cell_value.nil?)
+        next
+      end
+      # got something different :), remember the row index of this region
+      semester_regions.push(current_semester_row)
+    end
+    semester_regions.push(@last_row)
+    return semester_regions
+  end
+
+
+  # top and bottom determine the region of a semester
+  # return value is array of course information in following format
+  # {
+  #   :code => ['CSC102','CPE102'],
+  #   :description => 'Intro to Programming',
+  #   :staff => [
+  #               { name        => 'Hui Siu Cheung',
+  #                 designation => ['LEC','TUT'],
+  #                 group       => ['FS1','FS2'],
+  #                 teachWeek   => '1 to 7'
+  #               },...
+  #             ]
+  # }
+  def process_region(top, bottom)
+    current_subject_row = top-1
+    current_row_value = ''
+    
+    subjects = []
+    description = ''
+    catch "OutOfBoundary" do
+      while ((current_subject_row += 1) < bottom) do
+        current_row_value = @assignment.cell(current_subject_row, @subject_col)
+        # ignore empty cell
+        if (current_row_value.nil?)
+          next
+        end
+        current_row_value = current_row_value.strip
+        # ignore cell that not started with a subject code
+        if (current_row_value.index(/^([A-W]{1,4}[0-9]{1,4})/) == nil)
+          next
+        end
+        
+        # push all shared subject code into a array 
+        current_row_value.scan(/([A-W]{1,4}[0-9]{1,4})+/).map do |subject|
+          if !(subject[0].nil?)
+            subjects.push(subject[0])
+          end
+        end
+        
+        # get the subject description which is on the same line as subject code
+        # for example: CSC102 Introduction to Java Programming 
+        same_line_description = '' #description that is on the same line with subject codes
+        # if we found at least one subject
+        if !(subjects.empty?)
+          # get this subject's description
+          pos_last_code = current_row_value.rindex(subjects.last)
+          if (pos_last_code != nil)
+            pos_last_code += subjects.last.size
+            same_line_description = current_row_value.slice(pos_last_code..-1)
+          end
+        end
+        description = same_line_description + " "
+        current_subject_row += 1
+        throw "OutOfBoundary" if (current_subject_row == bottom)
+        # get the subject description which consecutively bellow the subject course row
+        while (true) do
+          current_row_value = @assignment.cell(current_subject_row, @subject_col)
+          # if the next row is empty or contain subject code then finish finding description
+          if (current_row_value == nil || current_row_value.index(/^([A-W]{1,4}[0-9]{1,4})/) != nil)
+            break
+          end
+          description += current_row_value
+          current_subject_row += 1
+          break if (current_subject_row == bottom)
+        end
+        # optimize the description text by removing unused spaces
+        description = description.squeeze(" ").strip
+      end
+    end
+    if (subjects.empty?); return; end
+      
+    if (current_subject_row > bottom)
+      current_subject_row = bottom
+    end
+    # now, we already have the subject code list and description
+    # time for inspecting information of staffs
+    staffs = process_staff_region(top, current_subject_row)
+    commit_to_database(subjects, description, staffs)
+  end
+  # *top* and *pre_bottom* are the upper and lower of subject information, not the boundary of
+  # staff information
+  def process_staff_region(top, subject_bottom)
+    lec_staffs = process_staff_col(top, subject_bottom, @lec_col)
+    lec_staffs.each do |lecturer|
+      lecturer[:designation] = ["LEC"]
+    end
+    tut_staffs = process_staff_col(top, subject_bottom, @tut_col)
+    tut_staffs.each do |tutor|
+      tutor[:designation] = ["TUT"]
+    end
+    lab_staffs = process_staff_col(top, subject_bottom, @lab_col)
+    lab_staffs.each do |labsup|
+      labsup[:designation] = ["LAB"]
+    end
+    staffs = lec_staffs | tut_staffs | lab_staffs
+    optimize_staff_region(staffs)
+    return staffs
+  end
+  
+  # some staff information is scattered because the staff might assigned as lecture, tutor, lab
+  # supervisors and assigned for both semester this method will combine those information.
+  def optimize_staff_region(staffs)
+    # delete the Not Offered subject record
+    i = staffs.size - 1
+    while (i >= 0) do
+      if (staffs[i][:name].casecmp("Not Offered") == 0)
+        staffs.delete_at(i)
+      end
+      i -= 1
+    end
+    # merge the record of same staffs
+    i = staffs.size - 1
+    while (i >= 0) do
+      j = staffs.size - 1
+      while (j > i) do
+        if (staffs[i][:name].casecmp(staffs[j][:name]) == 0)
+          staffs[i][:group] |= staffs[j][:group]
+          staffs[i][:designation] |= staffs[j][:designation]
+          staffs.delete_at(j)
+        end
+        j -= 1
+      end
+      #staffs[index][:group] |=
+      i -= 1
+    end
+  end
+  
+  # *subject_top* and *subject_bottom* - the boundary of subject information, not the boundary of  
+  # staff information staff_column is the column containing the staff information return the array 
+  # of staffs found
+  def process_staff_col(subject_top, subject_bottom, staff_column)
+    staff_current_row = subject_top-1
+    staff_row_value = ''
+    staffs = []
+    staff_names = []
+    groups = []
+    while (
+      # staff informations region must end after the subject_information_last_row
+      staff_current_row < subject_bottom-1) do
+      staff_current_row += 1
+      # we only can stop scanning if the subject row is not empty
+      break if @assignment.cell(staff_current_row, @subject_col).nil?
+      # there are 3 types of cell information in the staff column:
+      # empty cell, staff name cell and group-in-charge cell
+      staff_row_value = @assignment.cell(staff_current_row, staff_column)
+      # ignore the empty cell
+      next if (staff_row_value.nil?)
+      # ignore Note cell also
+      # TODO this is very lame, the format of Note is lame also
+      next if (staff_row_value.upcase.include?("NOTE:"))
+      staff_row_value = staff_row_value.strip
+      
+      grps = []
+      # recognize group-in-charge cell
+      staff_row_value.scan(/([A-W]{1,4}[0-9]{1,4})/).map do |group|
+        grps.push group[0]
+      end
+      # if we actually found some groups, put them in charge of the last
+      # staff we've found and then we can continue
+      if (grps.empty?) 
+        # if it not a group-in-charge cell, then it is a staff name cell 
+        # TODO it can be unknown type cell
+        # insert the previous record first
+        if !(staff_names.empty?)
+          staffs.push({:name=>staff_names.last, :group=>groups})
+          groups = []
+        end
+        staff_names.push(staff_row_value.squeeze(" "))
+      else
+        groups = grps
+      end
+      # TODO later, we might include semester info also
+    end
+    if !(groups.empty?)
+      staffs.push({:name=>staff_names.last, :group=>groups})      
+    end
+    
+    if (staffs.size < staff_names.size)
+      staffs.push({:name=>staff_names.last, :group=>[]})
+    end
+    # pp staffs #debug
+    return staffs
+  end
+  def commit_to_database(subjects, description, staffs)
+    all_designation = []
+    staffs.each do |staff|
+      all_designation |= staff[:designation]
+      # update table staffs
+      @old_record = Staff.find(:all, :conditions=>"staffName ='#{staff[:name]}'")
+      @old_record = @old_record[0]
+      designation = staff[:designation] * ","
+      if (@old_record.nil?)
+        # this staff is not in the database yet
+        s = Staff.new
+        s.designation = designation
+        s.staffName = staff[:name]
+        s.save
+      else
+        @old_record.update_attribute :designation,designation
+      end
+    end
+#      subjects.each do |subj|
+#        # update table staff_assignments
+#        @old_subj = Lesson.find(:all, :conditions=>"subjectCode ='#{subj}'")
+#        @old_subj = @old_subj[0]
+#        if (@old_subj.nil?)
+#          puts "This subject is not exits"
+#        else
+#          pp @old_subj
+#        end
+#      end
+    if subjects.size <= 1
+      return
+    end
+    description = description.gsub("'", "''") 
+    shared_exist=SharedSubjectCode.find_by_sql("Select * from shared_subject_codes where sharedSubjectName='#{description}'")
+    if shared_exist.length>0
+      # do the neccessary update
+    else
+      shared = SharedSubjectCode.new
+      shared.sharedSubjectName = description
+      shared.sharedSubjectCodes = subjects * ","
+      shared.sharedType = all_designation * ","
+      shared.remarks =""
+      shared.save
+    end
+  end
+end

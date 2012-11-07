@@ -1,0 +1,21 @@
+8	Lec	CPE104,CSC104		Logic Design
+9	Lec	CPE102,CSC102		Introduction to Programming
+10	Lec	CPE103,CSC103		Mathematics I
+11	Lec	CPE105,CSC105		Data Structures and Object-Oriented Prog
+12	Lec	CPE183,CSC183		Engineers & Society
+13	Lec	CPE184,CSC184		HR Management & Entrepreneurship
+14	Lec	CPE202,CSC201		Computer Organisation
+15	Lec	CPE203,CSC203		Software Systems and Models
+16	Lec	CPE205,CSC205		Operating Systems
+17	Lec	CPE303,CSC206		Database Systems
+18	Lec	CPE406,CSC304		Artificial Intelligence
+19	Lec	CPE411,CSC204		Computer Graphics
+20	Lec	CPE425,CSC301		Programming Languages
+21	Lec,Tut,Lab	CPE408,CSC404		Compiler Techniques
+22	Lec	CPE416,CSC411		Distributed Systems/Distributed Computing
+23	Lec,Tut,Lab	CPE432,CSC427		Visualization
+24	Lec	CPE412,CSC408		Computer Vision & Image Processing
+25	Lec,Tut,Lab	CPE427,CSC424		Robotics
+26	Lec,Tut,Lab	CPE403,CSC403		Advanced Data Management Techniques
+27	Lec,Tut,Lab	CPE410,CSC407		Computer Game Programming
+28	Lec	CPE428,CSC425		Simulation and Modelling

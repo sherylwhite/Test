@@ -1,0 +1,300 @@
+<html>
+<head>
+
+<STYLE type="text/css">
+		UL{
+			width:110px;  
+			position: relative; 
+			display: outline;
+		}
+		
+		LI{
+		  cursor:move;
+		}
+		
+		TABLE{
+			font-family: "Arial", Arial, serif;
+			font-size: 10px;
+		}
+		
+		TH{
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 11px;
+		}
+	
+	</STYLE>
+</head>
+<body>
+<form name="MainForm" method="post">
+<input type=button value="Select Group" onclick="selectGrp();"/> <input type=button value="Export To Excel" onclick="exportExcel();"/><br>
+<table border="1" cellspacing="1" cellpadding="0">
+	<tr>
+		<th>DAYS</th><th>TIME</th>
+		<% 0.upto(@ssd.length-1) do |s_index| -%>
+		<th><%=@ssd[s_index]-%></th>
+		<% end -%>
+		<th>TIME</th>
+	</tr>
+	<% tsid=1 -%>
+	<% 1.upto(@maxday.to_i) do |day_index| -%>
+	<tr><th rowspan=<%=@rowspanNo-%>><%=@dday[day_index]-%></th>
+			<th>830</th>
+			<% 0.upto(@ssd.length-1) do |s_index| -%>
+				<td onDblClick="popWindow('schedule_time_slot?scode=<%=@ssd[s_index]-%>&tsid=<%=tsid-%>');return false;" id="cell<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+				<UL id="cellList_<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+				<%@dropOnListName[s_index] += "'cellList_"+@ssd[s_index]+"_"+tsid.to_s+"',"-%>
+					<%
+					0.upto(@slotAlloc[s_index].length-1) do |sa| -%>
+						<% if @slotAlloc[s_index][sa].timeid.to_i==tsid.to_i -%>
+							<% case @slotAlloc[s_index][sa].lessonType
+								 when "Lec"
+								 	liColor='Red'
+								 when "Tut"
+								 	liColor='Blue'
+								 when "Lab"
+								 	liColor='Green'
+								 end -%>
+							<li id="cellListItem_<%=@ssd[s_index]+"_"+tsid.to_s+"_"+@slotAlloc[s_index][sa].groupId.to_s-%>" style="color:<%=liColor-%>" onmousedown="<%=remote_function(:url=>{:action=>"create_session",:ditem=>"dragItem",:slotid=>@slotAlloc[s_index][sa].allocId})%>"><%=@slotAlloc[s_index][sa].details-%></li>													
+							<% end-%>
+					<%end-%>
+				</UL>
+				</td>				
+			<% end -%>
+			<th>830</th>
+			<% tsid +=1 -%>
+			<% 930.step(@maxtimeslot.to_i,100) do |time_index| -%>
+				<tr>
+					<th><%=time_index-%></th>
+					<% 0.upto(@ssd.length-1) do |s_index| -%>
+					<td onDblClick="popWindow('schedule_time_slot?scode=<%=@ssd[s_index]-%>&tsid=<%=tsid-%>');return false;" id="cell<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+					<UL id="cellList_<%=@ssd[s_index]+"_"+tsid.to_s-%>">
+					<%@dropOnListName[s_index] += "'cellList_"+@ssd[s_index]+"_"+tsid.to_s+"',"-%>
+					<%
+					0.upto(@slotAlloc[s_index].length-1) do |sa| -%>
+						<% if @slotAlloc[s_index][sa].timeid.to_i==tsid.to_i -%>
+							<% case @slotAlloc[s_index][sa].lessonType
+								 when "Lec"
+								 	liColor='Red'
+								 when "Tut"
+								 	liColor='Blue'
+								 when "Lab"
+								 	liColor='Green'
+								 end -%>
+							<li id="cellListItem_<%=@ssd[s_index]+"_"+tsid.to_s+"_"+@slotAlloc[s_index][sa].groupId.to_s-%>" style="color:<%=liColor-%>" onmousedown="<%=remote_function(:url=>{:action=>"create_session",:ditem=>"dragItem",:slotid=>@slotAlloc[s_index][sa].allocId})%>"><%=@slotAlloc[s_index][sa].details-%></li>
+							<% end-%>
+					<%end-%>
+					</UL>
+					</td>
+					<% end -%>
+					<th><%=time_index-%></th>
+				</tr>
+				<% tsid +=1 -%>
+			<% end -%>
+			<% tsid+=@tInc-%>
+	</tr>
+	<% end -%>
+	
+<% 0.upto(@ssd.length-1) do |s_index| 
+ 		temp=@dropOnListName[s_index]
+		@dropOnListName[s_index]=temp[1,temp.length-3]
+ end-%>
+	<% 0.upto(@ssd.length-1) do |s_index|
+				tsid=1
+				1.upto(@maxday.to_i) do |day_index|
+					830.step(@maxtimeslot.to_i,100) do |time_index|
+					cellListId="cellList_"+@ssd[s_index]+"_"+tsid.to_s 
+					tsid+=1%>
+					<%=sortable_element cellListId,:complete=>'sharedChange(request);',:containment=>[@dropOnListName[s_index]],:dropOnEmpty=>true,:constraint=>false, :url=>{:action=>"change_schedule", :id=>cellListId, :sid=>@ssd[s_index]}%>
+					<%end
+					tsid+=@tInc
+				end
+		end%>
+</table>
+</form>
+<!--<br>
+ <%= link_to"Back",{:action =>'schedule'} -%>
+ <input type=text id="tt" name="tt" />
+ <input type=button value="check this out" onclick="testing();"/>
+ <br>-->
+ <br>
+ </body>
+</html>
+<SCRIPT type="text/javascript">
+var count=0;
+var newwindow = '';
+var grpArr=new Array;
+
+
+function sharedChange(request){
+	
+	if(request.responseText!=""){
+		var sharedList=new Array();
+		sharedList=request.responseText.split("-");
+		for(var k=0; k<sharedList.length;k++){						
+			alert("Shared Subject code: " + sharedList[k].substr(0,6) + " was changed too.")
+			var tempArr=new Array();
+			tempArr=sharedList[k].split(":");
+			scode=tempArr[0];
+			oldTsid=tempArr[1];
+			newTsid=tempArr[2];
+			new Ajax.Request('/schedule/list_all_lessons', {asynchronous:true, evalScripts:true, onComplete:function(request){changedSharedLesson(request,scode,oldTsid)}, parameters:'scode='+scode+'&tsid='+oldTsid});
+			new Ajax.Request('/schedule/list_all_lessons', {asynchronous:true, evalScripts:true, onComplete:function(request){changedSharedLesson(request,scode,newTsid)}, parameters:'scode='+scode+'&tsid='+newTsid});
+		}
+	}
+	
+}
+
+function changedSharedLesson(request,scode,tsid){
+	var detailsArr=new Array();
+	var allLessons=new Array();
+	allLessons=request.responseText.split("->");
+	for(var k=0;k<allLessons.length-1;k++){
+		var tempArr=new Array();
+		tempArr=allLessons[k].split(":");
+		var tempArr2=new Array();
+		tempArr2['slotId']=tempArr[1];
+		tempArr2['classType']=tempArr[2];
+		tempArr2['details']=tempArr[3];
+		tempArr2['grpId']=tempArr[4];
+		detailsArr[k]=tempArr2;
+	}
+	reFormCellListItem(scode,tsid,detailsArr);
+	
+}
+function setGroupIds(arr){
+
+	for(var k=0;k<arr.length;k++){
+		var tempArr=new Array();
+		tempArr=arr[k].split(":");
+		var tempArr2=new Array();
+		tempArr2['grpId']=tempArr[0];
+		tempArr2['lessonType']=tempArr[1]
+		tempArr2['liId']=tempArr[2]
+		grpArr[k]=tempArr2;
+	}
+
+}
+
+function selectGrp(){
+var scodeList="";
+
+	<% 0.upto(@ssd.length-1) do |s| %>
+		scodeList+="<%=@ssd[s]%>"+"-";
+	<% end %>
+	scodeList=scodeList.substr(0,scodeList.length-1);
+	
+	popWindow2("select_group?scodeList="+scodeList)
+	
+}
+
+function highlightGrp(grpList){
+var grpIdArr=new Array();
+
+	grpIdArr=grpList.split("-");
+	
+	for(var m=0;m<grpArr.length;m++){
+		
+		var checkOk=true;
+		for (var n=0;n<grpIdArr.length;n++){
+			if (grpArr[m]['grpId']==+grpIdArr[n]){
+				checkOk=false;
+				break;
+			}
+		}
+		
+		liExist=document.getElementById(grpArr[m]['liId'])
+			if (liExist){
+				if(checkOk)
+					liExist.style.color = "gray";
+				else{
+					switch(grpArr[m]['lessonType']){		
+						case "Lec":
+							liExist.style.color= "red";
+							break;
+						case "Tut":
+							liExist.style.color= "blue";
+							break;
+						case "Lab":
+							liExist.style.color= "green";
+							break;
+					}				
+				}
+					
+			}
+	}
+}
+
+function popWindow(url) {
+	if (!newwindow.closed && newwindow.location) {
+		newwindow.location.href = url;
+	}
+	else {
+		newwindow=window.open(url,'schedulets','menubar=0,resizable=1,height=680,width=580');
+		if (!newwindow.opener) newwindow.opener = self;
+	}
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
+function popWindow2(url) {
+	if (!newwindow.closed && newwindow.location) {
+		newwindow.location.href = url;
+	}
+	else {
+		newwindow=window.open(url,'selectGrp','menubar=0,resizable=1,height=400,width=380');
+		if (!newwindow.opener) newwindow.opener = self;
+	}
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
+function reFormCellListItem(scode,tsid,classArr){
+	elementId="cellList_"+scode+"_"+tsid;
+	cellList=document.getElementById(elementId);
+	var reFormLi="";
+	for(var k=0;k<classArr.length;k++){
+		var ctColor="";
+		if (classArr[k]['classType']=="Lec"){ ctColor="Red";}
+		else if (classArr[k]['classType']=="Tut") {ctColor="Blue";}
+		else {ctColor="Green";}
+		newLi="<LI id=\"cellListItem_"+scode+"_"+tsid+"_"+classArr[k]['grpId']+"\" style=\"color:"+ctColor+"\" onmousedown=\"new Ajax.Request('/schedule/create_session?slotid="+classArr[k]['slotId']+"&ditem=dragItem', {asynchronous:true, evalScripts:true})\">"+classArr[k]['details']+"</LI>"
+		reFormLi+=newLi
+	}
+	cellList.innerHTML=reFormLi;
+	
+	<% 0.upto(@ssd.length-1) do |s_index| %>
+		if(scode=="<%=@ssd[s_index]%>"){
+				<%
+				dropList=""
+				tsid=1
+				1.upto(@maxday.to_i) do |day_index|
+					830.step(@maxtimeslot.to_i,100) do |time_index|
+					dropList+="'cellList_"+@ssd[s_index]+"_"+tsid.to_s+"',"
+					tsid+=1					
+					end
+					tsid+=@tInc
+				end
+				dropList=dropList[0,dropList.length-1]
+				%>
+			var url="/schedule/change_schedule/"+elementId+"?sid="+scode;
+			Sortable.create(elementId, {constraint:false, containment:[<%=dropList%>], dropOnEmpty:true, onUpdate:function(){new Ajax.Request(url, {asynchronous:true, evalScripts:true, onComplete:function(request){sharedChange(request);},parameters:Sortable.serialize(elementId)})}});
+		}
+	<% end%>
+	
+}
+
+function exportExcel(){
+	var subList="";
+	<% 0.upto(@ssd.length-1) do |s| %>
+		subList+="<%=@ssd[s]%>"+"-";
+	<% end %>
+	subList=subList.substr(0,subList.length-1);
+	new Ajax.Request('/show_schedule/export_excel', {asynchronous:true, evalScripts:true, onComplete:function(request){exportDone(request)}, parameters:'subList='+subList+'&stype=sub'});
+	
+}
+
+function exportDone(request){
+	window.open("/show_schedule/export_done",'ExportToExcel','menubar=0,resizable=1,height=250,width=300');
+}
+</SCRIPT>

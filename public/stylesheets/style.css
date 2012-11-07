@@ -1,0 +1,110 @@
+* {
+margin: 0;
+padding:0;
+}
+body {
+font-family: Helvetica, Geneva, Arial, sans-serif;
+font-size: small;
+font-color: #000;
+background-color: #fff;
+}
+a:link, a:active, a:visited {
+color: #CD0000;
+}a:hover {
+color: #F70000;
+}
+input { margin-bottom: 5px;}
+p { line-height: 150%; }
+div#container {
+width: 100%;
+margin: 0 auto;
+}
+div#header {
+text-align: center;
+padding-bottom: 15px;
+}
+div#content {
+float: left;
+width: 100%;
+padding: 10px;
+}
+div#content h3 {
+margin-top: 15px;
+}
+
+INPUT, SELECT {
+	font: 9pt Arial;
+}
+	
+.Table1{
+	font-family: Arial, Verdana, Sans-Serif; font-size: 10pt;
+	
+	width: 100%;
+}
+
+.Table2{
+	font-family: Arial, Verdana, Sans-Serif; font-size: 10pt;
+	background-color:  #F5F5F5;
+}
+
+.Table3{  /*use in generate stars printout*/
+	font-family: Arial, Verdana, Sans-Serif; font-size: 10pt;
+	background-color:  #F5F5F5;
+ 	width:50%;
+}
+
+TH{ 
+	font-family: Arial, Verdana, Sans-Serif; font-size: 13pt; 
+	height: 40;
+}
+
+.TableTH{	/*nt sure used in where*/
+	background-color: #FFFFE1;
+	text-align: center;
+	font-family: Arial, Verdana, Sans-Serif; font-size: 10pt; font-weight: bold;	
+}
+
+.TB{ 
+	text-align: center;
+	height: 20;
+}
+
+.TF{ 
+	text-align: center;
+	height: 40;
+}
+
+.TableRow1{
+	background-color: #FFFFE1;
+	font-weight: bold;
+}
+
+.TableRow2{
+	background-color:  #E1F0FF;
+	font-weight: bold;
+}
+
+.TableCol1{
+	background-color: #F0F8FF;
+	text-align: center;
+}
+
+.HomeTitle{
+	text-align: center;
+	font-family: Arial, Verdana, Sans-Serif; font-size: 14pt; font-weight: bold; color: #0076EC;
+}
+
+.HomeContent{
+	text-align: center;
+	font-family: Arial, Verdana, Sans-Serif; font-size: 12pt; color: #42A0FF;
+}
+
+.CurrSem{
+	text-align: center;
+	font-family: Arial, Verdana, Sans-Serif; font-size: 10pt; color: #0076EC;
+}
+
+.DBSwitch{
+	text-align: left;
+	font-family: font-family: Arial, Verdana, Sans-Serif; font-size: 10pt; 
+}

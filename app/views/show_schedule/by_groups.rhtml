@@ -1,0 +1,135 @@
+<script language="javascript" type="text/javascript">
+
+function populateAvailGroupDDM(){
+	removeAllDDMItem('availGroupDDM');
+	var dom = document.getElementById("SchedulingForm");
+		<% 0.upto(@grp_list.length-1) do |g| %>	
+			var newOption = new Option();
+			newOption.text ="<%=@grp_list[g].groupIndex-%>";
+			newOption.value = "<%=@grp_list[g].groupIndex-%>";
+			dom.availGroupDDM.options[<%=g%>] = newOption;
+		<% end %>
+}
+
+//check to enable or disable submit button
+function EnDisSubButton(){
+	var dom = document.getElementById("SchedulingForm");
+	var scheduleGroupControl = document.getElementById("scheduleGroupDDM[]");
+	
+	if(scheduleGroupControl.length!=0){
+		dom.submitBtn.disabled=false;
+	}else{
+		dom.submitBtn.disabled=true;
+	}
+}
+
+function add(){
+	moveItem('availGroupDDM','scheduleGroupDDM[]');
+	EnDisSubButton();
+} //end-add()
+	
+function remove(){
+	moveItem('scheduleGroupDDM[]','availGroupDDM');
+	EnDisSubButton();
+} //end-remove()
+
+function resetForm(){
+	/* To populate the availGroupDDM with ALL available subject from DB on pageLoad */
+	populateAvailGroupDDM();
+	clearField(); //for reset purpose - reset scheduleSubjectDDM and disabled the loadTimetableBtn
+}
+function clearField(){
+	/* Get form id */
+	var dom = document.getElementById("SchedulingForm");
+	var scheduleDDMControl = document.getElementById("scheduleGroupDDM[]");
+	
+	if(dom.availGroupDDM.options.length > 0){
+	dom.availGroupDDM.selectedIndex = -1; 
+	} //end-if
+	
+	if(scheduleDDMControl.options.length > 0){				
+		for(var w=(scheduleDDMControl.options.length-1); w>=0; w--){
+			// delete all options in the drop down list
+			scheduleDDMControl.remove(w); 
+			} //end-for
+		} //end-if	
+	EnDisSubButton();		
+} //end-clearField()
+
+function formValidator(){
+	/* Get form id */
+	var dom = document.getElementById("SchedulingForm");
+	var scheduleDDMControl = document.getElementById("scheduleGroupDDM[]");
+	
+	if(scheduleDDMControl.options.length <= 0){
+		alert("Pls select at least 1 subject prior to scheduling timetable.");
+	return false;
+	} //end-if
+				
+	if(scheduleDDMControl.options.length > 0){				
+		for(var x=(scheduleDDMControl.options.length-1); x>=0; x--){
+			scheduleDDMControl.options[x].selected = true; 
+			} //end-for
+		} //end-if
+} //end-formValidator()
+			
+</script>
+<form id="SchedulingForm" action="/show_schedule/intercept_group" method="post" onsubmit="return formValidator()">
+<Table>
+	<tr><th colspan=4>Show Schedule by Groups</th></tr>
+	<tr align='center'>
+		<td>List of Available Group(s):<br><br>
+			<Select size=10 name="availGroupDDM" id="availGroupDDM" style="Width: 180px" multiple>
+				<% 0.upto(@grp_list.length-1) do |g| %>	
+					<%= "<option value='#{@grp_list[g].groupIndex}'>" +@grp_list[g].groupIndex -%>
+				<% end %>
+			</select>
+			<br><br>
+		</td>
+		<td width="10%">
+			<input type="button" value="   >>   " name="addBtn" onclick="add();"><br><br>
+			<input type="button" value="   <<   " name="removeBtn" onclick="remove();">
+		</td>
+		<td>Group(s) to be scheduled:<br><br>
+			<Select size="10" name="scheduleGroupDDM[]" id="scheduleGroupDDM[]" style="WIDTH: 180px" multiple>
+  	  </Select>
+  	  <br><br>
+		</td>
+		<td width="5%">
+      <input type="button" value="  UP  " name="upBtn" onclick="moveUpDown('Up', 'scheduleGroupDDM[]');"><br><br>
+			<input type="button" value="  DN  " name="downBtn" onclick="moveUpDown('Down', 'scheduleGroupDDM[]');">
+		</td>
+  </tr>
+	<tr><td colspan=4>
+			
+			<tr ><td colspan=4></td></tr>			
+			<tr>
+				<td align="center">Days to schedule: </td>
+				<td colspan=4 align="left">
+					<input type="radio" name="maxDay" value="5" checked> Monday to Friday <br>
+					<input type="radio" name="maxDay" value="6"> Monday to Saturday
+				</td>
+			</tr>
+			
+			<tr> 
+				<td align="center">Timeslot to schedule: </td>
+				<td colspan=4 align="left">
+					<input type="radio" name="maxTimeSlot" value="1730" checked> 0830 to 1730 <br>
+					<input type="radio" name="maxTimeSlot" value="2130"> 0830 to 2130
+				</td>
+			</tr>
+			
+			<tr><td colspan=4></td></tr>
+			<tr align=center>
+      <td colspan=5>
+      			 <input type="submit" value="Load Group Timetable" name="submitBtn" id="submitBtn" disabled/>			
+				<input type="reset" value="Reset" name="resetBtn" tabIndex="8" onclick="resetForm();">
+				<input type="button" value="Main" name="mainBtn" tabIndex="27" onclick="showOpener();">
+       			</td>
+     		</tr>
+   		</table>	
+
+ 
+
+</Table>
+</form>

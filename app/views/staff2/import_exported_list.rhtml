@@ -1,0 +1,18 @@
+<div style="text-align:center">
+<font size=4 color="#804000"><b>Import back staff list into DB</b></font>
+<p>Please download the template below to fill in necessary information.</p>
+<%=link_to "Staff Template",{:controller=>"stars", :action =>"download", :fname=>"staff_list.xls"}%>
+<br>
+<b>Once You finished filling up the file ==></b> <%=link_to_function("click here","Element.show('staffupload')")%>
+<br>
+<br>
+<div id="staffupload" style="display:none;">
+<br>
+<% form_tag ({:controller=>"staff2",:action => "import_exported_list"}, {:multipart => true}) do%>
+    Browse Your STAFF file here: 
+    <br><%= file_field_tag "file_staff_list" %>
+    <br>
+    <br><%= submit_tag  "Import" %>
+<% end %>
+</div>
+</div>

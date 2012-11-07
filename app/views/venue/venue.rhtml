@@ -1,0 +1,278 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+function onChangeAction(){
+var dom = document.getElementById("VenueForm");
+				
+	if(dom.actionDDM.value == "Add"){		
+		dom.venueListDDM.disabled = true;
+		clearField();
+		dom.venueTypeDDM.disabled = false;
+		dom.venueName.disabled = true;
+		dom.capacity.disabled = true;
+		dom.remarks.disabled = true;
+		venueTypeOpp();
+	}
+	else{
+		
+		dom.venueListDDM.disabled = false;
+		if(dom.actionDDM.value == "Pls select an action"){
+			dom.venueListDDM.selectedIndex=-1;
+			dom.venueListDDM.disabled=true;
+		}
+		clearField();
+		dom.venueTypeDDM.disabled = true;
+		dom.venueName.disabled = true;
+		dom.capacity.disabled = true;
+		dom.remarks.disabled = true;
+		venueTypeOpp();
+	}
+		
+		
+}
+
+function venueTypeOpp(){
+var dom = document.getElementById("VenueForm");
+	if(dom.actionDDM.value == "Update"){
+		removeAllDDMItem('venueTypeDDM');
+		var newOption = new Option()
+		newOption.text="Lecture Theatre";
+		newOption.value="Lec";
+		dom.venueTypeDDM.options[0]=newOption;
+		newOption = new Option();
+		newOption.text="Tutorial Room";
+		newOption.value="Tut";
+		dom.venueTypeDDM.options[1]=newOption;
+		newOption = new Option();
+		newOption.text="Laboratory"
+		newOption.value="Lab";
+		dom.venueTypeDDM.options[2]=newOption;
+	}
+	else{
+		removeAllDDMItem('venueTypeDDM');
+		var newOption = new Option()
+		newOption.text="Pls select venue type";
+		newOption.value="Pls select venue type";
+		dom.venueTypeDDM.options[0]=newOption;
+		newOption = new Option()
+		newOption.text="Lecture Theatre";
+		newOption.value="Lec";
+		dom.venueTypeDDM.options[1]=newOption;
+		newOption = new Option();
+		newOption.text="Tutorial Room";
+		newOption.value="Tut";
+		dom.venueTypeDDM.options[2]=newOption;
+		newOption = new Option();
+		newOption.text="Laboratory"
+		newOption.value="Lab";
+		dom.venueTypeDDM.options[3]=newOption;
+	}
+		
+}
+function onChangeType(){
+var dom = document.getElementById("VenueForm");
+	if(((dom.venueTypeDDM.value == "Lec")||(dom.venueTypeDDM.value == "Tut")||(dom.venueTypeDDM.value == "Lab"))&&(dom.actionDDM.value == "Add")){		
+		switch (dom.venueTypeDDM.value) {
+			case "Lec" : 
+				dom.capacity.value = "";
+				break;
+			case "Tut" : 
+				dom.capacity.value = 35;
+				break;
+			case "Lab" : 
+				dom.capacity.value = 35;
+				break;
+		} //end-switch-case
+				
+	EnDisable();
+	} //end-if
+	else{
+		if(dom.actionDDM.value == "Add"){
+			clearField();
+			dom.venueTypeDDM.disabled = false;
+			dom.venueName.disabled = true;
+			dom.capacity.disabled = true;
+			dom.remarks.disabled = true;
+		}
+	}
+} 
+function onChangeList(){
+var dom = document.getElementById("VenueForm");
+var venSel=dom.venueListDDM.value;
+	<% 0.upto(@venue_list.length-1) do |v| %>
+		if (venSel=="<%=@venue_list[v].venueName%>"){
+			dom.venueTypeDDM.value="<%=@venue_list[v].venueType%>";
+			dom.venueName.value=venSel;
+			dom.capacity.value="<%=@venue_list[v].capacity%>";
+			dom.remarks.value="<%=@venue_list[v].remarks%>";
+		}
+	<% end %>
+	EnDisable();
+}
+
+function clearField(){
+var dom = document.getElementById("VenueForm");
+	if(dom.venueListDDM.options.length > 0){
+		dom.venueListDDM.selectedIndex = -1;
+	} //end-if
+	
+		dom.venueTypeDDM.selectedIndex = 0; 
+		dom.venueName.value = "";
+		dom.capacity.value = "";
+		dom.remarks.value = "";	
+		dom.submitVenueBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+} //end-clearField()
+
+function EnDisable(){
+var dom = document.getElementById("VenueForm");
+if (dom.actionDDM.value=="Update" ){
+		dom.venueTypeDDM.disabled=false;
+		dom.capacity.disabled=false;
+		dom.remarks.disabled=false;
+		dom.submitVenueBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+		
+	}
+	else if (dom.actionDDM.value=="Delete"){
+		dom.venueTypeDDM.disabled=true;
+		dom.capacity.disabled=true;
+		dom.remarks.disabled=true;
+		dom.submitVenueBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else if (dom.actionDDM.value=="Add"){
+		dom.capacity.disabled=false;
+		dom.remarks.disabled=false;
+		dom.venueName.disabled=false;
+		dom.submitVenueBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else{
+		dom.venueTypeDDM.disabled=true;
+		dom.capacity.disabled=true;
+		dom.remarks.disabled=true;
+		dom.submitVenueBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+	}
+}
+
+function checkingAndEnabling(){
+var dom = document.getElementById("VenueForm");
+	if (dom.venueName.value.length==0){
+		alert("Pls enter an appropriate Venue Name.");
+		dom.venueName.focus();
+		return false;
+	}
+	if (dom.capacity.value.length==0){
+		alert("Pls enter an appropriate Venue Capacity.");
+		dom.capacity.focus();
+		return false;
+	}
+	dom.venueName.disabled=false;
+	dom.venueTypeDDM.disabled=false;
+	dom.capacity.disabled=false;
+	dom.remarks.disabled=false;
+}
+
+function resetForm(){
+var dom = document.getElementById("VenueForm");
+	clearField();
+	dom.actionDDM.selectedIndex=0;
+	onChangeAction();
+	
+}
+
+function checkUserType(){
+var dom = document.getElementById("VenueForm");
+<% if Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Normal"%>
+	removeAllDDMItem('actionDDM')
+	var newOption = new Option();
+	newOption.text = "View existing venue";
+	newOption.value = "View";
+	dom.actionDDM.options[0]=newOption;
+	onChangeAction();	
+<% end %>
+}
+
+</script>
+</head>
+<body onload="checkUserType();">
+<form id="VenueForm" method="post" action="/venue/process_venue" onsubmit="return checkingAndEnabling();">
+<Table class="Table1" align=center>
+	<tr>
+		<th colspan=3>View / Add / Update / Delete Venue</th>
+	</tr>
+	<tr>
+		<td >Choose an action:</td>
+		<td>
+			<Select size="1" id="actionDDM" name="actionDDM" style="WIDTH: 203px" onchange="onChangeAction()" tabIndex="1">
+  				<option value="Pls select an action">Pls select an action</option>
+				<option value="View">View existing venue</option>
+				<option value="Add">Add new venue</option>
+				<option value="Update">Update existing venue</option>
+				<option value="Delete">Delete existing venue</option>
+  	    		</Select>
+		</td>
+		<td rowspan=5 align=center> Venue List: <br><br>
+			<Select size="10" id="venueListDDM" name="venueListDDM" style="WIDTH: 165px" onchange="onChangeList()" tabIndex="2" disabled=true>
+				<% 0.upto(@venue_list.length-1) do |v| %>
+					<option value="<%=@venue_list[v].venueName%>"><%=@venue_list[v].venueName%></option>
+				<% end %>
+			<Select>
+			<br><br>
+		</td>
+	</tr>
+	<tr>	<td>Venue Type:</td>
+      		<td>
+      			<Select size="1" id="venueTypeDDM" name="venueTypeDDM" style="WIDTH: 203px" onchange="onChangeType()" tabIndex="3" disabled=true>
+  				<option value="Pls select venue type">Pls select venue type</option>
+				<option value="Lec">Lecture Theatre</option>
+				<option value="Tut">Tutorial Room</option>
+				<option value="Lab">Laboratory</option>
+  	   	 		</Select>
+  	  	</td>
+	</tr>
+	<tr>
+		<td>Venue Name: </td>
+		<td><input type="text" id="venueName" name="venueName" size="30" MaxLength="30" onkeypress="return allowAlphaNumeric('Venue Name')" tabIndex="4" disabled=true></td>
+	</tr>
+	<tr>
+		<td>Capacity</td>
+		<td><input type="text" id="capacity" name="capacity" size="30" MaxLength="3" onkeypress="return allowNum('Capacity')" tabIndex="5" disabled=true></td>  
+	</tr>
+	<tr>
+		<td>Remarks</td>
+		<td><textarea rows="3" id="remarks" name="remarks" cols="23" TextMode="MultiLine" onkeypress="return imposeMaxLength(this, 149);" tabIndex="6" disabled=true></textarea></td>
+	</tr>
+	<tr class="TF">
+		<td colspan=2>
+		<input type="submit" value="Submit" name="submitVenueBtn" tabIndex="7"disabled=true>
+		<input type="reset" value="Reset" name="resetBtn" tabIndex="8" onclick="resetForm()" disabled=true>
+		<input type="button" value="Main" name="mainBtn" tabIndex="9" onclick="showOpener()"></td>
+	</tr>
+	<tr>
+	</tr>
+	
+</Table>
+</form>
+</body>
+</html>
+<script>
+	var msgDisplay=""
+	var noMsg=false;
+	<% if @msg=="1" %>
+		msgDisplay="ERROR: Venue cannot be added. Venue already exists in the database.";
+	<% elsif @msg=="2" %>
+		msgDisplay="Venue is added successfully.";
+	<% elsif @msg=="3" %>
+		msgDisplay="Venue is updated successfully.";
+	<% elsif @msg=="4" %>
+		msgDisplay="Venue is deleted successfully.";
+	<% else %>
+		noMsg=true;
+	<% end %>
+	if (noMsg==false){
+	alert(msgDisplay);
+	}
+</script>

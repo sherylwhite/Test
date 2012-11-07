@@ -1,0 +1,31 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+
+function submitForm(){
+new Ajax.Request('/print_out/process_venue_clash_printout', {asynchronous:true, evalScripts:true, onComplete:function(request){PrintoutDone(request)}});
+
+}
+
+function PrintoutDone(request){
+		window.open("/print_out/printout_done?print=VenClash",'Printout','menubar=0,resizable=1,height=250,width=300');
+}
+</script>
+</head>
+<body>
+<form id="GrpStatForm" method="post" action="">
+<Table align=center>
+	<tr>
+		<th>Generate Venue Clash Printout</th>
+	</tr>		
+	<tr align="center">
+      		<td><br><input type="button" value="Generate" name="generateBtn" onclick="submitForm();" >
+		<input type="button" value="Main" name="mainBtn" onclick="showOpener()"></td>
+    	</tr>
+	<tr>
+		<td><br><font color=red>Note: Please wait for the Pop up window for the generated printout.</font></td>
+	</tr>
+</Table>
+</form>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.0 Transitional//EN">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Maintain Lesson Groups</title>
+<link href="/stylesheets/style.css?1200832189" media="screen" rel="Stylesheet" type="text/css" />
+<script src="/javascripts/JS_Function.js?1198430113" type="text/javascript"></script>
+<script src="/javascripts/prototype.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1198673475" type="text/javascript"></script>
+<SCRIPT language="javascript" type="text/javascript">
+function onChangeAction(){
+var dom = document.getElementById("LessonGroupForm");
+				
+	if(dom.actionDDM.value == "Add"){
+		dom.grpPre.readOnly = false;
+		dom.grpPreListDDM.disabled = true;
+		clearField();
+		if(dom.grpPreListDDM.options.length > 0){
+		dom.grpPreListDDM.selectedIndex=-1;
+		}
+		addGrpNo();
+	}
+	else if(dom.actionDDM.value == "Update"){
+		dom.grpPre.readOnly = true;
+		dom.grpPreListDDM.disabled = false;
+		removeAllDDMItem('grpNo1');
+		removeAllDDMItem('grpNo2');
+		removeAllDDMItem('grpNo3');
+		addGrpNo();
+	}
+	else{	
+		dom.grpPreListDDM.disabled = false;
+		if(dom.actionDDM.value == "Pls select an action"){
+			dom.grpPreListDDM.selectedIndex=-1;
+			dom.grpPreListDDM.disabled=true;
+		}
+		if(dom.grpPreListDDM.options.length > 0){
+		dom.grpPreListDDM.selectedIndex=-1;
+		}
+		clearField();		
+		dom.grpPre.readOnly =true;
+	}	
+}
+
+function addGrpNo(){
+var dom = document.getElementById("LessonGroupForm");
+
+	var count=0;
+	if ("<%=@maxlec%>" > 0){
+	<% 0.upto(@maxlec-1) do |m| %>
+		var newOption = new Option();
+		newOption.text="<%=@lec_grp_assigned_list[m]%>";
+		newOption.value="<%=@lec_grp_assigned_list[m]%>";
+		dom.grpNo1.options[count]=newOption;
+		count++;
+	<% end%>
+	}
+	var count=0;
+	if ("<%=@maxlab%>" > 0){
+	<% 0.upto(@maxlab-1) do |m| %>
+		var newOption = new Option();
+		newOption.text="<%=@lab_grp_assigned_list[m]%>";
+		newOption.value="<%=@lab_grp_assigned_list[m]%>";
+		dom.grpNo3.options[count]=newOption;
+		count++;
+	<% end%>
+	}
+	var count=0;
+	if ("<%=@maxtut%>" > 0){
+	<% 0.upto(@maxtut-1) do |m| %>
+		var newOption = new Option();
+		newOption.text="<%=@tut_grp_assigned_list[m]%>";
+		newOption.value="<%=@tut_grp_assigned_list[m]%>";
+		dom.grpNo2.options[count]=newOption;
+		count++;
+	<% end%>
+	}
+	dom.grpPre.disabled=false;
+	dom.grpNo1.disabled = false;
+	dom.grpNo2.disabled = false;
+	dom.grpNo3.disabled = false;
+	
+	dom.submitLGBtn.disabled=false;
+	dom.resetBtn.disabled=false;
+
+}
+
+function onChangeList(){
+var dom = document.getElementById("LessonGroupForm");
+var grpPre= dom.grpPreListDDM.value;	
+dom.grpPre.value=grpPre;
+if(dom.actionDDM.value != "Update"){	
+	clearField();
+	dom.grpPre.value=grpPre;
+	var count=0;
+	<% 0.upto(@grp_value_list.length-1) do |gn| %>
+		if (grpPre=="<%=@grp_value_list[gn].IndexNumber%>"){
+			var newOption = new Option();
+			newOption.text="<%=@grp_value_list[gn].LectureGroup%>";
+			newOption.value="<%=@grp_value_list[gn].LectureGroup%>";
+			dom.grpNo1.options[count]=newOption;
+			newOption = new Option();
+			newOption.text="<%=@grp_value_list[gn].TutorialGroup%>";
+			newOption.value="<%=@grp_value_list[gn].TutorialGroup%>";			
+			dom.grpNo2.options[count]=newOption;
+			newOption = new Option();
+			newOption.text="<%=@grp_value_list[gn].LaboratoryGroup%>";
+			newOption.value="<%=@grp_value_list[gn].LaboratoryGroup%>";			
+			dom.grpNo3.options[count]=newOption;
+			count++;
+		
+		}
+	<% end %>
+	EnDisable();}
+	else {
+		dom.grpPreListDDM.disabled = false;
+		removeAllDDMItem('grpNo1');
+		removeAllDDMItem('grpNo2');
+		removeAllDDMItem('grpNo3');
+		addGrpNo();
+		dom.grpPre.readOnly = true;		
+		EnDisable();
+	}
+}
+
+function EnDisable(){
+var dom = document.getElementById("LessonGroupForm");
+	
+	if(dom.actionDDM.value=="Update"){
+		dom.submitLGBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else{
+		dom.submitLGBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+		if (dom.actionDDM.value=="Delete"){
+			dom.submitLGBtn.disabled=false;
+			dom.resetBtn.disabled=false;
+		}
+		if (dom.actionDDM.value=="Add"){
+			dom.submitLGBtn.disabled=false;
+			dom.resetBtn.disabled=false;
+		}
+	}
+}
+
+
+function clearField(){
+var dom = document.getElementById("LessonGroupForm");
+	dom.grpPre.value="";
+	removeAllDDMItem('grpNo1');
+	removeAllDDMItem('grpNo2');
+	removeAllDDMItem('grpNo3');	
+}
+
+function resetForm(){
+var dom = document.getElementById("LessonGroupForm");
+	clearField();
+	dom.actionDDM.selectedIndex=0;
+	onChangeAction();
+}
+
+</SCRIPT>
+</head>
+<body>
+<form id="LessonGroupForm" method="post" action="modify_lesson_groups">
+<Table class="Table1" align=center>
+	<tr>
+		<th colspan=4>View / Add / Update / Delete Lesson Index Groups</th>
+	</tr>
+	<tr>
+		<td >Choose an action:</td>
+		<td colspan=2>
+			<Select size="1" id="actionDDM" name="actionDDM" style="WIDTH: 203px" onchange="onChangeAction()" tabIndex="1">
+  				<option value="Pls select an action">Pls select an action</option>
+				<option value="View">View existing lesson index group</option>
+				<option value="Add">Add new lesson index group</option>
+				<option value="Update">Update existing lesson index group</option>
+				<option value="Delete">Delete existing lesson index group</option>
+  	    		</Select>
+		</td>
+		<td rowspan=3 align=center> <br>Group Index List: <br><br>
+			<Select size="10" id="v" name="grpPreListDDM" style="WIDTH: 165px" onchange="onChangeList()" tabIndex="2" disabled=true>
+				<% 0.upto(@grp_index_list.length-1) do |gp| %>
+					<option value="<%=@grp_index_list[gp].IndexNumber%>"><%=@grp_index_list[gp].IndexNumber%></option>
+				<% end %>
+			<Select>
+			<br><br>
+		</td>
+	</tr>
+		<tr align="center">
+		
+		<td>Index Number
+			<input type="Text" id="grpPre" name="grpPre" size="5" MaxLength="5" tabIndex="1" />
+		</td>
+		</tr>
+	<tr align="center">
+		
+		<td><br>Lecture Group<br><br>
+			<Select size="1" id="grpNo1" name="grpNo1" style="WIDTH: 60px;" tabIndex="2" ;" >
+				
+  	    		</Select>			
+		<td><br>Tutorial Group<br><br>
+			<Select size="1" id="grpNo2" name="grpNo2" style="WIDTH: 60px;" tabIndex="3";">
+				
+			</Select>
+		</td>
+		</td>
+		<td><br>Lab Group<br><br>
+			<Select size="1" id="grpNo3" name="grpNo3" style="WIDTH: 60px;" tabIndex="4" ;" >
+				
+			</Select>
+		</td>
+	</tr>
+		
+	</tr>
+	<tr class="TF">
+		<td colspan=3>
+		<input type="submit" value="Submit" name="submitLGBtn" tabIndex="7" disabled=true>
+		<input type="reset" value="Reset" name="resetBtn" tabIndex="8" onclick="resetForm()" disabled=true>
+		<input type="button" value="Close" name="closeBtn" tabIndex="9" onclick="showOpener()"></td>
+	</tr>
+	<tr>
+	</tr>
+	
+</Table>
+</form>
+</body>
+<script>
+	var msgDisplay=""
+	var noMsg=false;
+	<% if @msg=="1" %>
+		msgDisplay="ERROR: Index Group cannot be added. Index Group already exists in the database.";
+	<% elsif @msg=="2" %>
+		msgDisplay="Index Group is added successfully.";
+	<% elsif @msg=="3" %>
+		msgDisplay="Index Group is updated successfully.";
+	<% elsif @msg=="4" %>
+		msgDisplay="Index Group is deleted successfully.";
+	<% else %>
+		noMsg=true;
+	<% end %>
+	if (noMsg==false){
+	alert(msgDisplay);
+	}
+</script>
+</html>

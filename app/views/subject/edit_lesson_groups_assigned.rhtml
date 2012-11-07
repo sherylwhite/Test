@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.0 Transitional//EN">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Edit Lesson Groups Assigned</title>
+<link href="/stylesheets/style.css?1200832189" media="screen" rel="Stylesheet" type="text/css" />
+<script src="/javascripts/JS_Function.js?1198430113" type="text/javascript"></script>
+<script src="/javascripts/prototype.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1198673475" type="text/javascript"></script>
+<SCRIPT language="javascript" type="text/javascript">
+
+function checkChosenNoGrp(){
+var dom = document.getElementById("LessonGroupAssignedForm");
+
+	if(dom.chosenGrpDDM.length!=0){
+		dom.confirmBtn.disabled=false;
+	}else{
+		dom.confirmBtn.disabled=true;
+	}
+} //end-checkChosenNoVenue()
+
+function add(){
+	moveItem('availGrpDDM','chosenGrpDDM');
+	checkChosenNoGrp();
+}  //end-add()
+		
+function remove(){		
+	moveItem('chosenGrpDDM','availGrpDDM');
+	checkChosenNoGrp();
+} //end-remove()
+
+function processConfirm(){
+var dom = document.getElementById("LessonGroupAssignedForm");
+var chosenGrps="";
+	for(var k=0; k<dom.chosenGrpDDM.length;k++){
+		chosenGrps+=dom.chosenGrpDDM.options[k].value+",";	
+	}
+	
+	chosenGrps=chosenGrps.substr(0,chosenGrps.length-1);
+	<% if session[:lesType]=="Lec" %>
+		opener.document.getElementById("lecLGassigned").value=chosenGrps;
+	<% elsif session[:lesType]=="Tut" %>
+		opener.document.getElementById("tutLGassigned").value=chosenGrps;
+	<% else %>
+		opener.document.getElementById("labLGassigned").value=chosenGrps;
+	<% end %>
+	alert("Please click Submit button to take effect of your changes of lesson groups assigned.")
+	showOpener();
+}
+
+function reloadGrp(){
+var dom = document.getElementById("LessonGroupAssignedForm");
+	removeAllDDMItem('availGrpDDM');
+	<% @grp_list=LessonGroup.find_by_sql("SELECT groupPrefix, groupIndex FROM lesson_groups order by groupIndex")%>
+	count=0;
+	<% 0.upto(@grp_list.length-1) do |grp|%>
+		if (dom.availPrefixDDM.value=="<%=@grp_list[grp].groupPrefix%>"){
+			checkOk=true;
+			for(var k=0; k<dom.chosenGrpDDM.length;k++){
+				if (dom.chosenGrpDDM.options[k].value=="<%=@grp_list[grp].groupIndex%>"){
+					checkOk=false;
+					break;
+				}	
+			}
+			if (checkOk){
+				var newOption = new Option();
+				newOption.text = "<%=@grp_list[grp].groupIndex%>";
+				newOption.value ="<%=@grp_list[grp].groupIndex%>";
+				dom.availGrpDDM.options[count] = newOption;
+				count++;
+			}
+		}
+	<% end %>
+}
+
+</SCRIPT>
+</head>
+<body>
+<form id="LessonGroupAssignedForm" method="post" action="">
+<table class="Table1" align=center>
+	<tr align=center>
+		<th colspan=4>Add / Update / Delete Lesson Group(s) Assigned</th>
+	</tr>
+	<tr align=center>
+		<td>Available<br> Group Prefix: <br>			
+		
+			<Select  style="width: 100px" size=8 id="availPrefixDDM" name="availPrefixDDM" onchange="reloadGrp();" multiple>
+				<% 0.upto(@grp_prefix_list.length-1) do |gp| %>
+					<option value="<%=@grp_prefix_list[gp].groupPrefix%>"><%=@grp_prefix_list[gp].groupPrefix%></option>
+				<% end %>
+			</Select>
+		</td>
+		
+		<td>Available <br> Group(s): <br>
+			
+			<Select  style="width: 100px" size=8 id="availGrpDDM" name="availGrpDDM" multiple>
+				
+			</Select>
+		</td>
+		<td rowspan=3 align=center>
+			<input type="button" name="Button" value="  >>  " onclick="add();"><br>
+        		<input type="button" name="Button" value="  <<  " onclick="remove();">    
+        	</td>
+		<td>Lesson Group(s) <br>Assigned:<br>
+			<Select  style="width: 100px" size=8 id="chosenGrpDDM" name="chosenGrpDDM" multiple>
+				<% 0.upto(@les_grp_assigned_list.length-1) do |lga| %>
+					<option value="<%=@les_grp_assigned_list[lga]%>"><%=@les_grp_assigned_list[lga]%></option>
+				<% end %>
+			</Select>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td align=center>
+		<input type="button" name="reloadGrpBtn" id="reloadGrpBtn" onclick="reloadGrp();" style="width: 100px" value="Reload Groups" /><br>
+		</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+	</tr>
+	<tr>
+	</tr>
+	<tr>
+		
+		<td colspan=4 align=center>
+		<% if @les_grp_assigned_list.length==0 %>
+			<input type="button" name="confirmBtn" onclick="processConfirm();" disabled=true value="Confirm" />
+		<% else %>
+			<input type="button" name="confirmBtn" onclick="processConfirm();" value="Confirm" />
+		<% end %>
+		<input type="button" value="Cancel" name="cancelBtn" tabIndex="9" onclick="showOpener()">
+		</td>
+	</tr>	
+	<tr>
+		<td colspan=4 align=center>
+		<font color=blue><b>Chosen Subject: <%=session[:scode]%> , Lesson Type: <%=session[:lesType]%></b></font>
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,2 @@
+module SubjectListHelper
+end

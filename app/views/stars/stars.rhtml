@@ -1,0 +1,9 @@
+<div style="text-align:center">
+<font size=4 color="#804000"><b>Import STARS timetable into DB</b></font><br><br>
+<%= start_form_tag ({:controller=>"stars",:action => "upload"}, {:multipart => true}) %>
+    Browse Your STARS Timetable here (in txt Format): 
+    <br><%= file_field_tag "starsFile" %>
+    <br>
+    <br><%= submit_tag  "Upload STARS File" %>
+<%= end_form_tag %>
+</div>

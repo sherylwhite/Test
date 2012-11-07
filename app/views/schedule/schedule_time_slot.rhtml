@@ -1,0 +1,824 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Schedule Class</title>
+		<style type="text/css">
+		.style1 {
+			font-size: 16px;
+			font-weight: bold;
+			color: #0066CC;
+		}
+		</style>
+<script src="/javascripts/JS_Function.js?1198430113" type="text/javascript"></script>
+<script src="/javascripts/prototype.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1198673475" type="text/javascript"></script>
+<SCRIPT language="javascript" type="text/javascript">
+var slotDetails=new Array();
+var grpArr=new Array();
+function onClickActionRadio(val){
+	var dom = document.getElementById("MainForm");
+	if (val=="Edit_Delete"){
+			dom.grpList.disabled = false;
+			dom.addBtn.disabled = true;
+			dom.updateBtn.disabled = false;
+			dom.delBtn.disabled = false;
+			dom.grpList.selectedIndex = 0;
+			EDsetup();
+			dom.assignLecCheckbox.disabled = false;
+			}
+	else{
+			dom.grpList.disabled = true;
+			dom.addBtn.disabled = false;
+			dom.updateBtn.disabled = true;
+			dom.delBtn.disabled = true;
+			dom.assignLecCheckbox.disabled = true;
+			dom.lecturerSel.disabled=false;
+			dom.ctSel.selectedIndex=0;
+			classTypeChange();
+			
+	}
+	EnUnTeachWeekBox();
+	checkExistLecturer();
+}
+
+function EDsetup(){
+	var dom = document.getElementById("MainForm");
+	dom.daySel.selectedIndex=<%=@sel_index_day%>
+	dom.stSel.selectedIndex=<%=@sel_index_time%>
+	dom.etSel.selectedIndex=<%=@sel_index_time+1%>
+	dom.grpList.selectedIndex=0;
+	setInfoArray();
+	onChangeGrpInSlot(0);
+	dom.lecturerSel.disabled=true;
+}
+
+function onCheckAsUnassign(){
+	var dom = document.getElementById("MainForm");
+	var radioBtn = document.MainForm.actionRadioBtn;	
+	if(dom.assignLecCheckbox.checked == true){
+			for(var count=0; count<radioBtn.length; count++)
+					radioBtn[count].disabled = true;
+					
+			dom.daySel.disabled = true;
+			dom.stSel.disabled = true;
+			dom.etSel.disabled = true;
+			dom.ctSel.disabled = true;
+			dom.grpSel.disabled = true;
+			dom.venSel.disabled = true;
+			dom.freqSel.disabled = true;
+			dom.addBtn.disabled = true;
+			dom.updateBtn.disabled = true;
+			dom.delBtn.disabled = true;
+			EDsetup();
+			dom.assignLecCheckbox.disabled = false;
+			dom.lecturerSel.disabled = false;
+			dom.existLecturer.disabled = false;
+			dom.assignBtn.disabled = false;
+			dom.unassignBtn.disabled = false;
+			onChangeExistLecturer();
+			if (dom.lecturerSel.options.length==0)
+				dom.assignBtn.disabled=true;
+			else
+				dom.assignBtn.disabled=false;			
+	}
+	else{
+		 for(var count=0; count<radioBtn.length; count++)
+					radioBtn[count].disabled = false;
+					
+			dom.daySel.disabled = false;
+			dom.stSel.disabled = false;
+			dom.etSel.disabled = false;
+			dom.ctSel.disabled = false;
+			dom.grpSel.disabled = false;
+			dom.venSel.disabled = false;
+			dom.freqSel.disabled = false;
+			dom.addBtn.disabled = true;
+			dom.updateBtn.disabled = false;
+			dom.delBtn.disabled = false;
+			dom.assignLecCheckbox.disabled = false;
+			dom.lecturerSel.disabled = true;
+			dom.existLecturer.disabled = true;
+			dom.assignBtn.disabled = true;
+			dom.unassignBtn.disabled = true;	
+		  dom.lecturerSel.selectedIndex = 0;	//reset to default
+		  EnUnTeachWeekBox();
+		} //end-if-else
+	
+} //end-onCheckAsUnassign()
+
+function setInfoArray(){	
+	<% 0.upto(@slot_details.length-1) do |sl|
+		%>
+		var tempArr=new Array();
+		tempArr['allocId']="<%=@slot_details[sl].allocId%>";
+		tempArr['lessonType']="<%=@slot_details[sl].lessonType%>";
+		tempArr['groupIndex']="<%=@slot_details[sl].groupIndex%>";
+		tempArr['venueName']="<%=@slot_details[sl].venueName%>";
+		tempArr['freq']="<%=@slot_details[sl].freq%>";
+		tempArr['teachLessonWeek']="<%=@slot_details[sl].teachLessonWeek%>";
+		tempArr['staffName']="<%=@slot_details[sl].staffName%>";
+		tempArr['staffId']="<%=@slot_details[sl].staffId%>";
+		tempArr['startTime']="<%=@slot_details[sl].startTime%>";
+		tempArr['endTime']="<%=@slot_details[sl].endTime%>";
+		tempArr['dayOfWeek']="<%=@slot_details[sl].dayOfWeek%>";
+		slotDetails[<%=sl%>]=tempArr;
+		<%
+		end 
+		%>
+}
+
+function groupChange(){
+	var dom = document.getElementById("MainForm");
+	ind=dom.grpList.selectedIndex
+	setInfoArray();
+	onChangeGrpInSlot(ind);
+	checkExistLecturer();
+}
+
+function onChangeGrpInSlot(index){
+	var dom = document.getElementById("MainForm");
+	removeAllDDMItem('grpSel');
+	removeAllDDMItem('venSel');
+	removeAllDDMItem('freqSel');
+	<% 0.upto(@lesson_list.length-1) do |l| %>
+	var newOption = new Option();
+			newOption.text = "<%=@lesson_list[l].lessonType%>";
+			newOption.value = "<%=@lesson_list[l].lessonType%>";
+			if (slotDetails[index]['lessonType']=="<%=@lesson_list[l].lessonType%>")
+				newOption.selected=true;
+			dom.ctSel.options[<%=l%>] = newOption;
+	<% end %>	
+	
+	
+		<%
+			0.upto(@group_list.length-1) do |g| %>
+				if (slotDetails[index]['lessonType']=="<%=@group_list[g].lessonType%>"){
+					<% 
+						grp_arr=Array.new
+						grp_arr=@group_list[g].lessonGroupsAssigned.split(",")
+						grp_arr=grp_arr.sort%>
+					<% 0.upto(grp_arr.length-1) do |ga| %>
+							var newOption = new Option();
+							newOption.text = "<%=grp_arr[ga]%>";
+							newOption.value = "<%=grp_arr[ga]%>";
+							if (slotDetails[index]['groupIndex']=="<%=grp_arr[ga]%>")
+									newOption.selected=true;
+							dom.grpSel.options[<%=ga%>] = newOption;
+							
+					<% end %>
+			}
+	<% end %>
+	
+	
+	count=0
+	<% 	
+	0.upto(@lesson_list.length-1) do |l| %>
+			if (slotDetails[index]['lessonType']=="<%=@lesson_list[l].lessonType%>"){
+			<% if @lesson_list[l].possibleVenues.include?(",")%>
+				<%
+					vens=Array.new
+					vens=@lesson_list[l].possibleVenues.split(",")
+					0.upto(vens.length-1) do|v|
+					%>
+						var newOption = new Option();
+						newOption.text = "<%=vens[v]%>";
+						newOption.value = "<%=vens[v]%>";
+						if  (slotDetails[index]['venueName']=="<%=vens[v]%>")
+							newOption.selected=true;
+						dom.venSel.options[count] = newOption;
+						count++;
+							
+					<% end 
+				else
+					%>
+					var newOption = new Option();
+					newOption.text = "<%=@lesson_list[l].possibleVenues%>";
+					newOption.value = "<%=@lesson_list[l].possibleVenues%>";
+					dom.venSel.options[count] = newOption;
+					count+=1
+			<% end %>
+			}			
+	<% end %>
+	
+	dom.status.value="Occupied";
+	var teachArr=new Array();
+			teachArr=slotDetails[index]['teachLessonWeek'].split(",");
+			var ct=0;
+	if (slotDetails[index]['freq']=="Weekly"){
+	
+		var newOption = new Option();
+		newOption.text = "Weekly";
+		newOption.value = "Weekly";
+		dom.freqSel.options[0] = newOption;
+		for(weekNum=1; weekNum<=dom["teachWeekCheckbox[]"].length; weekNum++){
+			if(teachArr[ct]==weekNum){
+			dom["teachWeekCheckbox[]"][weekNum-1].checked = true;
+			ct++;
+			}
+			else{
+			dom["teachWeekCheckbox[]"][weekNum-1].checked = false;
+			}
+			dom["teachWeekCheckbox[]"][weekNum-1].disabled = false;
+		}
+	}
+	else{
+		var newOption = new Option();
+		newOption.text = "Odd Weeks";
+		newOption.value = "Odd";
+		dom.freqSel.options[0]=newOption;
+		
+		var newOption1 = new Option();
+		newOption1.text = "Even Weeks";
+		newOption1.value = "Even";
+		dom.freqSel.options[1]=newOption1;
+		
+		for(weekNum=1; weekNum<=dom["teachWeekCheckbox[]"].length; weekNum++){
+			
+			if (slotDetails[index]['freq']=="Odd"){
+				dom.freqSel.selectedIndex=0;
+				if(weekNum%2!=0){
+					if(teachArr[ct]==weekNum){
+						dom["teachWeekCheckbox[]"][weekNum-1].checked = true;
+						ct++;
+						}
+					else{
+						dom["teachWeekCheckbox[]"][weekNum-1].checked = false;
+						}	
+					dom["teachWeekCheckbox[]"][weekNum-1].disabled = false;
+				}
+				else{
+					dom["teachWeekCheckbox[]"][weekNum-1].checked = false;	
+					dom["teachWeekCheckbox[]"][weekNum-1].disabled = true;
+				}
+			}
+			else{
+				dom.freqSel.selectedIndex=1;
+				if(weekNum%2==0){
+					if(teachArr[ct]==weekNum){
+						dom["teachWeekCheckbox[]"][weekNum-1].checked = true;
+						ct++;
+						}
+					else{
+						dom["teachWeekCheckbox[]"][weekNum-1].checked = false;
+						}	
+					dom["teachWeekCheckbox[]"][weekNum-1].disabled = false;
+				}
+				else{
+					dom["teachWeekCheckbox[]"][weekNum-1].checked = false;	
+					dom["teachWeekCheckbox[]"][weekNum-1].disabled = true;
+				}
+			}
+		}
+	}
+	dom.duration.value=1;
+	
+	
+}
+
+function changeStatus(request){
+	var dom = document.getElementById("MainForm");
+	var info=new Array;
+	info = request.responseText.split(",");
+	if (info[0]=="Failed"){
+		dom.addBtn.disabled = true;
+		dom.updateBtn.disabled = true;
+		dom.delBtn.disabled = true;
+		alert("Invalid Time Chosen! Please reselect your time else you couldn't proceed any actions!");
+	}
+	else{
+		dom.status.value=info[0];
+		dom.duration.value=info[1];
+		if(dom.actionRadioBtn[0].checked)
+		dom.addBtn.disabled = false;
+		else{
+		dom.updateBtn.disabled = false;
+		dom.delBtn.disabled = false;
+		}
+		
+	}
+}
+
+function classTypeChange(){
+	var dom = document.getElementById("MainForm");
+	var ctFreq;
+	var posVens;
+	removeAllDDMItem('grpSel');
+	removeAllDDMItem('freqSel');
+	removeAllDDMItem('venSel');
+	setGrpInfoArray();	
+	
+	for(var w=0;w<grpArr.length;w++){
+		if(grpArr[w]['lessonType']==dom.ctSel.value){
+			var grpAssignedArr=new Array();
+			grpAssignedArr=grpArr[w]['lessonGroupsAssigned'].split(",");
+			grpAssignedArr=grpAssignedArr.sort();
+			for(var k=0;k<grpAssignedArr.length;k++){
+				var newOption = new Option();
+				newOption.text = grpAssignedArr[k];
+				newOption.value = grpAssignedArr[k];
+				dom.grpSel.options[k] = newOption;			
+			}
+		}
+	}
+	
+	for(var w=0;w<grpArr.length;w++){
+		if(grpArr[w]['lessonType']==dom.ctSel.value){
+			ctFreq=grpArr[w]['frequency'];
+			posVens=grpArr[w]['possibleVenues'];
+			break;
+			}
+		}
+	
+		var check = posVens.match(",");
+		
+		count=0;
+		if (check==","){
+			var vens=new Array();
+			vens=posVens.split(",");
+				for(var k=0;k<vens.length;k++){
+					var newOption = new Option();
+					newOption.text = vens[k];
+					newOption.value = vens[k];
+					dom.venSel.options[count] = newOption;
+					count+=1;
+				}
+		}
+		else{
+			var newOption = new Option();
+			newOption.text = posVens;
+			newOption.value = posVens;
+			dom.venSel.options[count] = newOption;
+			count+=1
+		}
+	
+	if(ctFreq=="Weekly"){
+		var newOption = new Option();
+		newOption.text = "Weekly";
+		newOption.value = "Weekly";
+		dom.freqSel.options[0]=newOption;
+	}
+	else{
+		var newOption = new Option();
+		newOption.text = "Odd Weeks";
+		newOption.value = "Odd";
+		dom.freqSel.options[0]=newOption;
+		
+		var newOption1 = new Option();
+		newOption1.text = "Even Weeks";
+		newOption1.value = "Even";
+		dom.freqSel.options[1]=newOption1;
+	}
+	dom.freqSel.selectedIndex=0;
+	dom.grpSel.selectedIndex=0;
+	dom.venSel.selectedIndex=0;
+	venClashCheck();
+	EnUnTeachWeekBox();
+	checkExistLecturer();
+}
+
+function setGrpInfoArray(){
+<% 0.upto(@group_list.length-1) do |g|
+		%>
+		var tempArr=new Array();
+		tempArr['frequency']="<%=@group_list[g].frequency%>";
+		tempArr['lessonType']="<%=@group_list[g].lessonType%>";
+		tempArr['lessonGroupsAssigned']="<%=@group_list[g].lessonGroupsAssigned%>";
+		tempArr['possibleVenues']="<%=@group_list[g].possibleVenues%>";
+		grpArr[<%=g%>]=tempArr;
+		<%
+		end 
+		%>
+}
+
+function venClashCheck(){
+var dom = document.getElementById("MainForm");
+new Ajax.Request('/schedule/check_venue_clash', {asynchronous:true, evalScripts:true, onComplete:function(request){changeStatus(request)}, parameters:'daySel='+dom.daySel.value+'&'+'stSel='+dom.stSel.value+'&'+'etSel='+dom.etSel.value+'&'+'venSel='+dom.venSel.value+'&'+'freqSel='+dom.freqSel.value});
+}
+
+function EnUnTeachWeekBox(){
+	var dom = document.getElementById("MainForm");
+	var freqValue = dom.freqSel.value;
+	if (freqValue=="Weekly")
+		dom.teachWeekList.value="1,2,3,4,5,6,7,8,9,10,11,12,13";
+	else if (freqValue=="Odd")
+		dom.teachWeekList.value="1,3,5,7,9,11,13";
+	else dom.teachWeekList.value="2,4,6,8,10,12";
+		for(var weekNum=1; weekNum<=dom["teachWeekCheckbox[]"].length; weekNum++){
+			dom["teachWeekCheckbox[]"][weekNum-1].disabled = false;
+			dom["teachWeekCheckbox[]"][weekNum-1].checked = true;
+
+			if(((freqValue == 'Odd')&&(weekNum%2==0)) || ((freqValue == 'Even')&&(weekNum%2==1))){
+				dom["teachWeekCheckbox[]"][weekNum-1].disabled = true;
+				dom["teachWeekCheckbox[]"][weekNum-1].checked =false;
+			} //end-if
+		} //end-for
+}
+
+function freqChange(){
+	EnUnTeachWeekBox();
+	venClashCheck();
+}
+
+function lecturerChange(request){
+	var dom = document.getElementById("MainForm");
+	var lecList=new Array();
+	var lecturerStr="";
+	removeAllDDMItem('existLecturer');
+	removeAllDDMItem('lecturerSel');
+	lecList=request.responseText.split(",");
+	for (var k=0;k<lecList.length-1;k++){
+		var tempArr=new Array();
+		tempArr=lecList[k].split(":");
+		var newOption = new Option();
+		newOption.text = tempArr[1];
+		newOption.value = tempArr[0];
+		lecturerStr+=tempArr[0]+",";
+		dom.existLecturer.options[k]=newOption;
+	}
+	
+	var count=0;
+	
+	<% 0.upto(@lecturer_list.length-1) do |lc|%>
+		
+		if(lecturerStr.match("<%=@lecturer_list[lc].staffId%>,")!="<%=@lecturer_list[lc].staffId%>,"){
+		var newOption = new Option();
+		newOption.text = "<%=@lecturer_list[lc].staffName%>";
+		newOption.value = "<%=@lecturer_list[lc].staffId%>";
+		dom.lecturerSel.options[count]=newOption;
+		count++;
+		}
+	<% end %>
+		
+	if(dom.actionRadioBtn[0].checked){
+		var newOption = new Option();
+		newOption.text = "Not Assigned";
+		newOption.value = "0";
+		dom.lecturerSel.options[count]=newOption;
+		dom.lecturerSel.selectedIndex=count;
+	}
+	
+	if(dom.assignLecCheckbox.checked == true){
+		onChangeExistLecturer();
+		if (dom.lecturerSel.options.length==0)
+				dom.assignBtn.disabled=true;
+			else
+				dom.assignBtn.disabled=false;
+	}
+}
+
+function checkExistLecturer(){
+var dom = document.getElementById("MainForm");
+new Ajax.Request('/schedule/list_exist_lecturer', {asynchronous:true, evalScripts:true, onComplete:function(request){lecturerChange(request)}, parameters:'subcode='+dom.subcode.value+'&'+'ctSel='+dom.ctSel.value+'&'+'grpIndex='+dom.grpSel.value});
+}
+
+function onChangeExistLecturer(){
+var dom = document.getElementById("MainForm");
+new Ajax.Request('/schedule/check_teach_week', {asynchronous:true, evalScripts:true, onComplete:function(request){setTeachWeekBox(request)}, parameters:'subcode='+dom.subcode.value+'&'+'ctSel='+dom.ctSel.value+'&'+'grpIndex='+dom.grpSel.value+'&'+'staffId='+dom.existLecturer.value});
+}
+
+function setTeachWeekBox(request){
+	var dom = document.getElementById("MainForm");
+	var teachArr=new Array();
+	teachArr=request.responseText.split(",");
+	var ct=0;
+	for(weekNum=1; weekNum<=dom["teachWeekCheckbox[]"].length; weekNum++){
+		if(teachArr[ct]==weekNum){
+			dom["teachWeekCheckbox[]"][weekNum-1].checked = true;
+			ct++;
+		}
+		else{
+		dom["teachWeekCheckbox[]"][weekNum-1].checked = false;
+		}
+	}
+	
+	dom.teachWeekList.value=request.responseText;
+}
+
+function teachWeekChange(){
+var dom = document.getElementById("MainForm");
+var teachWeekList=""
+	for(var weekNum=1; weekNum<=dom["teachWeekCheckbox[]"].length; weekNum++){
+			if(dom["teachWeekCheckbox[]"][weekNum-1].checked ==true){
+				teachWeekList+=weekNum+",";
+			} //end-if
+		} //end-for
+teachWeekList=teachWeekList.substr(0,teachWeekList.length-1);
+dom.teachWeekList.value=teachWeekList;
+}
+
+</SCRIPT>
+	</head>
+	<body>
+	<h3 align=center>Timetable Planning and Scheduling System</h3>
+	<table border=1 width=550 cellpadding=1>
+	<form name="MainForm" id="MainForm" method="post" action="process_schedule">
+		<tr>
+			<td colspan="2" align=center class="style1">Select An Action</td>
+		</tr>
+		<tr>
+			<td width="240"><input name="actionRadioBtn" id="actionRadioBtn" type="radio" value="Add" checked="checked" onclick="onClickActionRadio(this.value)"/>Add New Class</td>
+			<!--edit/del is disabled if no class exist in slot-->
+			<td>
+				<% if @slot_details.length!=0 %>
+					<input name="actionRadioBtn" id="actionRadioBtn" type="radio" value="Edit_Delete" onclick="onClickActionRadio(this.value)"/>Edit/Delete Class in Slot</td>
+				<% else %>
+					<input name="actionRadioBtn" id="actionRadioBtn" type="radio" value="Edit_Delete" onclick="onClickActionRadio(this.value)" disabled=true/>Edit/Delete Class in Slot</td>
+				<% end %>
+		</tr>
+		<tr>
+			<td colspan="2" align=center class="style1">Add / Edit / Delete Class in Slot</td>
+		</tr>
+		<tr>
+			<td> Subject Code: </td>
+			<td>
+				<input name="subcode" type="text" id="subcode" value="<%=@scode%>" size="15" readonly />
+			</td>
+		</tr>
+		<tr>
+			<td> Number of Academic Units (AU): </td>
+			<td>
+				<input name="subau" type="text" maxlength="2" id="subau" value="<%=@au%>" size="15" readonly />
+			</td>
+		</tr>
+		<tr>
+			<td> Existing Group(s) in slot: </td>
+			<td >
+				<select name="grpList" id="grpList" style="width:120px" onchange="groupChange();" disabled=true>
+				<% 0.upto(@slot_details.length-1) do |s| %>	
+					<% grpven=@slot_details[s].groupIndex+"-"+@slot_details[s].venueName%>
+					<option value="<%=@slot_details[s].allocId%>"><%=grpven%>
+				<% end %>
+				</select>
+			&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;
+			Total:&nbsp;;
+				<input name="noOfgrp" type="text" id="noOfgrp" value="<%=@slot_details.length-%>" size="2" maxlength="3" readonly /> grp(s)
+			</td>
+		</tr>
+		<tr>
+			<td> Selected Day: </td>
+			<td>
+				<select name="daySel" id="daySel" style="width: 120px" onchange="<%=remote_function(:url=>{:action=>'check_venue_clash'},:with=>"'daySel='+daySel.value+'&'+'stSel='+stSel.value+'&'+'etSel='+etSel.value+'&'+'venSel='+venSel.value+'&'+'freqSel='+freqSel.value",:complete=>"changeStatus(request)")%>">
+				
+					<% 1.upto(@day_list.to_i) do |d| 
+						 case d
+						 when 1 
+						 	day="Monday"
+						 when 2
+						 	day="Tuesday"
+						 when 3
+						 	day="Wednesday"
+						 when 4
+						 	day="Thursday"
+						 when 5
+						 	day="Friday"
+						 when 6
+						 	day="Saturday"
+						 end						
+					%>
+						<% if day==@day_choose.to_s%>
+							<%= "<option value='#{day}' selected>" + day -%>
+						<% else %>
+							<%= "<option value='#{day}'>" + day -%>
+						<% end %>
+					<% end %>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td> Start Time: </td>
+			<td>
+				<select name="stSel" id="stSel" style="width: 120px" onchange="<%=remote_function(:url=>{:action=>'check_venue_clash'},:with=>"'daySel='+daySel.value+'&'+'stSel='+stSel.value+'&'+'etSel='+etSel.value+'&'+'venSel='+venSel.value+'&'+'freqSel='+freqSel.value",:complete=>"changeStatus(request)")%>">
+					<% 830.step(@time_list.to_i,100) do |t| 
+						 if t.to_s.length==3
+						 		st="0"+t.to_s[0,1]+":"+t.to_s[1,2]+":00"
+						 else
+						 		st=t.to_s[0,2]+":"+t.to_s[2,2]+":00"
+						 end
+					%>
+					<% if @startT.to_s.include?(st)-%>
+					<%="<option value='#{st}' selected>" + st -%>
+					<% else-%>
+					<%="<option value='#{st}'>" + st-%>
+					<% end -%>
+					<% end %>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td> End Time: </td>
+			<td>
+				<select name="etSel" id="etSel" style="width: 120px" onchange="<%=remote_function(:url=>{:action=>'check_venue_clash'},:with=>"'daySel='+daySel.value+'&'+'stSel='+stSel.value+'&'+'etSel='+etSel.value+'&'+'venSel='+venSel.value+'&'+'freqSel='+freqSel.value",:complete=>"changeStatus(request)")%>">
+					<% 830.step(@time_list.to_i+100,100) do |t| 
+						 if t.to_s.length==3
+						 		et="0"+t.to_s[0,1]+":"+t.to_s[1,2]+":00"
+						 else
+						 		et=t.to_s[0,2]+":"+t.to_s[2,2]+":00"
+						 end
+					%>
+					<% if @endT.to_s.include?(et)-%>
+					<%="<option value='#{et}' selected>" + et -%>
+					<% else-%>
+					<%="<option value='#{et}'>" + et-%>
+					<% end -%>
+					<% end %>
+				</select>
+				&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;
+			Duration:<input name="duration" type="text" id="duration" value="1" size="3" maxlength="2" readonly/> hrs
+			</td>
+		</tr>
+		<tr>
+			<td> Class Type: </td>
+			<td>
+				<!--by default: select Lec type-->
+				<select name="ctSel" id="ctSel" style="width: 120px" onchange="classTypeChange();">
+					<% 0.upto(@lesson_list.length-1) do |l| 
+						if @lesson_list[l].lessonType=="Lec"
+					%>
+							<%= "<option value='#{@lesson_list[l].lessonType}' selected>" + @lesson_list[l].lessonType -%>
+						<% else %>
+							<%= "<option value='#{@lesson_list[l].lessonType}'>" + @lesson_list[l].lessonType -%>
+						<% end %>
+					<% end %>
+				</select>
+				&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;
+			Group:
+			<!--by default: choosing those groups for Lec-->
+			<select name="grpSel" id="grpSel" style="WIDTH: 85px" onchange="checkExistLecturer();">
+					<%	 
+						grp=""
+						0.upto(@group_list.length-1) do |g| %>
+						<% if @group_list[g].lessonType=="Lec" %>
+							<%	
+								grp_arr=Array.new
+								grp_arr=@group_list[g].lessonGroupsAssigned.split(",")
+								grp_arr=grp_arr.sort
+								if grp==""
+									grp=grp_arr[0]
+								end%>
+							<% 0.upto(grp_arr.length-1) do |ga|%>
+							<%=
+								"<option value='#{grp_arr[ga]}'>" + grp_arr[ga] -%>
+							<% end %>
+						<% end %>
+					<% end %>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td> Venue: </td>
+			<td>
+				<select name="venSel" id="venSel" style="WIDTH: 120px" onChange="<%=remote_function(:url=>{:action=>'check_venue_clash'},:with=>"'daySel='+daySel.value+'&'+'stSel='+stSel.value+'&'+'etSel='+etSel.value+'&'+'venSel='+venSel.value+'&'+'freqSel='+freqSel.value",:complete=>"changeStatus(request)")%>">
+					<% 0.upto(@lesson_list.length-1) do |l| %>
+						<% if @lesson_list[l].lessonType=="Lec" %>
+							<% if @lesson_list[l].possibleVenues.include?(",")%>
+								<%
+									vens=Array.new
+									vens=@lesson_list[l].possibleVenues.split(",")
+									0.upto(vens.length-1) do|v|
+								%>
+								<%= "<option value='#{vens[v]}'>" + vens[v] -%>
+								<%end%>
+							<% else %>
+								<%= "<option value='#{@lesson_list[l].possibleVenues}'>" + @lesson_list[l].possibleVenues -%>
+							<% end %>
+						<% end %>
+					<% end %>
+			</select>
+			&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;
+			<!--be default: check the lec venue is occupied not-->
+			Status:
+				<%
+					ven=""
+					afq=""
+					0.upto(@lesson_query.length-1) do |lq|
+						if @lesson_query[lq].lessonType=="Lec"
+							ven=@lesson_query[lq].venueName
+							afq=@lesson_query[lq].allocFreq
+							break
+						end
+					end
+					status="Unoccupied"
+					0.upto(@venue_query.length-1) do |v|
+						if @venue_query[v].venueName==ven 
+							if @venue_query[v].allocFreq=="Weekly"
+								status="Occupied"
+								break
+							else
+								if @venue_query[v].allocFreq==afq
+									status="Occupied"
+									break
+								end
+							end
+						end
+					end	
+				%>
+				<input name="status" value="<%=status%>" type="text" id="status" size="10" maxlength="10" readonly/>
+			</td>
+		</tr>
+		<tr>
+			<td> Frequency of Class: </td>
+			<td> 
+				<select name="freqSel" id="freqSel" style="WIDTH: 120px" onchange="freqChange();">
+					<%
+						ckbox=""
+						0.upto(@lesson_list.length-1) do |l| %>
+						<% if @lesson_list[l].lessonType=="Lec" 
+								if @lesson_list[l].frequency=="Weekly"
+									ckbox="weekly" 
+						%>
+								<%= "<option value='#{@lesson_list[l].frequency}'>" + @lesson_list[l].frequency -%>
+							<%
+								break
+								else 
+									ckbox="odd" %>
+									<option value='Odd'>	Odd Weeks	
+									<option value='Even'>	Even Weeks	
+							<%
+								break
+								end
+							%>
+						<% end %>
+					<% end %>
+				</select>			
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align=center class="style1">Assign / Unassign Lecturer(s)</td>
+		</tr>
+		<tr>
+			<td colspan="2"><font color=red>Please select the 'Edit/Delete Class in Slot' radio button above and check the 'Assign/Unassign' checkbox below, to assign more lecturers after a lesson is added.</font></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input name="assignLecCheckbox" id="assignLecCheckbox" type="checkbox" value="Assign_Unassign_Check" onclick="onCheckAsUnassign()" disabled=true/>Assign / Unassign lecturer to lesson</td>
+		</tr>
+		<tr>
+			<td> New Lecturer: </td>
+			<td>
+				<select name="lecturerSel" id="lecturerSel" style="WIDTH: 120px">
+					<option value=0> Not Assigned
+					<% 0.upto(@lecturer_list.length-1) do |lc|%>
+						<% 
+						checkOk=true
+						0.upto(@exist_lecturer_list.length-1) do |exl| 
+							if @lecturer_list[lc].staffId==@exist_lecturer_list[exl].staffId
+								checkOk=false
+								break
+							end
+						end %>
+						<% if checkOk %>
+							<%= "<option value=#{@lecturer_list[lc].staffId}>" + @lecturer_list[lc].staffName -%>
+						<% end %>
+					<% end %>
+				</select>
+				&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;
+				<input type="button" name="assignBtn" id="assignBtn" tabIndex="27" value="Assign" onclick="<%=remote_function(:url=>{:action=>'assign_lecturer'},:with=>"'subcode='+subcode.value+'&'+'ctSel='+ctSel.value+'&'+'grpIndex='+grpSel.value+'&'+'staffId='+lecturerSel.value+'&'+'teachWeekList='+teachWeekList.value",:complete=>"lecturerChange(request)")%>" disabled=true>
+			</td>
+		</tr>
+		<tr>
+			<td> Existing Lecturer(s): </td>
+			<td>
+				<select name="existLecturer" id="existLecturer" style="WIDTH: 120px" onChange="onChangeExistLecturer();" disabled=true>
+					<!--by default: Lec type-->
+					<% 0.upto(@exist_lecturer_list.length-1) do |exl|
+						if @exist_lecturer_list[exl].lessonType=="Lec" && @exist_lecturer_list[exl].groupIndex==grp	%>
+						<%= "<option value=#{@exist_lecturer_list[exl].staffId}>" + @exist_lecturer_list[exl].staffName -%>
+						<% end %>
+					<% end %>
+				</select>
+				&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;&nbsp;;
+				<input type="button" name="unassignBtn" id="unassignBtn" tabIndex="27" value="Unassign" onclick="<%=remote_function(:url=>{:action=>'unassign_lecturer'},:with=>"'subcode='+subcode.value+'&'+'ctSel='+ctSel.value+'&'+'grpIndex='+grpSel.value+'&'+'staffId='+existLecturer.value+'&'+'freqSel='+freqSel.value",:complete=>"lecturerChange(request)")%>" disabled=true>
+			</td>
+		</tr>
+		<tr>
+			<td> Teaching Week(s): </td>
+			<td>
+				<%
+					1.upto(13) do |wk|
+						if ckbox=="weekly" || (wk+1)%2==0
+						%>
+							<input type="checkbox" name="teachWeekCheckbox[]" id="teachWeekCheckbox[]" onclick="teachWeekChange()" value=<%=wk%> checked ><%=wk%>
+						<%
+						else
+						%>
+							<input type="checkbox" name="teachWeekCheckbox[]" id="teachWeekCheckbox[]" onclick="teachWeekChange()" value=<%=wk%> disabled=true><%=wk%>
+						<%	
+						end
+					end
+				%>
+				<!--default: week 1-13-->
+				<input name="teachWeekList" type="hidden" id="teachWeekList" value="1,2,3,4,5,6,7,8,9,10,11,12,13"/>
+				
+			</td>
+		</tr>	
+	</table>
+	<p align="center">
+					<input name="addBtn" type="submit" id="addBtn" value="Add">
+					<input type="submit" name="updateBtn" id="updateBtn" value="Update" disabled=true>
+					<input type="submit" name="delBtn" id="delBtn" value="Delete" disabled=true>
+					<input type="button" name="closeBtn" id="MainBtn" tabIndex="27" value="Main" onclick="showOpener();">
+	</p>
+	</form>	
+	</body>
+</html>

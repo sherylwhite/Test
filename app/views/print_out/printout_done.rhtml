@@ -1,0 +1,30 @@
+<html>
+<head><title>Printout Generated.</title></head>
+<body>
+<font size=3>
+<font color=blue><b>Printout Generated.</b></font><br>
+<font color=red>Please click on the link below and Save the file elsewhere. Thanks. </font><br>
+<font color=blue><b>
+<% if @print=="stars" %>
+<%=link_to "STARS.txt",{:controller=>"stars",:action =>"download", :fname=>"STARS.txt"} %>
+<% elsif @print=="subjectindex" %>
+<%=link_to "SubjectIndex.txt",{:controller=>"stars",:action =>"download", :fname=>"SubjectIndex.txt"} %>
+<% elsif @print=="tt" %>
+<%=link_to "Timetable.xls (showTT.xls)",{:controller=>"stars",:action =>"download", :fname=>"showTT.xls"} %>
+<% elsif @print=="subGrpExcel" %>
+<%=link_to "SubjectGroup.xls",{:controller=>"stars",:action =>"download", :fname=>"SubjectGroup.xls"} %>
+<% elsif @print=="subGrpExcelByTutor" %>
+<%=link_to "SubjectGroupByStaff.xls",{:controller=>"stars",:action =>"download", :fname=>"SubjectGroupByStaff.xls"} %>
+<% elsif @print=="GrpStat" %>
+<%=link_to "GroupStatistics.xls",{:controller=>"stars",:action =>"download", :fname=>"GroupStatistics.xls"} %>
+<% elsif @print=="VenClash" %>
+<%=link_to "VenueClash.txt",{:controller=>"stars",:action =>"download", :fname=>"VenueClash.txt"} %>
+<% elsif @print=="subjectPrintout" %>
+<%=link_to "SubjectPrintout",{:controller=>"stars",:action =>"download", :fname=>"subjectPrintout.xls"} %>
+<% elsif @print=="subjectListPrintout" %>
+<%=link_to "SubjectListPrintout",{:controller=>"stars",:action =>"download", :fname=>"subjectListPrintout.xls"} %>
+<% end %>
+</b></font>
+</font>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<font color="#FF0080"><b>
+<div style="text-align:center">
+<% if @save_action=="Save"%>
+	Year Saved: <%=@year%> <br>
+	Semester Saved: <%=@sem%> <br>
+	Version Saved: <%=@ver%> <br>
+	BackupId: <%=@backup_id%><br><br>
+<% else %>
+	<% if @action=="load"%>
+		<% if @save%>
+			Year Saved: <%=@year_save%> <br>
+			Semester Saved: <%=@sem_save%> <br>
+			Version Saved: <%=@ver_save%> <br>
+			BackupId: <%=@backup_id_save%><br><br>
+		<% end %>
+		Year Loaded: <%=@year%> <br>
+		Semester Loaded: <%=@sem%> <br>
+		Version Loaded: <%=@ver%> <br>
+		BackupId: <%=@backup_id%> <br>
+		<% if @read_venue=="true"%>
+			<% if @venue_status=="ok"%>
+				Load Venue File: OK! <br>
+			<% else %>
+				Load Venue File: Failed! Venue File not exists.<br>
+			<% end %>
+		<% end %>
+		<% if @read_staff=="true"%>
+			<% if @staff_status=="ok"%>
+				Load Staff File: OK!
+			<% else %>
+				Load Staff File: Failed! Staff File not exists.
+			<% end %>
+		<% end %>
+	<% else %>
+		<% if @exist %>
+			</b></font>
+			<font color=red><b>
+			</div>
+			<div style="text-align:center">
+			Create Timetable: Failed! The Year-Sem-Version of the timetable you're trying to create was exist in the current DB!
+		<% else %>
+			Year Created: <%=@year%> <br>
+			Semester Created: <%=@sem%> <br>
+			Version Created: <%=@ver%> <br>
+			BackupId: <%=@backup_id%> <br>
+			<% if @del_venue=="true"%>
+				Delete Venue: OK! <br>
+			<% end %>
+			<% if @del_staff=="true"%>
+				Delete Staff: OK! <br>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
+</div>
+</b></font>

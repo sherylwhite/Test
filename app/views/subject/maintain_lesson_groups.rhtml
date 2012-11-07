@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.0 Transitional//EN">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Maintain Lesson Groups</title>
+<link href="/stylesheets/style.css?1200832189" media="screen" rel="Stylesheet" type="text/css" />
+<script src="/javascripts/JS_Function.js?1198430113" type="text/javascript"></script>
+<script src="/javascripts/prototype.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1198673475" type="text/javascript"></script>
+<SCRIPT language="javascript" type="text/javascript">
+function onChangeAction(){
+var dom = document.getElementById("LessonGroupForm");
+				
+	if(dom.actionDDM.value == "Add"){		
+		dom.grpPreListDDM.disabled = true;
+		clearField();
+		if(dom.grpPreListDDM.options.length > 0){
+		dom.grpPreListDDM.selectedIndex=-1;
+		}
+		addGrpNo();
+	}
+	else{
+		
+		dom.grpPreListDDM.disabled = false;
+		if(dom.actionDDM.value == "Pls select an action"){
+			dom.grpPreListDDM.selectedIndex=-1;
+			dom.grpPreListDDM.disabled=true;
+		}
+		if(dom.grpPreListDDM.options.length > 0){
+		dom.grpPreListDDM.selectedIndex=-1;
+		}
+		clearField();		
+		dom.grpPre.disabled=true;
+		dom.grpNo1DDM.disabled = true;
+		dom.grpNo2DDM.disabled = true;
+		dom.grpSize.disabled = true;
+		dom.submitLGBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+	}	
+}
+
+function onChangeList(){
+var dom = document.getElementById("LessonGroupForm");
+var grpPre= dom.grpPreListDDM.value;
+clearField();	
+dom.grpPre.value=grpPre;
+var count=0;
+	<% 0.upto(@grp_no_list.length-1) do |gn| %>
+		if (grpPre=="<%=@grp_no_list[gn].groupPrefix%>"){
+			var newOption = new Option();
+			newOption.text="<%=@grp_no_list[gn].groupNo%>";
+			newOption.value="<%=@grp_no_list[gn].groupNo%>";
+			dom.grpNo1DDM.options[count]=newOption;
+			newOption = new Option();
+			newOption.text="<%=@grp_no_list[gn].groupNo%>";
+			newOption.value="<%=@grp_no_list[gn].groupNo%>";			
+			dom.grpNo2DDM.options[count]=newOption;
+			if (count==0){
+				dom.grpSize.value="<%=@grp_no_list[gn].groupSize%>";
+			}
+			count++;
+		
+		}
+	<% end %>
+	EnDisable();
+}
+
+function EnDisable(){
+var dom = document.getElementById("LessonGroupForm");
+	
+	dom.grpNo1DDM.disabled = false;
+	dom.grpNo2DDM.disabled = false;
+	if(dom.actionDDM.value=="Update"){
+		dom.grpSize.disabled=false;
+		dom.submitLGBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else{
+		dom.grpSize.disabled=true;
+		if (dom.actionDDM.value=="Delete"){
+			dom.submitLGBtn.disabled=false;
+			dom.resetBtn.disabled=false;
+		}
+	}
+}
+function onChangeGrpNo(){
+var dom = document.getElementById("LessonGroupForm");
+	dom.grpNo2DDM.value=dom.grpNo1DDM.value;
+	
+	if (dom.actionDDM.value!="Add"){
+		var grpPre= dom.grpPreListDDM.value;
+		var grpNo=dom.grpNo1DDM.value;
+		<% 0.upto(@grp_no_list.length-1) do |gn| %>
+			if (grpPre=="<%=@grp_no_list[gn].groupPrefix%>" && grpNo=="<%=@grp_no_list[gn].groupNo%>"){
+					dom.grpSize.value="<%=@grp_no_list[gn].groupSize%>";		
+				}
+		<% end %>  
+	}
+}
+
+function onChangeGrpNo2(){
+var dom = document.getElementById("LessonGroupForm");
+	
+	if (+dom.grpNo2DDM.value<+dom.grpNo1DDM.value){
+		alert("Invalid group number chosen! Ending Group No must be >= Starting Group No.");
+		onChangeGrpNo();			
+	}
+}
+
+
+function addGrpNo(){
+var dom = document.getElementById("LessonGroupForm");
+
+	<% 1.upto(@max_lesson) do |m| %>
+		var newOption = new Option();
+		newOption.text = "<%=m%>";
+		newOption.value ="<%=m%>";
+		dom.grpNo1DDM.options[<%=m-1%>] = newOption;
+		
+		newOption = new Option();
+		newOption.text = "<%=m%>";
+		newOption.value ="<%=m%>";
+		dom.grpNo2DDM.options[<%=m-1%>] = newOption;
+	<% end%>
+	dom.grpPre.disabled=false;
+	dom.grpNo1DDM.disabled = false;
+	dom.grpNo2DDM.disabled = false;
+	dom.grpSize.disabled = false;
+	
+	dom.submitLGBtn.disabled=false;
+	dom.resetBtn.disabled=false;
+
+}
+
+function clearField(){
+var dom = document.getElementById("LessonGroupForm");	
+	dom.grpPre.value="";
+	dom.grpSize.value="";
+	removeAllDDMItem('grpNo1DDM');
+	removeAllDDMItem('grpNo2DDM');	
+}
+
+function resetForm(){
+var dom = document.getElementById("LessonGroupForm");
+	clearField();
+	dom.actionDDM.selectedIndex=0;
+	onChangeAction();
+}
+
+function longPreGrpNoCompare(lesGrpPre, lesGrp1DDM,lesGrp2DDM){
+	var lesGrpPreControl = document.getElementById(lesGrpPre);
+	var lesGrp1Control = document.getElementById(lesGrp1DDM);
+	var lesGrp2Control = document.getElementById(lesGrp2DDM);
+	var testValid = true;
+	
+	if(lesGrpPreControl.value.length > 3){
+		if((lesGrp1Control.value.length>1)||(lesGrp2Control.value.length>1)){
+		testValid = false;
+		alert("No 2-digit Group No. is allowed when Group Prefix exceed 3 characters.");
+				
+			if((lesGrp1Control.value.length>1)&&(lesGrp2Control.value.length>1)){						
+				lesGrp1Control.value = 1;
+				lesGrp2Control.value = 1;
+			}
+					
+			if(lesGrp1Control.value.length>1)
+				lesGrp1Control.value = lesGrp2Control.value;
+							
+			if(lesGrp2Control.value.length>1)
+				lesGrp2Control.value = lesGrp1Control.value;
+		} //end-if
+	} //end-if
+	return testValid;		
+} //end-onChangeLessonGrpNo()
+
+
+function formValidator(){
+	var dom = document.getElementById("LessonGroupForm");
+				
+	stripSpaces(dom.grpPre);
+	stripSpaces(dom.grpSize);
+	
+	if(dom.actionDDM.value=="Add"){
+		if(dom.grpPre.value.length == 0){
+		alert("Pls enter an appropriate Group Prefix to ADD Lesson Group(s).");
+		dom.grpPre.focus();					
+		return false;
+		} //end-if
+				
+		if(dom.grpSize.value.length == 0){
+			alert("Pls enter an appropriate Group Size to ADD Lesson Group(s).");
+			dom.grpSize.focus();					
+		return false;
+		} //end-if
+		
+		if(!longPreGrpNoCompare('grpPre', 'grpNo1DDM','grpNo2DDM')){
+		return false;
+		} //end-if
+	}
+	else if(dom.actionDDM.value=="Update"){
+		if(dom.grpSize.value.length == 0){
+			alert("Pls enter an appropriate Group Size to edit Lesson Group(s).");
+			dom.grpSize.focus();					
+		return false;
+		} //end-if
+	}
+	dom.grpPre.disabled=false;
+	return true;		
+} //end-formValidator()
+
+</SCRIPT>
+</head>
+<body onload="onChangeGrpPre();">
+<form id="LessonGroupForm" method="post" action="process_lesson_groups" onsubmit="return formValidator();">
+<Table class="Table1" align=center>
+	<tr>
+		<th colspan=4>View / Add / Update / Delete Lesson Groups</th>
+	</tr>
+	<tr>
+		<td >Choose an action:</td>
+		<td colspan=2>
+			<Select size="1" id="actionDDM" name="actionDDM" style="WIDTH: 203px" onchange="onChangeAction()" tabIndex="1">
+  				<option value="Pls select an action">Pls select an action</option>
+				<option value="View">View existing lesson group</option>
+				<option value="Add">Add new lesson group</option>
+				<option value="Update">Update existing lesson group</option>
+				<option value="Delete">Delete existing lesson group</option>
+  	    		</Select>
+		</td>
+		<td rowspan=3 align=center> <br>Group Prefix List: <br><br>
+			<Select size="10" id="grpPreListDDM" name="grpPreListDDM" style="WIDTH: 165px" onchange="onChangeList()" tabIndex="2" disabled=true>
+				<% 0.upto(@grp_prefix_list.length-1) do |gp| %>
+					<option value="<%=@grp_prefix_list[gp].groupPrefix%>"><%=@grp_prefix_list[gp].groupPrefix%></option>
+				<% end %>
+			<Select>
+			<br><br>
+		</td>
+	</tr>
+	
+	<tr align="center">
+		
+		<td><br>Group Prefix<br><br>
+			<input type="Text" id="grpPre" name="grpPre" size="5" MaxLength="4" tabIndex="1" disabled/>
+		</td>
+		<td><br>Group No <br><br>
+			<Select size="1" id="grpNo1DDM" name="grpNo1DDM" style="WIDTH: 40px;" tabIndex="2" onchange="onChangeGrpNo();" disabled>
+				
+  	    		</Select>			
+      			to
+			<Select size="1" id="grpNo2DDM" name="grpNo2DDM" style="WIDTH: 40px;" tabIndex="3" onchange="onChangeGrpNo2();" disabled>
+				
+			</Select>
+		</td>
+		<td><br>Size<br><br>
+			<input type="Text" id="grpSize" name="grpSize" size="3" MaxLength="3" tabIndex="4" onkeypress="return allowNum('Lesson Group Size')" disabled>
+		</td>
+	</tr>
+		
+	</tr>
+	<tr class="TF">
+		<td colspan=3>
+		<input type="submit" value="Submit" name="submitLGBtn" tabIndex="7"disabled=true>
+		<input type="reset" value="Reset" name="resetBtn" tabIndex="8" onclick="resetForm()" disabled=true>
+		<input type="button" value="Close" name="closeBtn" tabIndex="9" onclick="showOpener()"></td>
+	</tr>
+	<tr>
+	</tr>
+	
+</Table>
+</form>
+<script>
+	var msgDisplay=""
+	var noMsg=false;
+	<% if @msg=="1" %>
+		msgDisplay="ERROR: Lesson Group cannot be added. Lesson Group already exists in the database.";
+	<% elsif @msg=="2" %>
+		msgDisplay="Lesson Group is added successfully.";
+	<% elsif @msg=="3" %>
+		msgDisplay="Lesson Group is updated successfully.";
+	<% elsif @msg=="4" %>
+		msgDisplay="Lesson Group is deleted successfully.";
+		<% if @del_grps!=nil%>
+			var tempArr=new Array();
+			tempArr="<%=@del_grps%>".split("-");			
+			lecLG=opener.document.getElementById("lecLGassigned").value+",";
+			tutLG=opener.document.getElementById("tutLGassigned").value+",";
+			labLG=opener.document.getElementById("labLGassigned").value+",";
+			for(var k=0;k<tempArr.length;k++){
+				rep=tempArr[k].toString()+","
+				lecLG=lecLG.replace(rep,"");
+				tutLG=tutLG.replace(rep,"");
+				labLG=labLG.replace(rep,"");
+			}
+			lecLG=lecLG.substr(0,lecLG.length-1);
+			tutLG=tutLG.substr(0,tutLG.length-1);
+			labLG=labLG.substr(0,labLG.length-1);
+			opener.document.getElementById("lecLGassigned").value=lecLG;
+			opener.document.getElementById("tutLGassigned").value=tutLG;
+			opener.document.getElementById("labLGassigned").value=labLG;
+		<% end %>
+	<% else %>
+		noMsg=true;
+	<% end %>
+	if (noMsg==false){
+	alert(msgDisplay);
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+#!/bin/bash
+/root/tps/script/backgroundrb start 
+/root/tps/script/server

@@ -1,0 +1,7 @@
+=begin THONT
+<%0.upto(@ssd.length-1) do |s| %>
+			<%0.upto(@slotAlloc[s].length-1) do |sa| %>
+      page.insert_html :top, 'cellList_<%=@slotAlloc[s][sa].timeid.to_s%>_<%=s.to_s%>', content_tag("li", "Fox") 
+			<%end%>
+<%end%>
+=end

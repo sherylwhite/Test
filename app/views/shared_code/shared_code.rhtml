@@ -1,0 +1,279 @@
+
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+
+var newwindow = '';
+
+function popWindow(url) {
+	if (!newwindow.closed && newwindow.location) {
+		newwindow.location.href = url;
+	}
+	else {
+		newwindow=window.open(url,'EditSharedSubjectCodes','menubar=0,resizable=1,height=350,width=650');
+		if (!newwindow.opener) newwindow.opener = self;
+	}
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
+function onChangeAction(){
+var dom = document.getElementById("SharedCodeForm");
+				
+	if(dom.actionDDM.value == "Add"){	
+		if(dom.sharedSubCodeListDDM.options.length>0)
+			dom.sharedSubCodeListDDM.selectedIndex=-1;
+		dom.sharedSubCodeListDDM.disabled = true;
+		clearField();
+		dom.sharedSubjectName.disabled = false;
+		dom.sharedSubCodes.disabled = false;
+		dom.sharedSubjectName.readOnly=true;
+		dom.sharedLec.disabled = false;
+		dom.sharedLec.checked=true;
+		dom.sharedTut.disabled = false;
+		dom.sharedLab.disabled = false;
+		dom.remarks.disabled = false;
+		dom.submitSharedBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else{
+		
+		dom.sharedSubCodeListDDM.disabled = false;
+		if(dom.actionDDM.value == "Pls select an action"){
+			dom.sharedSubCodeListDDM.selectedIndex=-1;
+			dom.sharedSubCodeListDDM.disabled=true;
+		}
+		clearField();
+		dom.sharedSubjectName.disabled = true;
+		dom.sharedSubjectName.readOnly=true;
+		dom.sharedSubCodes.disabled = true;
+		dom.sharedLec.disabled = true;
+		dom.sharedTut.disabled = true;
+		dom.sharedLab.disabled = true;
+		dom.remarks.disabled = true;
+		dom.submitSharedBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+		if(dom.sharedSubCodeListDDM.options.length>0)
+			dom.sharedSubCodeListDDM.selectedIndex=-1;
+	}		
+}
+
+function onChangeList(){
+var dom = document.getElementById("SharedCodeForm");
+	<% 0.upto(@shared_list.length-1) do |s|%>
+		if(dom.sharedSubCodeListDDM.value=="<%=@shared_list[s].sharedInfo%>"){
+			dom.sharedSubjectName.value="<%=@shared_list[s].sharedSubjectName%>";
+			dom.sharedSubCodes.value="<%=@shared_list[s].sharedSubjectCodes%>";
+			var stypeArr=new Array();
+			stypeArr="<%=@shared_list[s].sharedType%>".split(",");
+			for (var k=0;k<stypeArr.length;k++){
+				if (stypeArr[k]=="Lec")
+					dom.sharedLec.checked=true;
+				else if (stypeArr[k]=="Tut")
+					dom.sharedTut.checked=true;
+				else
+					dom.sharedLab.checked=true;
+			}
+			dom.remarks.value="<%=@shared_list[s].remarks%>";
+		}
+	<% end %>
+EnDisable();
+}
+
+function EditSharedSubjectCode(){
+var dom = document.getElementById("SharedCodeForm");
+
+	if((dom.actionDDM.value != "Pls select an action")&&(dom.actionDDM.value != "View")&&(dom.actionDDM.value != "Delete")){
+		if(dom.sharedSubCodes.disabled==true) alert("You haven't choose any shared subject group!")
+		else popWindow("/shared_code/edit_shared_subject_codes?sharedCodes="+dom.sharedSubCodes.value);
+	}
+	else{
+		alert("Please Select Update/Add Function to enable this function.");    
+	}
+	return false;
+
+}
+
+function EditSharedSubjectName(){
+var dom = document.getElementById("SharedCodeForm");
+
+	if((dom.actionDDM.value != "Pls select an action")&&(dom.actionDDM.value != "View")&&(dom.actionDDM.value != "Delete")){
+		 
+		 if(dom.sharedSubjectName.disabled==true) alert("You haven't choose any shared subject group!")
+		 else{
+			 ans=confirm("Are you sure you want to edit this?");
+			 if(ans){
+				dom.sharedSubjectName.removeAttribute('readOnly'); 
+				dom.sharedSubjectName.focus();
+			 }
+		 }
+	}
+	else{
+		alert("Please Select Update/Add Function to enable this function.");    
+	}
+	return false;
+}
+
+function EnDisable(){
+var dom = document.getElementById("SharedCodeForm");
+
+	if (dom.actionDDM.value=="Update"){
+		dom.sharedSubjectName.disabled=false;
+		dom.sharedSubCodes.disabled=false;
+		dom.sharedLec.disabled=false;
+		dom.sharedTut.disabled=false;
+		dom.sharedLab.disabled=false;
+		dom.remarks.disabled=false;
+		dom.submitSharedBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else if(dom.actionDDM.value=="Delete") {
+		dom.submitSharedBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+
+}
+
+function clearField(){
+var dom = document.getElementById("SharedCodeForm");
+
+	dom.sharedSubjectName.value="";
+	dom.sharedSubCodes.value="";
+	dom.sharedLec.checked=false;
+	dom.sharedTut.checked=false;
+	dom.sharedLab.checked=false;
+	dom.remarks.value="";
+}
+
+function formValidator(){
+var dom = document.getElementById("SharedCodeForm");
+	dom.remarks.value =dom.remarks.value.replace(/\r\n/g, " " );
+	
+	if(dom.sharedSubjectName.value.length == 0){
+		alert("Pls enter an appropriate Shared Subject Name.");
+			dom.sharedSubjectName.focus();		
+		return false;
+	} //end-if
+				
+	if(dom.sharedSubCodes.value.length == 0){
+		alert("Pls select an appropriate Shared Subject Codes.");
+			dom.sharedSubCodes.focus();
+			return false;
+	} //end-if
+	
+	if(dom.sharedLec.checked==false && dom.sharedTut.checked==false && dom.sharedLab.checked==false){
+		alert("Pls select an appropriate Shared Type");
+			dom.sharedLec.checked=true;
+			return false;
+	} //end-if
+	dom.sharedSubjectName.disabled=false;
+	dom.sharedSubCodes.disabled=false;
+	dom.sharedLec.disabled=false;
+	dom.sharedTut.disabled=false;
+	dom.sharedLab.disabled=false;
+	dom.remarks.disabled=false;
+} //end-formValidator()
+
+function resetForm(){
+var dom = document.getElementById("SharedCodeForm");
+	clearField();
+	dom.actionDDM.selectedIndex=0;
+	onChangeAction();
+	
+}
+function checkUserType(){
+var dom = document.getElementById("SharedCodeForm");
+<% if Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Normal"%>
+	removeAllDDMItem('actionDDM')
+	var newOption = new Option();
+	newOption.text = "View existing shared subject group";
+	newOption.value = "View";
+	dom.actionDDM.options[0]=newOption;
+	onChangeAction();	
+<% end %>
+}
+
+</script>
+</head>
+<body onload="checkUserType();">
+<form id="SharedCodeForm" method="post" action="/shared_code/process_shared_subject_codes" onsubmit="return formValidator();">
+<Table class="Table1" align=center>
+	<tr>
+		<th colspan=3>View / Add / Update / Delete Shared Subject Group</th>
+	</tr>
+	<tr></tr>
+	<tr>
+		<td >Choose an action:</td>
+		<td>
+			<Select size="1" id="actionDDM" name="actionDDM" style="WIDTH: 250px" onchange="onChangeAction()" tabIndex="1">
+  				<option value="Pls select an action">Pls select an action</option>
+				<option value="View">View existing shared subject group</option>
+				<option value="Add">Add new shared subject group</option>
+				<option value="Update">Update existing shared subject group</option>
+				<option value="Delete">Delete existing shared subject group</option>
+  	    		</Select>
+		</td>
+		<td rowspan=5 align=center> Shared Subject Name: <br><br>
+			<Select size="10" id="sharedSubCodeListDDM" name="sharedSubCodeListDDM" style="WIDTH: 400px" onchange="onChangeList();" tabIndex="2" disabled=true>
+				<% 0.upto(@shared_list.length-1) do |s| %>
+					<option value="<%=@shared_list[s].sharedInfo%>"><%=@shared_list[s].sharedInfo%></option>
+				<% end %>
+			<Select>
+			<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td>Shared Subject Code(s): </td>
+		<td><textarea rows="3" id="sharedSubCodes" name="sharedSubCodes" cols="23" TextMode="MultiLine" disabled=true readonly></textarea>
+		 <A href="javascript:void(null);" onclick="EditSharedSubjectCode();"><IMG src="/Images/write.gif" width="25" height="25" border=0></A>
+		 </td>
+	</tr>
+	<tr>	<td>Shared Subject Name:</td>
+      		<td><input type="text" id="sharedSubjectName" name="sharedSubjectName" style="WIDTH: 250px" MaxLength="50" tabIndex="3" readonly disabled=true>
+		<A href="javascript:void(null);" onclick="EditSharedSubjectName();"><IMG src="/Images/write.gif" width="25" height="25" border=0></A>
+  	  	</td>
+	</tr>
+	
+	<tr>
+		<td>Shared Type: </td>
+		<td>
+			<input name="sharedLec" id="sharedLec" type=checkbox value="sharedLec" tabindex="4" disabled>LEC
+			<input name="sharedTut" id="sharedTut" type=checkbox value="sharedTut" tabindex="5" disabled>TUT
+			<input name="sharedLab" id="sharedLab" type=checkbox value="sharedLab" tabindex="6" disabled>LAB
+		</td>  
+	</tr>
+	<tr>
+		<td>Remarks</td>
+		<td><textarea rows="3" id="remarks" name="remarks" cols="23" TextMode="MultiLine" onkeypress="return imposeMaxLength(this, 149);" tabIndex="7" disabled=true></textarea></td>
+	</tr>
+	<tr align=center>
+		<td colspan=2>
+		<input type="submit" value="Submit" name="submitSharedBtn" tabIndex="7"disabled=true>
+		<input type="reset" value="Reset" name="resetBtn" tabIndex="8" onclick="resetForm()" disabled=true>
+		<input type="button" value="Main" name="mainBtn" tabIndex="9" onclick="showOpener()"></td>
+	</tr>
+	<tr>
+	</tr>
+	
+</Table>
+</form>
+</body>
+</html>
+<script>
+	var msgDisplay=""
+	var noMsg=false;
+	<% if @msg=="1" %>
+		msgDisplay="ERROR: Shared Subject Group cannot be added. Shared Subject Group already exists in the database.";
+	<% elsif @msg=="2" %>
+		msgDisplay="Shared Subject Group is added successfully.";
+	<% elsif @msg=="3" %>
+		msgDisplay="Shared Subject Group is updated successfully.";
+	<% elsif @msg=="4" %>
+		msgDisplay="Shared Subject Group is deleted successfully.";
+	<% else %>
+		noMsg=true;
+	<% end %>
+	if (noMsg==false){
+	alert(msgDisplay);
+	}
+</script>

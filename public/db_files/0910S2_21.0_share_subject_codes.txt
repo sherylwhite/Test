@@ -1,0 +1,49 @@
+8	Lec	CPE104,CSC104		Logic Design
+9	Lec	CPE102,CSC102		Introduction to Programming
+10	Lec	CPE103,CSC103		Mathematics I
+11	Lec	CPE105,CSC105		Data Structures and Object-Oriented Prog
+12	Lec	CPE183,CSC183		Engineers & Society
+13	Lec	CPE184,CSC184		HR Management & Entrepreneurship
+14	Lec	CPE202,CSC201		Computer Organisation
+15	Lec	CPE203,CSC203		Software Systems and Models
+16	Lec	CPE205,CSC205		Operating Systems
+17	Lec	CPE303,CSC206		Database Systems
+18	Lec	CPE406,CSC304		Artificial Intelligence
+19	Lec	CPE411,CSC204		Computer Graphics
+20	Lec	CPE425,CSC301		Programming Languages
+21	Lec,Tut,Lab	CPE408,CSC404		Compiler Techniques
+22	Lec	CPE416,CSC411		Distributed Systems/Distributed Computing
+23	Lec,Tut,Lab	CPE432,CSC427		Visualization
+24	Lec	CPE412,CSC408		Computer Vision & Image Processing
+25	Lec,Tut,Lab	CPE427,CSC424		Robotics
+26	Lec,Tut,Lab	CPE403,CSC403		Advanced Data Management Techniques
+27	Lec,Tut,Lab	CPE410,CSC407		Computer Game Programming
+28	Lec	CPE428,CSC425		Simulation and Modelling
+29	LEC,TUT,LAB	CPE101,CS102,CS302		Hehe Electronic Principles
+30	LEC,TUT,LAB	CPE102,CSC102		Intro to Programming
+31	LEC,TUT	CPE103,CSC103		Mathematics I / Foundation Mathematics
+32	LEC,TUT,LAB	CPE105,CSC105		Data Structure & OOP
+33	LEC,TUT	CPE184,CSC184,SC132		HRM & Entr.
+34	LEC,TUT,LAB	CPE202,CSC201		Microprocessor Programming
+35	LEC,TUT,LAB	CPE203,CSC203		Software Sys & Models
+36	LEC,TUT,LAB	CSC204,CPE411		Comp Graphics & Appl
+37	LEC,TUT,LAB	CPE207,SC207		Software Engineering
+38	LEC,TUT	CPE401,CSC401,SC440		Advanced Algorithms
+39	LEC,TUT	CPE402,CSC402,SC441		Advanced Computer Network
+40	LEC,TUT	CPE403,CSC403,SC442		Advanced Data Management Techniques(co-shares with CI6227)
+41	LEC,TUT	CPE404,SC402,SC402		Adv Microprocessor Sys
+42	LEC,TUT	CPE406,SC430		Artificial Intelligence CSC304 AI and Intelligent Systems
+43		CPE408,CSC404,SC405		Compiler Technique
+44	LEC,TUT	CPE409,CSC406,SC403		Computer Architecture
+45	LEC,TUT	CPE413,CSC409,SC444		Cryptography & Network Security
+46	LEC,TUT	CPE414,SC404		Digital Signal Processing
+47	LEC,TUT	CPE415,SC445		Digital Video Coding and Compression
+48	LEC,TUT	CPE416,SC432		Distributed Systems CSC411 Distributed Computing
+49	LEC,TUT	CPE419,CSC417,SC448,BI6102		Introductory Bioinformatics(Evening class)
+50	LEC,TUT	CSC419,CPE433		Machine Learning
+51	LEC,TUT	CPE421,SC450		Mobile and Personal Communications
+52	LEC,TUT	CPE422,CSC422,SC436,BG411		Neural Networks
+53	LEC,TUT	CPE423,CSC423,SC431		Parallel Processing
+54	LEC,TUT	CPE424,SC451		Prin of Information Theory & Coding
+55	LEC,TUT	CPE426,SC401		Real-Time Systems
+56	LEC	CPE432,CSC427,SC435,CI6126		Information Visualization (co-share)

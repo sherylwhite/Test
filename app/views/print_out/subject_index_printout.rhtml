@@ -1,0 +1,80 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+
+function clearField(){
+var dom = document.getElementById("SubjectIndexPrintoutForm");
+	dom.year.value="";
+	dom.semester[0].checked=true;
+	
+	dom.generateBtn.disabled=true;
+} //end-clearField()
+
+function enGenerateBtn(){
+var dom = document.getElementById("SubjectIndexPrintoutForm");
+	stripSpaces(dom.year);
+		
+	if((dom.year.value.length == 0)){
+		dom.generateBtn.disabled=true;
+	}else{
+		dom.generateBtn.disabled=false;
+	} //end-if
+}
+
+function resetForm(){
+var dom = document.getElementById("SubjectIndexPrintoutForm");
+	clearField();
+	dom.year.focus();
+	
+}
+
+function submitForm(){
+var dom = document.getElementById("SubjectIndexPrintoutForm");
+	if (dom.year.value.length<4){
+		alert("Year must be in length of 4!");
+		dom.year.select();
+		dom.year.focus();
+	}
+	else{
+	if (dom.semester[0].checked) sem=1
+	else sem=2
+	new Ajax.Request('/print_out/process_subject_index_printout', {asynchronous:true, evalScripts:true, onComplete:function(request){PrintoutDone(request)}, parameters:'year='+dom.year.value+'&semester='+sem});
+	}
+}
+
+function PrintoutDone(request){
+	window.open("/print_out/printout_done?print=subjectindex",'Printout','menubar=0,resizable=1,height=250,width=300');
+}
+</script>
+</head>
+<body onload="resetForm();">
+<form id="SubjectIndexPrintoutForm" method="post" action="">
+<Table align=center>
+	<tr>
+		<th colspan=2>Generate Subject Index Printout</th>
+	</tr>
+	<tr align="center">
+		<td  colspan=2> Please Enter the year and semester of the printout:
+		</td>
+	</tr>
+	<tr  align="center">
+      		<td>Year: <font size="1">(eg: 2005)</font></td>
+      		<td><input name="yearText" type="text" id="year" name="year" size="4" maxlength="4" onkeypress="return allowNum('Year')" onKeyUp="enGenerateBtn();"></td>
+    	</tr>
+    
+    	<tr align="center">
+      		<td>Semester: <font size="1">(eg: 1)</font></td>
+      		<td><input type=radio name="semester" id="semester" value=1 checked/>1 <input type=radio name="semester" id="semester" value=2/>2</td>
+    	</tr>
+			
+	<tr align="center">
+      		<td colspan=2><input type="button" value="Generate" name="generateBtn" onclick="submitForm();" disabled><input type="reset" value="Reset" name="resetBtn" onclick="resetForm();">
+		<input type="button" value="Main" name="mainBtn" onclick="showOpener()"></td>
+    	</tr>
+	<tr>
+		<td colspan=2><br><font color=red>Note: Please wait for the Pop up window for the generated printout.</font></td>
+	</tr>
+</Table>
+</form>
+</body>
+</html>

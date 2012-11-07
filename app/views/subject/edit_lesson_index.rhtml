@@ -1,0 +1,140 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+
+
+var newwindow = '';
+
+function popWindow(url) {
+	if (!newwindow.closed && newwindow.location) {
+		newwindow.location.href = url;
+	}
+	else {
+		newwindow=window.open(url,'EditPossibleVenues','menubar=0,resizable=1,height=350,width=500');
+		if (!newwindow.opener) newwindow.opener = self;
+	}
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
+function clearField(){
+var dom = document.getElementById("LessonIdexForm");
+	dom.year.value="";
+	dom.semester[0].checked=true;
+	
+	dom.generateBtn.disabled=true;
+} //end-clearField()
+
+function enGenerateBtn(){
+var dom = document.getElementById("LessonIdexForm");
+	stripSpaces(dom.year);
+	stripSpaces(dom.index);
+		
+	if((dom.year.value.length == 0)){
+		dom.generateBtn.disabled=true;
+		dom.updateBtn.disabled=true;
+	}else{
+		dom.generateBtn.disabled=false;
+		dom.updateBtn.disabled=false;
+		if((dom.index.value.length == 0)){
+		dom.generateBtn.disabled=true;
+	        }
+		if((dom.index.value.length != 0)){
+		dom.updateBtn.disabled=true;
+	        }
+	} //end-if
+}
+function resetForm(){
+var dom = document.getElementById("LessonIdexForm");
+	clearField();
+	dom.year.focus();
+	
+}
+
+function submitForm(){
+var dom = document.getElementById("LessonIdexForm");
+	if (dom.year.value.length<4){
+		alert("Year must be in length of 4!");
+		dom.year.select();
+		dom.year.focus();
+	}
+	else if (dom.index.value.length<5){
+		alert("Index must be in length of 5!");
+		dom.index.select();
+		dom.index.focus();
+	}
+	else{
+	if (dom.semester[0].checked) sem=1
+	else sem=2
+	popWindow("/subject/process_lesson_index?year="+dom.year.value+"&semester="+sem+"&index="+dom.index.value+"&scode="+"<%=@subcode%>");
+	}
+}
+
+function GenerateLIGDone(request){
+         updateForm();
+}
+
+function updateForm(){
+var dom = document.getElementById("LessonIdexForm");
+	if (dom.year.value.length<4){
+		alert("Year must be in length of 4!");
+		dom.year.select();
+		dom.year.focus();
+	}
+	else{
+	if (dom.semester[0].checked) sem=1
+	else sem=2
+	popWindow("/subject/process_lesson_index?year="+dom.year.value+"&semester="+sem+"&index="+dom.index.value+"&scode="+"<%=@subcode%>");
+	}
+}
+
+</script>
+</head>
+<body onload="resetForm();">
+<form id="LessonIdexForm" method="post" action="">
+<Table align=center>
+	<tr>
+		<th colspan=2>Generate Lesson Index Group</th>
+	</tr>
+	<tr align="center">
+		<td  colspan=2> Please Enter the year and semester:
+		</td>
+	</tr>
+	<tr  align="center">
+      		<td>Year: <font size="1">(eg: 2005)</font></td>
+      		<td><input name="yearText" type="text" id="year" name="year" size="4" maxlength="4" onkeypress="return allowNum('Year')" onKeyUp="enGenerateBtn();"></td>
+    	</tr>
+    
+    	<tr align="center">
+      		<td>Semester: <font size="1">(eg: 1)</font></td>
+      		<td><input type=radio name="semester" id="semester" value=1 checked/>1 <input type=radio name="semester" id="semester" value=2/>2</td>
+    	</tr>
+			
+	<tr  align="center">
+      		<td>Starting Index: <font size="1">(eg: 10350)</font></td>
+      		<td><input name="startIndex" type="text" id="index" name="index" size="5" maxlength="5" onkeypress="return allowNum('index')" onKeyUp="enGenerateBtn();"></td>
+    	</tr>
+	
+	<tr align="center">
+      		<td colspan=2><input type="button" value="Generate" name="generateBtn" onclick="submitForm();" disabled><input type="reset" value="Reset" name="resetBtn" onclick="resetForm();">
+		<input type="button" value="Update" name="updateBtn" onclick="updateForm();" disabled><input type="button" value="Main" name="mainBtn" onclick="showOpener()"></td>
+    	</tr>
+	<tr>
+		<td colspan=2><br><font color=red>Note: Please wait for the Pop up window for the Lesson Index Group Page.</font></td>
+	</tr>
+</Table>
+</form>
+</body>
+</html>
+<script>
+	var msgDisplay=""
+	var noMsg=false;
+	<% if @msg=="1" %>
+		msgDisplay="ERROR: Starting Index cannot be used. Index already exists in the database.";
+	<% else %>
+		noMsg=true;
+	<% end %>
+	if (noMsg==false){
+	alert(msgDisplay);
+	}
+</script>

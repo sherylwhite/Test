@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//Dtd HTML 4.0 Transitional//EN">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Edit Subject Assigned</title>
+<link href="/stylesheets/style.css?1200832189" media="screen" rel="Stylesheet" type="text/css" />
+<script src="/javascripts/JS_Function.js?1198430113" type="text/javascript"></script>
+<script src="/javascripts/prototype.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1198673475" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1198673475" type="text/javascript"></script>
+<SCRIPT language="javascript" type="text/javascript">
+function checkSubjectAssignedNo(){
+var dom = document.getElementById("SubjectAssignedForm");
+	if(dom.subjectAssignedDDM.length!=0){
+		dom.confirmBtn.disabled=false;
+	}else{
+		dom.confirmBtn.disabled=true;
+	} //end-if-else
+} //end-checkSubjectAssignedNo()
+
+function add(){
+	moveItem('availSubjectDDM','subjectAssignedDDM');
+	checkSubjectAssignedNo();
+} //end-add()
+		
+function remove(){
+	moveItem('subjectAssignedDDM','availSubjectDDM');
+	checkSubjectAssignedNo();
+} //end-remove()
+
+function reloadSubject(){
+var dom = document.getElementById("SubjectAssignedForm");
+	removeAllDDMItem('availSubjectDDM');
+	<% @sub_list=Subject.find(:all, :order=>"subjectCode")%>
+	count=0;
+	<% 0.upto(@sub_list.length-1) do |sl|%>
+		checkOk=true;
+		for(var k=0; k<dom.subjectAssignedDDM.length;k++){
+			if (dom.subjectAssignedDDM.options[k].value=="<%=@sub_list[sl].id%>"){
+				checkOk=false;
+				break;
+			}	
+		}
+		if (checkOk){
+			var newOption = new Option();
+			newOption.text = "<%=@sub_list[sl].id+"   "+@sub_list[sl].subjectName%>";
+			newOption.value ="<%=@sub_list[sl].id%>";
+			dom.availSubjectDDM.options[count] = newOption;
+			count++;
+		}
+		
+	<% end %>
+	checkSubjectAssignedNo();
+}
+
+function processConfirm(){
+	var dom = document.getElementById("SubjectAssignedForm");
+	var subjectAssigned="";
+	for(var k=0; k<dom.subjectAssignedDDM.length;k++){
+		subjectAssigned+=dom.subjectAssignedDDM.options[k].value+",";	
+	}
+	
+	subjectAssigned=subjectAssigned.substr(0,subjectAssigned.length-1);
+	
+	opener.document.getElementById("subjectAssigned").value=subjectAssigned;
+	showOpener();
+}
+
+</SCRIPT>
+</head>
+<body onload="reloadSubject();">
+<form id="SubjectAssignedForm" method="post" action="">
+<table class="Table1" align=center>
+	<tr align=center>
+		<th colspan=3>Edit Subject(s) Assigned</th>
+	</tr>
+	<tr align="center">
+		<td>Available Subjects:<br><br>
+			<input type="button" name="reloadSubjectBtn" onclick="reloadSubject();" value="Reload Subject" /><br>
+					
+			<Select style="width: 270px" size="10" id="availSubjectDDM" name="availSubjectDDM" multiple>
+				
+			</Select>
+		</td>
+	
+		<td>
+			<input type="button" name="Button" value="  >>  " onclick="add();"><br><br>
+			<input type="button" name="Button" value="  <<  " onclick="remove();">    
+		</td>
+		  
+		<td>Subject(s) Assigned:<br><br><br>
+			<Select style="width: 270px" size="10" id="subjectAssignedDDM" name="subjectAssignedDDM" multiple>
+				<% if @got_list %>
+					<% 0.upto(@sub_assigned_list.length-1) do |ss|%>
+						<option value="<%=@sub_assigned_list[ss].id%>"><%=@sub_assigned_list[ss].id%>&nbsp;&nbsp;&nbsp;<%=@sub_assigned_list[ss].subjectName%> </option>
+					<% end %>
+				<% end %>
+			</Select>
+		</td>
+	</tr>
+	<tr><td></td></tr>		
+	<tr align="center">
+		<td colspan=3>
+			<input type="button" name="confirmBtn" disabled onclick="processConfirm();" value="Confirm" />
+			<input type="button" value="Cancel" name="cancelBtn" tabIndex="9" onclick="showOpener()">
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>
+

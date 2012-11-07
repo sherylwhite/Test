@@ -1,0 +1,175 @@
+SUBJECT		LECTURE			TUTORIAL			LABORATORY
+Code	Name	Staff	Group	Hrs(Grp)	Staff	Group	Hrs(Grp)	Staff	Group	Hrs(Grp)
+
+CM102	How Computers Work	Not Assigned	M1	39 (1)				Not Assigned	M1	26 (1)
+
+CPE101	Electronics Principles	Not Assigned	CE1	39 (1)	Not Assigned	FER1	13 (1)	Not Assigned	FER1	12 (1)
+
+CPE102	Introduction to Programming	Not Assigned	CE1	39 (1)	Not Assigned	FER1	13 (1)	Not Assigned	FER1	26 (1)
+
+CPE103	Mathematics I	Not Assigned	CE1	39 (1)	Not Assigned	FER1	13 (1)			
+
+CPE104	Logic Design	Not Assigned	CE1	39 (1)	Not Assigned	FE1,FE2,FE3,FE4,FE5,FEA1	78 (6)	Not Assigned	FE1,FE2,FE3,FE4,FE5,FE6,FEA1	92 (7)
+
+CPE105	Data Structures and Object-Oriented Prog	Not Assigned	CE1	39 (1)	Not Assigned	FE1,FE2,FE3,FE4,FE5,FE6,FEA1	91 (7)	Not Assigned	FE1,FE2,FE3,FE4,FE5,FE6,FEA1	182 (7)
+
+CPE106	Mathematics II	Not Assigned	CE1	39 (1)	Not Assigned	FE1,FE2,FE3,FE4,FE5,FE6,FEA1,FEPA1,FEPB1,FEPB2	130 (10)			
+
+CPE183	Engineers & Society	Not Assigned	CE4	39 (1)						
+
+CPE184	HR Management & Entrepreneurship	Not Assigned	CE3	39 (1)	Not Assigned	TE1,TE2,TEA1,TEPB1,TEPB2	65 (5)			
+
+CPE201	Digital Circuits & Systems	Not Assigned	CE2	39 (1)	Not Assigned	FEPB1,FEPB2,SER1	39 (3)	Not Assigned	FEPB1,FEPB2,SER1	40 (3)
+
+CPE202	Computer Organisation	Not Assigned	CE2	39 (1)	Not Assigned	FEPB1,FEPB2,SER1	39 (3)	Not Assigned	FEPB1,FEPB2,SER1	38 (3)
+
+CPE203	Software Systems and Models	Not Assigned	CE2	39 (1)	Not Assigned	FEPA1,FEPB1,FEPB2,SER1	52 (4)	Not Assigned	FEPA1,FEPB1,FEPB2,SER1	52 (4)
+
+CPE204	Discrete Mathematicss and Algorithms	Not Assigned	CE2	39 (1)	Not Assigned	FEPA1,FEPB1,FEPB2,SER1	52 (4)			
+
+CPE205	Operating Systems	Not Assigned	CE2	39 (1)	Not Assigned	SE1,SE2,SE3,SE4,SE5,SE6,SEA1	91 (7)	Not Assigned	SE1,SE2,SE3,SE4,SE5,SE6,SEA1	92 (7)
+
+CPE206	Microprocessor Systems Design	Not Assigned	CE2	39 (1)	Not Assigned	FEPA1,SE1,SE2,SE3,SE4,SE5,SE6,SEA1	104 (8)	Not Assigned	FEPA1,SE1,SE2,SE3,SE4,SE5,SE6,SEA1	104 (8)
+
+CPE207	Software Engineering	Not Assigned	CE2	39 (1)	Not Assigned	FEPA1,SE1,SE2,SE3,SE4,SE5,SE6	91 (7)	Not Assigned	FEPA1,SE1,SE2,SE3,SE4,SE5,SE6	182 (7)
+
+CPE208	Instrumentation and Data Acquisition	Not Assigned	CE2	39 (1)	Not Assigned	FEA1,SE1,SE2,SE3,SE4,SE5,SE6	91 (7)	Not Assigned	FEA1,SE1,SE2,SE3,SE4,SE5,SE6	182 (7)
+
+CPE301	Digital Communication	Not Assigned	CE3	39 (1)	Not Assigned	SEA1,TE1,TE2	39 (3)	Not Assigned	SEA1,TE1,TE2	38 (3)
+
+CPE302	Computer Networks	Not Assigned	CE3	39 (1)	Not Assigned	SEA1,TE1,TE2	39 (3)	Not Assigned	SEA1,TE1,TE2	40 (3)
+
+CPE303	Database Systems	Not Assigned	CE3	39 (1)	Not Assigned	TE1,TE2,TEA1	39 (3)	Not Assigned	TE1,TE2,TEA1	40 (3)
+
+CPE403	Advanced Data Management Techniques	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE406	Artificial Intelligence	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE408	Compiler Techniques	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE410	Computer Game Programming	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE411	Computer Graphics	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE412	Computer Vision & Image Processing	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE414	Digital Signal Processing	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE415	Digital Video Coding and Compression	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE416	Distributed Systems/Distributed Computing	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE421	Mobile and Personal Communications	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE425	Programming Languages	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE427	Robotics	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE428	Simulation and Modelling	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+CPE432	Visualization	Not Assigned	CE4	39 (1)	Not Assigned	CE4	13 (1)			
+
+
+
+CSC102	Introduction to Programming	Not Assigned	CS1	39 (1)	Not Assigned	FSR1	13 (1)	Not Assigned	FSR1	26 (1)
+
+CSC103	Mathematics I	Not Assigned	CS1	39 (1)	Not Assigned	FSR1	13 (1)			
+
+CSC104	Logic Design	Not Assigned	CS1	39 (1)	Not Assigned	BCG1,FS1,FSA1	39 (3)	Not Assigned	BCG1,FS1,FS2,FSA1	52 (4)
+
+CSC105	Data Structures and Object-Oriented Prog	Not Assigned	CS1	39 (1)	Not Assigned	BCG1,FS1,FS2,FSA1,FSPC1	65 (5)	Not Assigned	BCG1,FS1,FS2,FSA1,FSPC1	130 (5)
+
+CSC106	Discrete Mathematics	Not Assigned	CS1	39 (1)	Not Assigned	BCG1,FS1,FS2,FSA1	52 (4)			
+
+CSC183	Engineers & Society	Not Assigned	CS4	39 (1)						
+
+CSC184	HR Management & Entrepreneurship	Not Assigned	CS2	39 (1)	Not Assigned	FSPA1,FSPC1,SS1,SS2,SSA1,TS1	78 (6)			
+
+CSC201	Computer Organisation	Not Assigned	CS2	39 (1)	Not Assigned	FSA1,FSPB1,FSPB2,SSR1	52 (4)	Not Assigned	FSA1,FSPB1,FSPB2,SSR1	50 (4)
+
+CSC202	Algorithms	Not Assigned	CS2	39 (1)	Not Assigned	FSPA1,FSPB1,FSPB2,SSR1	52 (4)			
+
+CSC203	Software Systems and Models	Not Assigned	CS2	39 (1)	Not Assigned	FSPA1,FSPB1,FSPB2,SSR1	52 (4)	Not Assigned	FSPA1,FSPB1,FSPB2,SSR1	56 (4)
+
+CSC204	Comp Graphics and Application	Not Assigned	CS2	39 (1)	Not Assigned	BCG2,FSPA1,FSPB1,FSPB2,FSPC1,SSR1	78 (6)	Not Assigned	BCG2,FSPA1,FSPB1,FSPB2,FSPC1,SSR1	74 (6)
+
+CSC205	Operating Systems	Not Assigned	CS2	39 (1)	Not Assigned	BCG2,SS1,SS2,SSA1	52 (4)	Not Assigned	BCG2,SS1,SS2,SSA1	56 (4)
+
+CSC206	Database Systems	Not Assigned	CS2	39 (1)	Not Assigned	SS1,SS2,SSA1	39 (3)	Not Assigned	SS1,SS2,SSA1	38 (3)
+
+CSC207	Software Engineering I	Not Assigned	CS2	39 (1)	Not Assigned	BCG2,FSPA1,FSPB1,FSPB2,FSPC1,SS1,SS2	91 (7)	Not Assigned	BCG2,FSPA1,FSPB1,FSPB2,FSPC1,SS1,SS2	90 (7)
+
+CSC301	Programming Languages	Not Assigned	CS3	39 (1)	Not Assigned	FSPC1,SSA1,TS1,TS2	52 (4)			
+
+CSC302	Net Centric Computing	Not Assigned	CS3	39 (1)	Not Assigned	TS1,TS2	26 (2)	Not Assigned	TS1,TS2	52 (2)
+
+CSC303	Software Engineering II	Not Assigned	CS3	39 (1)	Not Assigned	SSA1,TS1,TS2	39 (3)	Not Assigned	SSA1,TS1,TS2	42 (3)
+
+CSC304	AI and Intelligent Systems	Not Assigned	CS3	39 (1)	Not Assigned	TS1,TS2	26 (2)			
+
+CSC403	Advanced Data Management Techniques	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC404	Compiler Techniques	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC407	Computer Game Programming	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC408	Computer Vision & Image Processing	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC411	Distributed Systems/Distributed Computing	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC415	Information Retrieval	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC419	Machine Learning	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC420	Wireless Networks and Mobile Computing	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC424	Robotics	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC425	Simulation and Modelling	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+CSC427	Visualization	Not Assigned	CS4	39 (1)	Not Assigned	CS4	13 (1)			
+
+
+HW310	Professional Communication	Not Assigned	SCE1	39 (1)	Not Assigned	SCE1,SCE2,SCE3,SCE4,SCE5,SCE6,SCE7	45 (7)			
+
+
+SC134	Principles of Economics	Not Assigned	SC4	39 (1)	Not Assigned	G1	13 (1)			
+
+SC206	Microprocessor Systems Design	Not Assigned	SC2	39 (1)	Not Assigned	FEPA1	13 (1)	Not Assigned	FEPA1	14 (1)
+
+SC208	Computer Graphics in Design	Not Assigned	SC2	39 (1)	Not Assigned	S1	13 (1)	Not Assigned	S1	12 (1)
+
+SC301	Control & Instrumentation	Not Assigned	SC3	39 (1)	Not Assigned	T1	13 (1)	Not Assigned	T1	14 (1)
+
+SC302	Computer Networks	Not Assigned	SC3	39 (1)						
+
+SC303	Operating Systems	Not Assigned	SC3	39 (1)						
+
+SC304	Database Systems	Not Assigned	SC3	39 (1)						
+
+SC404	Digital Signal Processing	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC405	Compiler Techniques	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC430	Artificial Intelligence	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC432	Distributed Systems/Distributed Computing	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC433	Programming Languages	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC435	Visualization	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC437	Computer Vision & Image Processing	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC438	Robotics	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC442	Advanced Data Management Techniques	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC443	Computer Game Programming	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC445	Digital Video Coding and Compression	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC450	Mobile and Personal Communications	Not Assigned	SC4	39 (1)	Not Assigned	SC4	13 (1)			
+
+SC452	Simulation and Modelling	Not Assigned	CS4,SC4	78 (2)	Not Assigned	SC4	13 (1)			
+

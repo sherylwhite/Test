@@ -1,0 +1,309 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+
+var newwindow = '';
+
+function popWindow(url) {
+	if (!newwindow.closed && newwindow.location) {
+		newwindow.location.href = url;
+	}
+	else {
+		newwindow=window.open(url,'EditPossibleVenues','menubar=0,resizable=1,height=400,width=700');
+		if (!newwindow.opener) newwindow.opener = self;
+	}
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
+function onChangeAction(){
+var dom = document.getElementById("StaffForm");
+				
+	if(dom.actionDDM.value == "Add"){		
+		dom.staffListDDM.disabled = true;
+		dom.staffListDDM.selectedIndex=-1;
+		clearField();
+		dom.staffName.disabled = false;
+		dom.designationBoxLec.disabled = false;
+		dom.designationBoxTut.disabled = false;
+		dom.designationBoxLab.disabled = false;
+		dom.division.disabled = false;
+		dom.school.disabled = false;
+		dom.email.disabled = false;
+		dom.roomNo.disabled = false;
+		dom.extNo.disabled = false;
+		dom.subjectAssigned.disabled=false;
+		dom.remarks.disabled=false;
+		dom.submitStaffBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else{
+		
+		dom.staffListDDM.disabled = false;
+		if(dom.actionDDM.value == "Pls select an action"){
+			
+			dom.staffListDDM.disabled=true;
+		}
+		dom.staffListDDM.selectedIndex=-1;
+		clearField();
+		dom.staffName.disabled = true;
+		dom.designationBoxLec.disabled = true;
+		dom.designationBoxTut.disabled = true;
+		dom.designationBoxLab.disabled = true;
+		dom.division.disabled = true;
+		dom.school.disabled = true;
+		dom.email.disabled = true;
+		dom.roomNo.disabled = true;
+		dom.extNo.disabled = true;
+		dom.subjectAssigned.disabled=true;
+		dom.remarks.disabled=true;
+		dom.submitStaffBtn.disabled=true;
+		dom.resetBtn.disabled=true;
+	}	
+}
+
+function onChangeList(){
+	clearField();
+	var dom = document.getElementById("StaffForm");
+	<% 0.upto(@staff_list.length-1) do |s| %>
+		if (dom.staffListDDM.value=="<%=@staff_list[s].id%>"){
+			
+			dom.staffName.value = "<%=@staff_list[s].staffName%>";
+			var desArr=new Array();
+			desArr="<%=@staff_list[s].designation%>".split(",");
+			for(var k=0;k<desArr.length;k++){
+				switch (desArr[k]){
+					case 'Lec':
+						dom.designationBoxLec.checked=true;
+						break;
+					case 'Tut':
+						dom.designationBoxTut.checked=true;
+						break;
+					case 'Lab':
+						dom.designationBoxLab.checked=true;
+						break;
+				}
+			}
+			dom.division.value = "<%=@staff_list[s].division%>";
+			dom.school.value = "<%=@staff_list[s].school%>";
+			dom.email.value = "<%=@staff_list[s].email%>";
+			dom.roomNo.value = "<%=@staff_list[s].roomNo%>";
+			dom.extNo.value = "<%=@staff_list[s].extNo%>";
+			dom.subjectAssigned.value="<%=@staff_list[s].subjectAssigned%>";
+			dom.remarks.value="<%=@staff_list[s].remarks%>";
+			
+		}			
+	<% end %>
+	
+	
+	EnDisable();
+}
+
+function EnDisable(){
+	var dom = document.getElementById("StaffForm");
+	if(dom.actionDDM.value=="Delete"){
+		dom.submitStaffBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+	else if (dom.actionDDM.value=="Update"){
+		dom.staffName.disabled = false;
+		dom.designationBoxLec.disabled = false;
+		dom.designationBoxTut.disabled = false;
+		dom.designationBoxLab.disabled = false;
+		dom.division.disabled = false;
+		dom.school.disabled = false;
+		dom.email.disabled = false;
+		dom.roomNo.disabled = false;
+		dom.extNo.disabled = false;
+		dom.subjectAssigned.disabled=false;
+		dom.remarks.disabled=false;
+		dom.submitStaffBtn.disabled=false;
+		dom.resetBtn.disabled=false;
+	}
+}
+
+function clearField(){
+var dom = document.getElementById("StaffForm");
+	//end-if
+	
+	dom.staffName.value = "";
+	dom.designationBoxLec.checked = false;
+	dom.designationBoxTut.checked = false;
+	dom.designationBoxLab.checked = false;
+	dom.division.value = "";
+	dom.school.value = "";
+	dom.email.value = "";
+	dom.roomNo.value = "";
+	dom.extNo.value = "";
+	dom.subjectAssigned.value="";
+	dom.remarks.value="";
+	dom.submitStaffBtn.disabled=true;
+	dom.resetBtn.disabled=true;
+} //end-clearField()
+
+function resetForm(){
+var dom = document.getElementById("StaffForm");
+	dom.actionDDM.selectedIndex=0;
+	onChangeAction();
+	
+}
+
+function updateSubjectAssigned(){
+	var dom = document.getElementById("StaffForm");
+							
+	if((dom.actionDDM.value != "Pls select an action")&&(dom.actionDDM.value != "View")&&(dom.actionDDM.value != "Delete")){
+		if(dom.subjectAssigned.disabled==true) alert("You haven't choose any Staff!")
+		else popWindow("/staff/edit_subject_assigned?subAssigned="+dom.subjectAssigned.value);
+	} //end-if
+	else{
+		alert("Please Select Update/Add Function to enable this function.");    
+	}
+	return false;
+} 
+
+function formValidator(){
+	var dom = document.getElementById("StaffForm");
+	
+	stripSpaces(dom.staffName);
+	stripSpaces(dom.division);
+	stripSpaces(dom.school);
+	stripSpaces(dom.email);
+	stripSpaces(dom.remarks);
+				
+	/* Replace the <enter> key effect of the textarea */
+	dom.remarks.value =dom.remarks.value.replace(/\r\n/g, " " );
+	
+	if(dom.staffName.value.length == 0){
+		alert("Pls enter an appropriate Staff Name.");
+		dom.staffName.focus();
+	return false;
+	} //end-if
+	dom.staffName.disabled=false;			
+	var emailCheck = emailValidator('email'); // Call to (external JS file) check email field
+	return emailCheck;
+} //end-formValidator()
+function checkUserType(){
+var dom = document.getElementById("StaffForm");
+<% if Login.find(:first,:conditions=>"userName='#{session[:user].userName}'").accType=="Normal"%>
+	removeAllDDMItem('actionDDM')
+	var newOption = new Option();
+	newOption.text = "View existing staff";
+	newOption.value = "View";
+	dom.actionDDM.options[0]=newOption;
+	onChangeAction();	
+<% end %>
+}
+
+</script>
+</head>
+<body onload="checkUserType();">
+<form id="StaffForm" method="post" action="/staff/process_staff" onsubmit="return formValidator();">
+<Table class="Table1" allign=center>
+	<tr>
+		<th colspan=3>View / Add / Update / Delete Staff</th>
+	</tr>
+	<tr>
+		<td >Choose an action:</td>
+		<td>
+			<Select size="1" id="actionDDM" name="actionDDM" style="WIDTH: 203px" onchange="onChangeAction()" tabIndex="1">
+  				<option value="Pls select an action">Pls select an action</option>
+				<option value="View">View existing staff</option>
+				<option value="Add">Add new staff</option>
+				<option value="Update">Update existing staff</option>
+				<option value="Delete">Delete existing staff</option>
+  	    		</Select>
+		</td>
+		<td rowspan=5 align=center> Staff List: <br><br>
+			<Select size="10" id="staffListDDM" name="staffListDDM" style="WIDTH: 165px" onchange="onChangeList()" tabIndex="2" disabled=true>
+				<% 0.upto(@staff_list.length-1) do |s| %>
+					<option value="<%=@staff_list[s].id%>"><%=@staff_list[s].staffName%></option>
+				<% end %>
+			<Select>
+			<br><br>
+		</td>
+	</tr>
+	<tr>
+    		<td>Name:</td>
+    		<td>
+			<input type="Text" id="staffName" name="staffName" size="30" MaxLength="50" tabIndex="3" onkeypress="allowAlphaNumericSpace('Name field')" disabled>
+		</td>
+  	</tr>
+  			
+  	<tr>
+    		<td>Designation:</td>
+		<td>
+			<input type="checkbox" id="designationBoxLec" name="designationBoxLec" value="Lec" disabled/>Lecturer
+			<input type="checkbox" id="designationBoxTut" name="designationBoxTut" value="Tut" disabled/>Tutor
+			<input type="checkbox" id="designationBoxLab" name="designationBoxLab" value="Lab" disabled/>Lab Supervisor
+		</td> 
+	</tr>
+  
+  	<tr>
+    		<td>Division:</td>
+    		<td><input type="Text" id="division" name="division" size="30" MaxLength="50" onkeypress="allowAlphaNumericSpace('Division field')" tabIndex="5" disabled></td>
+   	</tr>
+  
+  	<tr>
+    		<td>School (e.g. SCE):</td>
+    		<td><input type="Text" id="school" name="school" size="30" MaxLength="3" onkeypress="allowAlphaNumericSpace('School field')" tabIndex="5" disabled></td>
+  	</tr>
+  	    	
+  	<tr>
+    		<td>Email:</td>
+    		<td><input type="Text" id="email" name="email" size="30" MaxLength="50" tabIndex="7" disabled></td>
+      	</tr>
+      		
+  	<tr>
+    		<td>Room No:</td>
+    		<td><input type="Text" id="roomNo" name="roomNo" size="30" MaxLength="15" onkeypress="allowAlphaNumericDash('Room Number field')" tabIndex="8" disabled></td>
+    	</tr>
+  
+  	<tr>
+    		<td>Ext No:</td>
+    		<td><input type="Text" id="extNo" name="extNo" size="30" MaxLength="4" onkeypress="return allowNum('Extension Number field')" tabIndex="9" disabled></td>
+      	</tr>
+  
+	<tr>
+    		<td>Subject Assigned:</td>
+    		<td><textarea rows="3" id="subjectAssigned" name="subjectAssigned" cols="23" TextMode="MultiLine" readonly onchange="return imposeMaxLength(this, 149);" tabIndex="10" disabled></textarea>
+		    <!-- The anchor is not functional here, just to show the hand cursor when user point to image -->
+			    <A href="javascript:void(null);" onclick="updateSubjectAssigned();"><IMG src="/Images/write.gif" width="25" height="25" border=0 ></A>
+		</td>
+      	</tr>
+				
+	<tr>
+    		<td>Remarks:</td>
+    		<td><textarea rows="3" id="remarks" name="remarks" cols="23" TextMode="MultiLine" onkeypress="return imposeMaxLength(this, 149);" tabIndex="11" disabled></textarea></td>
+      	</tr>
+
+  	<tr align=center>  			  	
+  		<td colspan=2>
+			<input type="submit" value="Submit" name="submitStaffBtn" tabIndex="11" disabled/>
+			<input type="button" value="Reset" name="resetBtn" tabIndex="12" onclick="resetForm();"disabled/>
+			<input type="button" value="Main" name="mainBtn" tabIndex="13" onclick="showOpener()">
+		</td>
+		
+  	</tr> 
+	
+</Table>
+</form>
+</body>
+</html>
+<script>
+	var msgDisplay=""
+	var noMsg=false;
+	<% if @msg=="1" %>
+		msgDisplay="ERROR: Staff cannot be added. Staff already exists in the database.";
+	<% elsif @msg=="2" %>
+		msgDisplay="Staff is added successfully.";
+	<% elsif @msg=="3" %>
+		msgDisplay="Staff is updated successfully.";
+	<% elsif @msg=="4" %>
+		msgDisplay="Staff is deleted successfully.";
+	<% else %>
+		noMsg=true;
+	<% end %>
+	if (noMsg==false){
+	alert(msgDisplay);
+	}
+</script>

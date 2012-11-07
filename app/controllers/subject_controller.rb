@@ -1,0 +1,952 @@
+class SubjectController < ApplicationController
+  layout 'standard'
+  
+  def subject
+    if session[:user]==nil
+      redirect_to :controller=>'tps', :action=>'login', :msg=>'PleaseLogin'
+    else
+      action=params[:actionDDM]
+      yos=params[:yearOfStudy]
+      disp=params[:discipline]
+      search=params[:search]
+      @msg=params[:msg]
+      @search_button_clicked=false
+      empty_search=false
+      @max_lesson=20
+      if search=="yes"
+        @search_button_clicked=true
+      end
+      
+      if yos!=nil && disp!=nil
+        yos=yos.strip
+        disp=disp.strip
+        @sub_list=Subject.find(:all,:conditions=>"yearOfStudy='#{yos}' and discipline='#{disp}'", :order=>"subjectCode")
+        @sub_lessons=Lesson.find_by_sql("Select L.subjectCode,L.lessonType,L.noOfLesson,L.frequency,L.possibleVenues,L.lessonGroupsAssigned from lessons L, subjects S where L.subjectCode=S.subjectCode and S.yearOfStudy='#{yos}' and S.discipline='#{disp}'")
+        @parameters=action+":"+yos+":"+disp
+        
+      elsif yos==nil && disp!=nil
+        disp=disp.strip
+        @sub_list=Subject.find(:all,:conditions=>"discipline='#{disp}'", :order=>"subjectCode")
+        @sub_lessons=Lesson.find_by_sql("Select L.subjectCode,L.lessonType,L.noOfLesson,L.frequency,L.possibleVenues,L.lessonGroupsAssigned from lessons L, subjects S where L.subjectCode=S.subjectCode and S.discipline='#{disp}'")
+        @parameters=action+":"+"null"+":"+disp
+        
+      elsif yos!=nil && disp==nil
+        yos=yos.strip
+        @sub_list=Subject.find(:all,:conditions=>"yearOfStudy='#{yos}'", :order=>"subjectCode")
+        @sub_lessons=Lesson.find_by_sql("Select L.subjectCode,L.lessonType,L.noOfLesson,L.frequency,L.possibleVenues,L.lessonGroupsAssigned from lessons L, subjects S where L.subjectCode=S.subjectCode and S.yearOfStudy='#{yos}'")
+        @parameters=action+":"+yos+":"+"null"
+        
+      else        
+        @sub_list=Subject.find(:all, :order=>"subjectCode")
+        @sub_lessons=Lesson.find_by_sql("Select L.subjectCode,L.lessonType,L.noOfLesson,L.frequency,L.possibleVenues,L.lessonGroupsAssigned from lessons L, subjects S where L.subjectCode=S.subjectCode")
+        
+        if @search_button_clicked
+        @parameters=action+":"+"null"+":"+"null"
+        end    
+      end
+    end
+  end
+  
+  def edit_possible_venues
+    
+    scode=params[:scode]
+    lesson_type=params[:lessonType]
+    pos_vens=params[:posVens]
+    
+    
+    session[:scode]=scode
+    session[:lesType]=lesson_type
+    
+  
+      venue_list=Venue.find(:all,:order=>"venueName")
+      
+      if pos_vens==nil
+        @pos_vens_list=Array.new
+        @avail_vens_list=Array.new
+        
+        0.upto(venue_list.length-1) do |vl|
+          @avail_vens_list[vl]=venue_list[vl].venueName          
+        end
+        
+      else
+        pos_vens=pos_vens.sub("specialNcharacter","&")
+        @pos_vens_list=Array.new
+        @pos_vens_list=pos_vens.split(",")
+        
+        count=0
+        @avail_vens_list=Array.new
+        0.upto(venue_list.length-1) do |vl|
+          
+         not_exist=true
+          0.upto(@pos_vens_list.length-1) do |pv|
+            if venue_list[vl].venueName==@pos_vens_list[pv]
+              not_exist=false
+            end
+          end
+          
+          if not_exist
+            @avail_vens_list[count]=venue_list[vl].venueName
+            count+=1
+          end
+          
+        end
+        
+      end
+      
+    render :layout=>false
+    
+  end
+   
+  def maintain_lesson_groups
+     
+     @max_lesson=20
+     @grp_prefix_list=LessonGroup.find_by_sql("SELECT distinct groupPrefix FROM lesson_groups order by groupPrefix")
+     @grp_no_list=LessonGroup.find_by_sql("SELECT groupPrefix, groupNo , groupSize, groupIndex FROM lesson_groups order by groupIndex ")
+     @del_grps=params[:delGrps]
+     @msg=params[:msg]
+     render :layout=>false
+  end
+  
+  def process_lesson_groups
+   
+    action=params[:actionDDM]
+    
+    grp_pre=params[:grpPre]
+    grp_no1=params[:grpNo1DDM]
+    grp_no2=params[:grpNo2DDM]
+    grp_size=params[:grpSize]
+    
+    grp_no=grp_no1.to_i
+    
+    if action=="Add"
+      les_grp_exist=false
+      grp_no.upto(grp_no2.to_i) do |t|
+        les_grp_query=LessonGroup.find_by_sql("Select * from lesson_groups where groupPrefix='#{grp_pre}' and groupNo=#{grp_no}")
+        if les_grp_query.length>0
+          les_grp_exist=true
+          break
+        end
+        grp_no +=1
+      end
+      if les_grp_exist
+         # ADD error, lesson group already exists
+        msg=1
+      else
+        grp_no=grp_no1.to_i
+        grp_no.upto(grp_no2.to_i) do |t|
+          grp_index=grp_pre.to_s+grp_no.to_s
+          les_grp=LessonGroup.new
+          les_grp.groupIndex=grp_index
+          les_grp.groupPrefix=grp_pre
+          les_grp.groupNo=grp_no
+          les_grp.groupSize=grp_size   
+          les_grp.save
+          
+          grp_no +=1
+        end
+        #ADD ok!
+        msg=2
+      end
+    
+    elsif action=="Update"
+      
+      grp_no.upto(grp_no2.to_i) do |t|
+        lesson_grp_query=LessonGroup.find(:first,:conditions=>"groupPrefix='#{grp_pre}' and groupNo=#{grp_no}")
+        if lesson_grp_query!=nil
+          lesson_grp_query.update_attribute :groupSize, grp_size
+        end
+        grp_no +=1
+      end
+      msg="3"
+      
+    elsif action=="Delete"
+
+      del_grps=""
+      
+      grp_no.upto(grp_no2.to_i) do |t|
+        lesson_grp_query=LessonGroup.find(:first,:conditions=>"groupPrefix='#{grp_pre}' and groupNo=#{grp_no}")
+        if lesson_grp_query!=nil
+          LessonGroup.delete(lesson_grp_query.groupId)
+        end
+        grp_index=grp_pre.to_s+grp_no.to_s
+        query=Lesson.find_by_sql("Select * from lessons where lessonGroupsAssigned like '%#{grp_index}%'")
+        del_grps+=grp_index+"-"
+        0.upto(query.length-1) do |q|
+          temp_arr=Array.new
+          temp_arr=query[q].lessonGroupsAssigned.split(",")
+          les_grp_assigned=""
+
+          0.upto(temp_arr.length-1) do|t|
+            
+            if temp_arr[t]!=grp_index
+              les_grp_assigned+=temp_arr[t]+","
+            end            
+          end
+            les_grp_assigned=les_grp_assigned[0,les_grp_assigned.length-1]
+            query[q].update_attribute :lessonGroupsAssigned, les_grp_assigned
+            
+        end     
+        
+        grp_no +=1
+      end
+      
+      del_grps=del_grps[0,del_grps.length-1]
+      msg="4"
+    end
+    
+    
+   redirect_to :action=>"maintain_lesson_groups", :msg=>msg, :delGrps=>del_grps
+  end
+  
+  def  edit_lesson_groups_assigned
+    scode=params[:scode]
+    lesson_type=params[:lessonType]
+    les_grp_assigned=params[:lessonGroupsAssigned]    
+    
+    session[:scode]=scode
+    session[:lesType]=lesson_type
+  
+    @grp_prefix_list=LessonGroup.find_by_sql("SELECT distinct groupPrefix FROM lesson_groups order by groupPrefix")
+    @grp_list=LessonGroup.find_by_sql("SELECT groupPrefix, groupIndex FROM lesson_groups order by groupIndex")
+    
+    if les_grp_assigned==nil      
+      @les_grp_assigned_list=Array.new      
+    else
+      @les_grp_assigned_list=Array.new
+      @les_grp_assigned_list=les_grp_assigned.split(",")
+      @les_grp_assigned_list=@les_grp_assigned_list.sort
+    end
+      
+    
+    render :layout=>false
+  end
+  
+  def process_subject
+    action=params[:actionDDM]
+    sub_code=params[:subjectCode].upcase
+    sub_name=params[:subjectName]
+    yos=params[:yearOfStudy]
+    disc=params[:discipline]
+    au=params[:acadUnit]
+    cohort=params[:sizeOfCohort]
+    lec_no=params[:noOfLecDDM]
+    tut_no=params[:noOfTutDDM]
+    lab_no=params[:noOfLabDDM]
+    lec_freq=params[:lecFreqDDM]
+    tut_freq=params[:tutFreqDDM]
+    lab_freq=params[:labFreqDDM]
+    lec_venue=params[:lecVenue]
+    tut_venue=params[:tutVenue]
+    lab_venue=params[:labVenue]
+    lec_group=params[:lecLGassigned]
+    tut_group=params[:tutLGassigned]
+    lab_group=params[:labLGassigned]
+    remarks=params[:remarks]
+    
+    msg=0
+    
+    if action=="Add"      
+      sub_exist=Subject.find_by_sql("Select * from subjects where subjectCode ='#{sub_code}'")
+        if sub_exist.length>0
+          # ADD error, venue name already exists
+          msg=1
+        else
+          sub=Subject.new
+          sub.id=sub_code
+          sub.subjectName=sub_name
+          sub.yearOfStudy=yos
+          sub.discipline=disc
+          sub.acad_unit=au
+          sub.cohort_size=cohort
+          sub.remarks=remarks
+          sub.save
+          
+          if lec_no!="0"
+            les=Lesson.new
+            les.subjectCode=sub_code
+            les.lessonType="Lec"
+            les.noOfLesson=lec_no
+            les.frequency=lec_freq
+            les.lessonGroupsAssigned=lec_group
+            les.possibleVenues=lec_venue
+            les.save
+          end
+          
+          if tut_no!="0"
+            les=Lesson.new
+            les.subjectCode=sub_code
+            les.lessonType="Tut"
+            les.noOfLesson=tut_no
+            les.frequency=tut_freq
+            les.lessonGroupsAssigned=tut_group
+            les.possibleVenues=tut_venue
+            les.save
+          end
+          
+          if lab_no!="0"
+            les=Lesson.new
+            les.subjectCode=sub_code
+            les.lessonType="Lab"
+            les.noOfLesson=lab_no
+            les.frequency=lab_freq
+            les.lessonGroupsAssigned=lab_group
+            les.possibleVenues=lab_venue
+            les.save
+          end
+          
+          #ADD ok!
+          msg=2
+        end
+        
+    elsif action=="Update"
+      sub_query=Subject.find(sub_code)
+      sub_query.update_attribute :subjectCode, sub_code
+      sub_query.update_attribute :subjectName, sub_name
+      sub_query.update_attribute :yearOfStudy, yos
+      sub_query.update_attribute :discipline, disc
+      sub_query.update_attribute :acad_unit, au
+      sub_query.update_attribute :cohort_size, cohort
+      sub_query.update_attribute :remarks, remarks
+      
+      lec_query=Lesson.find(:first, :conditions=>"subjectCode='#{sub_code}' and lessonType='Lec'")
+      if lec_query!=nil
+        if lec_no=="0"
+          Lesson.delete(lec_query.lessonId)
+        else
+          lec_query.update_attribute :noOfLesson, lec_no
+          lec_query.update_attribute :frequency, lec_freq
+          lec_query.update_attribute :lessonGroupsAssigned, lec_group
+          lec_query.update_attribute :possibleVenues, lec_venue
+        end 
+      else
+        if lec_no!="0"
+          les=Lesson.new
+          les.subjectCode=sub_code
+          les.lessonType="Lec"
+          les.noOfLesson=lec_no
+          les.frequency=lec_freq
+          les.lessonGroupsAssigned=lec_group
+          les.possibleVenues=lec_venue
+          les.save
+        end        
+      end
+      
+      tut_query=Lesson.find(:first, :conditions=>"subjectCode='#{sub_code}' and lessonType='Tut'")
+      if tut_query!=nil
+        if tut_no=="0"
+          Lesson.delete(tut_query.lessonId)
+        else
+          tut_query.update_attribute :noOfLesson, tut_no
+          tut_query.update_attribute :frequency, tut_freq
+          tut_query.update_attribute :lessonGroupsAssigned, tut_group
+          tut_query.update_attribute :possibleVenues, tut_venue
+        end 
+      else
+        if tut_no!="0"
+          les=Lesson.new
+          les.subjectCode=sub_code
+          les.lessonType="Tut"
+          les.noOfLesson=tut_no
+          les.frequency=tut_freq
+          les.lessonGroupsAssigned=tut_group
+          les.possibleVenues=tut_venue
+          les.save
+        end        
+      end
+      
+      lab_query=Lesson.find(:first, :conditions=>"subjectCode='#{sub_code}' and lessonType='Lab'")
+      if lab_query!=nil
+        if lab_no=="0"
+          Lesson.delete(lab_query.lessonId)
+        else
+          lab_query.update_attribute :noOfLesson, lab_no
+          lab_query.update_attribute :frequency, lab_freq
+          lab_query.update_attribute :lessonGroupsAssigned, lab_group
+          lab_query.update_attribute :possibleVenues, lab_venue
+        end 
+      else
+        if lab_no!="0"
+          les=Lesson.new
+          les.subjectCode=sub_code
+          les.lessonType="Lab"
+          les.noOfLesson=lab_no
+          les.frequency=lab_freq
+          les.lessonGroupsAssigned=lab_group
+          les.possibleVenues=lab_venue
+          les.save
+        end        
+      end      
+      
+      #UPDATE ok!
+      msg="3"
+    else
+      @list_index=IndexSubject.find(:all, :conditions=>"subjectCode='#{sub_code}'")
+      IndexSubject.delete(@list_index)
+      Subject.delete(sub_code)
+
+      query=Staff.find_by_sql("Select * from staffs where subjectAssigned like '%#{sub_code}%'")
+      
+      0.upto(query.length-1) do |q|
+        temp_arr=Array.new
+        temp_arr=query[q].subjectAssigned.split(",")
+        sub_assigned=""
+
+        0.upto(temp_arr.length-1) do|t|
+            
+          if temp_arr[t]!=sub_code
+            sub_assigned+=temp_arr[t]+","
+          end            
+        end
+        
+        sub_assigned=sub_assigned[0,sub_assigned.length-1]
+        query[q].update_attribute :subjectAssigned,sub_assigned
+            
+        end     
+        
+        query=SharedSubjectCode.find_by_sql("SELECT * FROM shared_subject_codes where sharedSubjectCodes like '%#{sub_code}%'")
+        
+        0.upto(query.length-1) do |q|
+        temp_arr=Array.new
+        temp_arr=query[q].sharedSubjectCodes.split(",")
+        shared_codes=""
+
+        0.upto(temp_arr.length-1) do|t|
+            
+          if temp_arr[t]!=sub_code
+            shared_codes+=temp_arr[t]+","
+          end            
+        end
+        
+        shared_codes=shared_codes[0,shared_codes.length-1]
+        query[q].update_attribute :sharedSubjectCodes,shared_codes
+            
+        end     
+      #DELETE ok!
+      msg=4
+    end
+      redirect_to :action=>"subject", :msg=>msg     
+  
+  end
+
+ def edit_lesson_index
+	@subcode=params[:scode]
+ end
+
+def process_lesson_index
+	
+		year=params[:year]
+		sem=params[:semester]
+		index=params[:index]
+		scode=params[:scode]
+		
+		session[:year]  = year
+		session[:semester] = sem
+		session[:scode] = scode
+		
+		@Csindexcheck = IndexSubject.find_by_sql ( "Select * from index_subjects where SubjectCode='#{scode}' and AcademicYear='#{year}' and Semester='#{sem}'")
+
+		lec_grp=Lesson.find_by_sql("Select lessonGroupsAssigned from lessons where subjectCode='#{scode}' and lessonType='Lec'")		
+		
+		tut_grp=Lesson.find_by_sql("Select lessonGroupsAssigned from lessons where subjectCode='#{scode}' and lessonType='Tut'")
+		
+		lab_grp=Lesson.find_by_sql("Select lessonGroupsAssigned from lessons where subjectCode='#{scode}' and lessonType='Lab'")
+		
+	@maxlec = 0
+	@maxlab = 0
+	@maxtut = 0
+     	if lec_grp.length>0
+		@lec_grp_assigned_list=Array.new
+		@lec_grp_assigned_list=lec_grp[0].lessonGroupsAssigned.split(",")
+		@maxlec = @lec_grp_assigned_list.length
+	end
+	 if lab_grp.length>0
+		@lab_grp_assigned_list=Array.new
+		@lab_grp_assigned_list=lab_grp[0].lessonGroupsAssigned.split(",")
+		@maxlab = @lab_grp_assigned_list.length
+	end
+	if tut_grp.length>0
+		@tut_grp_assigned_list=Array.new
+		@tut_grp_assigned_list=tut_grp[0].lessonGroupsAssigned.split(",")
+		@maxtut = @tut_grp_assigned_list.length
+	end
+
+		if not (index==nil)
+				
+		if not (@Csindexcheck.length>0)
+			
+		count = 0
+		
+		if lab_grp.length>0 && tut_grp.length>0 && lec_grp.length>0
+		
+			0.upto(@lec_grp_assigned_list.length-1) do|lc|	
+			0.upto(@lab_grp_assigned_list.length-1) do|la|
+				0.upto(@tut_grp_assigned_list.length-1) do|tu|
+					if (@lab_grp_assigned_list[la] == @tut_grp_assigned_list[tu])
+						count = count +1
+						break
+					end
+				end
+			end
+			end
+					   
+			@Test=true
+					   
+			0.upto(count) do|ct|
+				@indext = index.to_i + ct
+				@indexcheck = IndexSubject.find_by_sql ( "Select * from index_subjects where IndexNumber='#{@indext}'")
+						if (@indexcheck .length>0)
+							@msg=1
+							@Test=false
+							 break
+						end
+			end
+						
+			if (@Test==true)
+				
+			count = 0
+			
+			0.upto(@lec_grp_assigned_list.length-1) do|lc|
+				0.upto(@tut_grp_assigned_list.length-1) do|tu|
+					0.upto(@lab_grp_assigned_list.length-1) do|la|
+						 if (@lab_grp_assigned_list[la] == @tut_grp_assigned_list[tu])
+							indext = index.to_i + count
+					             indexsubject = IndexSubject.new
+						     indexsubject.id=indext.to_s
+						     indexsubject.AcademicYear=year
+							indexsubject.Semester=sem
+							indexsubject.SubjectCode=scode
+							indexsubject.LectureGroup=@lec_grp_assigned_list[lc]
+							indexsubject.TutorialGroup=@tut_grp_assigned_list[tu]
+							indexsubject.LaboratoryGroup=@lab_grp_assigned_list[la]
+							indexsubject.DesignGroup=nil
+							indexsubject.ProjectGroup=nil
+							indexsubject.SeminarGroup=nil
+							indexsubject.save
+							count = count +1
+						end
+					end
+				end
+			end
+						 
+			else
+				@msg=3
+				redirect_to "/subject/edit_lesson_index?scode="+scode
+			end
+			
+		elsif  lab_grp.length<=0 && tut_grp.length<=0
+						
+			0.upto(@lec_grp_assigned_list.length-1) do|lc|
+					count = count +1
+			end
+				   
+			@Test=true
+				   
+			0.upto(count) do|ct|
+				@indext = index.to_i + ct
+				@indexcheck = IndexSubject.find_by_sql ( "Select * from index_subjects where IndexNumber='#{@indext}'")
+					if (@indexcheck.length>0)
+						msg=1
+						@Test=false
+						break
+					end
+			end
+						
+			if (@Test==true)
+				
+			count = 0
+			
+			0.upto(@lec_grp_assigned_list.length-1) do|lc|
+					   indext = index.to_i + count
+					             indexsubject = IndexSubject.new
+						     indexsubject.id=indext.to_s
+						     indexsubject.AcademicYear=year
+							indexsubject.Semester=sem
+							indexsubject.SubjectCode=scode
+							indexsubject.LectureGroup=@lec_grp_assigned_list[lc]
+							indexsubject.TutorialGroup=nil
+							indexsubject.LaboratoryGroup=nil
+							indexsubject.DesignGroup=nil
+							indexsubject.ProjectGroup=nil
+							indexsubject.SeminarGroup=nil
+							indexsubject.save
+							count = count +1
+			end
+				
+			else
+				@msg=3
+				redirect_to "/subject/edit_lesson_index?scode="+scode
+			end
+			
+		elsif  lec_grp.length<=0 && tut_grp.length<=0
+			
+			0.upto(@lab_grp_assigned_list.length-1) do|la|
+					count = count +1
+			end
+				   
+			@Test=true
+				   
+			0.upto(count) do|ct|
+				@indext = index.to_i + ct
+				@indexcheck = IndexSubject.find_by_sql ( "Select * from index_subjects where IndexNumber='#{@indext}'")
+					if (@indexcheck.length>0)
+						msg=1
+						@Test=false
+						break
+					end
+			end
+						
+			if (@Test==true)
+				
+			count = 0
+			
+			0.upto(@lab_grp_assigned_list.length-1) do|la|
+					   indext = index.to_i + count
+					             indexsubject = IndexSubject.new
+						     indexsubject.id=indext.to_s
+						     indexsubject.AcademicYear=year
+							indexsubject.Semester=sem
+							indexsubject.SubjectCode=scode
+							indexsubject.LectureGroup=nil
+							indexsubject.TutorialGroup=nil
+							indexsubject.LaboratoryGroup=@lab_grp_assigned_list[la]
+							indexsubject.DesignGroup=nil
+							indexsubject.ProjectGroup=nil
+							indexsubject.SeminarGroup=nil
+							indexsubject.save
+							count = count +1
+			end
+				
+			else
+				@msg=3
+				redirect_to "/subject/edit_lesson_index?scode="+scode
+			end
+		
+		elsif  lec_grp.length<=0 && lab_grp.length<=0
+			
+			0.upto(@tut_grp_assigned_list.length-1) do|la|
+					count = count +1
+			end
+				   
+			@Test=true
+				   
+			0.upto(count) do|ct|
+				@indext = index.to_i + ct
+				@indexcheck = IndexSubject.find_by_sql ( "Select * from index_subjects where IndexNumber='#{@indext}'")
+					if (@indexcheck.length>0)
+						msg=1
+						@Test=false
+						break
+					end
+			end
+						
+			if (@Test==true)
+				
+			count = 0
+			
+			0.upto(@tut_grp_assigned_list.length-1) do|tu|
+					   indext = index.to_i + count
+					             indexsubject = IndexSubject.new
+						     indexsubject.id=indext.to_s
+						     indexsubject.AcademicYear=year
+							indexsubject.Semester=sem
+							indexsubject.SubjectCode=scode
+							indexsubject.LectureGroup=nil
+							indexsubject.TutorialGroup=@tut_grp_assigned_list[tu]
+							indexsubject.LaboratoryGroup=nil
+							indexsubject.DesignGroup=nil
+							indexsubject.ProjectGroup=nil
+							indexsubject.SeminarGroup=nil
+							indexsubject.save
+							count = count +1
+			end
+				
+			else
+				@msg=3
+				redirect_to "/subject/edit_lesson_index?scode="+scode
+			end
+			
+		elsif  lec_grp.length<=0
+			
+			0.upto(@lab_grp_assigned_list.length-1) do|la|
+				0.upto(@tut_grp_assigned_list.length-1) do|tu|
+					if (@lab_grp_assigned_list[la] == @tut_grp_assigned_list[tu])
+						count = count +1
+						break
+					end
+				end
+			end
+
+			@Test=true
+				   
+			0.upto(count) do|ct|
+				@indext = index.to_i + ct
+				@indexcheck = IndexSubject.find_by_sql ( "Select * from index_subjects where IndexNumber='#{@indext}'")
+					if (@indexcheck.length>0)
+						msg=1
+						@Test=false
+						break
+					end
+			end
+						
+			if (@Test==true)
+				
+			count = 0
+			
+			0.upto(@tut_grp_assigned_list.length-1) do|tu|
+				0.upto(@lab_grp_assigned_list.length-1) do|la|
+					if (@lab_grp_assigned_list[la] == @tut_grp_assigned_list[tu])
+						indext = index.to_i + count
+					             indexsubject = IndexSubject.new
+						     indexsubject.id=indext.to_s
+						     indexsubject.AcademicYear=year
+							indexsubject.Semester=sem
+							indexsubject.SubjectCode=scode
+							indexsubject.LectureGroup=nil
+							indexsubject.TutorialGroup=@tut_grp_assigned_list[tu]
+							indexsubject.LaboratoryGroup=@lab_grp_assigned_list[la]
+							indexsubject.DesignGroup=nil
+							indexsubject.ProjectGroup=nil
+							indexsubject.SeminarGroup=nil
+							indexsubject.save
+							count = count +1
+					end
+				end
+			end
+				
+			else
+				@msg=3
+				redirect_to "/subject/edit_lesson_index?scode="+scode
+			end
+			
+		elsif  lab_grp.length<=0
+			
+			0.upto(@lec_grp_assigned_list.length-1) do|lc|
+				0.upto(@tut_grp_assigned_list.length-1) do|tu|
+					count = count +1
+				end
+			end
+				   
+			@Test=true
+				   
+			0.upto(count) do|ct|
+				@indext = index.to_i + ct
+				@indexcheck = IndexSubject.find_by_sql ( "Select * from index_subjects where IndexNumber='#{@indext}'")
+					if (@indexcheck.length>0)
+						msg=1
+						@Test=false
+						break
+					end
+			end
+						
+			if (@Test==true)
+				
+			count = 0
+			
+			0.upto(@lec_grp_assigned_list.length-1) do|lc|
+				0.upto(@tut_grp_assigned_list.length-1) do|tu|
+					   indext = index.to_i + count
+					             indexsubject = IndexSubject.new
+						     indexsubject.id=indext.to_s
+						     indexsubject.AcademicYear=year
+							indexsubject.Semester=sem
+							indexsubject.SubjectCode=scode
+							indexsubject.LectureGroup=@lec_grp_assigned_list[lc]
+							indexsubject.TutorialGroup=@tut_grp_assigned_list[tu]
+							indexsubject.LaboratoryGroup=nil
+							indexsubject.DesignGroup=nil
+							indexsubject.ProjectGroup=nil
+							indexsubject.SeminarGroup=nil
+							indexsubject.save
+							count = count +1
+				end
+			end
+				
+			else
+				@msg=3
+				redirect_to "/subject/edit_lesson_index?scode="+scode
+			end
+			
+		elsif  tut_grp.length<=0
+			
+			0.upto(@lec_grp_assigned_list.length-1) do|lc|
+				0.upto(@lab_grp_assigned_list.length-1) do|la|
+					count = count +1
+				end
+			end
+				   
+			@Test=true
+				   
+			0.upto(count) do|ct|
+				@indext = index.to_i + ct
+				@indexcheck = IndexSubject.find_by_sql ( "Select * from index_subjects where IndexNumber='#{@indext}'")
+					if (@indexcheck.length>0)
+						msg=1
+						@Test=false
+						break
+					end
+			end
+						
+			if (@Test==true)
+				
+			count = 0
+			
+			0.upto(@lec_grp_assigned_list.length-1) do|lc|
+				0.upto(@lab_grp_assigned_list.length-1) do|la|
+					   indext = index.to_i + count
+					             indexsubject = IndexSubject.new
+						     indexsubject.id=indext.to_s
+						     indexsubject.AcademicYear=year
+							indexsubject.Semester=sem
+							indexsubject.SubjectCode=scode
+							indexsubject.LectureGroup=@lec_grp_assigned_list[lc]
+							indexsubject.TutorialGroup=nil
+							indexsubject.LaboratoryGroup=@lab_grp_assigned_list[la]
+							indexsubject.DesignGroup=nil
+							indexsubject.ProjectGroup=nil
+							indexsubject.SeminarGroup=nil
+							indexsubject.save
+							count = count +1
+				end
+			end
+				
+			else
+				@msg=3
+				redirect_to "/subject/edit_lesson_index?scode="+scode
+			end
+		end
+	end
+		
+        @grp_index_list=IndexSubject.find_by_sql("SELECT distinct IndexNumber FROM index_subjects where SubjectCode='#{scode}' and AcademicYear='#{year}' and Semester='#{sem}'")
+        @grp_value_list=IndexSubject.find_by_sql("SELECT LectureGroup, TutorialGroup , LaboratoryGroup, IndexNumber FROM index_subjects where SubjectCode='#{scode}' and AcademicYear='#{year}' and Semester='#{sem}' order by IndexNumber ")
+
+	else		
+		if (@Csindexcheck.length>0)
+			@grp_index_list=IndexSubject.find_by_sql("SELECT distinct IndexNumber FROM index_subjects where SubjectCode='#{scode}' and AcademicYear='#{year}' and Semester='#{sem}'")
+			@grp_value_list=IndexSubject.find_by_sql("SELECT LectureGroup, TutorialGroup , LaboratoryGroup, IndexNumber FROM index_subjects where SubjectCode='#{scode}' and AcademicYear='#{year}' and Semester='#{sem}' order by IndexNumber ")
+		else			
+			@msg=2
+			redirect_to "/subject/edit_lesson_index?scode="+scode
+		end
+	end
+	
+end
+
+  def  modify_lesson_groups
+   
+    action=params[:actionDDM]
+    
+    grp_pre=params[:grpPre]
+    grp_no1=params[:grpNo1]
+    grp_no2=params[:grpNo2]
+    grp_no3=params[:grpNo3]
+
+	year = session[:year] 
+	sem = session[:semester] 
+	scode = session[:scode]
+    @msg = 0
+    if action=="Add"
+	idx_grp_exist=false
+	
+        idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where IndexNumber='#{grp_pre}'")
+        if idx_grp_query.length>0
+          idx_grp_exist=true
+	end
+  
+	if grp_no1 != nil && grp_no2 !=nil && grp_no3 !=nil
+        idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LectureGroup = '#{grp_no1}' and TutorialGroup = '#{grp_no2}' and LaboratoryGroup = '#{grp_no3}'")
+	elsif grp_no1 != nil && grp_no2 !=nil && grp_no3 ==nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LectureGroup = '#{grp_no1}' and TutorialGroup = '#{grp_no2}'")
+	elsif grp_no1 != nil && grp_no2 ==nil && grp_no3 !=nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LectureGroup = '#{grp_no1}' and LaboratoryGroup = '#{grp_no3}'")
+	elsif grp_no1 == nil && grp_no2 !=nil && grp_no3 !=nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and TutorialGroup = '#{grp_no2}' and LaboratoryGroup = '#{grp_no3}'")
+	elsif grp_no1 != nil && grp_no2 ==nil && grp_no3 ==nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LectureGroup = '#{grp_no1}'")
+	elsif grp_no1 == nil && grp_no2 !=nil && grp_no3 ==nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and TutorialGroup = '#{grp_no2}'")
+	elsif grp_no1 == nil && grp_no2 ==nil && grp_no3 !=nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LaboratoryGroup = '#{grp_no3}'")
+	end
+
+        if idx_grp_query.length>0
+          idx_grp_exist=true
+	end
+  
+        if idx_grp_exist
+         # ADD error, index group already exists
+        @msg=1
+        else
+		indexsubject = IndexSubject.new
+		indexsubject.id=grp_pre
+		indexsubject.AcademicYear=year
+		indexsubject.Semester=sem
+		indexsubject.SubjectCode=scode
+		indexsubject.LectureGroup=grp_no1
+		indexsubject.TutorialGroup=grp_no2
+		indexsubject.LaboratoryGroup=grp_no3
+		indexsubject.DesignGroup=nil
+		indexsubject.ProjectGroup=nil
+		indexsubject.SeminarGroup=nil
+		indexsubject.save
+	#ADD ok!
+        @msg=2
+        end
+    elsif action=="Update"
+	idx_grp_exist=false
+	
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where IndexNumber='#{grp_pre}'")
+        if idx_grp_query.length<=0
+          idx_grp_exist=true
+	end
+	
+	if grp_no1 != nil && grp_no2 !=nil && grp_no3 !=nil
+        idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LectureGroup = '#{grp_no1}' and TutorialGroup = '#{grp_no2}' and LaboratoryGroup = '#{grp_no3}'")
+	elsif grp_no1 != nil && grp_no2 !=nil && grp_no3 ==nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LectureGroup = '#{grp_no1}' and TutorialGroup = '#{grp_no2}'")
+	elsif grp_no1 != nil && grp_no2 ==nil && grp_no3 !=nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LectureGroup = '#{grp_no1}' and LaboratoryGroup = '#{grp_no3}'")
+	elsif grp_no1 == nil && grp_no2 !=nil && grp_no3 !=nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and TutorialGroup = '#{grp_no2}' and LaboratoryGroup = '#{grp_no3}'")
+	elsif grp_no1 != nil && grp_no2 ==nil && grp_no3 ==nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LectureGroup = '#{grp_no1}'")
+	elsif grp_no1 == nil && grp_no2 !=nil && grp_no3 ==nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and TutorialGroup = '#{grp_no2}'")
+	elsif grp_no1 == nil && grp_no2 ==nil && grp_no3 !=nil
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where AcademicYear='#{year}' and Semester = '#{sem}' and SubjectCode = '#{scode}' and LaboratoryGroup = '#{grp_no3}'")
+	end
+
+	if idx_grp_query.length>0
+          idx_grp_exist=true
+	end
+  
+        if idx_grp_exist
+         # UPDATE error, index group already exists
+        @msg=1
+        else
+	idx_grp_query=IndexSubject.find(:first,:conditions=>"IndexNumber='#{grp_pre}'")
+	
+        if idx_grp_query!=nil
+	idx_grp_query.update_attribute :LectureGroup, grp_no1
+	idx_grp_query.update_attribute :TutorialGroup, grp_no2
+	idx_grp_query.update_attribute :LaboratoryGroup, grp_no3
+        end	  
+	@msg=3
+	end
+
+    elsif action=="Delete"
+	    
+	idx_grp_exist=false
+	idx_grp_query=IndexSubject.find_by_sql("Select * from index_subjects where IndexNumber='#{grp_pre}'")
+        if idx_grp_query.length>0
+          idx_grp_exist=true
+	end
+  
+         if idx_grp_exist
+	IndexSubject.delete(grp_pre)
+	@msg=4
+	end
+
+  end
+	redirect_to "/subject/process_lesson_index?year="+year+"&semester="+sem+"&index=&scode="+scode 
+  end
+end

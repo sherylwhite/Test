@@ -1,0 +1,209 @@
+<% if @no_button_clicked %>
+	<script>
+		alert("No classes added/updated.");
+		self.close();
+	</script>
+<% else %>
+	<% if @button_clicked=="Add" %>
+		<% if @duplicate_class %>
+				<script>
+				alert("Duplication of classes for the SAME lesson group are detected! No classes added. ");
+				self.close();
+				</script>
+		<% else %>
+			<% if @confirm_del %>
+				<script>
+					var detailsArr=new Array();
+					<% 0.upto(@del_class.length-1) do |k|%>
+					var tempArr=new Array();
+					tempArr="<%=@del_class[k]%>".split(":");
+					var tempArr2=new Array();
+					tempArr2['slotId']=tempArr[0];
+					tempArr2['classType']=tempArr[1];
+					tempArr2['details']=tempArr[2];
+					tempArr2['grpId']=tempArr[3];
+					detailsArr[<%=k%>]=tempArr2;
+					<% end %>
+							
+					var tempArr3=new Array();
+					tempArr3="<%=@del_class_info%>".split(":");
+					var scode =tempArr3[0];
+					var tsid =tempArr3[1];
+					opener.reFormCellListItem(scode,tsid,detailsArr);
+				</script>
+			<% end %>
+			<% if @double_confirm%>
+				<%
+					params_arr=Array.new
+					params_arr=@parameter_list.split("-");
+				%>
+				<h2><font align=center color=Red><b>WARNING!</b></font></h2>
+				<font color=blue><b>Do you want to continue with the clash of venue detected as follow: ?</b></font><br>
+				<h5><font align=center color=#FF00FF><b> <%=@venue_clash_query[0].clash_details%> </b></font></h5>
+					<form id="MainForm" name="MainForm" action="process_schedule">
+					<input type=submit id="yesBtn" name="yesBtn" value="Yes" />
+					<input type=submit id="noBtn" name="noBtn" value="No" />
+					<input type="hidden" name="addBtn" id="addBtn" value="Add"/>
+					<input type="hidden" name="subcode" id="subcode" value="<%=params_arr[0]%>"/>
+					<input type="hidden" name="daySel" id="daySel" value="<%=params_arr[1]%>"/>
+					<input type="hidden" name="stSel" id="stSel" value="<%=params_arr[2]%>"/>
+					<input type="hidden" name="etSel" id="etSel" value="<%=params_arr[3]%>"/>
+					<input type="hidden" name="duration" id="duration" value="<%=params_arr[4]%>"/>
+					<input type="hidden" name="ctSel" id="ctSel" value="<%=params_arr[5]%>"/>
+					<input type="hidden" name="grpSel" id="grpSel" value="<%=params_arr[6]%>"/>
+					<input type="hidden" name="venSel" id="venSel" value="<%=params_arr[7]%>"/>
+					<input type="hidden" name="status" id="status" value="<%=params_arr[8]%>"/>
+					<input type="hidden" name="freqSel" id="freqSel" value="<%=params_arr[9]%>"/>
+					<input type="hidden" name="lecurerSel" id="lecturerSel" value="<%=params_arr[10]%>"/>
+					<input type="hidden" name="teachWeekList" id="teachWeekList" value="<%=@tw%>"/>
+					<%if @del_class_need %>
+						<input type="hidden" name="delClass" id="delClass" value="<%=@del_id%>"/>
+					<% end %>
+				</form>
+			<% else %>
+			<!--scode:slotid:tsid:classtype:grp:ven:freq-->
+			<% 0.upto(@all_class.length-1) do |nc| %>
+				
+				<script>
+					
+					var detailsArr=new Array();
+					<% 0.upto(@all_class[nc].length-1) do |k|%>
+					var tempArr=new Array();
+					tempArr="<%=@all_class[nc][k]%>".split(":");
+					var tempArr2=new Array();
+					tempArr2['slotId']=tempArr[0];
+					tempArr2['classType']=tempArr[1];
+					tempArr2['details']=tempArr[2];
+					tempArr2['grpId']=tempArr[3];
+					detailsArr[<%=k%>]=tempArr2;
+					<% end %>
+					
+					var tempArr3=new Array();
+					tempArr3="<%=@class_info[nc]%>".split(":");
+					var scode =tempArr3[0];
+					var tsid =tempArr3[1];
+					opener.reFormCellListItem(scode,tsid,detailsArr);					
+				</script>
+			<% end %>
+			<script>
+			alert("All classes have been added successfully!");
+			self.close();
+			</script>
+			<% end %>
+		<% end %>
+	<% elsif @button_clicked=="Update" %>
+		<% if @duplicate_class %>
+				<script>
+				alert("Duplication of classes for the SAME lesson group are detected! No classes updated. ");
+				self.close();
+				</script>
+		<% else %>
+			<% if @double_confirm%>
+				<%
+					params_arr=Array.new
+					params_arr=@parameter_list.split("-");
+				%>
+				<h2><font align=center color=Red><b>WARNING!</b></font></h2>
+				<font color=blue><b>Do you want to continue with the clash of venue detected as follow: ?</b></font><br>
+				<h5><font align=center color=#FF00FF><b> <%=@venue_clash_query[0].clash_details%> </b></font></h5>
+				<form id="MainForm" name="MainForm" action="process_schedule">
+					<input type=submit id="yesBtn" name="yesBtn" value="Yes" />
+					<input type=submit id="noBtn" name="noBtn" value="No" />
+					<input type="hidden" name="updateBtn" id="updateBtn" value="Update"/>
+					<input type="hidden" name="subcode" id="subcode" value="<%=params_arr[0]%>"/>
+					<input type="hidden" name="daySel" id="daySel" value="<%=params_arr[1]%>"/>
+					<input type="hidden" name="stSel" id="stSel" value="<%=params_arr[2]%>"/>
+					<input type="hidden" name="etSel" id="etSel" value="<%=params_arr[3]%>"/>
+					<input type="hidden" name="duration" id="duration" value="<%=params_arr[4]%>"/>
+					<input type="hidden" name="ctSel" id="ctSel" value="<%=params_arr[5]%>"/>
+					<input type="hidden" name="grpSel" id="grpSel" value="<%=params_arr[6]%>"/>
+					<input type="hidden" name="venSel" id="venSel" value="<%=params_arr[7]%>"/>
+					<input type="hidden" name="status" id="status" value="<%=params_arr[8]%>"/>
+					<input type="hidden" name="freqSel" id="freqSel" value="<%=params_arr[9]%>"/>
+					<input type="hidden" name="grpList" id="grpList" value="<%=params_arr[10]%>"/>
+				</form>
+			<% else %>
+				<% if @handle_add %>
+						<%
+						params_arr=Array.new
+						params_arr=@parameter_list.split("-");
+						%>
+						<h2><font align=center color=Red><b>TO INFORM::</b></font></h2>
+						<font color=blue><b>Some classes are considered to be added, continue?</b></font><br>
+							<form id="MainForm" name="MainForm" action="process_schedule">
+							<input type=submit id="yesBtn" name="yesBtn" value="Yes" />
+							<input type=submit id="noBtn" name="noBtn" value="No" />
+							<input type="hidden" name="addBtn" id="addBtn" value="Add"/>
+							<input type="hidden" name="subcode" id="subcode" value="<%=params_arr[0]%>"/>
+							<input type="hidden" name="daySel" id="daySel" value="<%=params_arr[1]%>"/>
+							<input type="hidden" name="stSel" id="stSel" value="<%=params_arr[2]%>"/>
+							<input type="hidden" name="etSel" id="etSel" value="<%=params_arr[3]%>"/>
+							<input type="hidden" name="duration" id="duration" value="<%=params_arr[4]%>"/>
+							<input type="hidden" name="ctSel" id="ctSel" value="<%=params_arr[5]%>"/>
+							<input type="hidden" name="grpSel" id="grpSel" value="<%=params_arr[6]%>"/>
+							<input type="hidden" name="venSel" id="venSel" value="<%=params_arr[7]%>"/>
+							<input type="hidden" name="status" id="status" value="<%=params_arr[8]%>"/>
+							<input type="hidden" name="freqSel" id="freqSel" value="<%=params_arr[9]%>"/>
+							<input type="hidden" name="lecturerSel" id="lecturerSel" value="<%=params_arr[10]%>"/>
+							<input type="hidden" name="teachWeekList" id="teachWeekList" value="<%=@tw%>"/>
+							<input type="hidden" name="delClass" id="delClass" value="<%=params_arr[11]%>"/>
+						</form>				
+				<% else %>
+					<script>
+						count=0
+						<% 0.upto(@all_class.length-1) do |ac|%>
+							var detailsArr=new Array();
+							<% 0.upto(@all_class[ac].length-1) do |k|%>
+								var tempArr=new Array();
+								tempArr="<%=@all_class[ac][k]%>".split(":");
+								var tempArr2=new Array();
+								tempArr2['slotId']=tempArr[0];
+								tempArr2['classType']=tempArr[1];
+								tempArr2['details']=tempArr[2];
+								tempArr2['grpId']=tempArr[3];
+								detailsArr[<%=k%>]=tempArr2;
+							<% end %>
+									
+							var tempArr3=new Array();
+							tempArr3="<%=@class_info[ac]%>".split(":");
+							var scode =tempArr3[0];
+							var tsid =tempArr3[1];
+							if (count>0 && scode!=tempCode)
+								alert("Share Code: "+scode+ " has been changed too.");
+							opener.reFormCellListItem(scode,tsid,detailsArr);
+							if (count==0)
+								alert("The selected class has been updated successfully.");
+							count++;
+							tempCode=scode;
+						<% end %>
+						
+						self.close();
+						
+					</script>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% else %>
+		<script>
+			var detailsArr=new Array();
+			<% 0.upto(@all_class.length-1) do |k|%>
+			var tempArr=new Array();
+			tempArr="<%=@all_class[k]%>".split(":");
+			var tempArr2=new Array();
+			tempArr2['slotId']=tempArr[0];
+			tempArr2['classType']=tempArr[1];
+			tempArr2['details']=tempArr[2];
+			tempArr2['grpId']=tempArr[3];
+			detailsArr[<%=k%>]=tempArr2;
+			<% end %>
+					
+			var tempArr3=new Array();
+			tempArr3="<%=@class_info%>".split(":");
+			var scode =tempArr3[0];
+			var tsid =tempArr3[1];
+			opener.reFormCellListItem(scode,tsid,detailsArr);
+			alert("The selected class has been deleted successfully.");
+			self.close();
+		</script>
+	<% end %>
+<% end %>

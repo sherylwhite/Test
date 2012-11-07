@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+<form id="overwriteOptionForm" method="post" action="/db_switch/process_db_switch">
+
+<font color=red><b>
+<div style="text-align:center">
+	ATTENTION:<br>
+	Timetable files exists with:<br>
+	Year: <%=@year%> <br>
+	Semester: <%=@sem%> <br>
+	Version: <%=@ver%> <br>
+	Do you want to continue? <br>
+	<input type=submit id="answer" name="answer" value="Over Write"/> <input type=button id=overwrite value="No" onclick="javascript: history.go(-1)"/> 
+</div>
+</b></font>
+	<input type="hidden" id="saveBtn" name="saveBtn" value="Save" />
+	<input type="hidden" id="yearSave" name="yearSave" value="<%=@year%>" />
+	<input type="hidden" id="semSave" name="semSave" value="<%=@sem%>" />
+	<input type="hidden" id="verSave" name="verSave" value="<%=@ver%>" />
+	<input type="hidden" id="writeStaff" name="writeStaff" value="<%=@write_staff%>" />
+	<input type="hidden" id="writeVenue" name="writeVenue" value="<%=@write_venue%>" />
+	
+	
+</form>
+</body>
+</html>

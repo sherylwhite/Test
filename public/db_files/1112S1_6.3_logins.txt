@@ -1,0 +1,9 @@
+1	9dfc0061f62cec547b53366200835942415263ef	Admin	tong0011@ntu.edu.sg	countrystar
+2	1659814fcd2a43cce2f80051c6d76e6fc643101e	Admin	aschvun@ntu.edu.sg	Nicholas
+9	64542dbabb81dfd446e0cf4f319567c72ee57c7b	Normal	alex@ntu.edu.sg	Alex
+12	d033e22ae348aeb5660fc2140aec35850c4da997	Admin	admin@ntu.edu.sg	Administrator
+13	2e3122dc020c4a5b066bce0ece177ab924b95eed	Privileged	asmcchan@ntu.edu.sg	jessica
+14	fbf55db38e7697e8cfc139c1f65d1ed319a06772	Normal	grace_ho@pmail.ntu.edu.sg	HODoffices
+15	96211a57cc584fddb290775c1eccf40ce8b6a24b	Normal		SCEstaff
+16	1aa8b1770983188c2cb7cd80785c95fd2f0dc43e	Privileged	asnorhana@ntu.edu.sg	Norhana
+17	afde28edac534e7e0ef34265c925a073f69c7450	Normal	Y070003@ntu.edu.sg	Nguyen

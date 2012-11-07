@@ -1,0 +1,295 @@
+<html>
+<head>
+<SCRIPT language="javascript" type="text/javascript">
+
+function loadPage(){
+	var dom=document.getElementById("DbSwitchForm");
+	dom.yearSave.value="<%=@cur_year%>";
+	<% if @cur_sem=="1"%>
+		dom.semSave[0].checked=true
+	<% else %>
+		dom.semSave[1].checked=true
+	<% end %>
+	dom.verSave.value="<%=@cur_ver%>";
+	<% 0.upto(@back_up_year.length-1) do |yr|%>
+		var newOption=new Option();
+		newOption.text="<%=@back_up_year[yr].year%>";
+		newOption.value="<%=@back_up_year[yr].year%>";
+		dom.yearSel.options[<%=yr%>]=newOption;
+	<% end %>
+	dom.yearSel.value="<%=@cur_year%>";
+	onChangeYear();	
+	dom.semSel.value="<%=@cur_sem%>";
+	onChangeSem();
+	dom.verSel.value="<%=@cur_ver%>";
+	onChangeActionPerform();
+}
+
+function onChangeYear(){
+	var dom=document.getElementById("DbSwitchForm");
+	removeAllDDMItem('semSel');
+	sem1=""
+	sem2=""
+	<% 0.upto(@back_up_list.length-1) do |bu| %>
+		if (dom.yearSel.value=="<%=@back_up_list[bu].year%>"){
+			<% if @back_up_list[bu].semester=="1" %>
+				if (sem1!="1"){
+					var newOption=new Option();
+					newOption.text=1
+					newOption.value=1
+					dom.semSel.options[dom.semSel.options.length]=newOption;
+					sem1="1"
+				}
+			<% else %>
+				if (sem2!="2"){
+					var newOption=new Option();
+					newOption.text=2
+					newOption.value=2
+					dom.semSel.options[dom.semSel.options.length]=newOption;
+					sem2="2"
+				}
+			<% end %>
+		}
+		
+	<%end%>
+	onChangeSem();
+}
+
+function onChangeSem(){
+	var dom=document.getElementById("DbSwitchForm");
+	removeAllDDMItem('verSel');
+	count=0;
+	<% 0.upto(@back_up_list.length-1) do |bu| %>
+		if (dom.yearSel.value=="<%=@back_up_list[bu].year%>" && dom.semSel.value=="<%=@back_up_list[bu].semester%>"){
+			var newOption=new Option();
+			newOption.text="<%=@back_up_list[bu].version%>"
+			newOption.value="<%=@back_up_list[bu].version%>"
+			dom.verSel.options[count]=newOption;
+			count++;
+		}
+		
+	<%end%>
+}
+
+function onChangeAction(action){
+	var dom=document.getElementById("DbSwitchForm");
+	if(action=="create"){
+		dom.yearSel.disabled=true;
+		dom.semSel.disabled=true;
+		dom.verSel.disabled=true;
+		dom.submitBtn.value="Create New Timetable";
+		
+		dom.yearSel.style.display="none";
+		dom.yearSel2.style.display="";
+		dom.semSel.style.display="none";
+		document.getElementById("semLabel").style.display="";
+		dom.verSel.style.display="none";
+		dom.verSel2.style.display="";
+		dom.yearSel2.focus();
+	}
+	else{
+		dom.yearSel.disabled=false;
+		dom.semSel.disabled=false;
+		dom.verSel.disabled=false;
+		dom.submitBtn.value="Load Timetable";
+		
+		dom.yearSel2.style.display="none";
+		dom.yearSel.style.display="";
+		dom.semSel.style.display="";
+		document.getElementById("semLabel").style.display="none";
+		dom.verSel2.style.display="none";
+		dom.verSel.style.display="";
+		
+	}
+}
+
+function checkEntry(){
+	var dom=document.getElementById("DbSwitchForm");
+	loadAction=false;
+	if (dom.actionPerform[0].checked){
+		entryYear=dom.yearSave;
+		entryVer=dom.verSave;
+	}
+	else{
+		if (dom.createLoad[1].checked){
+			entryYear=dom.yearSel2;
+			entryVer=dom.verSel2;
+		}
+		else{
+		loadAction=true
+		ans=confirm("Do you want to save your current timetable before loading this?")
+			if (ans){
+				dom.yearSave2.value="<%=@cur_year%>";
+				dom.semSave2.value="<%=@cur_sem%>";
+				dom.verSave2.value="<%=@cur_ver%>";
+				new Ajax.Request('/db_switch/save_tt', {asynchronous:true, evalScripts:true, parameters:'yearSave=<%=@cur_year%>&semSave=<%=@cur_sem%>&verSave=<%=@cur_ver%>&writeStaff=true&writeVenue=true'});
+			}
+			else {
+				dom.yearSave2.value="";
+				dom.semSave2.value="";
+				dom.verSave2.value="";
+			}
+		
+		}
+	}
+	
+	if(!loadAction){
+		if (entryYear.value==""){
+			alert("Year of the Timetable cannot leave blank!");
+			entryYear.focus();
+			return false;
+		}
+		if (entryVer.value==""){
+			alert("Version of the Timetable cannot leave blank!");
+			entryVer.focus();
+			return false;
+		}
+	}
+	return true
+}
+
+function onChangeActionPerform(){
+	var dom=document.getElementById("DbSwitchForm");
+	if (dom.actionPerform[0].checked){
+		dom.yearSave.disabled=false;
+		dom.semSave[0].disabled=false
+		dom.semSave[1].disabled=false;
+		dom.verSave.disabled=false;
+		dom.saveBtn.disabled=false;
+				
+		dom.createLoad[0].disabled=true;
+		dom.createLoad[1].disabled=true;
+		
+		if(dom.createLoad[0].checked){
+			dom.yearSel.disabled=true;
+			dom.semSel.disabled=true;
+			dom.verSel.disabled=true;
+		}
+		else{
+			dom.yearSel2.disabled=true;
+			dom.semSel2[0].disabled=true;
+			dom.semSel2[1].disabled=true;
+			dom.verSel2.disabled=true;
+		}
+		dom.submitBtn.disabled=true
+	}
+	else{
+	
+		dom.yearSave.disabled=true;
+		dom.semSave[0].disabled=true
+		dom.semSave[1].disabled=true;
+		dom.verSave.disabled=true;
+		dom.saveBtn.disabled=true;
+		
+		dom.createLoad[0].disabled=false;
+		dom.createLoad[1].disabled=false;
+		
+		if(dom.createLoad[0].checked){
+			dom.yearSel.disabled=false;
+			dom.semSel.disabled=false;
+			dom.verSel.disabled=false;
+		}
+		else{
+			dom.yearSel2.disabled=false;
+			dom.semSel[0].disabled=false;
+			dom.semSel[1].disabled=false;
+			dom.verSel2.disabled=false; 
+		}
+		dom.submitBtn.disabled=false
+	
+	}
+}
+</script>
+</head>
+<body onload="loadPage();">
+<form id="DbSwitchForm" method="post" action="/db_switch/process_db_switch" onsubmit="return checkEntry();">
+<Table align=center>
+	<tr>
+		<th colspan=4><input type=radio id="actionPerform" name="actionPeform" value="save" onclick="onChangeActionPerform();" checked/> Save Timetable</th>
+	</tr>
+	
+	<tr>
+		<td>Year: <font size=1><i>(format: yyyy-yyyy)</i></font></td>
+    		<td>
+    			<input type=text name="yearSave"  id="yearSave"  size="35 px" style="WIDTH: 203px" />
+	    	</td>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<td>Semester:</td>
+		<td>
+			
+    			<input type=radio name="semSave" id="semSave" value=1 checked/>1 <input type=radio name="semSave" id="semSave" value=2 />2
+			
+	    	</td>
+	<tr/>
+	<tr>
+		<td>Version:</td>
+    			<td>
+    				<input size="10" type=text id="verSave" name="verSave" MaxLength="5" >
+ 			</td>
+		<tr/>
+		<tr>
+			<td colspan=4 align=center>
+				<input type=submit id="saveBtn" name="saveBtn" value="Save" style="width: 200px"/>
+			</td>
+		</tr>
+		<tr>
+			<th colspan=4><br><input type=radio id="actionPerform" name="actionPeform" value="CreateNewOrLoad" onclick="onChangeActionPerform();"/>Create New / Load Timetable</th>
+		</tr>
+			
+		<tr>
+			<td align="left">
+				<input type="radio" id="createLoad" name="createLoad" value="load" onclick="onChangeAction(this.value);" checked> Load Timetable
+			</td>
+			
+		</tr>
+		<tr>
+			<td>
+				<input type="radio" id="createLoad" name="createLoad" value="create" onclick="onChangeAction(this.value);"> Create New Timetable
+			</td>
+		</tr>
+			
+   		<tr>
+    			<td>Year:</td>
+    			<td>
+    				<Select size="1" name="yearSel" id="yearSel" style="WIDTH: 203px" onchange="onChangeYear()" tabIndex="1" >
+					
+  				</Select>
+				<input type=text name="yearSel2"  id="yearSel2"  size="35 px" style="WIDTH: 203px" style="display:none"/>
+	    		</td>
+		</tr>
+		<tr>
+			<td>Semester:</td>
+    			<td>
+    				<Select size="1" name="semSel" id="semSel" style="WIDTH: 100px" onchange="onChangeSem()" tabIndex="1" >
+  						
+				</Select>
+				<label id="semLabel" style="display:none">
+				<input type=radio name="semSel2" id="semSel2" value=1 checked/>1 <input type=radio name="semSel2" id="semSel2" value="2" />2
+				</label>
+			</td>
+		</tr>
+		<tr>
+			<td>Version:</td>
+    			<td>
+    				<Select size="1" name="verSel" id="verSel" style="WIDTH: 100px" tabIndex="1">
+						
+  				</Select>
+				<input size="10" type=text id="verSel2" name="verSel2" MaxLength="5" style="display:none"/>
+	    		</td>
+		<tr/>
+			
+			
+  		<tr align=center> 
+			
+  			<td colspan=4><br><input type="submit" value="Load Timetable" id="createLoadBtn" name="submitBtn" tabIndex="11" style="width: 200px"></td>
+		</tr>
+		<input type="hidden" id="yearSave2" name="yearSave2" value=""/>
+		<input type="hidden" id="semSave2" name="semSave2" value=""/>
+		<input type="hidden" id="verSave2" name="verSave2" value=""/>
+</table>
+</form>
+<body>
+</html>
